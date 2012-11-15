@@ -1,7 +1,20 @@
-srcdir = ./
+srcdir = .
+viewsdir = ${srcdir}/view
 
-modules = ${srcdir}/view/loginView.js \
+views = ${viewsdir}/loginView.js
+
+jsobjects = ${viewsdir}/views.jso
+
+components = ${jsobjects}\
 	${srcdir}/router.js\
 
-prisma.js: ${modules}
+all: prisma.js
+dev: prisma.js
+clean: 
+	rm -fr ${jsobjects}
+
+${viewsdir}/views.jso: ${views}
+	cat > $@ $^
+
+prisma.js: ${components}
 	cat > $@ $^
