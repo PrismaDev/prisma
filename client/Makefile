@@ -24,9 +24,15 @@ prisma-login.template: ${templateLogin}
 	cat > $@ $^
 
 # Term page #
+jsTerm = ${viewdir}/termView.js \
+	${srcdir}/router.js
 
-prisma-term.js:
-prisma-term.template:
+templateTerm = #${templatedir}/term.template
+
+prisma-term.js: ${jsTerm}
+	cat > $@ $^
+prisma-term.template: ${templateTerm}
+	cat > $@ $^
 
 # Main page #
 

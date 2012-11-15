@@ -5,11 +5,24 @@
 	</head>
 
 	<body>
-		<script type="text/template" id="login-template">
+		<script type="text/underscore-template" id="login-template">
 			<form name="loginForm" method="post" action="loginAction.php">
 				<label for="matricula"><%= str.matriculaStr %></label><input type="text" name="matricula" /><br />
 				<label for="senha"><%= str.senhaStr %></label><input type="password" name="senha" /><br />
 				<input type="submit" value="<%= str.submitStr %>" />
+			</form>
+		</script>
+
+		<script type="text/underscore-template" id="term-template">
+			<textarea readonly="readonly">
+				<%= str.termText %>
+			</textarea>
+		
+			<form name="termForm" method="post" action="termAction.php">
+				<input type="checkbox" name="acceptedTerm" />
+				<label for="acceptedTerm"><%= str.acceptTermStr %></label><br />
+				<input type="button" value="<%= str.backButtonStr %>" onclick="termController.backToLogin()" />
+				<input type="submit" value="<%= str.acceptButtonStr %>" />
 			</form>
 		</script>
 
@@ -21,6 +34,6 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
-		<script src="client/prisma-login.js"></script>
+		<script src="client/prisma-term.js"></script>
 	</body>
 </html>
