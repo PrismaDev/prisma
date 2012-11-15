@@ -1,5 +1,6 @@
 srcdir = .
 viewsdir = ${srcdir}/view
+templatesdir = ${srcdir}/template
 
 views = ${viewsdir}/loginView.js
 

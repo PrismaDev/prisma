@@ -5,6 +5,14 @@
 	</head>
 
 	<body>
+		<script type="text/template" id="login-template">
+			<form name="loginForm" method="post" action="loginAction.php">
+				<label for="matricula"><%= str.matriculaStr %></label><input type="text" name="matricula" /><br />
+				<label for="senha"><%= str.senhaStr %></label><input type="password" name="senha" /><br />
+				<input type="submit" value="<%= str.submitStr %>" />
+			</form>
+		</script>
+
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		
 		<script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js"></script>
