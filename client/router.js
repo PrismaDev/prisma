@@ -1,10 +1,12 @@
-var router = Backbone.Router.extend({
+var Router = Backbone.Router.extend({
 	routes: {
 		'': 'login'
 	}
 });
 
-router = new Router();
-router.on('route: login'. function() {
-	console.log('We have reached the home page');
+var router = new Router();
+router.on('route:login', function() {
+	loginView.render();
 });
+
+Backbone.history.start();
