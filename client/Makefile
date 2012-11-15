@@ -1,21 +1,35 @@
 srcdir = .
-viewsdir = ${srcdir}/view
-templatesdir = ${srcdir}/template
+viewdir = ${srcdir}/view
+templatedir = ${srcdir}/template
+controllerdir = ${srcdir}/controller
 
-views = ${viewsdir}/loginView.js
-
-jsobjects = ${viewsdir}/views.jso
-
-components = ${jsobjects}\
-	${srcdir}/router.js\
-
-all: prisma.js
+# Phony targets #
+all: prisma-login prisma-term prisma-main
+prisma-login: prisma-login.js prisma-login.template
+prisma-term: prisma-term.js prisma-term.template
+prisma-main: prisma-main.js prisma-main.template
 dev: prisma.js
 clean: 
-	rm -fr ${jsobjects}
+	rm -fr ${viewdir}/*.jso
 
-${viewsdir}/views.jso: ${views}
+# Login page #
+jsLogin = ${viewdir}/loginView.js \
+	${srcdir}/router.js
+
+templateLogin = ${templatedir}/login.template
+
+prisma-login.js: ${jsLogin}
+	cat > $@ $^
+prisma-login.template: ${templateLogin} 
 	cat > $@ $^
 
-prisma.js: ${components}
-	cat > $@ $^
+# Term page #
+
+prisma-term.js:
+prisma-term.template:
+
+# Main page #
+
+prisma-main.js:
+prisma-main.template:
+
