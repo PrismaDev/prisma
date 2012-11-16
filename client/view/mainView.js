@@ -17,6 +17,10 @@ var MainView = Backbone.View.extend({
 		$("#main-timetable-div").css('bottom', parseFloat(footerH)+'px');	
 	},
 
+	initialize: function() {
+		$(window).resize(this.adjustSizes);
+	},
+
 	render: function() {
 		var template = _.template($("#main-template").html());
 		this.$el.html(template);
