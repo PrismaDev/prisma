@@ -2,7 +2,8 @@ var Router = Backbone.Router.extend({
 	routes: {
 		'': 'index',
 		'login': 'login',
-		':mat/term': 'term'
+		':mat/term': 'term',
+		':mat/main': 'main'
 	}
 });
 
@@ -19,9 +20,13 @@ router.on('route:term', function() {
 	termView.render();
 });
 
+router.on('route:main', function() {
+	mainView.render();
+}
+
 if (history.pushState) { 
 	console.log("pushState supported");
-	Backbone.history.start({pushState: true, root: '/~royalsflush/prismaV2/src/'});
+	Backbone.history.start({pushState: true});
 }
 else {
 	console.log("pushState NOT supported");
