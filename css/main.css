@@ -1,0 +1,43 @@
+#main-header-div {
+	left: 0;
+	right: 0;
+	top: 0;
+
+	width: 100%;
+	height: 10%;	
+
+	margin: 0;
+	padding: 0;
+
+	background-color: blue;
+}
+
+#main-sidebar-div {
+	width: 50%;
+	height: auto;
+
+	float: left;
+
+	background-color: red;
+}
+
+#main-timetable-div {
+	width: 50%;
+	height: auto;
+
+	float: left;
+
+	background-color: yellow;
+}
+
+#main-footer-div {
+	width: 100%;
+	height: 10%;
+
+	clear: both;
+
+	margin: 0;
+	padding: 0;
+
+	background-color: green;
+}
