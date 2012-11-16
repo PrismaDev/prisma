@@ -12,8 +12,7 @@ var Router = Backbone.Router.extend({
 		'': 'index',
 		'login': 'login',
 		':mat/term': 'term',
-		':mat/main': 'main',
-		':mat/results': 'results'
+		':mat/main': 'main'
 	}
 });
 

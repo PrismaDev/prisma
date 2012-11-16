@@ -36,7 +36,7 @@ router.on('route:term', function() {
 
 router.on('route:main', function() {
 	mainView.render();
-}
+});
 
 if (history.pushState) { 
 	console.log("pushState supported");

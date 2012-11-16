@@ -35,7 +35,13 @@ prisma-term.template: ${templateTerm}
 	cat > $@ $^
 
 # Main page #
+jsMain = ${viewdir}/mainView.js \
+	${srcdir}/router.js
 
-prisma-main.js:
-prisma-main.template:
+templateMain = #${templatedir}/main.template
+
+prisma-main.js: ${jsMain}
+	cat > $@ $^
+prisma-main.template: ${templateMain}
+	cat > $@ $^
 
