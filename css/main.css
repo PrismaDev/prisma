@@ -3,10 +3,13 @@
 }
 
 #main-sidebar-div {
+	background-color: red;
 }
 
 #main-timetable-div {
 	background-color: yellow;
+	
+	left: 0;
 }
 
 #main-footer-div {
