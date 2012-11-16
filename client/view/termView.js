@@ -5,8 +5,7 @@ var TermView = Backbone.View.extend({
 			{termText: "Testing text area; texttexttextetxtetxtetxtet",
 				acceptTermStr: "I accept the terms of ...",
 				acceptButtonStr: "Accept and continue",
-				backButtonStr: "Back to login"},
-			{variable: 'str'});
+				backButtonStr: "Back to login"});
 		this.$el.html(template);
 	}
 });

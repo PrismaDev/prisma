@@ -22,9 +22,12 @@ var MainView = Backbone.View.extend({
 	},
 
 	render: function() {
-		var template = _.template($("#main-template").html());
+		var template = _.template($("#main-template").html(),
+			{faltaCursarTabStr: 'Falta Cursar',
+			microHorarioTabStr: 'Micro Horario',
+			selectedTabStr: 'Selecionadas'});
 		this.$el.html(template);
-		this.adjustSizes();
+//		this.adjustSizes();
 	}
 });
 
