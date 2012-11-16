@@ -6,6 +6,8 @@ var MainView = Backbone.View.extend({
 
 		$("#main-sidebar-div").resizable({
 			handles: 'e, w',
+			maxWidth: 0.75*$(window).width(),
+			minWidth: 0.25*$(window).width(),
 			containment: "parent",
 		});	
 	},
