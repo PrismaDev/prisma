@@ -35,7 +35,8 @@ prisma-term.template: ${templateTerm}
 	cat > $@ $^
 
 # Main page #
-jsMain = ${viewdir}/mainView.js \
+jsMain = ${viewdir}/timetableView.js \
+	 ${viewdir}/mainView.js \
 	${srcdir}/router.js
 
 templateMain = #${templatedir}/main.template

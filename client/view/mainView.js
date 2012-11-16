@@ -6,14 +6,13 @@ var MainView = Backbone.View.extend({
 
 		$("#main-sidebar-div").resizable({
 			handles: 'e, w',
-			maxWidth: 0.75*$(window).width(),
+			maxWidth: 0.6*$(window).width(),
 			minWidth: 0.25*$(window).width(),
 			containment: "parent",
 
 			resize: function(e, ui) {
 				var w = $(".row-fluid").width();
 				var nW = w-$('#main-sidebar-div').outerWidth();
-				console.log(nW);
 				$('#main-timetable-div').width(nW);
 			}
 		});	
@@ -23,7 +22,9 @@ var MainView = Backbone.View.extend({
 		var template = _.template($("#main-template").html(),
 			{faltaCursarTabStr: 'Falta Cursar',
 			microHorarioTabStr: 'Micro Horario',
-			selectedTabStr: 'Selecionadas'});
+			selectedTabStr: 'Selecionadas',
+
+			timetableTemplate: timetableView.render()});
 		this.$el.html(template);
 		
 		this.initJQueryUI();

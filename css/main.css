@@ -1,20 +1,13 @@
-#main-header-div {
-	background-color: blue;
-}
-
 #main-sidebar-div {
 	width: 50%;
 	float: left;
 }
 
 #main-timetable-div {
-	background-color: yellow;
 	float: left;
 	width: 50%;	
 
 	right: 0;
 }
 
-#main-footer-div {
-	background-color: green;
-}
+

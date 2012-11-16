@@ -60,10 +60,10 @@
 					</div>
 			
 					<div id="main-timetable-div">
-						<p>A timetable</p>
+						<%= timetableTemplate %>
 					</div>
 				</div>
-			
+				<hr>	
 				<div class="row-fluid">
 					<div id="main-footer-div" class="span12">
 						<p>A footer</p>
@@ -71,6 +71,28 @@
 				</div>
 			</div>
 		</script>
+		
+		<script type="text/underscore-template" id="timetable-template">
+			<table class="table table-bordered">
+				<thead>
+					<th></th>
+					<% _.each(days, function(day) { %>
+						<th><%= day %>
+					<% }); %>
+				</thead>
+				<tbody>
+					<% _.each(_.range(startH, endH), function(hour) { %>
+						<tr>
+							<td><%= hour%>:00</td> 
+							<% _.each(days, function(day) { %>
+								<td></td>
+							<% }); %>
+						</tr>
+					<% }); %>
+				</tbody>
+			</table>
+		</script>
+
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		
