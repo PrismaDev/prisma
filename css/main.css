@@ -11,15 +11,35 @@
 }
 
 #faltacursar {
+	width: 99%
+	height: 100%;
+	
 	padding-right: 1%;
 }
 
 #faltacursar-subjectList {
 	padding-bottom: 1%;
-	height: 200px;
 }
 
 #faltacursar-classesList {
-	display: none;
 	border-top: solid 1px;
+}
+
+.hiddenDiv {
+	display: none;	
+}
+.dataTables_info {
+	display: none;
+}
+
+.dataTable {
+	clear: both;
+}
+
+tr.row_selected {
+	background-color: #F0F0F0;
+}
+
+.dataTables_filter {
+	float: right;
 }

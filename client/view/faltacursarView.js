@@ -2,8 +2,20 @@ var FaltacursarView = Backbone.View.extend({
 	el: '#faltacursar-div',
 
 	initJS: function() {
-		$('#faltacursar-table').dataTable({
-			"bPaginate": false
+		var subjectTable = $('#faltacursar-table').dataTable({
+			'bPaginate': false,
+		});
+
+		$("#faltacursar-table tbody tr").click(function(e) {
+			if ($(this).hasClass('row_selected')) {
+				$(this).removeClass('row_selected');
+        			$('#faltacursar-classesList').addClass('hiddenDiv');
+			}
+			else {
+				subjectTable.$('tr.row_selected').removeClass('row_selected');
+				$(this).addClass('row_selected');
+        			$('#faltacursar-classesList').removeClass('hiddenDiv');
+			}
 		});
 	},		
 
