@@ -36,6 +36,7 @@ prisma-term.template: ${templateTerm}
 
 # Main page #
 jsMain = ${viewdir}/timetableView.js \
+	 ${viewdir}/faltacursarView.js \
 	 ${viewdir}/mainView.js \
 	${srcdir}/router.js
 

@@ -22,11 +22,17 @@ var MainView = Backbone.View.extend({
 		this.initJQueryUI();
 	},
 
-	fetchData: function() {
+	fetchStrings: function() {
 		return {faltaCursarTabStr: 'Falta Cursar',
 			microHorarioTabStr: 'Micro Horario',
-			selectedTabStr: 'Selecionadas',
-			timetableTemplate: timetableView.returnTemplate()};
+			selectedTabStr: 'Selecionadas'};
+	},
+
+	fetchData: function() {
+		var data = $.extend({}, {timetableTemplate: timetableView.returnTemplate()},
+			{faltacursarTemplate: faltacursarView.returnTemplate()},
+			this.fetchStrings());
+		return data;
 	},
 
 	render: function() {

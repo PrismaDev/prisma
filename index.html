@@ -48,7 +48,7 @@
 						</ul>
 						<div class="tab-content">
 							<div class="tab-pane active" id="faltacursar">
-								<p>Falta cursar</p>
+								<%= faltacursarTemplate %>
 							</div>
 							<div class="tab-pane" id="microhorario">
 								<p>micro horario</p>
@@ -86,6 +86,33 @@
 			</table>
 		</script>
 
+		<script type="text/underscore-template" id="faltacursar-template">
+			<table id="faltacursar-table" class="table table-bordered">
+				<thead>
+					<th><%= codeStr %></th>
+					<th><%= nameStr %></th>
+					<th><%= termStr %></th>
+					<th></th>
+				</thead>
+				<tbody>
+					<% _.each(subjects, function(subject) { %>
+						<tr>
+							<td><%= subject.code %></td>
+							<td><%= subject.name %></td>
+							<td><%= subject.term %></td>
+							<td>
+								<a href="<%= subject.link %>" class="btn btn-info">
+									<%= moreInfoStr %>
+								</a>
+							</td>
+						</tr>
+					<% }); %>
+				</tbody>
+			</table>
+			<% if (_.size(subjects)==0) { %>
+				<p><%= noSubjectsStr %></p>
+			<% } %>
+		</script>
 
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		
