@@ -4,7 +4,7 @@ var TimetableView = Backbone.View.extend({
 	endH: 23,
 	ndays: 6,
 
-	buildTableBody: function() {
+	buildTableBody: function(classArray) {
 		var tbody = document.createElement('tbody');
 
 		for (var hour=this.startH; hour<this.endH; hour++) {
@@ -59,6 +59,10 @@ var MainView = Backbone.View.extend({
 		});	
 	},
 
+	initJS: function() {
+		this.initJQueryUI();
+	},
+
 	fetchData: function() {
 		return {faltaCursarTabStr: 'Falta Cursar',
 			microHorarioTabStr: 'Micro Horario',
@@ -70,8 +74,6 @@ var MainView = Backbone.View.extend({
 		var template = _.template($("#main-template").html(),
 			this.fetchData());
 		this.$el.html(template);
-		this.initJQueryUI();
-
 	}
 });
 
@@ -100,6 +102,8 @@ router.on('route:term', function() {
 
 router.on('route:main', function() {
 	mainView.render();
+
+	mainView.initJS();
 });
 
 //if (history.pushState) { 

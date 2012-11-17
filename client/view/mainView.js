@@ -18,6 +18,10 @@ var MainView = Backbone.View.extend({
 		});	
 	},
 
+	initJS: function() {
+		this.initJQueryUI();
+	},
+
 	fetchData: function() {
 		return {faltaCursarTabStr: 'Falta Cursar',
 			microHorarioTabStr: 'Micro Horario',
@@ -29,8 +33,6 @@ var MainView = Backbone.View.extend({
 		var template = _.template($("#main-template").html(),
 			this.fetchData());
 		this.$el.html(template);
-		this.initJQueryUI();
-
 	}
 });
 
