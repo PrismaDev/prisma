@@ -1,0 +1,14 @@
+<script type="text/underscore-template" id="timetable-template">
+	<table class="table table-bordered">
+		<thead>
+			<th></th>
+			<% _.each(days, function(day) { %>
+				<th><%= day %>
+			<% }); %>
+		</thead>
+		<tbody>
+			<%= timetableBody %>
+		</tbody>
+	</table>
+</script>
+

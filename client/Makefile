@@ -27,7 +27,7 @@ prisma-login.template: ${templateLogin}
 jsTerm = ${viewdir}/termView.js \
 	${srcdir}/router.js
 
-templateTerm = #${templatedir}/term.template
+templateTerm = ${templatedir}/term.template
 
 prisma-term.js: ${jsTerm}
 	cat > $@ $^
@@ -40,7 +40,9 @@ jsMain = ${viewdir}/timetableView.js \
 	 ${viewdir}/mainView.js \
 	${srcdir}/router.js
 
-templateMain = #${templatedir}/main.template
+templateMain = ${templatedir}/main.template \
+		${templatedir}/timetable.template \
+		${templatedir}/faltacursar.template
 
 prisma-main.js: ${jsMain}
 	cat > $@ $^

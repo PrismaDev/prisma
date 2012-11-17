@@ -1,0 +1,24 @@
+<script type="text/underscore-template" id="faltacursar-template">
+	<table id="faltacursar-table" class="table table-bordered">
+		<thead>
+			<th><%= codeStr %></th>
+			<th><%= nameStr %></th>
+			<th><%= termStr %></th>
+			<th></th>
+		</thead>
+		<tbody>
+			<% _.each(subjects, function(subject) { %>
+				<tr>
+					<td><%= subject.code %></td>
+					<td><%= subject.name %></td>
+					<td><%= subject.term %></td>
+					<td>
+						<a href="<%= subject.link %>" class="btn btn-info">
+							<%= moreInfoStr %>
+						</a>
+					</td>
+				</tr>
+			<% }); %>
+		</tbody>
+	</table>
+</script>

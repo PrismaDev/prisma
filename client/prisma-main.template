@@ -1,0 +1,79 @@
+<script type="text/underscore-template" id="main-template">		
+	<div class="container-fluid">
+		<div class="navbar navbar-inverse">
+			<div class="navbar-inner">
+				<span class="brand">PrISMA</a>
+			</div>
+		</div>	
+				
+		<div class="row-fluid">
+			<div id="main-sidebar-div">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#faltacursar" data-toggle="tab"><%= faltaCursarTabStr %></a></li>
+					<li><a href="#microhorario" data-toggle="tab"><%= microHorarioTabStr %></a></li>
+					<li><a href="#selected" data-toggle="tab"><%= selectedTabStr %></a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="faltacursar">
+						<%= faltacursarTemplate %>
+					</div>
+					<div class="tab-pane" id="microhorario">
+						<p>micro horario</p>
+					</div>
+					<div class="tab-pane" id="selected">
+						<p>selecionadas</p>
+					</div>
+				</div>
+			</div>
+			
+			<div id="main-timetable-div">
+				<%= timetableTemplate %>
+			</div>
+		</div>
+		<hr>	
+		<div class="row-fluid">
+			<div id="main-footer-div" class="span12">
+				<p>A footer</p>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/underscore-template" id="timetable-template">
+	<table class="table table-bordered">
+		<thead>
+			<th></th>
+			<% _.each(days, function(day) { %>
+				<th><%= day %>
+			<% }); %>
+		</thead>
+		<tbody>
+			<%= timetableBody %>
+		</tbody>
+	</table>
+</script>
+
+<script type="text/underscore-template" id="faltacursar-template">
+	<table id="faltacursar-table" class="table table-bordered">
+		<thead>
+			<th><%= codeStr %></th>
+			<th><%= nameStr %></th>
+			<th><%= termStr %></th>
+			<th></th>
+		</thead>
+		<tbody>
+			<% _.each(subjects, function(subject) { %>
+				<tr>
+					<td><%= subject.code %></td>
+					<td><%= subject.name %></td>
+					<td><%= subject.term %></td>
+					<td>
+						<a href="<%= subject.link %>" class="btn btn-info">
+							<%= moreInfoStr %>
+						</a>
+					</td>
+				</tr>
+			<% }); %>
+		</tbody>
+	</table>
+</script>
