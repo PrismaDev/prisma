@@ -18,16 +18,19 @@ var MainView = Backbone.View.extend({
 		});	
 	},
 
-	render: function() {
-		var template = _.template($("#main-template").html(),
-			{faltaCursarTabStr: 'Falta Cursar',
+	fetchData: function() {
+		return {faltaCursarTabStr: 'Falta Cursar',
 			microHorarioTabStr: 'Micro Horario',
 			selectedTabStr: 'Selecionadas',
+			timetableTemplate: timetableView.returnTemplate()};
+	},
 
-			timetableTemplate: timetableView.render()});
+	render: function() {
+		var template = _.template($("#main-template").html(),
+			this.fetchData());
 		this.$el.html(template);
-		
 		this.initJQueryUI();
+
 	}
 });
 

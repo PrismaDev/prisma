@@ -81,14 +81,7 @@
 					<% }); %>
 				</thead>
 				<tbody>
-					<% _.each(_.range(startH, endH), function(hour) { %>
-						<tr>
-							<td><%= hour%>:00</td> 
-							<% _.each(days, function(day) { %>
-								<td></td>
-							<% }); %>
-						</tr>
-					<% }); %>
+					<%= timetableBody %>
 				</tbody>
 			</table>
 		</script>
