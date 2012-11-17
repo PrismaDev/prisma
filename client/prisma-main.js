@@ -46,7 +46,7 @@ var FaltacursarView = Backbone.View.extend({
 		$('#faltacursar-table').dataTable({
 			"bPaginate": false
 		});
-	},
+	},		
 
 	fetchStrings: function() {
 		return {codeStr: 'Codigo', nameStr: 'Nome da Disciplina',
