@@ -1,5 +1,5 @@
 <script type="text/underscore-template" id="faltacursar-template">
-	<table id="faltacursar-table" class="table table-bordered">
+	<table id="faltacursar-table" class="table table-bordered table-condensed">
 		<thead>
 			<th><%= codeStr %></th>
 			<th><%= nameStr %></th>
@@ -13,7 +13,7 @@
 					<td><%= subject.name %></td>
 					<td><%= subject.term %></td>
 					<td>
-						<a href="<%= subject.link %>" class="btn btn-info">
+						<a href="<%= subject.link %>" class="btn btn-info btn-small">
 							<%= moreInfoStr %>
 						</a>
 					</td>
@@ -21,4 +21,8 @@
 			<% }); %>
 		</tbody>
 	</table>
+	<div id="faltacursar-classesList">
+		<hr>
+		<%= classesListTemplate %>
+	</div>
 </script>

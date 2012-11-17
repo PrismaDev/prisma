@@ -40,7 +40,8 @@ jsMain = ${viewdir}/timetableView.js \
 	 ${viewdir}/mainView.js \
 	${srcdir}/router.js
 
-templateMain = ${templatedir}/main.template \
+templateMain = ${templatedir}/classeslist.template \
+		${templatedir}/main.template \
 		${templatedir}/timetable.template \
 		${templatedir}/faltacursar.template
 

@@ -2,7 +2,9 @@ var FaltacursarView = Backbone.View.extend({
 	el: '#faltacursar-div',
 
 	initJS: function() {
-		$('#faltacursar-table').dataTable();
+		$('#faltacursar-table').dataTable({
+			"bPaginate": false
+		});
 	},
 
 	fetchStrings: function() {
@@ -12,12 +14,32 @@ var FaltacursarView = Backbone.View.extend({
 	},
 
 	fetchSubjects: function() {
-		return {subjects: []};
+		return {subjects: [
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'}
+		]};
 	},
 
 	fetchData: function() {
 		var data = $.extend({}, this.fetchStrings(),
-			this.fetchSubjects());
+			this.fetchSubjects(),
+			{classesListTemplate: _.template($('#classeslist-template').html(),
+				{tableid: 'faltacursar-classes-table'})});
 		return data;
 	},
 

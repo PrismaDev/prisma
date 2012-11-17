@@ -10,4 +10,11 @@
 	right: 0;
 }
 
+#faltacursar {
+	padding-right: 1%;
+}
 
+#faltacursar-classesList {
+	display: none;
+	padding-top: 1%;
+}
