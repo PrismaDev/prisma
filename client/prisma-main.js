@@ -140,6 +140,27 @@ var SelectedView = Backbone.View.extend({
 });
 
 var selectedView = new SelectedView();
+var MicrohorarioView = Backbone.View.extend ({
+	el: '#microhorario',
+	
+	
+
+	renderQuery: function(qstatus, classeslist) {
+
+	},
+
+	returnTemplate: function() {
+		var template = _.template($('#microhorario-template').html(),
+			{});
+		return template;
+	},
+
+	render: function() {
+		this.$el.html(this.returnTemplate());
+	}
+});
+
+var microhorarioView = new MicrohorarioView();
 var MainView = Backbone.View.extend({
 	el: 'body',
 
@@ -173,7 +194,8 @@ var MainView = Backbone.View.extend({
 	fetchTemplates: function() {
 		return  {timetableTemplate: timetableView.returnTemplate(),
 			faltacursarTemplate: faltacursarView.returnTemplate(),
-			selectedTemplate: selectedView.returnTemplate()};
+			selectedTemplate: selectedView.returnTemplate(),
+			microhorarioTemplate: microhorarioView.returnTemplate()};
 	},
 
 	fetchData: function() {

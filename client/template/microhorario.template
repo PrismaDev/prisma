@@ -1,0 +1,17 @@
+<script type="text/underscore-template" id="microhorario-template">
+	<div id="microhorario-filter">
+		<form>
+			<label>str1</label>
+			<input type="text" name="subjectName" /><br/ >
+			<label>str2</label>
+			<input type="text" name="subjectCode" /><br/ >
+			<label>str3</label>
+			<input type="text" name="professorName" /><br/ >
+			
+			<input type="reset" id="resetQuery" />
+			<input type="submit" id="submitQuery" />
+		</form>
+	</div>
+	<div id="microhorario-results">
+	</div>
+</script>

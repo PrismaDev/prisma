@@ -8,7 +8,6 @@ all: prisma-login prisma-term prisma-main
 prisma-login: prisma-login.js prisma-login.template
 prisma-term: prisma-term.js prisma-term.template
 prisma-main: prisma-main.js prisma-main.template
-dev: prisma.js
 clean: 
 	rm -fr ${viewdir}/*.jso
 
@@ -36,13 +35,15 @@ prisma-term.template: ${templateTerm}
 
 # Main page #
 jsMain = ${viewdir}/timetableView.js \
-	 ${viewdir}/faltacursarView.js \
-	 ${viewdir}/selectedView.js \
-	 ${viewdir}/mainView.js \
+	${viewdir}/faltacursarView.js \
+	${viewdir}/selectedView.js \
+	${viewdir}/microhorarioView.js \
+	${viewdir}/mainView.js \
 	${srcdir}/router.js
 
 templateMain = ${templatedir}/classeslist.template \
 		${templatedir}/main.template \
+		${templatedir}/microhorario.template \
 		${templatedir}/timetable.template \
 		${templatedir}/faltacursar.template
 

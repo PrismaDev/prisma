@@ -18,7 +18,7 @@
 						<%= faltacursarTemplate %>
 					</div>
 					<div class="tab-pane" id="microhorario">
-						<p>micro horario</p>
+						<%= microhorarioTemplate %>
 					</div>
 					<div class="tab-pane" id="selected">
 						<%= selectedTemplate %>
