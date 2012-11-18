@@ -148,15 +148,17 @@ var MicrohorarioView = Backbone.View.extend ({
 	queryStatus: 'query',
 	waitingStatus: 'waiting',
 
+	waitingImgURL: 'http://i.stack.imgur.com/FhHRx.gif',
+
 	fetchConstants: function() {
 		return {noQuery: this.noQueryStatus,
 			query: this.queryStatus,
-			waiting: this.waitingStatus};
+			waiting: this.waitingStatus,
+			waitingImg: this.waitingImgURL};
 	},
 
 	fetchStrings: function() {
-		return {waitingStr: 'Loading query...',
-			noQueryStr: 'No query',
+		return {noQueryStr: 'No query',
 			subjectCodeStr: 'Codigo da Disciplina:',
 			subjectNameStr: 'Nome da Disciplina:',
 			professorNameStr: 'Nome do Professor:',
@@ -221,7 +223,7 @@ var MainView = Backbone.View.extend({
 			selectedTemplate: selectedView.returnTemplate(),
 			microhorarioTemplate: 
 				microhorarioView.returnTemplate([],
-					microhorarioView.queryStatus)};
+					microhorarioView.waitingStatus)};
 	},
 
 	fetchData: function() {

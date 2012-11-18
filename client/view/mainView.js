@@ -34,7 +34,7 @@ var MainView = Backbone.View.extend({
 			selectedTemplate: selectedView.returnTemplate(),
 			microhorarioTemplate: 
 				microhorarioView.returnTemplate([],
-					microhorarioView.queryStatus)};
+					microhorarioView.waitingStatus)};
 	},
 
 	fetchData: function() {

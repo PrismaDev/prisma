@@ -22,7 +22,7 @@
 				<%= noQueryStr %>
 		<%		break;
 			case waiting: %>
-				<%= waitingStr %>
+				<img class="waitingImg" src="<%= waitingImg %>" />
 		<%		break;
 			default: %>
 			<div id="microhorario-results">

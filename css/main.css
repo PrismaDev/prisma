@@ -28,6 +28,11 @@
 	margin-right: 1%;
 }
 
+.waitingImg {
+	display: block;
+	margin: auto;
+}
+
 .table {
 	clear: both;
 }
