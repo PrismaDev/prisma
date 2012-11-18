@@ -76,14 +76,6 @@ var FaltacursarView = Backbone.View.extend({
 			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
 			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
 			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
 			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'}
 		]};
 	},
@@ -108,6 +100,46 @@ var FaltacursarView = Backbone.View.extend({
 });
 
 var faltacursarView = new FaltacursarView();
+var SelectedView = Backbone.View.extend({
+	el: '#selected',
+		
+	fetchData: function() {
+
+	},
+
+	buildRow: function(classArray) {
+		var div = document.createElement('div');
+
+		var ul = document.createElement('ul');
+		$(ul).addClass('selectedSortable');
+
+		for (var i=0; i<classArray.length; i++)
+			$(ul).append('<li>'+classArray.subcode+'-'+
+				classArray.classcode+'</li>');
+		
+		$(div).append(ul);
+		return div;
+	},
+
+	buildSelected: function(rowsArray) {
+		var div = document.createElement('div');
+
+		for (var i=0; i<rowsArray.length; i++)
+			$(div).append(buildRow(rowsArray[i]));
+
+		return $(div).html();
+	},
+
+	returnTemplate: function() {
+		return '<p>selected view</p>';
+	},
+
+	render: function() {
+		this.$el.html(this.returnTemplate());
+	}
+});
+
+var selectedView = new SelectedView();
 var MainView = Backbone.View.extend({
 	el: 'body',
 
@@ -138,9 +170,14 @@ var MainView = Backbone.View.extend({
 			selectedTabStr: 'Selecionadas'};
 	},
 
+	fetchTemplates: function() {
+		return  {timetableTemplate: timetableView.returnTemplate(),
+			faltacursarTemplate: faltacursarView.returnTemplate(),
+			selectedTemplate: selectedView.returnTemplate()};
+	},
+
 	fetchData: function() {
-		var data = $.extend({}, {timetableTemplate: timetableView.returnTemplate()},
-			{faltacursarTemplate: faltacursarView.returnTemplate()},
+		var data = $.extend({}, this.fetchTemplates(),
 			this.fetchStrings());
 		return data;
 	},

@@ -28,9 +28,14 @@ var MainView = Backbone.View.extend({
 			selectedTabStr: 'Selecionadas'};
 	},
 
+	fetchTemplates: function() {
+		return  {timetableTemplate: timetableView.returnTemplate(),
+			faltacursarTemplate: faltacursarView.returnTemplate(),
+			selectedTemplate: selectedView.returnTemplate()};
+	},
+
 	fetchData: function() {
-		var data = $.extend({}, {timetableTemplate: timetableView.returnTemplate()},
-			{faltacursarTemplate: faltacursarView.returnTemplate()},
+		var data = $.extend({}, this.fetchTemplates(),
 			this.fetchStrings());
 		return data;
 	},

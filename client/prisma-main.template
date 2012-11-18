@@ -31,7 +31,7 @@
 						<p>micro horario</p>
 					</div>
 					<div class="tab-pane" id="selected">
-						<p>selecionadas</p>
+						<%= selectedTemplate %>
 					</div>
 				</div>
 			</div>
