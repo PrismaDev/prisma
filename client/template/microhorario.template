@@ -13,5 +13,15 @@
 		</form>
 	</div>
 	<div id="microhorario-results">
+		<% switch(qStatus) { 
+			case noQuery: %>
+				<%= noQueryStr %>
+		<%		break;
+			case waiting: %>
+				<%= waitingStr %>
+		<%		break;
+			default: %>
+				<%= classesListTemplate %>
+		<% } %>
 	</div>
 </script>

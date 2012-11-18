@@ -64,6 +64,16 @@
 		</form>
 	</div>
 	<div id="microhorario-results">
+		<% switch(qStatus) { 
+			case noQuery: %>
+				<%= noQueryStr %>
+		<%		break;
+			case waiting: %>
+				<%= waitingStr %>
+		<%		break;
+			default: %>
+				<%= classesListTemplate %>
+		<% } %>
 	</div>
 </script>
 <script type="text/underscore-template" id="timetable-template">

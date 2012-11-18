@@ -32,7 +32,9 @@ var MainView = Backbone.View.extend({
 		return  {timetableTemplate: timetableView.returnTemplate(),
 			faltacursarTemplate: faltacursarView.returnTemplate(),
 			selectedTemplate: selectedView.returnTemplate(),
-			microhorarioTemplate: microhorarioView.returnTemplate()};
+			microhorarioTemplate: 
+				microhorarioView.returnTemplate([],
+					microhorarioView.noQueryStatus)};
 	},
 
 	fetchData: function() {
