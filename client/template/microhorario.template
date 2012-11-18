@@ -1,13 +1,17 @@
 <script type="text/underscore-template" id="microhorario-template">
 	<div id="microhorario-filter">
 		<form>
-			<label>str1</label>
-			<input type="text" name="subjectName" /><br/ >
-			<label>str2</label>
-			<input type="text" name="subjectCode" /><br/ >
-			<label>str3</label>
-			<input type="text" name="professorName" /><br/ >
+			<label for="subjectCode"><%= subjectCodeStr %></label>
+			<input type="text" name="subjectCode" />
+			<label for="subjectName"><%= subjectNameStr %></label>
+			<input type="text" name="subjectName" />
+			<label for="professorName"><%= professorNameStr %></label>
+			<input type="text" name="professorName" />
 			
+			<div class="hiddenFilters">
+				<p>a hidden filter</p>
+			</div>
+
 			<input type="reset" id="resetQuery" />
 			<input type="submit" id="submitQuery" />
 		</form>
@@ -21,7 +25,14 @@
 				<%= waitingStr %>
 		<%		break;
 			default: %>
+			<div id="microhorario-results">
+				<div class="toggleBlockedDiv">
+					<label for="toggleBlocked"><%= toggleBlocked %></label>
+					<input type="checkbox" name="toggleBlocked" />
+				</div>
+
 				<%= classesListTemplate %>
+			</div>
 		<% } %>
 	</div>
 </script>

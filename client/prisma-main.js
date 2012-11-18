@@ -156,7 +156,11 @@ var MicrohorarioView = Backbone.View.extend ({
 
 	fetchStrings: function() {
 		return {waitingStr: 'Loading query...',
-			noQueryStr: 'No query'};
+			noQueryStr: 'No query',
+			subjectCodeStr: 'Codigo da Disciplina:',
+			subjectNameStr: 'Nome da Disciplina:',
+			professorNameStr: 'Nome do Professor:',
+			toggleBlocked: 'Exibir disciplinas bloqueadas'};
 	},
 
 	fetchData: function(queryResults, qStatus) {
@@ -217,7 +221,7 @@ var MainView = Backbone.View.extend({
 			selectedTemplate: selectedView.returnTemplate(),
 			microhorarioTemplate: 
 				microhorarioView.returnTemplate([],
-					microhorarioView.noQueryStatus)};
+					microhorarioView.queryStatus)};
 	},
 
 	fetchData: function() {

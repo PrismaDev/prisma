@@ -10,7 +10,8 @@
 	right: 0;
 }
 
-#faltacursar {
+#faltacursar, #microhorario,
+	#selected {
 	width: 99%
 	height: 100%;
 	
@@ -21,15 +22,22 @@
 	padding-bottom: 1%;
 }
 
+.toggleBlockedDiv input,
+	.toggleBlockedDiv label {
+	float: right;
+	margin-right: 1%;
+}
+
+.table {
+	clear: both;
+}
+
 .hiddenDiv {
 	display: none;	
 }
+
 .dataTables_info {
 	display: none;
-}
-
-.dataTable {
-	clear: both;
 }
 
 tr.row_selected {
@@ -38,4 +46,8 @@ tr.row_selected {
 
 .dataTables_filter {
 	float: right;
+}
+
+.hiddenFilters {
+	display: none;
 }
