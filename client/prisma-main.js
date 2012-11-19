@@ -127,8 +127,11 @@ var SelectedView = Backbone.View.extend({
 		var ul = document.createElement('ul');
 		$(ul).addClass('selectedSortable');
 
-		for (var i=0; i<classArray.length; i++)
-			$(ul).append('<li>'+classArray[i].subcode+'-'+
+		$(ul).append('<li class="btn btn-primary disabled">'+classArray[0].subcode+'-'+
+				classArray[0].classcode+'</li>');
+
+		for (var i=1; i<classArray.length; i++)
+			$(ul).append('<li class="btn disabled">'+classArray[i].subcode+'-'+
 				classArray[i].classcode+'</li>');
 		
 		$(div).append(ul);

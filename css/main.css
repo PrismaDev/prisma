@@ -61,8 +61,14 @@ div.fieldContainer {
 }
 
 #main-selected-div ul li {
-	display: inline-block;
-	width: 30%;
+	width: 27%;
+	
 	margin-right: 1%;
-	border: solid 1px;
+	display: inline-block;
+	
+	text-align: center;
+}
+
+#main-selected-div li.active {
+	background-color: #F0F0F0;
 }
