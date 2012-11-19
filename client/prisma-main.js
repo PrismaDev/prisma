@@ -153,21 +153,35 @@ var MicrohorarioView = Backbone.View.extend ({
 	waitingImgURL: 'http://i.stack.imgur.com/FhHRx.gif',
 
 	events: {
-		"click #moreFiltersButton": "openFilters",
-		"click #lessFiltersButton": "closeFilters"
+		"click #moreFiltersButton": "moreFilters",
+		"click #lessFiltersButton": "lessFilters",
+		"click #openFiltersButton": "openFilters",
+		"click #closeFiltersButton": "closeFilters"
 	},
 
 	//Event handlers
-	openFilters: function() {
+	moreFilters: function() {
 		$('#hiddenFilters').removeClass('hidden');
 		$('#lessFiltersButton').removeClass('hidden');
 		$('#moreFiltersButton').addClass('hidden');
 	},
 	
-	closeFilters: function() {
+	lessFilters: function() {
 		$('#hiddenFilters').addClass('hidden');
 		$('#lessFiltersButton').addClass('hidden');
 		$('#moreFiltersButton').removeClass('hidden');
+	},
+
+	openFilters: function() {
+		$('#microhorario-filter').removeClass('hidden');
+		$('#openFiltersButton').addClass('hidden');
+		$('#closeFiltersButton').removeClass('hidden');
+	},
+
+	closeFilters: function() {
+		$('#microhorario-filter').addClass('hidden');
+		$('#openFiltersButton').removeClass('hidden');
+		$('#closeFiltersButton').addClass('hidden');
 	},
 
 	//Methods
@@ -197,7 +211,9 @@ var MicrohorarioView = Backbone.View.extend ({
 			professorNameStr: 'Nome do Professor:',
 			toggleBlocked: 'Exibir disciplinas bloqueadas',
 			moreFiltersStr: 'More filters',
-			lessFiltersStr: 'Less filters'		
+			lessFiltersStr: 'Less filters',
+			openFiltersStr: 'Open filters',
+			closeFiltersStr: 'Close filters'		
 		};
 	},
 

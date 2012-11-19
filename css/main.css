@@ -30,7 +30,9 @@
 	margin: auto;
 }
 
-.table, div.buttonContainer {
+.table, div.buttonContainer,
+	#microhorario-filter,
+	#microhorario-results {
 	clear: both;
 }
 

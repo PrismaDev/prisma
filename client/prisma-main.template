@@ -46,6 +46,12 @@
 </script>
 
 <script type="text/underscore-template" id="microhorario-template">
+	<div id="microhorario-togglefilter">
+		<input type="button" class="btn btn-link hidden rightFloated" value="<%= openFiltersStr %>"
+			id="openFiltersButton" />
+		<input type="button" class="btn btn-link rightFloated" value="<%= closeFiltersStr %>"
+			id="closeFiltersButton" />
+	</div>
 	<div id="microhorario-filter">
 		<form>
 			<div class="fieldContainer">
