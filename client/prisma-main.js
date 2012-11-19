@@ -149,10 +149,6 @@ var MicrohorarioView = Backbone.View.extend ({
 
 	waitingImgURL: 'http://i.stack.imgur.com/FhHRx.gif',
 
-	initialize: function() {
-		this.template = _.template($('#microhorario-template').html());
-	},
-
 	events: {
 		"click #moreFiltersButton": "openFilters",
 		"click #lessFiltersButton": "closeFilters"
@@ -160,7 +156,6 @@ var MicrohorarioView = Backbone.View.extend ({
 
 	//Event handlers
 	openFilters: function() {
-		alert('hihi');
 		$('#hiddenFilters').removeClass('hidden');
 		$('#moreFiltersButton').addClass('hidden');
 	},
@@ -171,6 +166,10 @@ var MicrohorarioView = Backbone.View.extend ({
 	},
 
 	//Methods
+	initialize: function() {
+		this.template = _.template($('#microhorario-template').html());
+	},
+
 	fetchConstants: function() {
 		return {noQuery: this.noQueryStatus,
 			query: this.queryStatus,

@@ -62,16 +62,19 @@
 				<input type="text" name="professorName" />
 			</div>		
 	
-			<input type="button" class="btn btn-link" value="<%=moreFiltersStr %>"
-				id="moreFiltersButton" />
 			<div id="hiddenFilters" class="hidden">
 				<p>a hidden filter</p>
 				<input type="button" class="btn btn-link" value="<%= lessFiltersStr %>"
 					id="lessFiltersButton" />
 			</div>
 
-			<input class="btn btn-primary" type="reset" id="resetQuery" />
-			<input class="btn btn-danger" type="submit" id="submitQuery" />
+			<div class="buttonContainer">
+				<input type="button" class="btn btn-link" value="<%=moreFiltersStr %>"
+					id="moreFiltersButton" />
+
+				<input class="btn btn-primary rightFloated" type="reset" id="resetQuery" />
+				<input class="btn btn-danger rightFloated" type="submit" id="submitQuery" />
+			</div>
 		</form>
 	</div>
 	<div id="microhorario-results">
