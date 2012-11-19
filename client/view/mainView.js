@@ -26,6 +26,7 @@ var MainView = Backbone.View.extend({
 
 	initJS: function() {
 		this.initJQueryUI();
+		faltacursarView.initJS();
 	},
 
 	fetchStrings: function() {
@@ -42,8 +43,7 @@ var MainView = Backbone.View.extend({
 		faltacursarView.render();
 
 		microhorarioView.setElement('#main-microhorario-div');
-		microhorarioView.render([],
-			microhorarioView.noQueryStatus);
+		microhorarioView.render();
 
 		selectedView.setElement('#main-selected-div');
 		selectedView.render();

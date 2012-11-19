@@ -30,23 +30,16 @@
 			</div>
 		</form>
 	</div>
-	<div id="microhorario-results">
-		<% switch(qStatus) { 
-			case noQuery: %>
-				<%= noQueryStr %>
-		<%		break;
-			case waiting: %>
-				<img class="waitingImg" src="<%= waitingImg %>" />
-		<%		break;
-			default: %>
-			<div id="microhorario-results">
-				<div class="toggleBlockedDiv">
-					<label for="toggleBlocked"><%= toggleBlocked %></label>
-					<input type="checkbox" name="toggleBlocked" />
-				</div>
+	<div id="microhorario-results">	
+	</div>
+</script>
 
-				<%= classesListTemplate %>
-			</div>
-		<% } %>
+<script type="text/underscore-template" id="microhorario-waiting-template">
+	<img src="<%= waitingImgURL %>" class="waitingImg" />
+</script>
+
+<script type="text/underscore-template" id="microhorario-noquery-template">
+	<div class="alert alert-info">
+		<%= noQueryStr %>
 	</div>
 </script>

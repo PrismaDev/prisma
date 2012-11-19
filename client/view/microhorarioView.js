@@ -1,5 +1,8 @@
 var MicrohorarioView = Backbone.View.extend ({
 	template: '',
+	waitingTemplate: '',
+	noQueryTemplate: '',
+	resultsDiv: '',
 
 	//status constants
 	noQueryStatus: 'noQuery',
@@ -29,13 +32,21 @@ var MicrohorarioView = Backbone.View.extend ({
 	//Methods
 	initialize: function() {
 		this.template = _.template($('#microhorario-template').html());
+		this.waitingTemplate = _.template($('#microhorario-waiting-template').html());
+		this.noQueryTemplate = _.template($('#microhorario-noquery-template').html());
 	},
 
-	fetchConstants: function() {
-		return {noQuery: this.noQueryStatus,
-			query: this.queryStatus,
-			waiting: this.waitingStatus,
-			waitingImg: this.waitingImgURL};
+	changeState: function(qStatus, data = []) {
+//		if (qStatus==this.queryStatus)
+//			return microhorarioClasseslistView.render(data);
+		if (qStatus==this.noQueryStatus)
+			this.$resultsDiv.html(this.noQueryTemplate({
+				noQueryStr: 'No query' //temporary
+			}));
+		else 
+			this.$resultsDiv.html(this.waitingTemplate({
+			waitingImgURL: this.waitingImgURL
+		}));
 	},
 
 	fetchStrings: function() {
@@ -49,19 +60,11 @@ var MicrohorarioView = Backbone.View.extend ({
 		};
 	},
 
-	fetchData: function(queryResults, qStatus) {
-		if (qStatus==this.queryStatus)
-			var classeslist = _.template($('#classeslist-template').html(),
-				{classesList: queryResults, tableid: 'microhorario-results-table'});
+	render: function() {
+		this.$el.html(this.template(this.fetchStrings()));
+		this.$resultsDiv = $('#microhorario-results');
 
-		return $.extend({}, this.fetchStrings(),
-			this.fetchConstants(), {qStatus: qStatus,
-			classesListTemplate: classeslist});
-	},
-
-	render: function(queryResults, qStatus) {
-		this.$el.html(this.template(
-			this.fetchData(queryResults, qStatus)));
+		this.changeState(this.noQueryStatus);		
 	}
 });
 

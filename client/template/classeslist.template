@@ -1,5 +1,5 @@
 <script type="text/underscore" id="classeslist-template">
-	<table id="<%= tableid %>" class="table table-bordered table-condensed">
+	<table class="table table-bordered table-condensed">
 		<thead>
 			<th>Dummy</th>
 			<th>Table</th>

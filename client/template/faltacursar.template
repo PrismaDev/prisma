@@ -23,7 +23,6 @@
 			</tbody>
 		</table>
 	</div>
-	<div id="faltacursar-classesList" class="hiddenDiv">
-		<%= classesListTemplate %>
+	<div id="faltacursar-classesList" class="hidden">
 	</div>
 </script>
