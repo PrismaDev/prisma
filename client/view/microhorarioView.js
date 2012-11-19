@@ -1,5 +1,5 @@
 var MicrohorarioView = Backbone.View.extend ({
-	el: $('#microhorario'),
+	template: '',
 
 	//status constants
 	noQueryStatus: 'noQuery',
@@ -7,6 +7,10 @@ var MicrohorarioView = Backbone.View.extend ({
 	waitingStatus: 'waiting',
 
 	waitingImgURL: 'http://i.stack.imgur.com/FhHRx.gif',
+
+	initialize: function() {
+		this.template = _.template($('#microhorario-template').html());
+	},
 
 	events: {
 		"click #moreFiltersButton": "openFilters",
@@ -54,14 +58,9 @@ var MicrohorarioView = Backbone.View.extend ({
 			classesListTemplate: classeslist});
 	},
 
-	returnTemplate: function(queryResults, qStatus) {
-		var template = _.template($('#microhorario-template').html(),
-			this.fetchData(queryResults,qStatus));
-		return template;
-	},
-
 	render: function(queryResults, qStatus) {
-		this.$el.html(this.returnTemplate(queryResults, qStatus));
+		this.$el.html(this.template(
+			this.fetchData(queryResults, qStatus)));
 	}
 });
 

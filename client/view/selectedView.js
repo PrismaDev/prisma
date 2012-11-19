@@ -1,8 +1,6 @@
 var SelectedView = Backbone.View.extend({
-	el: '#selected',
-		
 	fetchData: function() {
-
+		return {};
 	},
 
 	buildRow: function(classArray) {

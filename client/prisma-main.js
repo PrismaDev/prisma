@@ -1,8 +1,12 @@
 var TimetableView = Backbone.View.extend({
-	el: '#main-timetable-div',
+	template: '',
 	startH: 7,
 	endH: 23,
 	ndays: 6,
+
+	initialize: function() {
+		this.template = _.template($('#timetable-template').html());
+	},
 
 	buildTableBody: function(classArray) {
 		var tbody = document.createElement('tbody');
@@ -34,13 +38,17 @@ var TimetableView = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.$el.html(returnTemplate());
+		this.$el.html(this.template(this.fetchData()));
 	}
 });
 
 var timetableView = new TimetableView();
 var FaltacursarView = Backbone.View.extend({
-	el: '#faltacursar-div',
+	template: '',
+
+	initialize: function() {
+		this.template = _.template($('#faltacursar-template').html());
+	},
 
 	initJS: function() {
 		var subjectTable = $('#faltacursar-table').dataTable({
@@ -83,28 +91,19 @@ var FaltacursarView = Backbone.View.extend({
 	fetchData: function() {
 		var data = $.extend({}, this.fetchStrings(),
 			this.fetchSubjects(),
-			{classesListTemplate: _.template($('#classeslist-template').html(),
-				{tableid: 'faltacursar-classes-table'})});
+			{classesListTemplate: ''});
 		return data;
 	},
 
-	returnTemplate: function() {
-		var template = _.template($('#faltacursar-template').html(),
-			this.fetchData());
-		return template;
-	},
-
 	render: function() {
-		this.$el.html(returnTemplate());
+		this.$el.html(this.template(this.fetchData()));
 	}
 });
 
 var faltacursarView = new FaltacursarView();
 var SelectedView = Backbone.View.extend({
-	el: '#selected',
-		
 	fetchData: function() {
-
+		return {};
 	},
 
 	buildRow: function(classArray) {
@@ -141,7 +140,7 @@ var SelectedView = Backbone.View.extend({
 
 var selectedView = new SelectedView();
 var MicrohorarioView = Backbone.View.extend ({
-	el: $('#microhorario'),
+	template: '',
 
 	//status constants
 	noQueryStatus: 'noQuery',
@@ -149,6 +148,10 @@ var MicrohorarioView = Backbone.View.extend ({
 	waitingStatus: 'waiting',
 
 	waitingImgURL: 'http://i.stack.imgur.com/FhHRx.gif',
+
+	initialize: function() {
+		this.template = _.template($('#microhorario-template').html());
+	},
 
 	events: {
 		"click #moreFiltersButton": "openFilters",
@@ -196,20 +199,20 @@ var MicrohorarioView = Backbone.View.extend ({
 			classesListTemplate: classeslist});
 	},
 
-	returnTemplate: function(queryResults, qStatus) {
-		var template = _.template($('#microhorario-template').html(),
-			this.fetchData(queryResults,qStatus));
-		return template;
-	},
-
 	render: function(queryResults, qStatus) {
-		this.$el.html(this.returnTemplate(queryResults, qStatus));
+		this.$el.html(this.template(
+			this.fetchData(queryResults, qStatus)));
 	}
 });
 
 var microhorarioView = new MicrohorarioView();
 var MainView = Backbone.View.extend({
-	el: $('body'),
+	el: 'body',
+	template: '',
+
+	initialize: function() {
+		this.template = _.template($('#main-template').html());
+	},
 
 	initJQueryUI: function() {
 		var me=this;
@@ -238,25 +241,24 @@ var MainView = Backbone.View.extend({
 			selectedTabStr: 'Selecionadas'};
 	},
 
-	fetchTemplates: function() {
-		return  {timetableTemplate: timetableView.returnTemplate(),
-			faltacursarTemplate: faltacursarView.returnTemplate(),
-			selectedTemplate: selectedView.returnTemplate(),
-			microhorarioTemplate: 
-				microhorarioView.returnTemplate([],
-					microhorarioView.waitingStatus)};
-	},
+	renderSubviews: function() {
+		timetableView.setElement('#main-timetable-div');
+		timetableView.render();
 
-	fetchData: function() {
-		var data = $.extend({}, this.fetchTemplates(),
-			this.fetchStrings());
-		return data;
+		faltacursarView.setElement('#main-faltacursar-div');
+		faltacursarView.render();
+
+		microhorarioView.setElement('#main-microhorario-div');
+		microhorarioView.render([],
+			microhorarioView.noQueryStatus);
+
+		selectedView.setElement('#main-selected-div');
+		selectedView.render();
 	},
 
 	render: function() {
-		var template = _.template($("#main-template").html(),
-			this.fetchData());
-		this.$el.html(template);
+		this.$el.html(this.template(this.fetchStrings()));
+		this.renderSubviews();
 	}
 });
 
@@ -288,7 +290,6 @@ router.on('route:main', function() {
 
 	mainView.initJS();
 	faltacursarView.initJS();
-	microhorarioView.initJS();
 });
 
 //if (history.pushState) { 

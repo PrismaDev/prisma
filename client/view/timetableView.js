@@ -1,8 +1,12 @@
 var TimetableView = Backbone.View.extend({
-	el: '#main-timetable-div',
+	template: '',
 	startH: 7,
 	endH: 23,
 	ndays: 6,
+
+	initialize: function() {
+		this.template = _.template($('#timetable-template').html());
+	},
 
 	buildTableBody: function(classArray) {
 		var tbody = document.createElement('tbody');
@@ -34,7 +38,7 @@ var TimetableView = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.$el.html(returnTemplate());
+		this.$el.html(this.template(this.fetchData()));
 	}
 });
 

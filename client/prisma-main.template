@@ -19,25 +19,21 @@
 		<div class="row-fluid">
 			<div id="main-sidebar-div">
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="#faltacursar" data-toggle="tab"><%= faltaCursarTabStr %></a></li>
-					<li><a href="#microhorario" data-toggle="tab"><%= microHorarioTabStr %></a></li>
-					<li><a href="#selected" data-toggle="tab"><%= selectedTabStr %></a></li>
+					<li class="active"><a href="#main-faltacursar-div" data-toggle="tab"><%= faltaCursarTabStr %></a></li>
+					<li><a href="#main-microhorario-div" data-toggle="tab"><%= microHorarioTabStr %></a></li>
+					<li><a href="#main-selected-div" data-toggle="tab"><%= selectedTabStr %></a></li>
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane active" id="faltacursar">
-						<%= faltacursarTemplate %>
+					<div class="tab-pane active" id="main-faltacursar-div">
 					</div>
-					<div class="tab-pane" id="microhorario">
-						<%= microhorarioTemplate %>
+					<div class="tab-pane" id="main-microhorario-div">
 					</div>
-					<div class="tab-pane" id="selected">
-						<%= selectedTemplate %>
+					<div class="tab-pane" id="main-selected-div">
 					</div>
 				</div>
 			</div>
 			
 			<div id="main-timetable-div">
-				<%= timetableTemplate %>
 			</div>
 		</div>
 		<hr>	

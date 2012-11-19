@@ -1,5 +1,9 @@
 var FaltacursarView = Backbone.View.extend({
-	el: '#faltacursar-div',
+	template: '',
+
+	initialize: function() {
+		this.template = _.template($('#faltacursar-template').html());
+	},
 
 	initJS: function() {
 		var subjectTable = $('#faltacursar-table').dataTable({
@@ -42,19 +46,12 @@ var FaltacursarView = Backbone.View.extend({
 	fetchData: function() {
 		var data = $.extend({}, this.fetchStrings(),
 			this.fetchSubjects(),
-			{classesListTemplate: _.template($('#classeslist-template').html(),
-				{tableid: 'faltacursar-classes-table'})});
+			{classesListTemplate: ''});
 		return data;
 	},
 
-	returnTemplate: function() {
-		var template = _.template($('#faltacursar-template').html(),
-			this.fetchData());
-		return template;
-	},
-
 	render: function() {
-		this.$el.html(returnTemplate());
+		this.$el.html(this.template(this.fetchData()));
 	}
 });
 

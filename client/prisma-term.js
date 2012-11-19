@@ -38,7 +38,6 @@ router.on('route:main', function() {
 
 	mainView.initJS();
 	faltacursarView.initJS();
-	microhorarioView.initJS();
 });
 
 //if (history.pushState) { 

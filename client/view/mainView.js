@@ -1,5 +1,10 @@
 var MainView = Backbone.View.extend({
 	el: 'body',
+	template: '',
+
+	initialize: function() {
+		this.template = _.template($('#main-template').html());
+	},
 
 	initJQueryUI: function() {
 		var me=this;
@@ -28,26 +33,24 @@ var MainView = Backbone.View.extend({
 			selectedTabStr: 'Selecionadas'};
 	},
 
-	fetchTemplates: function() {
-		/*return  {timetableTemplate: timetableView.returnTemplate(),
-			faltacursarTemplate: faltacursarView.returnTemplate(),
-			selectedTemplate: selectedView.returnTemplate(),
-			microhorarioTemplate: 
-				microhorarioView.returnTemplate([],
-					microhorarioView.waitingStatus)}; */
-		return {};
-	},
+	renderSubviews: function() {
+		timetableView.setElement('#main-timetable-div');
+		timetableView.render();
 
-	fetchData: function() {
-		var data = $.extend({}, this.fetchTemplates(),
-			this.fetchStrings());
-		return data;
+		faltacursarView.setElement('#main-faltacursar-div');
+		faltacursarView.render();
+
+		microhorarioView.setElement('#main-microhorario-div');
+		microhorarioView.render([],
+			microhorarioView.noQueryStatus);
+
+		selectedView.setElement('#main-selected-div');
+		selectedView.render();
 	},
 
 	render: function() {
-		var template = _.template($("#main-template").html(),
-			this.fetchData());
-		this.$el.html(template);
+		this.$el.html(this.template(this.fetchStrings()));
+		this.renderSubviews();
 	}
 });
 
