@@ -7,6 +7,11 @@
 	right: 0;
 }
 
+hr {
+	display: block;
+	clear: both;
+}
+
 #main-faltacursar-div, 
 	#main-microhorario-div,
 	#main-selected-div {
@@ -32,7 +37,8 @@
 
 .table, div.buttonContainer,
 	#microhorario-filter,
-	#microhorario-results {
+	#microhorario-results,
+	#main-footer-div {
 	clear: both;
 }
 
@@ -50,3 +56,13 @@ div.fieldContainer {
 	padding-right: 2%;
 }
 
+#main-selected-div ul {
+	list-style-type: none;
+}
+
+#main-selected-div ul li {
+	display: inline-block;
+	width: 30%;
+	margin-right: 1%;
+	border: solid 1px;
+}
