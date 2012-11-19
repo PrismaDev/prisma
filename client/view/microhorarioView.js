@@ -51,8 +51,12 @@ var MicrohorarioView = Backbone.View.extend ({
 	},
 
 	changeState: function(qStatus, data = []) {
-//		if (qStatus==this.queryStatus)
-//			return microhorarioClasseslistView.render(data);
+		if (qStatus==this.queryStatus) {
+			microhorarioClasseslistView.render(data);
+			microhorarioClasseslistView.initJS();
+			return;			
+		}
+
 		if (qStatus==this.noQueryStatus)
 			this.$resultsDiv.html(this.noQueryTemplate({
 				noQueryStr: 'No query' //temporary
@@ -78,9 +82,11 @@ var MicrohorarioView = Backbone.View.extend ({
 
 	render: function() {
 		this.$el.html(this.template(this.fetchStrings()));
+		
 		this.$resultsDiv = $('#microhorario-results');
+		microhorarioClasseslistView.setElement(this.$resultsDiv);		
 
-		this.changeState(this.noQueryStatus);		
+		this.changeState(this.queryStatus);		
 	}
 });
 
