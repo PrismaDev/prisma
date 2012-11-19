@@ -58,6 +58,11 @@ div.fieldContainer {
 
 #main-selected-div ul {
 	list-style-type: none;
+	background-color: #c0c0c0;
+
+	padding-left: 1%;
+	padding-top: 1%;
+	padding-bottom: 1%;
 }
 
 #main-selected-div ul li {
@@ -69,6 +74,3 @@ div.fieldContainer {
 	text-align: center;
 }
 
-#main-selected-div li.active {
-	background-color: #F0F0F0;
-}

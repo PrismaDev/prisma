@@ -1,33 +1,62 @@
 var SelectedView = Backbone.View.extend({
-	initJS: function() {
-		$('#main-selected-div ul').sortable({
+	events: {
+		"click #main-selected-div li" : 'handleClick'
+	},
+
+	handleClick: function(e) {
+		if ($(e.target).hasClass('btn-primary'))
+			$(e.target).removeClass('btn-primary');
+		else {
+			var list = e.target.parent();
+			$($(list).find('li')).each(function(idx, element) {
+				$(element).removeClass('btn-primary');
+			});
+			$(e.target).addClass('btn-primary');
+		}
+	},
+
+	sortableConfig: function(selector) {
+		var me=this;
+
+		$(selector).sortable({
 			connectWith: '.selectedSortable',
 			receive: function(e, ui) {
 				if ($(this).children().length>3)
 					$(ui.sender).sortable('cancel');
+				if ($(ui.sender).children().length==0)
+					$(ui.sender).remove();
+				
+				if ($('#main-selected-div ul').last().children().length) {
+					var ul=document.createElement('ul');
+					$(ul).addClass('selectedSortable');
+					$('#main-selected-div').append(ul);
+					me.sortableConfig(ul);
+				}
 			}
 		});	
 	},
 
-	buildRow: function(classArray) {
-		var div = document.createElement('div');
+	initJS: function() {
+		this.sortableConfig('#main-selected-div ul');
+	},
 
+	buildRow: function(classArray) {
 		var ul = document.createElement('ul');
 		$(ul).addClass('selectedSortable');
 
-		$(ul).append('<li class="btn btn-primary disabled">'+classArray[0].subcode+'-'+
-				classArray[0].classcode+'</li>');
-
-		for (var i=1; i<classArray.length; i++)
-			$(ul).append('<li class="btn disabled">'+classArray[i].subcode+'-'+
+		for (var i=0; i<classArray.length; i++)
+			if (i) $(ul).append('<li class="btn disabled">'+classArray[i].subcode+'-'+
 				classArray[i].classcode+'</li>');
+			else $(ul).append('<li class="btn btn-primary disabled">'+classArray[0].subcode+'-'+
+				classArray[0].classcode+'</li>');
 		
-		$(div).append(ul);
-		return div;
+		return ul;
 	},
 
 	buildSelected: function(rowsArray) {
 		var div = document.createElement('div');
+		var l = rowsArray.length;
+		rowsArray[l]=[];
 
 		for (var i=0; i<rowsArray.length; i++)
 			$(div).append(this.buildRow(rowsArray[i]));
