@@ -65,6 +65,8 @@ var FaltacursarView = Backbone.View.extend({
 			$('#faltacursar-table tr.row_selected').removeClass('row_selected');
 			$(row).addClass('row_selected');
         		$('#faltacursar-classesList').removeClass('hidden');
+
+			faltacursarClasseslistView.render([]);
 		}
 	},
 
@@ -76,8 +78,7 @@ var FaltacursarView = Backbone.View.extend({
 
 	fetchStrings: function() {
 		return {codeStr: 'Codigo', nameStr: 'Nome da Disciplina',
-			moreInfoStr: 'Ementa', termStr: 'Periodo',
-			noSubjectsStr: 'Nao ha disciplinas para a busca'};
+			moreInfoStr: 'Ementa', termStr: 'Periodo'};
 	},
 
 	fetchSubjects: function() {
@@ -96,13 +97,15 @@ var FaltacursarView = Backbone.View.extend({
 
 	fetchData: function() {
 		var data = $.extend({}, this.fetchStrings(),
-			this.fetchSubjects(),
-			{classesListTemplate: ''});
+			this.fetchSubjects());
 		return data;
 	},
 
 	render: function() {
 		this.$el.html(this.template(this.fetchData()));
+		this.initJS();
+	
+		faltacursarClasseslistView.setElement('#faltacursar-classesList');
 	}
 });
 
@@ -200,7 +203,6 @@ var MicrohorarioView = Backbone.View.extend ({
 	changeState: function(qStatus, data = []) {
 		if (qStatus==this.queryStatus) {
 			microhorarioClasseslistView.render(data);
-			microhorarioClasseslistView.initJS();
 			this.closeFilters();
 			return;			
 		}
@@ -292,6 +294,8 @@ var MainView = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html(this.template(this.fetchStrings()));
+		this.initJS();
+
 		this.renderSubviews();
 	}
 });
@@ -312,6 +316,7 @@ var ClasseslistView = Backbone.View.extend({
 
 	render: function(classesArray) {
 		this.$el.html(this.template(classesArray));	
+		this.initJS();
 	}
 });
 
@@ -341,7 +346,6 @@ router.on('route:term', function() {
 
 router.on('route:main', function() {
 	mainView.render();
-	mainView.initJS();
 });
 
 //if (history.pushState) { 

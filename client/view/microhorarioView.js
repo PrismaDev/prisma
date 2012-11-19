@@ -53,7 +53,6 @@ var MicrohorarioView = Backbone.View.extend ({
 	changeState: function(qStatus, data = []) {
 		if (qStatus==this.queryStatus) {
 			microhorarioClasseslistView.render(data);
-			microhorarioClasseslistView.initJS();
 			this.closeFilters();
 			return;			
 		}

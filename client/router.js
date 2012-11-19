@@ -22,7 +22,6 @@ router.on('route:term', function() {
 
 router.on('route:main', function() {
 	mainView.render();
-	mainView.initJS();
 });
 
 //if (history.pushState) { 

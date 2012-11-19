@@ -20,6 +20,8 @@ var FaltacursarView = Backbone.View.extend({
 			$('#faltacursar-table tr.row_selected').removeClass('row_selected');
 			$(row).addClass('row_selected');
         		$('#faltacursar-classesList').removeClass('hidden');
+
+			faltacursarClasseslistView.render([]);
 		}
 	},
 
@@ -31,8 +33,7 @@ var FaltacursarView = Backbone.View.extend({
 
 	fetchStrings: function() {
 		return {codeStr: 'Codigo', nameStr: 'Nome da Disciplina',
-			moreInfoStr: 'Ementa', termStr: 'Periodo',
-			noSubjectsStr: 'Nao ha disciplinas para a busca'};
+			moreInfoStr: 'Ementa', termStr: 'Periodo'};
 	},
 
 	fetchSubjects: function() {
@@ -51,13 +52,15 @@ var FaltacursarView = Backbone.View.extend({
 
 	fetchData: function() {
 		var data = $.extend({}, this.fetchStrings(),
-			this.fetchSubjects(),
-			{classesListTemplate: ''});
+			this.fetchSubjects());
 		return data;
 	},
 
 	render: function() {
 		this.$el.html(this.template(this.fetchData()));
+		this.initJS();
+	
+		faltacursarClasseslistView.setElement('#faltacursar-classesList');
 	}
 });
 

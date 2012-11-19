@@ -13,6 +13,7 @@ var ClasseslistView = Backbone.View.extend({
 
 	render: function(classesArray) {
 		this.$el.html(this.template(classesArray));	
+		this.initJS();
 	}
 });
 
