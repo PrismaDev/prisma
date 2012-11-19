@@ -1,17 +1,15 @@
-#main-sidebar-div {
+#main-sidebar-div, #main-timetable-div {
 	width: 50%;
 	float: left;
 }
 
 #main-timetable-div {
-	float: left;
-	width: 50%;	
-
 	right: 0;
 }
 
-#faltacursar, #microhorario,
-	#selected {
+#main-faltacursar-div, 
+	#main-microhorario-div,
+	#main-selected-div {
 	width: 99%
 	height: 100%;
 	

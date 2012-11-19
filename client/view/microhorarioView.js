@@ -16,11 +16,13 @@ var MicrohorarioView = Backbone.View.extend ({
 	//Event handlers
 	openFilters: function() {
 		$('#hiddenFilters').removeClass('hidden');
+		$('#lessFiltersButton').removeClass('hidden');
 		$('#moreFiltersButton').addClass('hidden');
 	},
 	
 	closeFilters: function() {
 		$('#hiddenFilters').addClass('hidden');
+		$('#lessFiltersButton').addClass('hidden');
 		$('#moreFiltersButton').removeClass('hidden');
 	},
 

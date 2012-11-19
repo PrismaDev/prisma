@@ -17,11 +17,11 @@
 	
 			<div id="hiddenFilters" class="hidden">
 				<p>a hidden filter</p>
-				<input type="button" class="btn btn-link" value="<%= lessFiltersStr %>"
-					id="lessFiltersButton" />
 			</div>
 
 			<div class="buttonContainer">
+				<input type="button" class="btn btn-link hidden" value="<%= lessFiltersStr %>"
+					id="lessFiltersButton" />
 				<input type="button" class="btn btn-link" value="<%=moreFiltersStr %>"
 					id="moreFiltersButton" />
 
