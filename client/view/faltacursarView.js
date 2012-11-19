@@ -9,12 +9,12 @@ var FaltacursarView = Backbone.View.extend({
 		$("#faltacursar-table tbody tr").click(function(e) {
 			if ($(this).hasClass('row_selected')) {
 				$(this).removeClass('row_selected');
-        			$('#faltacursar-classesList').addClass('hiddenDiv');
+        			$('#faltacursar-classesList').addClass('hidden');
 			}
 			else {
 				subjectTable.$('tr.row_selected').removeClass('row_selected');
 				$(this).addClass('row_selected');
-        			$('#faltacursar-classesList').removeClass('hiddenDiv');
+        			$('#faltacursar-classesList').removeClass('hidden');
 			}
 		});
 	},		

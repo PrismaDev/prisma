@@ -50,12 +50,12 @@ var FaltacursarView = Backbone.View.extend({
 		$("#faltacursar-table tbody tr").click(function(e) {
 			if ($(this).hasClass('row_selected')) {
 				$(this).removeClass('row_selected');
-        			$('#faltacursar-classesList').addClass('hiddenDiv');
+        			$('#faltacursar-classesList').addClass('hidden');
 			}
 			else {
 				subjectTable.$('tr.row_selected').removeClass('row_selected');
 				$(this).addClass('row_selected');
-        			$('#faltacursar-classesList').removeClass('hiddenDiv');
+        			$('#faltacursar-classesList').removeClass('hidden');
 			}
 		});
 	},		
@@ -141,7 +141,7 @@ var SelectedView = Backbone.View.extend({
 
 var selectedView = new SelectedView();
 var MicrohorarioView = Backbone.View.extend ({
-	el: '#microhorario',
+	el: $('#microhorario'),
 
 	//status constants
 	noQueryStatus: 'noQuery',
@@ -150,6 +150,24 @@ var MicrohorarioView = Backbone.View.extend ({
 
 	waitingImgURL: 'http://i.stack.imgur.com/FhHRx.gif',
 
+	events: {
+		"click #moreFiltersButton": "openFilters",
+		"click #lessFiltersButton": "closeFilters"
+	},
+
+	//Event handlers
+	openFilters: function() {
+		alert('hihi');
+		$('#hiddenFilters').removeClass('hidden');
+		$('#moreFiltersButton').addClass('hidden');
+	},
+	
+	closeFilters: function() {
+		$('#hiddenFilters').addClass('hidden');
+		$('#moreFiltersButton').removeClass('hidden');
+	},
+
+	//Methods
 	fetchConstants: function() {
 		return {noQuery: this.noQueryStatus,
 			query: this.queryStatus,
@@ -162,7 +180,10 @@ var MicrohorarioView = Backbone.View.extend ({
 			subjectCodeStr: 'Codigo da Disciplina:',
 			subjectNameStr: 'Nome da Disciplina:',
 			professorNameStr: 'Nome do Professor:',
-			toggleBlocked: 'Exibir disciplinas bloqueadas'};
+			toggleBlocked: 'Exibir disciplinas bloqueadas',
+			moreFiltersStr: 'More filters',
+			lessFiltersStr: 'Less filters'		
+		};
 	},
 
 	fetchData: function(queryResults, qStatus) {
@@ -188,7 +209,7 @@ var MicrohorarioView = Backbone.View.extend ({
 
 var microhorarioView = new MicrohorarioView();
 var MainView = Backbone.View.extend({
-	el: 'body',
+	el: $('body'),
 
 	initJQueryUI: function() {
 		var me=this;
@@ -267,6 +288,7 @@ router.on('route:main', function() {
 
 	mainView.initJS();
 	faltacursarView.initJS();
+	microhorarioView.initJS();
 });
 
 //if (history.pushState) { 

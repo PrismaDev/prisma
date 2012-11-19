@@ -1,5 +1,5 @@
 var MicrohorarioView = Backbone.View.extend ({
-	el: '#microhorario',
+	el: $('#microhorario'),
 
 	//status constants
 	noQueryStatus: 'noQuery',
@@ -8,6 +8,24 @@ var MicrohorarioView = Backbone.View.extend ({
 
 	waitingImgURL: 'http://i.stack.imgur.com/FhHRx.gif',
 
+	events: {
+		"click #moreFiltersButton": "openFilters",
+		"click #lessFiltersButton": "closeFilters"
+	},
+
+	//Event handlers
+	openFilters: function() {
+		alert('hihi');
+		$('#hiddenFilters').removeClass('hidden');
+		$('#moreFiltersButton').addClass('hidden');
+	},
+	
+	closeFilters: function() {
+		$('#hiddenFilters').addClass('hidden');
+		$('#moreFiltersButton').removeClass('hidden');
+	},
+
+	//Methods
 	fetchConstants: function() {
 		return {noQuery: this.noQueryStatus,
 			query: this.queryStatus,
@@ -20,7 +38,10 @@ var MicrohorarioView = Backbone.View.extend ({
 			subjectCodeStr: 'Codigo da Disciplina:',
 			subjectNameStr: 'Nome da Disciplina:',
 			professorNameStr: 'Nome do Professor:',
-			toggleBlocked: 'Exibir disciplinas bloqueadas'};
+			toggleBlocked: 'Exibir disciplinas bloqueadas',
+			moreFiltersStr: 'More filters',
+			lessFiltersStr: 'Less filters'		
+		};
 	},
 
 	fetchData: function(queryResults, qStatus) {

@@ -52,19 +52,30 @@
 <script type="text/underscore-template" id="microhorario-template">
 	<div id="microhorario-filter">
 		<form>
-			<label for="subjectCode"><%= subjectCodeStr %></label>
-			<input type="text" name="subjectCode" />
-			<label for="subjectName"><%= subjectNameStr %></label>
-			<input type="text" name="subjectName" />
-			<label for="professorName"><%= professorNameStr %></label>
-			<input type="text" name="professorName" />
+			<div class="fieldContainer">
+				<label for="subjectCode"><%= subjectCodeStr %></label>
+				<input type="text" name="subjectCode" />
+			</div>
+			<div class="fieldContainer">
+				<label for="subjectName"><%= subjectNameStr %></label>
+				<input type="text" name="subjectName" />
+			</div>
 			
-			<div class="hiddenFilters">
+			<div class="fieldContainer">
+				<label for="professorName"><%= professorNameStr %></label>
+				<input type="text" name="professorName" />
+			</div>		
+	
+			<input type="button" class="btn btn-link" value="<%=moreFiltersStr %>"
+				id="moreFiltersButton" />
+			<div id="hiddenFilters" class="hidden">
 				<p>a hidden filter</p>
+				<input type="button" class="btn btn-link" value="<%= lessFiltersStr %>"
+					id="lessFiltersButton" />
 			</div>
 
-			<input type="reset" id="resetQuery" />
-			<input type="submit" id="submitQuery" />
+			<input class="btn btn-primary" type="reset" id="resetQuery" />
+			<input class="btn btn-danger" type="submit" id="submitQuery" />
 		</form>
 	</div>
 	<div id="microhorario-results">
