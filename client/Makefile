@@ -40,6 +40,7 @@ jsMain = ${viewdir}/timetableView.js \
 	${viewdir}/microhorarioView.js \
 	${viewdir}/mainView.js \
 	${viewdir}/classeslistView.js \
+	${controllerdir}/selectedController.js \
 	${srcdir}/router.js
 
 templateMain = ${templatedir}/classeslist.template \

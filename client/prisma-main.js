@@ -116,7 +116,6 @@ var SelectedView = Backbone.View.extend({
 	},
 
 	handleClick: function(e) {
-		alert('hihi');
 		if ($(e.target).hasClass('btn-primary'))
 			$(e.target).removeClass('btn-primary');
 		else {
@@ -296,7 +295,7 @@ var MicrohorarioView = Backbone.View.extend ({
 		this.$resultsDiv = $('#microhorario-results');
 		microhorarioClasseslistView.setElement(this.$resultsDiv);		
 
-		this.changeState(this.noQueryStatus);		
+		this.changeState(this.nQueryStatus);		
 	}
 });
 
@@ -382,6 +381,11 @@ var ClasseslistView = Backbone.View.extend({
 
 var microhorarioClasseslistView = new ClasseslistView();
 var faltacursarClasseslistView = new ClasseslistView();
+function SelectedController() {
+	
+}
+
+var selectedController = new SelectedController();
 var Router = Backbone.Router.extend({
 	routes: {
 		'': 'index',
