@@ -5,21 +5,27 @@ var FaltacursarView = Backbone.View.extend({
 		this.template = _.template($('#faltacursar-template').html());
 	},
 
+	events: {
+		"click #faltacursar-table tr": 'clickOnRow'
+	},
+
+	clickOnRow: function(e) {
+		var row=$(e.target).parent('tr');
+
+		if ($(row).hasClass('row_selected')) {
+			$(row).removeClass('row_selected');
+        		$('#faltacursar-classesList').addClass('hidden');
+		}
+		else {
+			$('#faltacursar-table tr.row_selected').removeClass('row_selected');
+			$(row).addClass('row_selected');
+        		$('#faltacursar-classesList').removeClass('hidden');
+		}
+	},
+
 	initJS: function() {
 		var subjectTable = $('#faltacursar-table').dataTable({
 			'bPaginate': false
-		});
-
-		$("#faltacursar-table tbody tr").click(function(e) {
-			if ($(this).hasClass('row_selected')) {
-				$(this).removeClass('row_selected');
-        			$('#faltacursar-classesList').addClass('hidden');
-			}
-			else {
-				subjectTable.$('tr.row_selected').removeClass('row_selected');
-				$(this).addClass('row_selected');
-        			$('#faltacursar-classesList').removeClass('hidden');
-			}
 		});
 	},		
 
