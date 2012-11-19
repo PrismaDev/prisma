@@ -6,7 +6,9 @@ var ClasseslistView = Backbone.View.extend({
 	},
 
 	initJS: function() {
-		this.$el.find('table').dataTable();
+		this.$el.find('table').dataTable({
+			'bPaginate': false
+		});
 	},
 
 	render: function(classesArray) {

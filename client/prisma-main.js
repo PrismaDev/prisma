@@ -52,7 +52,7 @@ var FaltacursarView = Backbone.View.extend({
 
 	initJS: function() {
 		var subjectTable = $('#faltacursar-table').dataTable({
-			'bPaginate': false,
+			'bPaginate': false
 		});
 
 		$("#faltacursar-table tbody tr").click(function(e) {
@@ -195,6 +195,7 @@ var MicrohorarioView = Backbone.View.extend ({
 		if (qStatus==this.queryStatus) {
 			microhorarioClasseslistView.render(data);
 			microhorarioClasseslistView.initJS();
+			this.closeFilters();
 			return;			
 		}
 
@@ -298,7 +299,9 @@ var ClasseslistView = Backbone.View.extend({
 	},
 
 	initJS: function() {
-		this.$el.find('table').dataTable();
+		this.$el.find('table').dataTable({
+			'bPaginate': false
+		});
 	},
 
 	render: function(classesArray) {

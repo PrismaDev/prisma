@@ -36,7 +36,8 @@
 	clear: both;
 }
 
-.hidden, .dataTables_info {
+.hidden, .dataTables_info,
+	#microhorario-results .dataTables_filter {
 	display: none;	
 }
 

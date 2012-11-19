@@ -7,7 +7,7 @@ var FaltacursarView = Backbone.View.extend({
 
 	initJS: function() {
 		var subjectTable = $('#faltacursar-table').dataTable({
-			'bPaginate': false,
+			'bPaginate': false
 		});
 
 		$("#faltacursar-table tbody tr").click(function(e) {
