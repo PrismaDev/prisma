@@ -1,8 +1,8 @@
 <script type="text/underscore-template" id="login-template">
 	<form name="loginForm" method="post" action="loginAction.php">
-		<label for="matricula"><%= matriculaStr %></label><input type="text" name="matricula" /><br />
-		<label for="senha"><%= senhaStr %></label><input type="password" name="senha" /><br />
-		<input type="submit" value="<%= submitStr %>" />
+		<label for="matricula"><%= str.get('matriculaLabel') %></label><input type="text" name="matricula" /><br />
+		<label for="senha"><%= str.get('passwordLabel') %></label><input type="password" name="senha" /><br />
+		<input type="submit" value="<%= str.get('submitButtonLabel') %>" />
 	</form>
 </script>
 

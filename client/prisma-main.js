@@ -441,13 +441,12 @@ router.on('route:main', function() {
 });
 
 router.on('route:tabs', function(tab) {
-	if (!mainView.rendered)
-		mainView.render();
-
 	if (!mainView.tabs[tab])
 		return router.navigate('main/'+mainView.defaultTab,
 			{trigger: true, replace: true});
 	
+	if (!mainView.rendered)
+		mainView.render();
 	mainView.setActiveTab(tab);
 });
 

@@ -2,8 +2,7 @@ var LoginView = Backbone.View.extend({
 	el: 'body',
 	render: function() {
 		var template = _.template($("#login-template").html(),
-			{matriculaStr: 'Matricula:', senhaStr: 'Senha:',
-				submitStr: 'Log in'});
+				{str: loginStringsModel});
 		this.$el.html(template);
 	}
 });

@@ -1,5 +1,5 @@
 <?php
-	$section = "main";
+	$section = "login";
 ?>
 
 <!DOCTYPE html>

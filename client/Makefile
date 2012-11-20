@@ -2,6 +2,7 @@ srcdir = .
 viewdir = ${srcdir}/view
 templatedir = ${srcdir}/template
 controllerdir = ${srcdir}/controller
+modeldir = ${srcdir}/model
 
 # Phony targets #
 all: prisma-login prisma-term prisma-main
@@ -13,6 +14,7 @@ clean:
 
 # Login page #
 jsLogin = ${viewdir}/loginView.js \
+	${modeldir}/loginStringsModel.js \
 	${srcdir}/router.js
 
 templateLogin = ${templatedir}/login.template

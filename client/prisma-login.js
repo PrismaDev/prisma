@@ -2,13 +2,21 @@ var LoginView = Backbone.View.extend({
 	el: 'body',
 	render: function() {
 		var template = _.template($("#login-template").html(),
-			{matriculaStr: 'Matricula:', senhaStr: 'Senha:',
-				submitStr: 'Log in'});
+				{str: loginStringsModel});
 		this.$el.html(template);
 	}
 });
 
 var loginView = new LoginView();
+var LoginStringsModel = Backbone.Model.extend({
+	defaults: {
+		'matriculaLabel': 'Matrícula',
+		'passwordLabel': 'Senha',
+		'submitButtonLabel': 'Login'
+	}
+});
+
+var loginStringsModel = new LoginStringsModel();
 var Router = Backbone.Router.extend({
 	routes: {
 		'': 'index',
@@ -39,13 +47,12 @@ router.on('route:main', function() {
 });
 
 router.on('route:tabs', function(tab) {
-	if (!mainView.rendered)
-		mainView.render();
-
 	if (!mainView.tabs[tab])
 		return router.navigate('main/'+mainView.defaultTab,
 			{trigger: true, replace: true});
 	
+	if (!mainView.rendered)
+		mainView.render();
 	mainView.setActiveTab(tab);
 });
 
