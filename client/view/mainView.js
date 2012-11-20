@@ -1,14 +1,34 @@
 var MainView = Backbone.View.extend({
 	el: 'body',
 	template: '',
+	rendered: false,
+	tabs: {'faltacursar': {
+			'li': 'main-faltacursar-li',
+			'div': 'main-faltacursar-div',
+			'str': '',
+			'href': '#main/faltacursar'
+		}, 
+		'microhorario': {
+			'li': 'main-microhorario-li',
+			'div': 'main-microhorario-div',
+			'str': '',
+			'href': '#main/microhorario'
+		},
+		'selected': {
+			'li': 'main-selected-li',
+			'div': 'main-selected-div',
+			'str': '',
+			'href': '#main/selected'
+		}},
+
+	defaultTab: 'faltacursar',		
 
 	initialize: function() {
 		this.template = _.template($('#main-template').html());
+		this.fetchStrings();
 	},
 
-	initJQueryUI: function() {
-		var me=this;
-
+	initJS: function() {
 		$("#main-sidebar-div").resizable({
 			handles: 'e, w',
 			maxWidth: 0.6*$(window).width(),
@@ -24,15 +44,20 @@ var MainView = Backbone.View.extend({
 		});	
 	},
 
-	initJS: function() {
-		this.initJQueryUI();
-		faltacursarView.initJS();
+	setActiveTab: function(tab) {
+		$('#main-tabs-nav li').removeClass('active');
+		$('#main-tab-panes div').removeClass('active');
+		console.log(tab);
+		console.log(this.tabs[tab]);
+
+		$('#'+this.tabs[tab].li).addClass('active');
+		$('#'+this.tabs[tab].div).addClass('active');
 	},
 
 	fetchStrings: function() {
-		return {faltaCursarTabStr: 'Falta Cursar',
-			microHorarioTabStr: 'Micro Horario',
-			selectedTabStr: 'Selecionadas'};
+		this.tabs.faltacursar.str='Falta Cursar';
+		this.tabs.microhorario.str='Micro Horario',
+		this.tabs.selected.str='Selecionadas';
 	},
 
 	renderSubviews: function() {
@@ -50,10 +75,12 @@ var MainView = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.$el.html(this.template(this.fetchStrings()));
+		console.log("main rendered");
+		this.$el.html(this.template({tabs: this.tabs}));
 		this.initJS();
 
 		this.renderSubviews();
+		this.rendered=true;
 	}
 });
 

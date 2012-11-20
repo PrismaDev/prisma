@@ -15,8 +15,9 @@ var Router = Backbone.Router.extend({
 	routes: {
 		'': 'index',
 		'login': 'login',
-		':mat/term': 'term',
-		':mat/main': 'main'
+		'term': 'term',
+		'main':'main',
+		'main/:tab': 'tabs'
 	}
 });
 
@@ -35,6 +36,18 @@ router.on('route:term', function() {
 
 router.on('route:main', function() {
 	mainView.render();
+	router.navigate('main/'+mainView.defaultTab,
+		{trigger: true});
+});
+
+router.on('route:tabs', function(tab) {
+	if (!mainView.rendered)
+		mainView.render();
+
+	if (typeof mainView.tab == undefined)
+		router.navigate('main/'+mainView.defaultTab,
+			{trigger: true});
+	mainView.setActiveTab(tab);
 });
 
 //if (history.pushState) { 

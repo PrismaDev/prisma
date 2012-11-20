@@ -8,18 +8,18 @@
 				
 		<div class="row-fluid">
 			<div id="main-sidebar-div">
-				<ul class="nav nav-tabs">
-					<li class="active"><a href="#main-faltacursar-div" data-toggle="tab"><%= faltaCursarTabStr %></a></li>
-					<li><a href="#main-microhorario-div" data-toggle="tab"><%= microHorarioTabStr %></a></li>
-					<li><a href="#main-selected-div" data-toggle="tab"><%= selectedTabStr %></a></li>
+				<ul class="nav nav-tabs" id="main-tabs-nav">
+					<% _.each(tabs, function(tab) { %>
+						<li id="<%= tab.li %>">
+							<a href="<%= tab.href %>"><%= tab.str %></a>
+						</li>
+					<% }); %>
 				</ul>
-				<div class="tab-content">
-					<div class="tab-pane active" id="main-faltacursar-div">
-					</div>
-					<div class="tab-pane" id="main-microhorario-div">
-					</div>
-					<div class="tab-pane" id="main-selected-div">
-					</div>
+				<div class="tab-content" id="main-tab-panes">
+					<% _.each(tabs, function(tab) { %>
+						<div class="tab-pane" id="<%= tab.div %>">
+						</div>
+					<% }); %>
 				</div>
 			</div>
 			
