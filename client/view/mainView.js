@@ -47,8 +47,6 @@ var MainView = Backbone.View.extend({
 	setActiveTab: function(tab) {
 		$('#main-tabs-nav li').removeClass('active');
 		$('#main-tab-panes div').removeClass('active');
-		console.log(tab);
-		console.log(this.tabs[tab]);
 
 		$('#'+this.tabs[tab].li).addClass('active');
 		$('#'+this.tabs[tab].div).addClass('active');

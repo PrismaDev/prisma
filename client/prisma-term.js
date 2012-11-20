@@ -44,9 +44,10 @@ router.on('route:tabs', function(tab) {
 	if (!mainView.rendered)
 		mainView.render();
 
-	if (typeof mainView.tab == undefined)
-		router.navigate('main/'+mainView.defaultTab,
-			{trigger: true});
+	if (!mainView.tabs[tab])
+		return router.navigate('main/'+mainView.defaultTab,
+			{trigger: true, replace: true});
+	
 	mainView.setActiveTab(tab);
 });
 
