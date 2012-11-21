@@ -1,0 +1,42 @@
+/* 
+	LESS file for login page
+*/
+
+@lightGrey: #eee;
+
+@defaultBorderRadius: 6px;
+
+@backgroundURL: '../img/logoZoadoPrisma.png';
+
+// Border Radius (from Bootstrap's mixins.less)
+.border-radius(@radius) {
+  -webkit-border-radius: @radius;
+     -moz-border-radius: @radius;
+          border-radius: @radius;
+}
+
+#login-container div {
+	background-color: @lightGrey;	
+
+	border: solid @lightGrey 1px;
+	.border-radius(@defaultBorderRadius);
+
+	padding-left: 1%; 
+	padding-bottom: 1%;
+}
+
+
+div#logo-div {
+	background-image: url(@backgroundURL);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+
+	height: 400px;
+}
+
+div#loginForm {
+	input[type="submit"] {
+		margin-right: 5%;
+		float: right;
+	}
+}

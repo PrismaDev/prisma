@@ -1,8 +1,21 @@
 <script type="text/underscore-template" id="login-template">
-	<form name="loginForm" method="post" action="loginAction.php">
-		<label for="matricula"><%= str.get('matriculaLabel') %></label><input type="text" name="matricula" /><br />
-		<label for="senha"><%= str.get('passwordLabel') %></label><input type="password" name="senha" /><br />
-		<input type="submit" value="<%= str.get('submitButtonLabel') %>" />
-	</form>
+	<div class="row-fluid" id="login-header">
+		<div id="logo-div" class="span12">
+		</div>
+	</div>
+	<hr>
+	<div class="row-fluid" id="login-container">
+		<div class="span3 offset2" id="loginForm">
+			<form name="loginForm" method="post" action="loginAction.php">
+				<label for="matricula"><%= str.get('matriculaLabel') %></label><input type="text" name="matricula" /><br />
+				<label for="senha"><%= str.get('passwordLabel') %></label><input type="password" name="senha" /><br />
+				<input class="btn btn-inverse rightFloated" type="submit" value="<%= str.get('submitButtonLabel') %>" />
+			</form>
+		</div>
+		<div class="span4">
+			<p>a help box</p>
+		</div>
+	</div>
 </script>
+
 

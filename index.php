@@ -10,7 +10,11 @@
 
 		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
-		<link href="css/main.css" rel="stylesheet" type="text/css" />
+
+		<?php
+			$lessfile = "css/".$section.".less";
+			echo '<link href="'.$lessfile.'" rel="stylesheet/less" type="text/css" />';
+		?>
 	</head>
 
 	<body>
@@ -26,6 +30,11 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/datatables/1.9.4/jquery.dataTables.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
+		<script type="text/javascript">	
+			less={env: 'development'};
+		</script>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.3.1/less.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
 
 		<?php 

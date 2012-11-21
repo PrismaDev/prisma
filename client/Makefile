@@ -10,14 +10,15 @@ prisma-login: prisma-login.js prisma-login.template
 prisma-term: prisma-term.js prisma-term.template
 prisma-main: prisma-main.js prisma-main.template
 clean: 
-	rm -fr ${viewdir}/*.jso
+	rm -fr prisma-*.{js,template}
 
 # Login page #
 jsLogin = ${viewdir}/loginView.js \
 	${modeldir}/loginStringsModel.js \
 	${srcdir}/router.js
 
-templateLogin = ${templatedir}/login.template
+templateLogin = ${templatedir}/login.template \
+		${templatedir}/layout.template
 
 prisma-login.js: ${jsLogin}
 	cat > $@ $^
