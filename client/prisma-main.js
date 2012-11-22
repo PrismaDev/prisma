@@ -259,7 +259,9 @@ var MicrohorarioView = Backbone.View.extend ({
 		this.noQueryTemplate = _.template($('#microhorario-noquery-template').html());
 	},
 
-	changeState: function(qStatus, data = []) {
+	changeState: function(qStatus, data) {
+		if (typeof data == undefined) data=[];
+
 		if (qStatus==this.queryStatus) {
 			microhorarioClasseslistView.render(data);
 			this.closeFilters();
