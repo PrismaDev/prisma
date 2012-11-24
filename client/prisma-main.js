@@ -377,7 +377,6 @@ var MainView = Backbone.View.extend({
 	},
 
 	render: function() {
-		console.log("main rendered");
 		this.$el.html(this.template({tabs: this.tabs}));
 		this.initJS();
 
