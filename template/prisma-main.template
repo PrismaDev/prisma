@@ -1,0 +1,140 @@
+<script type="text/underscore" id="classeslist-template">
+	<table class="table table-bordered table-condensed">
+		<thead>
+			<th>Dummy</th>
+			<th>Table</th>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</script>
+<script type="text/underscore-template" id="main-template">		
+	<div class="container-fluid">
+		<div class="navbar navbar-inverse">
+			<div class="navbar-inner">
+				<span class="brand">PrISMA</a>
+			</div>
+		</div>	
+				
+		<div class="row-fluid">
+			<div id="main-sidebar-div">
+				<ul class="nav nav-tabs" id="main-tabs-nav">
+					<% _.each(tabs, function(tab) { %>
+						<li id="<%= tab.li %>">
+							<a href="<%= tab.href %>"><%= tab.str %></a>
+						</li>
+					<% }); %>
+				</ul>
+				<div class="tab-content" id="main-tab-panes">
+					<% _.each(tabs, function(tab) { %>
+						<div class="tab-pane" id="<%= tab.div %>">
+						</div>
+					<% }); %>
+				</div>
+			</div>
+			
+			<div id="main-timetable-div">
+			</div>
+		</div>
+		<hr>	
+		<div class="row-fluid">
+			<div id="main-footer-div" class="span12">
+				<p>A footer</p>
+			</div>
+		</div>
+	</div>
+</script>
+
+<script type="text/underscore-template" id="microhorario-template">
+	<div id="microhorario-togglefilter">
+		<input type="button" class="btn btn-link hidden rightFloated" value="<%= openFiltersStr %>"
+			id="openFiltersButton" />
+		<input type="button" class="btn btn-link rightFloated" value="<%= closeFiltersStr %>"
+			id="closeFiltersButton" />
+	</div>
+	<div id="microhorario-filter">
+		<form>
+			<div class="fieldContainer">
+				<label for="subjectCode"><%= subjectCodeStr %></label>
+				<input type="text" name="subjectCode" />
+			</div>
+			<div class="fieldContainer">
+				<label for="subjectName"><%= subjectNameStr %></label>
+				<input type="text" name="subjectName" />
+			</div>
+			
+			<div class="fieldContainer">
+				<label for="professorName"><%= professorNameStr %></label>
+				<input type="text" name="professorName" />
+			</div>		
+	
+			<div id="hiddenFilters" class="hidden">
+				<p>a hidden filter</p>
+			</div>
+
+			<div class="buttonContainer">
+				<input type="button" class="btn btn-link hidden" value="<%= lessFiltersStr %>"
+					id="lessFiltersButton" />
+				<input type="button" class="btn btn-link" value="<%=moreFiltersStr %>"
+					id="moreFiltersButton" />
+
+				<input class="btn btn-primary rightFloated" type="reset" id="resetQuery" />
+				<input class="btn btn-danger rightFloated" type="submit" id="submitQuery" />
+			</div>
+		</form>
+	</div>
+	<div id="microhorario-results">	
+	</div>
+</script>
+
+<script type="text/underscore-template" id="microhorario-waiting-template">
+	<img src="<%= waitingImgURL %>" class="waitingImg" />
+</script>
+
+<script type="text/underscore-template" id="microhorario-noquery-template">
+	<div class="alert alert-info">
+		<%= noQueryStr %>
+	</div>
+</script>
+<script type="text/underscore-template" id="timetable-template">
+	<table class="table table-bordered">
+		<thead>
+			<th></th>
+			<% _.each(days, function(day) { %>
+				<th><%= day %>
+			<% }); %>
+		</thead>
+		<tbody>
+			<%= timetableBody %>
+		</tbody>
+	</table>
+</script>
+
+<script type="text/underscore-template" id="faltacursar-template">
+	<div id="faltacursar-subjectList">
+		<table id="faltacursar-table" class="table table-bordered table-condensed">
+			<thead>
+				<th><%= codeStr %></th>
+				<th><%= nameStr %></th>
+				<th><%= termStr %></th>
+				<th></th>
+			</thead>
+			<tbody>
+				<% _.each(subjects, function(subject) { %>
+					<tr>
+						<td><%= subject.code %></td>
+						<td><%= subject.name %></td>
+						<td><%= subject.term %></td>
+						<td>
+							<a href="<%= subject.link %>" class="btn btn-info btn-small">
+								<%= moreInfoStr %>
+							</a>
+						</td>
+					</tr>
+				<% }); %>
+			</tbody>
+		</table>
+	</div>
+	<div id="faltacursar-classesList" class="hidden">
+	</div>
+</script>

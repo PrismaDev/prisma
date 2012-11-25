@@ -9,7 +9,7 @@ TARGETS = $(PROD)/prisma-login.template \
 all: $(TARGETS)
 clean: 
 	rm $(TARGETS)
-
+	
 $(PROD)/prisma-login.template: login.template \
 				layout.template
 	cat > $@ $^
