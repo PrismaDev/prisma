@@ -5,18 +5,18 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Prisma V2</title>
-		<meta charset="utf-8" />
-
 		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
-
 		<?php
 			$lessfile = "css/prisma-".$section.".min.css";
 			echo '<link href="'.$lessfile.'" rel="stylesheet" type="text/css" />';
 		?>
-	</head>
 
+		<title>Prisma V2</title>
+		<meta charset="utf-8" />
+
+
+		</head>
 	<body>
 		<?php
 			$templatefile = "template/prisma-".$section.".min.template";
