@@ -17,20 +17,19 @@ PAGES = $(PROD)/prisma-login.min.js \
 all: $(PAGES)
 clean:
 	rm $(PAGES)
-	rm tmp.js
 
 $(PROD)/prisma-login.min.js: $(VIEW)/loginView.js \
 			$(MDL)/loginStringsModel.js \
 			$(CTRL)/router.js
-	cat > $@ $^
-	#$(CC) --js tmp.js $(CFLAGS) --js_output_file $@
-	#rm tmp.js
+	cat > .swp.js $^
+	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
+	rm .swp.js
 
 $(PROD)/prisma-term.min.js: $(VIEW)/termView.js \
 			$(CTRL)/router.js
-	cat > $@ $^
-	#$(CC) --js tmp.js $(CFLAGS) --js_output_file $@
-	#rm tmp.js
+	cat > .swp.js $^
+	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
+	rm .swp.js
 
 $(PROD)/prisma-main.min.js:  $(VIEW)/timetableView.js \
 			$(VIEW)/faltacursarView.js \
@@ -40,6 +39,6 @@ $(PROD)/prisma-main.min.js:  $(VIEW)/timetableView.js \
 			$(VIEW)/classeslistView.js \
 			$(CTRL)/selectedController.js \
 			$(CTRL)/router.js
-	cat > $@ $^
-	#$(CC) --js tmp.js $(CFLAGS) --js_output_file $@
-	#rm tmp.js
+	cat > .swp.js $^
+	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
+	rm .swp.js
