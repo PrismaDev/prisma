@@ -12,14 +12,14 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
 
 		<?php
-			$lessfile = "css/".$section.".less";
+			$lessfile = "less-dev/".$section.".less";
 			echo '<link href="'.$lessfile.'" rel="stylesheet/less" type="text/css" />';
 		?>
 	</head>
 
 	<body>
 		<?php
-			$templatefile = "client/prisma-".$section.".template";
+			$templatefile = "template/prisma-".$section.".template.min";
 			require($templatefile);
 		?>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -38,7 +38,7 @@
 		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
 
 		<?php 
-			$jsfile = "client/prisma-".$section.".js";
+			$jsfile = "js/prisma-".$section.".js.min";
 			echo '<script src="'.$jsfile.'"></script>';
 		?>
 	</body>

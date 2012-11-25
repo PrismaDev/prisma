@@ -33,6 +33,7 @@ $(PROD)/prisma-term.js: $(VIEW)/termView.js \
 $(PROD)/prisma-main.js:  $(VIEW)/timetableView.js \
 			$(VIEW)/faltacursarView.js \
 			$(VIEW)/microhorarioView.js \
+			$(VIEW)/selectedView.js \
 			$(VIEW)/mainView.js \
 			$(VIEW)/classeslistView.js \
 			$(CTRL)/selectedController.js \
