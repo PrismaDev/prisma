@@ -1,0 +1,22 @@
+/* 
+	LESS file for login page
+*/
+#login-container div {
+  background-color: #eeeeee;
+  border: solid #eeeeee 1px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  padding-left: 1%;
+  padding-bottom: 1%;
+}
+div#logo-div {
+  background-image: url('../img/logoZoadoPrisma.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 400px;
+}
+div#loginForm input[type="submit"] {
+  margin-right: 5%;
+  float: right;
+}
