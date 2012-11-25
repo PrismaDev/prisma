@@ -1,0 +1,22 @@
+@import "basics.less";
+@import "datatablesAdds.less";
+
+@selectedColor: #6BFF9F;
+@warningColor: #E8E36C;
+@blockedColor: #FF94A0;
+
+.table {
+	clear: both;
+}
+ 
+tr.row_selected {
+	background-color: @selectedColor;
+}
+
+tr.blocked {
+	background-color: @blockedColor;
+}
+
+tr.warning {
+	background-color: @warningColor;
+}

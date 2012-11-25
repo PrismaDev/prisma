@@ -12,10 +12,9 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
 
 		<?php
-//			$lessfile = "css/".$section.".less";
-//			echo '<link href="'.$lessfile.'" rel="stylesheet/less" type="text/css" />';
+			$lessfile = "css/".$section.".less";
+			echo '<link href="'.$lessfile.'" rel="stylesheet/less" type="text/css" />';
 		?>
-		<link rel="stylesheet" href="css/main.css" />
 	</head>
 
 	<body>

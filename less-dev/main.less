@@ -1,0 +1,30 @@
+@import "basics.less";
+@import "tables.less";
+
+@import "faltacursar.less";
+@import "microhorario.less";
+@import "selected.less";
+
+//Variables
+@defaultSidebarWidth: 40%;
+@defaultPadding: 1%;
+
+//Styles of the main page
+#main-sidebar-div {
+	width: @defaultSidebarWidth;
+	float: left;
+}
+
+#main-timetable-div {
+	width: 100%-@defaultSidebarWidth;
+	float: left;
+}
+
+#main-faltacursar-div, 
+	#main-microhorario-div,
+	#main-selected-div {
+	width: 100%-@defaultPadding;
+	height: 100%;
+	
+	padding-right: @defaultPadding;
+}
