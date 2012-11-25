@@ -1,5 +1,5 @@
 <?php
-	$section = "main";
+ 	$section = "main";
 ?>
 
 <!DOCTYPE html>
@@ -12,14 +12,14 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
 
 		<?php
-			$lessfile = "less-dev/".$section.".less";
-			echo '<link href="'.$lessfile.'" rel="stylesheet/less" type="text/css" />';
+			 $lessfile = "css/prisma-".$section.".min.css";
+			echo '<link href="'.$lessfile.'" rel="stylesheet" type="text/css" />';
 		?>
 	</head>
 
 	<body>
 		<?php
-			$templatefile = "template/prisma-".$section.".template.min";
+			 $templatefile = "template/prisma-".$section.".min.template";
 			require($templatefile);
 		?>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -34,12 +34,11 @@
 			less={env: 'development'};
 		</script>
 
-		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.3.1/less.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
 
 		<?php 
-			$jsfile = "js/prisma-".$section.".js.min";
-			echo '<script src="'.$jsfile.'"></script>';
+			 $jsfile = "js/prisma-".$section.".min.js";
+			echo '<script type="text/javascript" src="'.$jsfile.'"></script>';
 		?>
 	</body>
 </html>
