@@ -12,23 +12,14 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
 
 		<?php
-<<<<<<< HEAD
-			 $lessfile = "css/prisma-".$section.".min.css";
-			echo '<link href="'.$lessfile.'" rel="stylesheet" type="text/css" />';
-=======
-			$lessfile = "css/".$section.".less";
+			$lessfile = "less-dev/".$section.".less";
 			echo '<link href="'.$lessfile.'" rel="stylesheet/less" type="text/css" />';
->>>>>>> parent of c2e3ef9... minified templates and javascript
 		?>
 	</head>
 
 	<body>
 		<?php
-<<<<<<< HEAD
-			 $templatefile = "template/prisma-".$section.".min.template";
-=======
-			$templatefile = "client/prisma-".$section.".template";
->>>>>>> parent of c2e3ef9... minified templates and javascript
+			$templatefile = "template/prisma-".$section.".min.template";
 			require($templatefile);
 		?>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -43,16 +34,12 @@
 			less={env: 'development'};
 		</script>
 
+		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.3.1/less.min.js"></script>
 		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
 
 		<?php 
-<<<<<<< HEAD
 			 $jsfile = "js/prisma-".$section.".min.js";
 			echo '<script type="text/javascript" src="'.$jsfile.'"></script>';
-=======
-			$jsfile = "client/prisma-".$section.".js";
-			echo '<script src="'.$jsfile.'"></script>';
->>>>>>> parent of c2e3ef9... minified templates and javascript
 		?>
 	</body>
 </html>
