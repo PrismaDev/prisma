@@ -12,8 +12,8 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
 
 		<?php
-			$lessfile = "less-dev/".$section.".less";
-			echo '<link href="'.$lessfile.'" rel="stylesheet/less" type="text/css" />';
+			$lessfile = "css/prisma-".$section.".min.css";
+			echo '<link href="'.$lessfile.'" rel="stylesheet" type="text/css" />';
 		?>
 	</head>
 
