@@ -1,0 +1,20 @@
+
+Pontos a definir ainda:
+
+- Como definir quais controller precisam de conexão com o banco, por ex
+  (dependencias)
+
+- Definir controle de acesso (router que vai fazer isso?)
+
+- Descobrir como informar aonde esta o modelo ao doctrine usando anotation
+
+- Configurar APC pra melhorar performance
+
+- Setar cache no doctrine
+
+- Terminar de definir CSV e mandar pro sergio
+
+- Configurar apache para redirecionar para https
+
+- Turn on apache’s mod_deflate
+

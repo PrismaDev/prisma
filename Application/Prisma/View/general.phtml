@@ -1,14 +1,10 @@
-<?php
- 	$section = "main";
-?>
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
 		<?php
-			$lessfile = "css/prisma-".$section.".min.css";
+			$lessfile = "css/prisma-".$data["section"].".min.css";
 			echo '<link href="'.$lessfile.'" rel="stylesheet" type="text/css" />';
 		?>
 
@@ -19,7 +15,7 @@
 		</head>
 	<body>
 		<?php
-			$templatefile = "template/prisma-".$section.".min.template";
+			$templatefile = "template/prisma-".$data["section"].".min.template";
 			require($templatefile);
 		?>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -38,7 +34,7 @@
 		<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
 
 		<?php 
-			 $jsfile = "js/prisma-".$section.".min.js";
+			 $jsfile = "js/prisma-".$data["section"].".min.js";
 			echo '<script type="text/javascript" src="'.$jsfile.'"></script>';
 		?>
 	</body>
