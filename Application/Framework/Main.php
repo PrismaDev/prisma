@@ -9,7 +9,7 @@ Class Main
 {
 	public static function init()
 	{
-		Doctrine::getConnection(include 'Config/db.php', array());
+		Doctrine::createConnection(include 'Config/db.php', array());
 
 		Router::init(include 'Config/router.php', $_SERVER['REQUEST_URI']);
 
