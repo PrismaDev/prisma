@@ -23,9 +23,6 @@
   float: right;
   margin-right: 1%;
 }
-.dataTables_info {
-  display: none;
-}
 .table {
   clear: both;
 }
@@ -101,6 +98,8 @@ div.fieldContainer {
 #main-timetable-div {
   width: 60%;
   float: left;
+  margin: 0;
+  padding: 0;
 }
 #main-faltacursar-div,
 #main-microhorario-div,

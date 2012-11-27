@@ -1,28 +1,26 @@
 <script type="text/underscore-template" id="faltacursar-template">
-	<div id="faltacursar-subjectList">
-		<table id="faltacursar-table" class="table table-bordered table-condensed">
-			<thead>
-				<th><%= codeStr %></th>
-				<th><%= nameStr %></th>
-				<th><%= termStr %></th>
-				<th></th>
-			</thead>
-			<tbody>
-				<% _.each(subjects, function(subject) { %>
-					<tr>
-						<td><%= subject.code %></td>
-						<td><%= subject.name %></td>
-						<td><%= subject.term %></td>
-						<td>
-							<a href="<%= subject.link %>" class="btn btn-info btn-small">
-								<%= moreInfoStr %>
-							</a>
-						</td>
-					</tr>
-				<% }); %>
-			</tbody>
-		</table>
-	</div>
-	<div id="faltacursar-classesList" class="hidden">
+	<table id="faltacursar-subject-table" class="table table-bordered table-condensed">
+		<thead>
+			<th><%= codeStr %></th>
+			<th><%= nameStr %></th>
+			<th><%= termStr %></th>
+			<th><%= infoStr %></th>
+		</thead>
+		<tbody>
+			<% _.each(subjects, function(subject) { %>
+				<tr>
+					<td><%= subject.code %></td>
+					<td><%= subject.name %></td>
+					<td><%= subject.term %></td>
+					<td>
+						<a href="<%= subject.link %>" class="btn btn-info btn-small">
+							<%= moreInfoStr %>
+						</a>
+					</td>
+				</tr>
+			<% }); %>
+		</tbody>
+	</table>
+	<div id="faltacursar-classes-div" class="hidden">
 	</div>
 </script>

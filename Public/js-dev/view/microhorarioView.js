@@ -88,7 +88,7 @@ var MicrohorarioView = Backbone.View.extend ({
 		this.$resultsDiv = $('#microhorario-results');
 		microhorarioClasseslistView.setElement(this.$resultsDiv);		
 
-		this.changeState(this.nQueryStatus);		
+		this.changeState(this.queryStatus);		
 	}
 });
 

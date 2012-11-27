@@ -13,20 +13,14 @@ clean:
 	
 $(PROD)/prisma-login.min.template: login.template \
 				layout.template
-	cat > .swp.tmp $^
-	$(CC) .swp.tmp $@
-	rm .swp.tmp
+	cat > $@ $^
 
 $(PROD)/prisma-term.min.template: term.template
-	cat > .swp.tmp $^
-	$(CC) .swp.tmp $@
-	rm .swp.tmp
+	cat > $@ $^
 
 $(PROD)/prisma-main.min.template: classeslist.template \
 				main.template \
 				microhorario.template \
 				timetable.template \
 				faltacursar.template
-	cat > .swp.tmp $^
-	$(CC) .swp.tmp $@
-	rm .swp.tmp
+	cat > $@ $^
