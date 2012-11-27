@@ -16,7 +16,7 @@ Class TermController extends RestController
 	{
 		//TODO
 
-		return "Not implemented yet...";
+		return ViewLoader::load('Prisma', 'term.phtml', array());
 	}
 	
 	public function performPost($url, $arguments, $accept) 
