@@ -6,19 +6,19 @@ var MainView = Backbone.View.extend({
 			'li': 'main-faltacursar-li',
 			'div': 'main-faltacursar-div',
 			'str': '',
-			'href': '#main/faltacursar'
+			'href': '#faltacursar'
 		}, 
 		'microhorario': {
 			'li': 'main-microhorario-li',
 			'div': 'main-microhorario-div',
 			'str': '',
-			'href': '#main/microhorario'
+			'href': '#microhorario'
 		},
 		'selected': {
 			'li': 'main-selected-li',
 			'div': 'main-selected-div',
 			'str': '',
-			'href': '#main/selected'
+			'href': '#selected'
 		}},
 
 	defaultTab: 'faltacursar',		
