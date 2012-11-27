@@ -1,7 +1,7 @@
 PROD = ../css
 
 CC = lessc
-CFLAGS = --yui-compressor --strict-imports
+CFLAGS = --yui-compressor --strict-imports 
 
 TARGETS = $(PROD)/prisma-main.min.css\
 	$(PROD)/prisma-login.min.css\
@@ -18,10 +18,10 @@ $(PROD)/prisma-main.min.css: main.less\
 				faltacursar.less\
 				microhorario.less\
 				selected.less
-	$(CC) $(CFLAGS) $^ > $@
+	$(CC) $(CFLAGS) main.less > $@
 
 $(PROD)/prisma-login.min.css: login.less
-	$(CC) $(CFLAGS) $^ > $@
+	$(CC) $(CFLAGS) login.less > $@
 
 $(PROD)/prisma-term.min.css: term.less
-	$(CC) $(CFLAGS) $^ > $@
+	$(CC) $(CFLAGS) term.less > $@
