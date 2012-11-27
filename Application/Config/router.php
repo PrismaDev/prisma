@@ -2,21 +2,37 @@
 
 return array(
 	'routes' => array(
-		'redirect' => '/login',
-		'login' => array(
-			'controller' => 'Prisma\Controller\LoginController'
+		'action' => array(
+			'type' => 'redirect',
+			'uri' => '/login',
+		),
+
+		'subroutes' => array(
+			'login' => array(
+				'action' => array(
+					'type' => 'controller',
+					'controller' => 'Prisma\Controller\LoginController',
+				),
 			),
-		'main' => array(
-			'controller' => 'Prisma\Controller\MainController',
-		),
-		'term' => array(
-			'controller' => 'Prisma\Controller\TermController'
-		),
-		'error' => array(
-			'controller' => 'Prisma\Controller\ErrorController',
-		),
-		'api' => array(
+			'main' => array(
+				'action' => array(
+					'type' => 'controller',
+					'controller' => 'Prisma\Controller\MainController',
+				),
+			),
+			'term' => array(
+				'action' => array(
+					'type' => 'controller',
+					'controller' => 'Prisma\Controller\TermController',
+				),
+			),
+			'error' => array(
+				'action' => array(
+					'type' => 'controller',
+					'controller' => 'Prisma\Controller\ErrorController',
+				),
+			),
 		)
 	),
-	'error_route' => '/error'
+	'errorRoute' => '/error'
 );
