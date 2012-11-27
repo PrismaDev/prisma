@@ -46,7 +46,17 @@ var FaltacursarView = Backbone.View.extend({
 			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
 			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
 			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'}
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'}
 		]};
 	},
 

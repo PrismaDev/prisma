@@ -95,6 +95,8 @@ div.fieldContainer {
 #main-sidebar-div {
   width: 40%;
   float: left;
+  padding: 0;
+  margin: 0;
 }
 #main-timetable-div {
   width: 60%;
@@ -104,6 +106,13 @@ div.fieldContainer {
 #main-microhorario-div,
 #main-selected-div {
   width: 99%;
-  height: 100%;
+  height: 98%;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
   padding-right: 1%;
+  padding-top: 2%;
+}
+#main-tabs-nav {
+  margin: 0;
 }

@@ -70,7 +70,19 @@ var MainView = Backbone.View.extend({
 
 		selectedView.setElement('#main-selected-div');
 		selectedView.render();
+		
+		this.equalMainDivsHeight();
 	},
+
+	equalMainDivsHeight: function() {
+		var h = $('#main-timetable-div').height();
+		$('#main-sidebar-div').height(h);
+
+		var innerH = h-$('#main-tabs-nav').height();
+		$('#main-faltacursar-div').height(innerH);
+		$('#main-microhorario-div').height(innerH);
+		$('#main-selected-div').height(innerH);
+	},	
 
 	render: function() {
 		this.$el.html(this.template({tabs: this.tabs}));
