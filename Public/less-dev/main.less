@@ -7,24 +7,46 @@
 
 //Variables
 @defaultSidebarWidth: 40%;
-@defaultPadding: 1%;
+@tabsPaddingRight: 1%;
+@tabsPaddingTop: 0;
 
 //Styles of the main page
 #main-sidebar-div {
 	width: @defaultSidebarWidth;
 	float: left;
+
+	padding: 0;
+	margin: 0;
 }
 
 #main-timetable-div {
 	width: 100%-@defaultSidebarWidth;
 	float: left;
+
+	margin: 0;
+	padding: 0;
 }
 
 #main-faltacursar-div, 
 	#main-microhorario-div,
 	#main-selected-div {
-	width: 100%-@defaultPadding;
-	height: 100%;
+
+	width: 100%-@tabsPaddingRight;
+	height: 100%-@tabsPaddingTop;
+
+	overflow: auto;
+
+	margin: 0;
+	padding: 0;	
 	
-	padding-right: @defaultPadding;
+	padding-right: @tabsPaddingRight;
+	padding-top: @tabsPaddingTop;
+}
+
+#main-tabs-nav {
+	margin: 0;
+}
+
+hr {
+	margin: 0;
 }

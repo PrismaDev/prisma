@@ -20,13 +20,13 @@ clean:
 
 $(PROD)/prisma-login.min.js: $(VIEW)/loginView.js \
 			$(MDL)/loginStringsModel.js \
-			$(CTRL)/router.js
+			$(CTRL)/loginRouter.js
 	cat > .swp.js $^
 	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
 	rm .swp.js
 
 $(PROD)/prisma-term.min.js: $(VIEW)/termView.js \
-			$(CTRL)/router.js
+			$(CTRL)/termRouter.js
 	cat > .swp.js $^
 	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
 	rm .swp.js
@@ -38,7 +38,7 @@ $(PROD)/prisma-main.min.js:  $(VIEW)/timetableView.js \
 			$(VIEW)/mainView.js \
 			$(VIEW)/classeslistView.js \
 			$(CTRL)/selectedController.js \
-			$(CTRL)/router.js
+			$(CTRL)/mainRouter.js
 	cat > .swp.js $^
 	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
 	rm .swp.js

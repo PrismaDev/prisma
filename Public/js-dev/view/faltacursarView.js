@@ -6,7 +6,7 @@ var FaltacursarView = Backbone.View.extend({
 	},
 
 	events: {
-		"click #faltacursar-table tr": 'clickOnRow'
+		"click #faltacursar-subject-table tr": 'clickOnRow'
 	},
 
 	clickOnRow: function(e) {
@@ -14,26 +14,28 @@ var FaltacursarView = Backbone.View.extend({
 
 		if ($(row).hasClass('row_selected')) {
 			$(row).removeClass('row_selected');
-        		$('#faltacursar-classesList').addClass('hidden');
+        		$('#faltacursar-classes-div').addClass('hidden');
 		}
 		else {
-			$('#faltacursar-table tr.row_selected').removeClass('row_selected');
+			$('.table tr.row_selected').removeClass('row_selected');
 			$(row).addClass('row_selected');
-        		$('#faltacursar-classesList').removeClass('hidden');
+        		$('#faltacursar-classes-div').removeClass('hidden');
 
 			faltacursarClasseslistView.render([]);
 		}
 	},
 
 	initJS: function() {
-		var subjectTable = $('#faltacursar-table').dataTable({
-			'bPaginate': false
+		var subjectTable = $('#faltacursar-subject-table').dataTable({
+			'bPaginate': false,
+			'sDom': 'ft'
 		});
 	},		
 
 	fetchStrings: function() {
 		return {codeStr: 'Codigo', nameStr: 'Nome da Disciplina',
-			moreInfoStr: 'Ementa', termStr: 'Periodo'};
+			moreInfoStr: 'Ementa', termStr: 'Periodo',
+			infoStr: 'Ementa'};
 	},
 
 	fetchSubjects: function() {
@@ -46,7 +48,17 @@ var FaltacursarView = Backbone.View.extend({
 			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
 			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
 			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'}
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'}
 		]};
 	},
 
@@ -60,7 +72,7 @@ var FaltacursarView = Backbone.View.extend({
 		this.$el.html(this.template(this.fetchData()));
 		this.initJS();
 	
-		faltacursarClasseslistView.setElement('#faltacursar-classesList');
+		faltacursarClasseslistView.setElement('#faltacursar-classes-div');
 	}
 });
 

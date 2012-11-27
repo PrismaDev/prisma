@@ -5,26 +5,9 @@
 .hidden {
   display: none;
 }
-.rightFloated {
-  float: right;
-  margin-right: 1%;
-}
-.hidden {
-  display: none;
-}
-.rightFloated {
-  float: right;
-  margin-right: 1%;
-}
-.hidden {
-  display: none;
-}
 .dataTables_filter {
   float: right;
   margin-right: 1%;
-}
-.dataTables_info {
-  display: none;
 }
 .table {
   clear: both;
@@ -38,22 +21,8 @@ tr.blocked {
 tr.warning {
   background-color: #e8e36c;
 }
-.rightFloated {
-  float: right;
-  margin-right: 1%;
-}
-.hidden {
-  display: none;
-}
-#faltacursar-subjectList {
-  padding-bottom: 1%;
-}
-.rightFloated {
-  float: right;
-  margin-right: 1%;
-}
-.hidden {
-  display: none;
+#faltacursar-subject-table_wrapper {
+  margin-top: 2%;
 }
 .waitingImg {
   display: block;
@@ -72,13 +41,6 @@ div.fieldContainer {
   float: left;
   padding-right: 2%;
 }
-.rightFloated {
-  float: right;
-  margin-right: 1%;
-}
-.hidden {
-  display: none;
-}
 #main-selected-div ul {
   list-style-type: none;
   background-color: #c0c0c0;
@@ -95,15 +57,29 @@ div.fieldContainer {
 #main-sidebar-div {
   width: 40%;
   float: left;
+  padding: 0;
+  margin: 0;
 }
 #main-timetable-div {
   width: 60%;
   float: left;
+  margin: 0;
+  padding: 0;
 }
 #main-faltacursar-div,
 #main-microhorario-div,
 #main-selected-div {
   width: 99%;
   height: 100%;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
   padding-right: 1%;
+  padding-top: 0;
+}
+#main-tabs-nav {
+  margin: 0;
+}
+hr {
+  margin: 0;
 }
