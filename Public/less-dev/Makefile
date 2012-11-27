@@ -11,7 +11,13 @@ all: $(TARGETS)
 clean:
 	rm $(TARGETS)
 
-$(PROD)/prisma-main.min.css: main.less
+$(PROD)/prisma-main.min.css: main.less\
+				basics.less\
+				tables.less\
+				datatablesAdds.less\
+				faltacursar.less\
+				microhorario.less\
+				selected.less
 	$(CC) $(CFLAGS) $^ > $@
 
 $(PROD)/prisma-login.min.css: login.less
