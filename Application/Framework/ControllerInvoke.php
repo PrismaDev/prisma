@@ -9,6 +9,8 @@ class ControllerInvoke
 		$controller = new $class();
 
 		echo $controller->handlePhpRequest();
+		
+		return true;
 	}
 }
 

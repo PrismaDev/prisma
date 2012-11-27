@@ -46,12 +46,10 @@ class Router
 		switch($route['action']['type'])
 		{
 			case 'redirect':
-				self::redirectRoute($route['action']['uri']);
-				return true;
+				return self::redirectRoute($route['action']['uri']);
 
 			case 'controller':
-				ControllerInvoke::init($route['action']['controller']);
-				return true;
+				return ControllerInvoke::init($route['action']['controller']);
 		}
 
 		return false;
@@ -60,6 +58,8 @@ class Router
 	public static function redirectRoute($routeUri)
 	{
 		header('Location: '.$routeUri);
+
+		return true;
 	}
 }
 
