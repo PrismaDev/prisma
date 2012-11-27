@@ -106,13 +106,16 @@ div.fieldContainer {
 #main-microhorario-div,
 #main-selected-div {
   width: 99%;
-  height: 98%;
+  height: 100%;
   overflow: auto;
   margin: 0;
   padding: 0;
   padding-right: 1%;
-  padding-top: 2%;
+  padding-top: 0;
 }
 #main-tabs-nav {
+  margin: 0;
+}
+hr {
   margin: 0;
 }
