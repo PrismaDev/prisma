@@ -8,28 +8,56 @@ class Router
 {
 	public static function init($config, $uri)
 	{
-		$uri_array = explode('/', $uri);
+		$route = self::getRoute($config["routes"], $uri);
 
-		$route = $config['routes'];
+		if($route == null || !self::handleRoute($route))
+		{
+			self::redirectRoute($route["error_route"]);
+		}
+	}
+
+	private static function getRoute($route, $uri)
+	{
+		$uri_array = explode('/', $uri);
 		$uri_len = count($uri_array);
+
 		for( $i = 0 ; $i < $uri_len ; $i++ )
 		{
 			if(empty($uri_array[$i])) continue;
 
 		 	if(!isset( $route[ $uri_array[$i] ] ))
 			{
-				header('Location: '.$config['error_route']);
+				return null;
 			}
 
 			$route = $route[ $uri_array[ $i ] ];
 		}
 
-		if(!isset($route['root']) || empty($route['root']))
+		return $route;
+	}
+
+	private static function handleRoute($route)
+	{
+		if(isset($route["redirect"]) && !empty($route["redirect"]))
 		{
-			header('Location: '.$config['error_route']);
+			self::redirectRoute($route["redirect"]);
+
+			return true;
 		}
 
-		ControllerInvoke::init($route['root']);
+		if(isset($route["controller"]) && !empty($route["controller"]))
+		{
+			ControllerInvoke::init($route['controller']);
+
+			return true;
+		}
+		
+		return false;
+	}
+
+	public static function redirectRoute($route_uri)
+	{
+		header('Location: '.$route_uri);
 	}
 }
 

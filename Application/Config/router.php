@@ -2,21 +2,21 @@
 
 return array(
 	'routes' => array(
-		'root' => 'Prisma\Controller\LoginController',
+		'redirect' => '/login',
 		'login' => array(
-			'root' => 'Prisma\Controller\LoginController'
-		),
+			'controller' => 'Prisma\Controller\LoginController'
+			),
 		'main' => array(
-			'root' => 'Prisma\Controller\MainController'
+			'controller' => 'Prisma\Controller\MainController',
 		),
 		'term' => array(
-			'root' => 'Prisma\Controller\TermController'
+			'controller' => 'Prisma\Controller\TermController'
 		),
 		'error' => array(
-			'root' => 'Prisma\Controller\ErrorController'
+			'controller' => 'Prisma\Controller\ErrorController',
 		),
 		'api' => array(
 		)
 	),
-	'error_route' => 'error'
+	'error_route' => '/error'
 );
