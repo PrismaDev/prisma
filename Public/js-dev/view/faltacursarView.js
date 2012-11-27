@@ -14,15 +14,35 @@ var FaltacursarView = Backbone.View.extend({
 
 		if ($(row).hasClass('row_selected')) {
 			$(row).removeClass('row_selected');
-        		$('#faltacursar-classes-div').addClass('hidden');
+			this.resizeWhole();
+        		
+			$('#faltacursar-classes-div').addClass('hidden');
 		}
 		else {
 			$('.table tr.row_selected').removeClass('row_selected');
 			$(row).addClass('row_selected');
-        		$('#faltacursar-classes-div').removeClass('hidden');
 
+        		$('#faltacursar-classes-div').removeClass('hidden');
 			faltacursarClasseslistView.render([]);
+			
+			this.resizeFiftyfifty();
 		}
+	},
+
+	calcTbodySize: function(hei, id) {
+		$(id).height(hei);
+	},
+
+	resizeFiftyfifty: function() {
+		var divH = $('#main-faltacursar-div').height()-1; //compensate 1px border
+
+		this.calcTbodySize(divH/2, '#faltacursar-subject-table_wrapper');
+		this.calcTbodySize(divH/2, '#faltacursar-classes-div');
+	},
+
+	resizeWhole: function() {
+		var divH = $('#main-faltacursar-div').height();
+		this.calcTbodySize(divH, '#faltacursar-subject-table_wrapper');
 	},
 
 	initJS: function() {
@@ -71,7 +91,7 @@ var FaltacursarView = Backbone.View.extend({
 	render: function() {
 		this.$el.html(this.template(this.fetchData()));
 		this.initJS();
-	
+
 		faltacursarClasseslistView.setElement('#faltacursar-classes-div');
 	}
 });

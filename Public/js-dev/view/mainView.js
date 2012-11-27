@@ -82,6 +82,8 @@ var MainView = Backbone.View.extend({
 		$('#main-faltacursar-div').height(innerH);
 		$('#main-microhorario-div').height(innerH);
 		$('#main-selected-div').height(innerH);
+
+		faltacursarView.resizeWhole();
 	},	
 
 	render: function() {

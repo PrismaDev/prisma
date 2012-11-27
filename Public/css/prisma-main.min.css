@@ -22,7 +22,19 @@ tr.warning {
   background-color: #e8e36c;
 }
 #faltacursar-subject-table_wrapper {
+  padding: 0;
+  margin: 0;
+}
+#faltacursar-classes-div {
+  padding: 0;
+  margin: 0;
+  border-top: solid 1px #eeeeee;
+}
+#main-faltacursar-div .dataTables_filter {
   margin-top: 2%;
+}
+#main-faltacursar-div div {
+  overflow: auto;
 }
 .waitingImg {
   display: block;
