@@ -34,6 +34,7 @@ $(PROD)/prisma-term.min.js: $(VIEW)/termView.js \
 $(PROD)/prisma-main.min.js:  $(VIEW)/timetableView.js \
 			$(VIEW)/faltacursarView.js \
 			$(VIEW)/microhorarioView.js \
+			$(VIEW)/datatableView.js \
 			$(VIEW)/selectedView.js \
 			$(VIEW)/mainView.js \
 			$(VIEW)/classeslistView.js \

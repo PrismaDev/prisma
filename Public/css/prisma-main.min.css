@@ -9,6 +9,12 @@
   float: right;
   margin-right: 1%;
 }
+.dataTables_scroll {
+  clear: both;
+}
+.dataTable_scrollBody table {
+  border-top: none;
+}
 .table {
   clear: both;
 }
@@ -30,11 +36,19 @@ tr.warning {
   margin: 0;
   border-top: solid 1px #eeeeee;
 }
+#main-faltacursar-div {
+  margin: 0;
+  padding: 0;
+}
+#main-faltacursar-div .table {
+  margin: 0;
+  width: 100%;
+}
 #main-faltacursar-div .dataTables_filter {
   margin-top: 2%;
 }
 #main-faltacursar-div div {
-  overflow: auto;
+  overflow: hidden;
 }
 .waitingImg {
   display: block;

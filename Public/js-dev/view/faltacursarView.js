@@ -1,5 +1,6 @@
 var FaltacursarView = Backbone.View.extend({
 	template: '',
+	subjectDatatableView: '',
 
 	initialize: function() {
 		this.template = _.template($('#faltacursar-template').html());
@@ -29,27 +30,27 @@ var FaltacursarView = Backbone.View.extend({
 		}
 	},
 
-	calcTbodySize: function(hei, id) {
+	resizeY: function(hei, id) {
 		$(id).height(hei);
 	},
 
 	resizeFiftyfifty: function() {
 		var divH = $('#main-faltacursar-div').height()-1; //compensate 1px border
 
-		this.calcTbodySize(divH/2, '#faltacursar-subject-table_wrapper');
-		this.calcTbodySize(divH/2, '#faltacursar-classes-div');
+		this.resizeY(divH/2, '#faltacursar-subject-table_wrapper');
+		this.resizeY(divH/2, '#faltacursar-classes-div');
 	},
 
 	resizeWhole: function() {
 		var divH = $('#main-faltacursar-div').height();
-		this.calcTbodySize(divH, '#faltacursar-subject-table_wrapper');
+		this.resizeY(divH, '#faltacursar-subject-table_wrapper');
 	},
 
 	initJS: function() {
-		var subjectTable = $('#faltacursar-subject-table').dataTable({
-			'bPaginate': false,
-			'sDom': 'ft'
-		});
+		this.subjectDatatableView = new DatatableView({
+			sDom: 'ft',
+			el: '#faltacursar-subject-table'}
+		);
 	},		
 
 	fetchStrings: function() {

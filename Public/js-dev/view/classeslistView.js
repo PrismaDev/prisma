@@ -1,19 +1,16 @@
 var ClasseslistView = Backbone.View.extend({
 	template: '',
-	sDom: 't',
+	datatableView: '',
 
-	initialize: function(options) {
+	initialize: function() {
 		this.template = _.template($('#classeslist-template').html());
-
-		if (this.options.sDom!=undefined)
-			this.sDom = this.options.sDom;
 	},
 
-	initJS: function() {
-		this.$el.find('table').dataTable({
-			'bPaginate': false,
-			'sDom': this.sDom
-		});
+	initJS: function() {		
+		this.datatableView = new DatatableView({
+			el: this.$el.find('table'),
+			sDom: this.options.sDom
+		})
 	},
 
 	render: function(classesArray) {
@@ -22,5 +19,5 @@ var ClasseslistView = Backbone.View.extend({
 	}
 });
 
-var microhorarioClasseslistView = new ClasseslistView();
+var microhorarioClasseslistView = new ClasseslistView({sDom: 't'});
 var faltacursarClasseslistView = new ClasseslistView({sDom: 'ft'});
