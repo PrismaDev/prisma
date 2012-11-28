@@ -8,28 +8,58 @@ class Router
 {
 	public static function init($config, $uri)
 	{
-		$uri_array = explode('/', $uri);
+		$route = self::getRoute($config['routes'], $uri);
 
-		$route = $config['routes'];
-		$uri_len = count($uri_array);
-		for( $i = 0 ; $i < $uri_len ; $i++ )
+		if($route == null || !self::handleRoute($route))
 		{
-			if(empty($uri_array[$i])) continue;
+			self::redirectRoute($config['errorRoute']);
+		}
+	}
 
-		 	if(!isset( $route[ $uri_array[$i] ] ))
+	private static function getRoute($route, $uri)
+	{
+		$uriArray = explode('/', $uri);
+		$uriArrayLen = count($uriArray);
+
+		for( $i = 0 ; $i < $uriArrayLen ; $i++ )
+		{
+			if(empty($uriArray[$i])) continue;
+
+		 	if(!isset( $route['subroutes'][ $uriArray[$i] ] ))
 			{
-				header('Location: '.$config['error_route']);
+				return null;
 			}
 
-			$route = $route[ $uri_array[ $i ] ];
+			$route = $route['subroutes'][ $uriArray[ $i ] ];
 		}
 
-		if(!isset($route['root']) || empty($route['root']))
+		return $route;
+	}
+
+	private static function handleRoute($route)
+	{
+		if(!isset($route['action']))
 		{
-			header('Location: '.$config['error_route']);
+			return false;
 		}
 
-		ControllerInvoke::init($route['root']);
+		switch($route['action']['type'])
+		{
+			case 'redirect':
+				return self::redirectRoute($route['action']['uri']);
+
+			case 'controller':
+				return ControllerInvoke::init($route['action']['controller']);
+		}
+
+		return false;
+	}
+
+	public static function redirectRoute($routeUri)
+	{
+		header('Location: '.$routeUri);
+
+		return true;
 	}
 }
 

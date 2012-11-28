@@ -11,7 +11,7 @@ class Bootstrap
 
 	public static function createConnection($dbParams, $modelPath)
 	{
-		closeConnection();
+		self::closeConnection();
 
 		$config = Setup::createAnnotationMetadataConfiguration($modelPath, true);
 		self::$em = EntityManager::create($dbParams, $config);
