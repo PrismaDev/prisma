@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.5
 -- Dumped by pg_dump version 9.1.5
--- Started on 2012-11-28 19:34:57 BRST
+-- Started on 2012-11-28 20:00:58 BRST
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -51,6 +51,47 @@ CREATE TABLE "Aluno" (
 ALTER TABLE public."Aluno" OWNER TO prisma;
 
 --
+-- TOC entry 170 (class 1259 OID 35870)
+-- Dependencies: 6
+-- Name: seq_sugestao; Type: SEQUENCE; Schema: public; Owner: prisma
+--
+
+CREATE SEQUENCE seq_sugestao
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.seq_sugestao OWNER TO prisma;
+
+--
+-- TOC entry 1937 (class 0 OID 0)
+-- Dependencies: 170
+-- Name: seq_sugestao; Type: SEQUENCE SET; Schema: public; Owner: prisma
+--
+
+SELECT pg_catalog.setval('seq_sugestao', 1, false);
+
+
+--
+-- TOC entry 164 (class 1259 OID 35718)
+-- Dependencies: 1889 1890 6
+-- Name: Comentario; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
+--
+
+CREATE TABLE "Comentario" (
+    "PK_Sugestao" bigint DEFAULT nextval('seq_sugestao'::regclass) NOT NULL,
+    "FK_Usuario" character varying(20) NOT NULL,
+    "Comentario" text NOT NULL,
+    "DataHora" timestamp with time zone DEFAULT now() NOT NULL
+);
+
+
+ALTER TABLE public."Comentario" OWNER TO prisma;
+
+--
 -- TOC entry 167 (class 1259 OID 35783)
 -- Dependencies: 6
 -- Name: Curso; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
@@ -81,7 +122,7 @@ CREATE SEQUENCE seq_log
 ALTER TABLE public.seq_log OWNER TO prisma;
 
 --
--- TOC entry 1937 (class 0 OID 0)
+-- TOC entry 1938 (class 0 OID 0)
 -- Dependencies: 166
 -- Name: seq_log; Type: SEQUENCE SET; Schema: public; Owner: prisma
 --
@@ -126,7 +167,7 @@ CREATE SEQUENCE seq_professor
 ALTER TABLE public.seq_professor OWNER TO prisma;
 
 --
--- TOC entry 1938 (class 0 OID 0)
+-- TOC entry 1939 (class 0 OID 0)
 -- Dependencies: 169
 -- Name: seq_professor; Type: SEQUENCE SET; Schema: public; Owner: prisma
 --
@@ -147,47 +188,6 @@ CREATE TABLE "Professor" (
 
 
 ALTER TABLE public."Professor" OWNER TO prisma;
-
---
--- TOC entry 170 (class 1259 OID 35870)
--- Dependencies: 6
--- Name: seq_sugestao; Type: SEQUENCE; Schema: public; Owner: prisma
---
-
-CREATE SEQUENCE seq_sugestao
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.seq_sugestao OWNER TO prisma;
-
---
--- TOC entry 1939 (class 0 OID 0)
--- Dependencies: 170
--- Name: seq_sugestao; Type: SEQUENCE SET; Schema: public; Owner: prisma
---
-
-SELECT pg_catalog.setval('seq_sugestao', 1, false);
-
-
---
--- TOC entry 164 (class 1259 OID 35718)
--- Dependencies: 1889 1890 6
--- Name: Sugestao; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
---
-
-CREATE TABLE "Sugestao" (
-    "PK_Sugestao" bigint DEFAULT nextval('seq_sugestao'::regclass) NOT NULL,
-    "FK_Usuario" character varying(20) NOT NULL,
-    "Comentario" text NOT NULL,
-    "DataHora" timestamp with time zone DEFAULT now() NOT NULL
-);
-
-
-ALTER TABLE public."Sugestao" OWNER TO prisma;
 
 --
 -- TOC entry 163 (class 1259 OID 35708)
@@ -245,6 +245,14 @@ ALTER TABLE public."VariavelAmbiente" OWNER TO prisma;
 
 
 --
+-- TOC entry 1926 (class 0 OID 35718)
+-- Dependencies: 164 1931
+-- Data for Name: Comentario; Type: TABLE DATA; Schema: public; Owner: prisma
+--
+
+
+
+--
 -- TOC entry 1928 (class 0 OID 35783)
 -- Dependencies: 167 1931
 -- Data for Name: Curso; Type: TABLE DATA; Schema: public; Owner: prisma
@@ -264,14 +272,6 @@ ALTER TABLE public."VariavelAmbiente" OWNER TO prisma;
 -- TOC entry 1929 (class 0 OID 35818)
 -- Dependencies: 168 1931
 -- Data for Name: Professor; Type: TABLE DATA; Schema: public; Owner: prisma
---
-
-
-
---
--- TOC entry 1926 (class 0 OID 35718)
--- Dependencies: 164 1931
--- Data for Name: Sugestao; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
 
@@ -350,7 +350,7 @@ ALTER TABLE ONLY "Professor"
 -- Name: PK_Sugestao; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
-ALTER TABLE ONLY "Sugestao"
+ALTER TABLE ONLY "Comentario"
     ADD CONSTRAINT "PK_Sugestao" PRIMARY KEY ("PK_Sugestao");
 
 
@@ -445,12 +445,12 @@ ALTER TABLE ONLY "Log"
 
 
 --
--- TOC entry 1921 (class 2606 OID 35874)
+-- TOC entry 1921 (class 2606 OID 35888)
 -- Dependencies: 1896 161 164 1932
 -- Name: FK_Sugestao_Usuario; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
-ALTER TABLE ONLY "Sugestao"
+ALTER TABLE ONLY "Comentario"
     ADD CONSTRAINT "FK_Sugestao_Usuario" FOREIGN KEY ("FK_Usuario") REFERENCES "Usuario"("PK_Login") ON UPDATE CASCADE ON DELETE CASCADE;
 
 
@@ -464,7 +464,7 @@ ALTER TABLE ONLY "Usuario"
     ADD CONSTRAINT "FK_Usuario_TipoUsuario" FOREIGN KEY ("FK_TipoUsuario") REFERENCES "TipoUsuario"("PK_TipoUsuario") ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2012-11-28 19:34:57 BRST
+-- Completed on 2012-11-28 20:00:58 BRST
 
 --
 -- PostgreSQL database dump complete
