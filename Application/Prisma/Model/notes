@@ -1,0 +1,22 @@
+
+Tipos de mapeamentos necessarios
+
+- herança
+
+- relação um para muitos
+
+- muitos para um
+
+- muitos para muitos
+
+
+
+
+Fazer:
+
+- Fazer ultima verificação no modelo
+
+- Implementar modelo direto no banco
+
+- Descobrir como gerar modelo php diretamente a partir do banco
+

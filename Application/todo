@@ -12,9 +12,12 @@ Pontos a definir ainda:
 
 - Setar cache no doctrine
 
-- Terminar de definir CSV e mandar pro sergio
-
 - Configurar apache para redirecionar para https
 
 - Turn on apache’s mod_deflate
 
+- Definir cumprimento da optativa no processamento do falta cursar
+-- O historio sempre informa as disciplinas das optativas que foram cursadas, e não as optativas em si. Logo, basta não mostrar novamente aquela optativa, aka exclui-la. Talvez seja necessario carregar do puc online todo periodo o falta cursar do cara, para podermos ter sempre tudo atualizado e correto. A tabela de selecionadas pode ficar como histórico, nenhuma tupla deve ser deletada com o decorrer dos periodos. 
+
+- Definição de quais triggers são necessários
+-- 
