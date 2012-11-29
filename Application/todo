@@ -4,7 +4,9 @@ Pontos a definir ainda:
 - Como definir quais controller precisam de conexão com o banco, por ex
   (dependencias)
 
-- Definir controle de acesso (router que vai fazer isso?)
+- Terminar de escrever controle de acesso (decidir aonde realizar controle)
+
+- Escrever PDO class pro framework
 
 - Descobrir como informar aonde esta o modelo ao doctrine usando anotation
 
@@ -16,8 +18,3 @@ Pontos a definir ainda:
 
 - Turn on apache’s mod_deflate
 
-- Definir cumprimento da optativa no processamento do falta cursar
--- O historio sempre informa as disciplinas das optativas que foram cursadas, e não as optativas em si. Logo, basta não mostrar novamente aquela optativa, aka exclui-la. Talvez seja necessario carregar do puc online todo periodo o falta cursar do cara, para podermos ter sempre tudo atualizado e correto. A tabela de selecionadas pode ficar como histórico, nenhuma tupla deve ser deletada com o decorrer dos periodos. 
-
-- Definição de quais triggers são necessários
--- 
