@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.5
 -- Dumped by pg_dump version 9.1.5
--- Started on 2012-11-29 07:23:50 BRST
+-- Started on 2012-11-29 08:16:32 BRST
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -303,7 +303,7 @@ SELECT pg_catalog.setval('seq_log', 1, true);
 CREATE TABLE "Log" (
     "PK_Log" bigint DEFAULT nextval('seq_log'::regclass) NOT NULL,
     "DataHora" timestamp with time zone DEFAULT now() NOT NULL,
-    "IP" character varying(15),
+    "IP" character varying(40),
     "URI" character varying(100),
     "HashSessao" character varying(40),
     "Erro" boolean DEFAULT false NOT NULL,
@@ -981,7 +981,7 @@ ALTER TABLE ONLY "TipoUsuario"
 
 --
 -- TOC entry 2021 (class 2606 OID 35924)
--- Dependencies: 1968 173 162 2056
+-- Dependencies: 1968 162 173 2056
 -- Name: FK_AlunoDisciplina_Aluno; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1001,7 +1001,7 @@ ALTER TABLE ONLY "AlunoDisciplina"
 
 --
 -- TOC entry 2022 (class 2606 OID 35929)
--- Dependencies: 172 1988 173 2056
+-- Dependencies: 1988 173 172 2056
 -- Name: FK_AlunoDisciplina_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1011,7 +1011,7 @@ ALTER TABLE ONLY "AlunoDisciplina"
 
 --
 -- TOC entry 2026 (class 2606 OID 36008)
--- Dependencies: 178 1968 162 2056
+-- Dependencies: 162 1968 178 2056
 -- Name: FK_AlunoTurmaSelecionada_Aluno; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1021,7 +1021,7 @@ ALTER TABLE ONLY "AlunoTurmaSelecionada"
 
 --
 -- TOC entry 2027 (class 2606 OID 36013)
--- Dependencies: 177 178 2000 2056
+-- Dependencies: 2000 177 178 2056
 -- Name: FK_AlunoTurmaSelecionada_Turma; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1031,7 +1031,7 @@ ALTER TABLE ONLY "AlunoTurmaSelecionada"
 
 --
 -- TOC entry 2017 (class 2606 OID 35850)
--- Dependencies: 1978 162 167 2056
+-- Dependencies: 167 162 1978 2056
 -- Name: FK_Aluno_Curso; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1041,7 +1041,7 @@ ALTER TABLE ONLY "Aluno"
 
 --
 -- TOC entry 2018 (class 2606 OID 35855)
--- Dependencies: 1966 161 162 2056
+-- Dependencies: 161 162 1966 2056
 -- Name: FK_Aluno_Usuario; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1050,8 +1050,8 @@ ALTER TABLE ONLY "Aluno"
 
 
 --
--- TOC entry 2020 (class 2606 OID 35962)
--- Dependencies: 1966 165 161 2056
+-- TOC entry 2020 (class 2606 OID 36132)
+-- Dependencies: 161 165 1966 2056
 -- Name: FK_Log_Usuario; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1061,7 +1061,7 @@ ALTER TABLE ONLY "Log"
 
 --
 -- TOC entry 2030 (class 2606 OID 36053)
--- Dependencies: 162 180 1968 2056
+-- Dependencies: 180 162 1968 2056
 -- Name: FK_OptativaAluno_Aluno; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1071,7 +1071,7 @@ ALTER TABLE ONLY "OptativaAluno"
 
 --
 -- TOC entry 2029 (class 2606 OID 36048)
--- Dependencies: 1996 175 180 2056
+-- Dependencies: 180 175 1996 2056
 -- Name: FK_OptativaAluno_Optativa; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1081,7 +1081,7 @@ ALTER TABLE ONLY "OptativaAluno"
 
 --
 -- TOC entry 2032 (class 2606 OID 36068)
--- Dependencies: 172 181 1988 2056
+-- Dependencies: 181 1988 172 2056
 -- Name: FK_OptativaDisciplina_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1091,7 +1091,7 @@ ALTER TABLE ONLY "OptativaDisciplina"
 
 --
 -- TOC entry 2031 (class 2606 OID 36063)
--- Dependencies: 175 181 1996 2056
+-- Dependencies: 181 1996 175 2056
 -- Name: FK_OptativaDisciplina_Optativa; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1101,7 +1101,7 @@ ALTER TABLE ONLY "OptativaDisciplina"
 
 --
 -- TOC entry 2035 (class 2606 OID 36092)
--- Dependencies: 184 172 1988 2056
+-- Dependencies: 1988 184 172 2056
 -- Name: FK_PreRequisitoGrupoDisciplina_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1111,7 +1111,7 @@ ALTER TABLE ONLY "PreRequisitoGrupoDisciplina"
 
 --
 -- TOC entry 2034 (class 2606 OID 36087)
--- Dependencies: 183 2012 184 2056
+-- Dependencies: 184 2012 183 2056
 -- Name: FK_PreRequisitoGrupoDisciplina_PreRequisitoGrupo; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1121,7 +1121,7 @@ ALTER TABLE ONLY "PreRequisitoGrupoDisciplina"
 
 --
 -- TOC entry 2033 (class 2606 OID 36097)
--- Dependencies: 183 1988 172 2056
+-- Dependencies: 172 183 1988 2056
 -- Name: FK_PreRequisitoGrupo_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1131,7 +1131,7 @@ ALTER TABLE ONLY "PreRequisitoGrupo"
 
 --
 -- TOC entry 2019 (class 2606 OID 35888)
--- Dependencies: 161 1966 164 2056
+-- Dependencies: 1966 164 161 2056
 -- Name: FK_Sugestao_Usuario; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1141,7 +1141,7 @@ ALTER TABLE ONLY "Comentario"
 
 --
 -- TOC entry 2028 (class 2606 OID 36026)
--- Dependencies: 2000 179 177 2056
+-- Dependencies: 177 179 2000 2056
 -- Name: FK_TurmaHorario_Turma; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1171,7 +1171,7 @@ ALTER TABLE ONLY "Usuario"
 
 --
 -- TOC entry 2024 (class 2606 OID 36033)
--- Dependencies: 172 177 1988 2056
+-- Dependencies: 1988 172 177 2056
 -- Name: PK_Turma_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1179,7 +1179,7 @@ ALTER TABLE ONLY "Turma"
     ADD CONSTRAINT "PK_Turma_Disciplina" FOREIGN KEY ("FK_Disciplina") REFERENCES "Disciplina"("PK_Codigo") ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2012-11-29 07:23:51 BRST
+-- Completed on 2012-11-29 08:16:32 BRST
 
 --
 -- PostgreSQL database dump complete
