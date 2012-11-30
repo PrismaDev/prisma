@@ -7,6 +7,6 @@ return array(
 	'user' => 'prisma',
 	'password' => 'prisma',
 	'dbname' => 'prisma',
-	'schema' => 'default'
+	'schema' => 'default' //TODO: this setting does not work yet
 );
 

@@ -15,7 +15,13 @@ class Database
 		$dsn .= 'user='.$config['user'].';';
 		$dsn .= 'password='.$config['password'];
 
-		self::$dbh = new \PDO($dsn);
+		try{
+			self::$dbh = new \PDO($dsn);
+		}
+		catch(\Exception $e)
+		{
+			die('Could not connect to database: '.$e->getMessage());
+		}
 	}
 
 	public static function getConnection()
@@ -26,6 +32,17 @@ class Database
 	public static function closeConnection()
 	{
 		self::$dbh = null;
+	}
+
+	public static function fetchAllFrom($name)
+	{
+		$sth = self::$dbh->prepare('SELECT * FROM "'.$name.'"');
+
+		$sth->execute();
+
+		if(!$sth) return false;
+
+		return $sth->fetchAll();
 	}
 }
 
