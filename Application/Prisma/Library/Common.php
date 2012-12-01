@@ -11,6 +11,10 @@ class Common
 
 		if($mes > 10)
 		{
+			return ($ano+1).'1';
+		}
+		else if ($mes < 3)
+		{
 			return $ano.'1';
 		}
 		else
@@ -33,7 +37,11 @@ class Common
 		}
 		else
 		{
-			$str = str_replace(chr(0x0), '', trim($str));
+			$str = trim($str);
+			$str = str_replace(chr(0x00), '', $str);
+			$str = str_replace(chr(0xa0), '', $str);
+			$str = str_replace(chr(0xfe), '', $str);
+			$str = str_replace(chr(0xff), '', $str);
 		}
 	}
 
