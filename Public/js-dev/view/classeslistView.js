@@ -3,7 +3,7 @@ var ClasseslistView = Backbone.View.extend({
 	classesDatatable: '',
 
 	resizeW: function() {
-		this.classesDatatable.fnAdjustColumnSizing();
+		this.classesDatatable.fnAdjustColumnSizing(false);
 	},
 	resizeH: function() {},
 

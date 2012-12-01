@@ -47,10 +47,12 @@ var FaltacursarView = Backbone.View.extend({
 		}
 	},
 
-	calculateTableScroll: function() {},
+	calculateTableScroll: function() {
+		
+	},
 
 	resizeW: function() {
-		this.subjectDatatable.fnAdjustColumnSizing();
+		this.subjectDatatable.fnAdjustColumnSizing(false);
 		this.calculateTableScroll();
 		faltacursarClasseslistView.resizeW();
 	},
