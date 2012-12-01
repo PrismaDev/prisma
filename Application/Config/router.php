@@ -26,13 +26,23 @@ return array(
 					'controller' => 'Prisma\Controller\TermController',
 				),
 			),
+			'api' => array(
+				'subroutes' => array(
+					'microhorario' => array(
+						'action' => array(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\MicroHorarioController',
+						),
+					),
+				),
+			),
 			'error' => array(
 				'action' => array(
 					'type' => 'controller',
 					'controller' => 'Prisma\Controller\ErrorController',
 				),
 			),
-		)
+		),
 	),
 	'errorRoute' => '/error'
 );
