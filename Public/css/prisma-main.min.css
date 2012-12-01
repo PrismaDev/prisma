@@ -12,9 +12,6 @@
 .dataTables_scroll {
   clear: both;
 }
-.dataTable_scrollBody table {
-  border-top: none;
-}
 .table {
   clear: both;
 }
@@ -83,14 +80,10 @@ div.fieldContainer {
 #main-sidebar-div {
   width: 40%;
   float: left;
-  padding: 0;
-  margin: 0;
 }
 #main-timetable-div {
   width: 60%;
   float: left;
-  margin: 0;
-  padding: 0;
 }
 #main-faltacursar-div,
 #main-microhorario-div,

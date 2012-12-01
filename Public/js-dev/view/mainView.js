@@ -37,8 +37,12 @@ var MainView = Backbone.View.extend({
 
 			resize: function(e, ui) {
 				var w = $(".row-fluid").width();
-				var nW = w-$('#main-sidebar-div').outerWidth();
-				$('#main-timetable-div').width(nW-1);
+				var sideW = $('#main-sidebar-div').outerWidth();
+				var timeW = $('#main-timetable-div').outerWidth();
+				var inTimeW = $('#main-timetable-div').width();
+				var nW = w-sideW;
+				
+				$('#main-timetable-div').width(nW-(timeW-inTimeW));
 					//the -1 is due to rounding problems
 			}
 		});	
