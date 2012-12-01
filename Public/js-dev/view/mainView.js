@@ -137,7 +137,7 @@ var MainView = Backbone.View.extend({
 		this.equalMainDivsHeight();
 
 		this.initJS();
-//		this.setTimetableWFromSidebarW();
+		this.setTimetableWFromSidebarW();
 	}
 });
 

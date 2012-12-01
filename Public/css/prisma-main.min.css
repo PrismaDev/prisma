@@ -84,10 +84,12 @@ div.fieldContainer {
 #main-sidebar-div {
   width: 40%;
   float: left;
+  border: solid 1px red;
 }
 #main-timetable-div {
   width: 60%;
   float: left;
+  border: solid 1px blue;
 }
 #main-faltacursar-div,
 #main-microhorario-div,
