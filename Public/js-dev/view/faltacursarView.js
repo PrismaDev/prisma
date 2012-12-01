@@ -2,6 +2,12 @@ var FaltacursarView = Backbone.View.extend({
 	template: '',
 	subjectDatatableView: '',
 
+	//Cached variables
+	subjectTableWrapper: '',
+	classesDiv: '',
+	subjectTable: '',
+	subjectDatatable: '',
+	
 	initialize: function() {
 		this.template = _.template($('#faltacursar-template').html());
 	},
@@ -10,47 +16,55 @@ var FaltacursarView = Backbone.View.extend({
 		"click #faltacursar-subject-table tr": 'clickOnRow'
 	},
 
+	cache: function() {
+		this.subjectTableWrapper = $('#faltacursar-subject-table_wrapper');
+		this.classesDiv = $('#faltacursar-classes-div');
+		this.subjectTable = $('#faltacursar-subject-table');
+	},
+
 	clickOnRow: function(e) {
 		var row=$(e.target).parent('tr');
 
 		if ($(row).hasClass('row_selected')) {
 			$(row).removeClass('row_selected');
-			this.resizeWhole();
         		
-			$('#faltacursar-classes-div').addClass('hidden');
+			$(this.subjectTableWrapper).addClass('whole')
+						.removeClass('half');
+		
+			$(this.classesDiv).addClass('hidden');
 		}
 		else {
-			$('.table tr.row_selected').removeClass('row_selected');
+			$(this.subjectTable).find('tr.row_selected')
+				.removeClass('row_selected');
 			$(row).addClass('row_selected');
-
-        		$('#faltacursar-classes-div').removeClass('hidden');
-			faltacursarClasseslistView.render([]);
 			
-			this.resizeFiftyfifty();
+			$(this.subjectTableWrapper).addClass('half')
+						.removeClass('whole');
+		
+        		$(this.classesDiv).removeClass('hidden');
+			$(this.classesDiv).addClass('almostHalf');	
+			faltacursarClasseslistView.resizeH();			
 		}
 	},
 
-	resizeY: function(hei, id) {
-		$(id).height(hei);
-	},
+	calculateTableScroll: function() {},
 
-	resizeFiftyfifty: function() {
-		var divH = $('#main-faltacursar-div').height()-1; //compensate 1px border
-
-		this.resizeY(divH/2, '#faltacursar-subject-table_wrapper');
-		this.resizeY(divH/2, '#faltacursar-classes-div');
+	resizeW: function() {
+		this.subjectDatatable.fnAdjustColumnSizing();
+		this.calculateTableScroll();
+		faltacursarClasseslistView.resizeW();
 	},
-
-	resizeWhole: function() {
-		var divH = $('#main-faltacursar-div').height();
-		this.resizeY(divH, '#faltacursar-subject-table_wrapper');
-	},
+	resizeH: function() {},
 
 	initJS: function() {
-		this.subjectDatatableView = new DatatableView({
-			sDom: 'ft',
-			el: '#faltacursar-subject-table'}
-		);
+		this.subjectDatatable = $('#faltacursar-subject-table').dataTable({
+			'sDom': 'ft',
+			'bPaginate': false,
+			'bScrollCollapse': true,
+			'sScrollY': '200px'	
+		});
+		
+		$('#faltacursar-subject-table_wrapper').addClass('whole');
 	},		
 
 	fetchStrings: function() {
@@ -93,7 +107,9 @@ var FaltacursarView = Backbone.View.extend({
 		this.$el.html(this.template(this.fetchData()));
 		this.initJS();
 
+		this.cache();
 		faltacursarClasseslistView.setElement('#faltacursar-classes-div');
+		faltacursarClasseslistView.render([]);
 	}
 });
 

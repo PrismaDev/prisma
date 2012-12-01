@@ -1,21 +1,11 @@
 @lightGrey: #eee;
 
-#faltacursar-subject-table_wrapper {
-	padding: 0;
-	margin: 0;
-}
-
 #faltacursar-classes-div {
-	padding: 0;
-	margin: 0;
-
+	border: solid 1px green;
 	border-top: solid 1px @lightGrey;
 }
 
 #main-faltacursar-div {
-	margin: 0;
-	padding: 0;
-
 	.table {
 		margin:0;
 		width: 100%;
@@ -26,6 +16,18 @@
 	}
 
 	div {
-		overflow: hidden;
+		overflow: auto;
 	}
+}
+
+div.half {
+	height: 50%;
+}
+
+div.almostHalf {
+	height: 49%;
+}
+
+div.whole {
+	height: 100%;
 }

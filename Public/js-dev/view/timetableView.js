@@ -23,6 +23,9 @@ var TimetableView = Backbone.View.extend({
 		return $(tbody).html();
 	},
 
+	resizeW: function() {},
+	resizeH: function() {},
+
 	fetchData: function() {
 		return {days: ['Segunda', 'Terca', 'Quarta', 'Quinta',
 				'Sexta', 'Sabado'],

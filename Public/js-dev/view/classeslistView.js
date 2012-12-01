@@ -1,16 +1,23 @@
 var ClasseslistView = Backbone.View.extend({
 	template: '',
-	datatableView: '',
+	classesDatatable: '',
+
+	resizeW: function() {
+		this.classesDatatable.fnAdjustColumnSizing();
+	},
+	resizeH: function() {},
 
 	initialize: function() {
 		this.template = _.template($('#classeslist-template').html());
 	},
 
 	initJS: function() {		
-		this.datatableView = new DatatableView({
-			el: this.$el.find('table'),
-			sDom: this.options.sDom
-		})
+		this.classesDatatable = this.$el.find('table').dataTable({
+			'sDom': this.options.sDom,
+			'bPaginate': false,
+			'bScrollCollapse': true,
+			'sScrollY': '200px'	
+		});
 	},
 
 	render: function(classesArray) {

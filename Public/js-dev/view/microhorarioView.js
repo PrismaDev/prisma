@@ -11,6 +11,9 @@ var MicrohorarioView = Backbone.View.extend ({
 
 	waitingImgURL: 'http://i.stack.imgur.com/FhHRx.gif',
 
+	resizeW: function() {},
+	resizeH: function() {},
+
 	events: {
 		"click #moreFiltersButton": "moreFilters",
 		"click #lessFiltersButton": "lessFilters",

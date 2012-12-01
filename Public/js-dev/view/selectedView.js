@@ -15,6 +15,9 @@ var SelectedView = Backbone.View.extend({
 		}
 	},
 
+	resizeW: function() {},
+	resizeH: function() {},
+
 	sortableConfig: function(selector) {
 		var me=this;
 

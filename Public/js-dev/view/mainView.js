@@ -23,6 +23,13 @@ var MainView = Backbone.View.extend({
 
 	defaultTab: 'faltacursar',		
 	
+	childrenViews: [
+		faltacursarView,
+		timetableView,
+		selectedView,
+		microhorarioView
+	],
+
 	//Cached variables
 	timetableDiv: '',
 	sidebarDiv: '',
@@ -36,7 +43,8 @@ var MainView = Backbone.View.extend({
 		var me = this;
 
 		$(window).resize(function() {
-			me.setTimetableWFromSidebarW();
+			me.resizeW();
+			me.resizeH();
 		});
 	},
 
@@ -48,8 +56,22 @@ var MainView = Backbone.View.extend({
 		this.tabsNav = $('#main-tabs-nav');
 	},
 
+	resizeW: function() {
+		this.setTimetableWFromSidebarW();
+		$.each(this.childrenViews, function(index, value) {
+			value.resizeW();
+		});
+	},
+
+	resizeH: function() {
+		this.equalMainDivsHeight();
+		$.each(this.childrenViews, function(index, value) {
+			value.resizeH();
+		});
+	},
+
 	//All the -1 in the widths of this function are due to
-	//jquery flooring its float – damn you, jquery
+	//jquery flooring its floats – damn you, jquery
 
 	setTimetableWFromSidebarW: function() {
 		var w = $(this.container).width();
@@ -123,8 +145,6 @@ var MainView = Backbone.View.extend({
 		faltacursarView.$el.height(innerH);
 		microhorarioView.$el.height(innerH);
 		selectedView.$el.height(innerH);
-
-		faltacursarView.resizeWhole();
 	},	
 
 	render: function() {
@@ -134,10 +154,10 @@ var MainView = Backbone.View.extend({
 		this.rendered=true;
 
 		this.cache();
-		this.equalMainDivsHeight();
-
 		this.initJS();
-		this.setTimetableWFromSidebarW();
+	
+		this.resizeH();
+		this.resizeW();
 	}
 });
 
