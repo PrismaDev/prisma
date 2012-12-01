@@ -16,7 +16,7 @@
 			</div>
 		</div>	
 				
-		<div class="row-fluid">
+		<div class="row-fluid" id="container-div">
 			<div id="main-sidebar-div">
 				<ul class="nav nav-tabs" id="main-tabs-nav">
 					<% _.each(tabs, function(tab) { %>

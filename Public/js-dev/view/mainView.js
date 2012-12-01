@@ -22,6 +22,13 @@ var MainView = Backbone.View.extend({
 		}},
 
 	defaultTab: 'faltacursar',		
+	
+	//Cached variables
+	timetableDiv: '',
+	sidebarDiv: '',
+	timetableTable: '',
+	container: '',
+	tabsNav: '',
 
 	initialize: function() {
 		this.template = _.template($('#main-template').html());
@@ -33,26 +40,33 @@ var MainView = Backbone.View.extend({
 		});
 	},
 
+	cache: function() {
+		this.timetableDiv = $('#main-timetable-div');
+		this.sidebarDiv = $('#main-sidebar-div');
+		this.timetableTable = $('#main-timetable-div table');
+		this.container = $('#container-div');
+		this.tabsNav = $('#main-tabs-nav');
+	},
+
 	//All the -1 in the widths of this function are due to
 	//jquery flooring its float – damn you, jquery
+
 	setTimetableWFromSidebarW: function() {
-		var w = $(".row-fluid").width();
+		var w = $(this.container).width();
+	
+		var sideW = $(this.sidebarDiv).outerWidth(true);
+		var inSideW = $(this.sidebarDiv).width();			
 		
-		var sideW = $('#main-sidebar-div').outerWidth(true);
-		var inSideW = $('#main-sidebar-div').width();			
-		
-		var timeW = $('#main-timetable-div').outerWidth(true);
-		var inTimeW = $('#main-timetable-div').width();
+		var timeW = $(this.timetableDiv).outerWidth(true);
+		var inTimeW = $(this.timetableDiv).width();
 		
 		var nW = w-sideW;	
-		$('#main-timetable-div').width(nW-(timeW-inTimeW)-1);
+		$(this.timetableDiv).width(nW-(timeW-inTimeW)-1);
 	
-		if ($('#main-timetable-div').width()<
-			$('#main-timetable-div table').width()) {
-			nW = w-timeW;
-			
-			$('#main-timetable-div').width(inTimeW);
-			$('#main-sidebar-div').width(nW-(sideW-inSideW)-1);
+		if ($(this.timetableDiv).width()<$(this.timetableTable).width()) {
+			nW = w-timeW;			
+			$(this.timetableDiv).width(inTimeW);
+			$(this.sidebarDiv).width(nW-(sideW-inSideW)-1);
 		}
 	},
 
@@ -60,11 +74,12 @@ var MainView = Backbone.View.extend({
 		var me = this;
 		var tabsW = 0;
 
-		$('#main-sidebar-div li').each(function() {
-			tabsW+=$(this).outerWidth();
+		$(this.tabsNav).find('li').each(function() {
+			tabsW+=$(this).outerWidth(true);
 		});
+		tabsW+=1 //another flooring problem
 			
-		$("#main-sidebar-div").resizable({
+		$(this.sidebarDiv).resizable({
 			handles: 'e, w',
 			minWidth: tabsW,
 			containment: "parent",
@@ -97,31 +112,32 @@ var MainView = Backbone.View.extend({
 		microhorarioView.render();
 
 		selectedView.setElement('#main-selected-div');
-		selectedView.render();
-		
-		this.equalMainDivsHeight();
+		selectedView.render();		
 	},
 
 	equalMainDivsHeight: function() {
-		var h = $('#main-timetable-div').height();
-		$('#main-sidebar-div').height(h);
+		var h = $(this.timetableDiv).height();
+		$(this.sidebarDiv).height(h);
 
-		var innerH = h-$('#main-tabs-nav').height();
-		$('#main-faltacursar-div').height(innerH);
-		$('#main-microhorario-div').height(innerH);
-		$('#main-selected-div').height(innerH);
+		var innerH = h-this.tabsNav.height();
+		faltacursarView.$el.height(innerH);
+		microhorarioView.$el.height(innerH);
+		selectedView.$el.height(innerH);
 
 		faltacursarView.resizeWhole();
 	},	
 
 	render: function() {
 		this.$el.html(this.template({tabs: this.tabs}));
-
+		
 		this.renderSubviews();
 		this.rendered=true;
 
+		this.cache();
+		this.equalMainDivsHeight();
+
 		this.initJS();
-		this.setTimetableWFromSidebarW();
+//		this.setTimetableWFromSidebarW();
 	}
 });
 
