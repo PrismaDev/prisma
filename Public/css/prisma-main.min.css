@@ -5,6 +5,10 @@
 .hidden {
   display: none;
 }
+body {
+  min-width: 1024px;
+  min-height: 768px;
+}
 .dataTables_filter {
   float: right;
   margin-right: 1%;
@@ -91,8 +95,6 @@ div.fieldContainer {
   width: 99%;
   height: 100%;
   overflow: auto;
-  margin: 0;
-  padding: 0;
   padding-right: 1%;
   padding-top: 0;
 }
