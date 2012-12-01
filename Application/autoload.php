@@ -20,7 +20,7 @@ function _autoload($classname) {
 	}
 	else
 	{
-		//TODO
+		throw new Exception('Class not found');
 	}
 }
 

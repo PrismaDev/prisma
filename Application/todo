@@ -1,20 +1,19 @@
 
 Pontos a definir ainda:
 
-- Como definir quais controller precisam de conexão com o banco, por ex
-  (dependencias)
+- Fazer controle de conexao do banco conseguir selecionar o esquema a ser utilizado (talvez seja necessario preparar uma consulta para tal)
 
-- Definir controle de acesso (router que vai fazer isso?)
+- Terminar de escrever controle de acesso (o prisma ira extender a classe Auth do Framework e cada controller definira qual tipo de usuario pode acessa-lo) 
 
-- Descobrir como informar aonde esta o modelo ao doctrine usando anotation
+- Implementar requests ao banco (faltacursar, microhorario, selecionadas, estatisticas, admin coisas)
+
+- Terminar de escrever scripts que populam a base (decidir se ficarao do lado da aplicacao ou do banco de dados - mais inclinado para o lado da aplicacao por motivos de manutencao).
 
 - Configurar APC pra melhorar performance
-
-- Setar cache no doctrine
-
-- Terminar de definir CSV e mandar pro sergio
 
 - Configurar apache para redirecionar para https
 
 - Turn on apache’s mod_deflate
+
+Obs: ao repopular a base com dados provinientes de arquivos pela conta de admin, não esquecer de usar transacao, para que o banco de dados não entre em um estado inconsistente.
 

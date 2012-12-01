@@ -3,17 +3,17 @@
 namespace Framework;
 
 use Framework\Router;
-use Doctrine\Bootstrap as Doctrine;
+use Framework\Database;
 
 Class Main
 {
 	public static function init()
 	{
-		Doctrine::createConnection(include 'Config/db.php', array());
+		Database::createConnection(include 'Config/db.php');
 
 		Router::init(include 'Config/router.php', $_SERVER['REQUEST_URI']);
 
-		Doctrine::closeConnection();
+		Database::closeConnection();
 	}
 }
 
