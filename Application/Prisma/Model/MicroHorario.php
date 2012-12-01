@@ -147,7 +147,7 @@ class MicroHorario
 			
 			if(strlen($horario[0]) == 3) //dia da semana
 			{
-				$parsed[$hor_len-1]['DiaSemana'] = $horario[0];
+				$parsed[$hor_len-1]['DiaSemana'] = Common::weekdayToInteger($horario[0]);
 
 				$parsed[$hor_len-1]['Horario'] = array();
 				list(

@@ -18,8 +18,8 @@ class Professor
 			throw new \Exception('['.$error[0].'/'.$error[1].']: '.$error[2]);
 		}
 
-		$sth = $dbh->prepare('SELECT "PK_Professor" FROM "Professor" WHERE "Nome" = \''.$data['Nome'].'\';');	
-		$sth->execute();
+		$sth = $dbh->prepare('SELECT "PK_Professor" FROM "Professor" WHERE "Nome" = :Nome;');	
+		$sth->execute($data);
 
 		if($result = $sth->fetch())
 		{
