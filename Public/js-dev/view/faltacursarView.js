@@ -79,11 +79,13 @@ var FaltacursarView = Backbone.View.extend({
 	},
 
 	initJS: function() {
+		var me = this;
+
 		this.subjectDatatable = $('#faltacursar-subject-table').dataTable({
 			'sDom': 'ft',
 			'bPaginate': false,
 			'bScrollCollapse': true,
-			'sScrollY': '200px'	
+			'sScrollY': '200px'
 		});
 		
 		$('#faltacursar-subject-table_wrapper').addClass('whole');

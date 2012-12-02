@@ -1,5 +1,6 @@
 var ClasseslistView = Backbone.View.extend({
 	template: '',
+	el: '',
 
 	//Cached
 	classesDatatable: '',
@@ -19,17 +20,9 @@ var ClasseslistView = Backbone.View.extend({
 
 	initialize: function() {
 		this.template = _.template($('#classeslist-template').html());
-		this.resizeH = this.options.resizeH;
 	},
 
-	initJS: function() {		
-		this.classesDatatable = this.$el.find('table').dataTable({
-			'sDom': this.options.sDom,
-			'bPaginate': false,
-			'bScrollCollapse': true,
-			'sScrollY': '200px'	
-		});
-	},
+	initJS: '',
 
 	render: function(classesArray) {
 		this.$el.html(this.template(classesArray));	
@@ -38,9 +31,10 @@ var ClasseslistView = Backbone.View.extend({
 	}
 });
 
-var microhorarioClasseslistView = new ClasseslistView({
-	sDom: 't',
+var MicrohorarioClasseslistView = ClasseslistView.extend({
 	resizeH: function() {
+		if (!this.$el)
+			return;
 		var h=0;
 		this.$el.siblings(':not(.hidden)').each(function(index) {
 			h+=$(this).outerHeight();
@@ -52,10 +46,34 @@ var microhorarioClasseslistView = new ClasseslistView({
 		this.$el.height(totH);
 		var headH = $(this.classesTableHead).outerHeight();
 		$(this.classesTableBody).height(totH-headH);
+	},
+
+	 initJS: function() {		
+		var me = this;
+		this.classesDatatable = this.$el.find('table').dataTable({
+			'sDom': 't',
+			'bPaginate': false,
+			'bScrollCollapse': true,
+			'sScrollY': '200px',	
+			'fnDrawCallback': me.resizeH
+		});
 	}
 });
-var faltacursarClasseslistView = new ClasseslistView({
-	sDom: 'ft',
+var microhorarioClasseslistView = new MicrohorarioClasseslistView();
+
+var FaltacursarClasseslistView = ClasseslistView.extend({
 	resizeH: function() {
+	},
+
+	 initJS: function() {		
+		var me = this;
+		this.classesDatatable = this.$el.find('table').dataTable({
+			'sDom': 'ft',
+			'bPaginate': false,
+			'bScrollCollapse': true,
+			'sScrollY': '200px',	
+			'fnDrawCallback': me.resizeH
+		});
 	}
 });
+var faltacursarClasseslistView = new FaltacursarClasseslistView();
