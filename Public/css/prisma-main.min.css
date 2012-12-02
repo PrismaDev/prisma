@@ -18,6 +18,7 @@ body {
 }
 .table {
   clear: both;
+  margin: 0;
 }
 tr.row_selected {
   background-color: #6bff9f;

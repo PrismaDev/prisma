@@ -11,8 +11,13 @@ var MicrohorarioView = Backbone.View.extend ({
 
 	waitingImgURL: 'http://i.stack.imgur.com/FhHRx.gif',
 
-	resizeW: function() {},
-	resizeH: function() {},
+	resizeW: function() {
+		microhorarioClasseslistView.resizeW();
+	},
+
+	resizeH: function() {
+		microhorarioClasseslistView.resizeH();
+	},
 
 	events: {
 		"click #moreFiltersButton": "moreFilters",
@@ -57,8 +62,10 @@ var MicrohorarioView = Backbone.View.extend ({
 		if (typeof data == undefined) data=[];
 
 		if (qStatus==this.queryStatus) {
-			microhorarioClasseslistView.render(data);
 			this.closeFilters();
+			microhorarioClasseslistView.render(data);
+			microhorarioClasseslistView.resizeH();
+			microhorarioClasseslistView.resizeW();
 			return;			
 		}
 
