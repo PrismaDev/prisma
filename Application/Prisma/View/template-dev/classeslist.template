@@ -1,10 +1,22 @@
 <script type="text/underscore" id="classeslist-template">
 	<table class="table table-bordered table-condensed">
 		<thead>
-			<th>Dummy</th>
-			<th>Table</th>
+			<th><%= subjectCodeLabel %></th>
+			<th><%= subjectNameLabel %></th>
+			<th><%= professorNameLabel %></th>
+			<th><%= scheduleLabel %></th>
+			<th><%= classCodeLabel %></th>
 		</thead>
 		<tbody>
+			<% _.each(classes, function(classO) { %>
+				<tr>
+					<td><%= classO.subjectCode %></td>
+					<td><%= classO.subjectName %></td>
+					<td><%= classO.professorName %></td>
+					<td><%= classO.schedule %></td>
+					<td><%= classO.code %></td>	
+				</tr>
+			<% }); %>
 		</tbody>
 	</table>
 </script>
