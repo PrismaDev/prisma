@@ -31,10 +31,13 @@ var ClasseslistView = Backbone.View.extend({
 			'sDom': this.options.sDom,
 			'bPaginate': false,
 			'bScrollCollapse': true,
-			'sScrollY': '100px',	
+			'sScrollY': '100px',
 			'fnDrawCallback': function(oSettings) {
 				me.resizeH();
+				console.log('Redraw - '+
+					$(me.classesTableBody).height());	
 			}
+			
 		});
 	},
 
@@ -89,8 +92,7 @@ var FaltacursarClasseslistView = ClasseslistView.extend({
 			$(this.classesTableBody).height();
 
 		$(this.classesTableBody).height(h-headerH-diff);
-		
-		console.log($(this.classesTableBody).height())
+		console.log($(this.classesTableBody))
 	},
 });
 var faltacursarClasseslistView = new FaltacursarClasseslistView({sDom: 'ft'});

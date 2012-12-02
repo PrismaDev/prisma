@@ -155,6 +155,9 @@ var FaltacursarView = Backbone.View.extend({
 		this.cache();
 		faltacursarClasseslistView.setElement('#faltacursar-classes-div');
 		faltacursarClasseslistView.render(this.testArray);
+
+		this.resizeH();
+		this.resizeW();
 	}
 });
 

@@ -33,6 +33,14 @@ tr.warning {
   width: 100%;
   border-top: solid 1px #eeeeee;
 }
+#faltacursar-classes-div .dataTables_scrollBody table {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+#faltacursar-classes-div .dataTables_scrollBody {
+  border: solid 1px red;
+}
 #main-faltacursar-div .table {
   margin: 0;
   width: 100%;
