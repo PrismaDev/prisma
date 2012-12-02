@@ -10,7 +10,21 @@ var MicrohorarioView = Backbone.View.extend ({
 	waitingStatus: 'waiting',
 
 	waitingImgURL: 'http://i.stack.imgur.com/FhHRx.gif',
-
+	testArray: [
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'}
+	],
+		
 	resizeW: function() {
 		microhorarioClasseslistView.resizeW();
 	},
@@ -97,8 +111,9 @@ var MicrohorarioView = Backbone.View.extend ({
 		
 		this.$resultsDiv = $('#microhorario-results');
 		microhorarioClasseslistView.setElement(this.$resultsDiv);		
+		microhorarioClasseslistView.render([]);
 
-		this.changeState(this.queryStatus);		
+		this.changeState(this.queryStatus, this.testArray);		
 	}
 });
 

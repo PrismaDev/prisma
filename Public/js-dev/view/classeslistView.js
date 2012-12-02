@@ -24,26 +24,40 @@ var ClasseslistView = Backbone.View.extend({
 
 	initJS: '',
 
+	fetchStrings: function() {
+		return {'subjectCodeLabel': 'Disciplina',
+			'subjectNameLabel': 'Nome da disciplina',
+			'professorNameLabel': 'Professor',
+			'classCodeLabel': 'Turma',
+			'scheduleLabel': 'Horarios'};
+	},
+
+	fetchData: function(classesArray) {
+		return $.extend({}, this.fetchStrings(),
+			{'classes': classesArray});
+	},
+	
 	render: function(classesArray) {
-		this.$el.html(this.template(classesArray));	
+		this.$el.html(this.template(
+			this.fetchData(classesArray)
+		));	
 		this.initJS();
 		this.cache();
 	}
 });
 
 var MicrohorarioClasseslistView = ClasseslistView.extend({
+	el: '',
 	resizeH: function() {
-		if (!this.$el)
-			return;
 		var h=0;
-		this.$el.siblings(':not(.hidden)').each(function(index) {
+		$(this.el).siblings(':not(.hidden)').each(function(index) {
 			h+=$(this).outerHeight();
 		});
 
-		var diff = this.$el.outerHeight()-this.$el.height();
-		var totH = this.$el.parent()-h-diff;
+		var diff = $(this.el).outerHeight()-$(this.el).height();
+		var totH = $(this.el).parent()-h-diff;
 		
-		this.$el.height(totH);
+		$(this.el).height(totH);
 		var headH = $(this.classesTableHead).outerHeight();
 		$(this.classesTableBody).height(totH-headH);
 	},
