@@ -11,6 +11,22 @@ var FaltacursarView = Backbone.View.extend({
 	subjectTableHeader: '',	
 	subjectTableBody: '',	
 
+	testArray: [
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
+		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'}
+	],
+
+
 	initialize: function() {
 		this.template = _.template($('#faltacursar-template').html());
 	},
@@ -52,9 +68,10 @@ var FaltacursarView = Backbone.View.extend({
 			this.calculateTableScroll();		
 
         		$(this.classesDiv).removeClass('hidden');
-			$(this.classesDiv).addClass('almostHalf');	
-			faltacursarClasseslistView.resizeH();			
-			faltacursarClasseslistView.resizeW();			
+			$(this.classesDiv).addClass('almostHalf');				
+
+			faltacursarClasseslistView.resizeH();
+			faltacursarClasseslistView.resizeW();
 		}
 	},
 
@@ -73,6 +90,7 @@ var FaltacursarView = Backbone.View.extend({
 		this.calculateTableScroll();
 		faltacursarClasseslistView.resizeW();
 	},
+
 	resizeH: function() {
 		this.calculateTableScroll();
 		faltacursarClasseslistView.resizeH();
@@ -136,7 +154,7 @@ var FaltacursarView = Backbone.View.extend({
 
 		this.cache();
 		faltacursarClasseslistView.setElement('#faltacursar-classes-div');
-		faltacursarClasseslistView.render([]);
+		faltacursarClasseslistView.render(this.testArray);
 	}
 });
 

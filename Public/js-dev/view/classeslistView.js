@@ -9,20 +9,34 @@ var ClasseslistView = Backbone.View.extend({
 
 	cache: function() {
 		this.classesTableHead = this.$('.dataTables_scrollHead');
+		console.log(this.classesTableHead);
 		this.classesTableBody = this.$('.dataTables_scrollBody');
+		console.log(this.classesTableBody);
 	},
 
 	resizeW: function() {
 		this.classesDatatable.fnAdjustColumnSizing(false);
 	},
 
-	resizeH: '',
+	resizeH: function() {},
 
 	initialize: function() {
 		this.template = _.template($('#classeslist-template').html());
 	},
 
-	initJS: '',
+	initJS: function() {		
+		var me = this;
+
+		this.classesDatatable = this.$el.find('table').dataTable({			
+			'sDom': this.options.sDom,
+			'bPaginate': false,
+			'bScrollCollapse': true,
+			'sScrollY': '100px',	
+			'fnDrawCallback': function(oSettings) {
+				me.resizeH();
+			}
+		});
+	},
 
 	fetchStrings: function() {
 		return {'subjectCodeLabel': 'Disciplina',
@@ -36,18 +50,18 @@ var ClasseslistView = Backbone.View.extend({
 		return $.extend({}, this.fetchStrings(),
 			{'classes': classesArray});
 	},
-	
+
 	render: function(classesArray) {
 		this.$el.html(this.template(
 			this.fetchData(classesArray)
 		));	
+
 		this.initJS();
 		this.cache();
 	}
 });
 
 var MicrohorarioClasseslistView = ClasseslistView.extend({
-	el: '',
 	resizeH: function() {
 		var h=0;
 		$(this.el).siblings(':not(.hidden)').each(function(index) {
@@ -60,34 +74,23 @@ var MicrohorarioClasseslistView = ClasseslistView.extend({
 		$(this.el).height(totH);
 		var headH = $(this.classesTableHead).outerHeight();
 		$(this.classesTableBody).height(totH-headH);
-	},
-
-	 initJS: function() {		
-		var me = this;
-		this.classesDatatable = this.$el.find('table').dataTable({
-			'sDom': 't',
-			'bPaginate': false,
-			'bScrollCollapse': true,
-			'sScrollY': '200px',	
-			'fnDrawCallback': me.resizeH
-		});
 	}
 });
-var microhorarioClasseslistView = new MicrohorarioClasseslistView();
+var microhorarioClasseslistView = new MicrohorarioClasseslistView({sDom: 't'});
 
 var FaltacursarClasseslistView = ClasseslistView.extend({
+	datatableFilter: '',	
+	
 	resizeH: function() {
-	},
+		var h = this.$el.height();
+		var headerH= this.$el.find('.dataTables_filter').outerHeight(true)+
+			$(this.classesTableHead).outerHeight(true);
+		var diff = $(this.classesTableBody).outerHeight(true)-
+			$(this.classesTableBody).height();
 
-	 initJS: function() {		
-		var me = this;
-		this.classesDatatable = this.$el.find('table').dataTable({
-			'sDom': 'ft',
-			'bPaginate': false,
-			'bScrollCollapse': true,
-			'sScrollY': '200px',	
-			'fnDrawCallback': me.resizeH
-		});
-	}
+		$(this.classesTableBody).height(h-headerH-diff);
+		
+		console.log($(this.classesTableBody).height())
+	},
 });
-var faltacursarClasseslistView = new FaltacursarClasseslistView();
+var faltacursarClasseslistView = new FaltacursarClasseslistView({sDom: 'ft'});

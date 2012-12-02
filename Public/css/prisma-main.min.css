@@ -30,6 +30,7 @@ tr.warning {
   background-color: #e8e36c;
 }
 #faltacursar-classes-div {
+  width: 100%;
   border-top: solid 1px #eeeeee;
 }
 #main-faltacursar-div .table {

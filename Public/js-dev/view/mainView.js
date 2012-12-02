@@ -46,8 +46,8 @@ var MainView = Backbone.View.extend({
 		var me = this;
 
 		$(window).resize(function() {
-			me.resizeW();
 			me.resizeH();
+			me.resizeW();
 		});
 	},
 
@@ -87,8 +87,8 @@ var MainView = Backbone.View.extend({
 		
 		var nW = w-sideW;	
 		$(this.timetableDiv).width(nW-(timeW-inTimeW)-1);
-	
-		if ($(this.timetableDiv).width()<$(this.timetableTable).width()) {
+		
+		if ($(this.timetableDiv).width()<$(this.timetableTable).outerWidth(true)) {
 			nW = w-timeW;			
 			$(this.timetableDiv).width(inTimeW);
 			$(this.sidebarDiv).width(nW-(sideW-inSideW)-1);
@@ -147,7 +147,7 @@ var MainView = Backbone.View.extend({
 		var h = $(this.timetableDiv).height();
 		$(this.sidebarDiv).height(h);
 
-		var innerH = h-this.tabsNav.height();
+		var innerH = h-$(this.tabsNav).height();
 		faltacursarView.$el.height(innerH);
 		microhorarioView.$el.height(innerH);
 		selectedView.$el.height(innerH);
@@ -162,8 +162,8 @@ var MainView = Backbone.View.extend({
 		this.cache();
 		this.initJS();
 
-		this.resizeW();
 		this.resizeH();
+		this.resizeW();
 	}
 });
 
