@@ -94,6 +94,13 @@ div.fieldContainer {
   width: 100%;
   height: 100%;
 }
+#main-timetable-div table tr {
+  width: 100%;
+  height: 100%;
+}
+#main-timetable-div table tr td {
+  height: 100%;
+}
 td.ttclass0 {
   padding: 0;
 }
