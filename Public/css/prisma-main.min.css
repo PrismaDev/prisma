@@ -90,6 +90,10 @@ div.fieldContainer {
   display: inline-block;
   text-align: center;
 }
+#main-timetable-div table {
+  width: 100%;
+  height: 100%;
+}
 #main-timetable-div div {
   padding: 0;
   margin: 0;
