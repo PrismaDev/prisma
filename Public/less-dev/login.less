@@ -2,18 +2,10 @@
 	LESS file for login page
 */
 
-@lightGrey: #eee;
-
-@defaultBorderRadius: 6px;
+@import "variables.less";
+@import "basics.less";
 
 @backgroundURL: '../img/logoZoadoPrisma.png';
-
-// Border Radius (from Bootstrap's mixins.less)
-.border-radius(@radius) {
-  -webkit-border-radius: @radius;
-     -moz-border-radius: @radius;
-          border-radius: @radius;
-}
 
 #login-container div {
 	background-color: @lightGrey;	

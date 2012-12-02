@@ -1,6 +1,17 @@
 /* 
 	LESS file for login page
 */
+.rightFloated {
+  float: right;
+  margin-right: 1%;
+}
+.hidden {
+  display: none;
+}
+body {
+  min-width: 1024px;
+  min-height: 768px;
+}
 #login-container div {
   background-color: #eeeeee;
   border: solid #eeeeee 1px;

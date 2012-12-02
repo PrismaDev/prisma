@@ -17,6 +17,7 @@ $(PROD)/prisma-main.min.css: main.less\
 				datatablesAdds.less\
 				faltacursar.less\
 				microhorario.less\
+				timetable.less\
 				selected.less
 	$(CC) $(CFLAGS) main.less > $@
 

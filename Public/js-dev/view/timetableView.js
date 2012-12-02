@@ -18,7 +18,22 @@ var TimetableView = Backbone.View.extend({
 				'horaInicial': 7,
 				'horaFinal': 11	
 			}]
+		},
+		{
+			'nome': 'B',
+			'horarios': [
+			{
+				'diaSemana': 1,
+				'horaInicial': 9,
+				'horaFinal': 10
+			},
+			{
+				'diaSemana': 2,
+				'horaInicial': 13,
+				'horaFinal': 15	
+			}]
 		}
+
 	],
 
 	initialize: function() {
@@ -79,13 +94,17 @@ var TimetableView = Backbone.View.extend({
 					continue;
 
 				var td = document.createElement('td');
-				td.innerHTML = ttmat[hour][day].string;
+				var div = document.createElement('div');
+
+				div.innerHTML = ttmat[hour][day].string;
 				
 				if (ttmat[hour][day].customClass)
-					$(td).addClass(ttmat[hour][day].customClass);
+					$(div).addClass(ttmat[hour][day].customClass);
 			
 				td.rowSpan=ttmat[hour][day].span;
-				$(tr).append(td);
+
+				td.appendChild(div);
+				tr.appendChild(td);
 			}
 			$(tbody).append(tr);
 		}
