@@ -90,6 +90,9 @@ div.fieldContainer {
   display: inline-block;
   text-align: center;
 }
+.ttclass0 {
+  background-color: green;
+}
 #main-sidebar-div {
   width: 40%;
   float: left;
