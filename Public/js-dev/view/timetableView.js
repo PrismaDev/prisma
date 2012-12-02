@@ -64,15 +64,12 @@ var TimetableView = Backbone.View.extend({
 				timetableMatrix[s][d].span=Number(e)-Number(s);
 				timetableMatrix[s][d].customClass='ttclass'+i;
 
-				console.log(timetableMatrix[s][d]);
-
 				for (var k=s+1; k<e; k++) {
 					timetableMatrix[k][d].span=0;
 					timetableMatrix[k][d].customClass='ttclass'+i;
 				}
 			}
 
-		console.log(timetableMatrix);
 		return timetableMatrix;
 	},
 
@@ -80,9 +77,7 @@ var TimetableView = Backbone.View.extend({
 		if (typeof classesArray == undefined)
 			classesArray=[];
 
-		console.log(classesArray);
-		var ttmat = this.processArray(classesArray);
-				
+		var ttmat = this.processArray(classesArray);		
 		var tbody = document.createElement('tbody');
 
 		for (var hour=this.startH; hour<this.endH; hour++) {
@@ -99,7 +94,7 @@ var TimetableView = Backbone.View.extend({
 				div.innerHTML = ttmat[hour][day].string;
 				
 				if (ttmat[hour][day].customClass)
-					$(div).addClass(ttmat[hour][day].customClass);
+					$(td).addClass(ttmat[hour][day].customClass);
 			
 				td.rowSpan=ttmat[hour][day].span;
 
