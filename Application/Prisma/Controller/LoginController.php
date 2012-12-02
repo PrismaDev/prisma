@@ -31,19 +31,25 @@ Class LoginController extends RestController
 			{
 				case 'Administrador':
 					Router::redirectRoute('/admin'); //TODO: verificar se esta correto
+					break;
 
 				case 'Coordenador':
 					Router::redirectRoute('/stats'); //TODO: verificar se esta correto
+					break;
 
 				case 'Aluno':
 					Router::redirectRoute('/term'); //TODO: pode encaminhar direto pra main
+					break;
 
 				default:
 					Router::redirectRoute('/login?invalidLogin');
+					break;
 			}
 		}
-
-		Router::redirectRoute('/login?invalidLogin');
+		else
+		{
+			Router::redirectRoute('/login?invalidLogin');
+		}
 	}
 }
 

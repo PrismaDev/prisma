@@ -9,20 +9,13 @@ class Auth
 {
 	public static function accessControl($type)
 	{
-		if(!isset($_COOKIE['type'])) 
+		if(isset($_COOKIE['type']) && $_COOKIE['type'] == $type && self::isLogged()) 
 		{
-			return false;
+			return true;
 		}
 
-		if($_COOKIE['type'] != $type) 
-		{
-			return false;
-		}
-
-		if(!isLogged())
-		{
-			self::accessDenied();
-		}
+		self::accessDenied();
+		return false;
 	}
 
 	public static function isLogged()
@@ -51,7 +44,7 @@ class Auth
 	{
 		$dbh = Database::getConnection();
 
-		$sth = $dbh->prepare('UPDATE "Usuario" SET "HashSessao"=? WHERE "PK_Login" = ? AND "Senha" = ? AND "FK_TipoUsuario" = (SELECT "PK_TipoUsuario" WHERE "Nome" = ?);');
+		$sth = $dbh->prepare('UPDATE "Usuario" SET "HashSessao"=? WHERE "PK_Login" = ? AND "Senha" = ? AND "FK_TipoUsuario" = (SELECT "PK_TipoUsuario" FROM "TipoUsuario" WHERE "Nome" = ?);');
 
 		$hash = self::makeHash($login, $passwd);
 
@@ -62,7 +55,7 @@ class Auth
 			$type,
 		));
 
-		if($sth->rowCount() > 0)
+		if($sth->rowcount() > 0)
 		{
 			return $hash;
 		}
@@ -79,7 +72,7 @@ class Auth
 	{
 		$dbh = Database::getConnection();
 
-		$sth = $dbh->prepare('SELCT 1 FROM "Usuario" WHERE "HashSessao"=?;');
+		$sth = $dbh->prepare('SELECT 1 FROM "Usuario" WHERE "HashSessao"=?;');
 		$sth->execute(array($hash));
 	
 		return $sth->fetch() != false;

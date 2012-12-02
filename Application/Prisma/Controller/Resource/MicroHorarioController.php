@@ -4,12 +4,15 @@ namespace Prisma\Controller\Resource;
 
 use Framework\RestController;
 use Prisma\Model\MicroHorario;
+use Prisma\Library\Auth;
 
 class MicroHorarioController extends RestController
 {
 	public function __construct()
 	{
 		parent::__construct('GET, POST');
+
+//		Auth::accessControl('Aluno');
 	}
 
 	public function performGet($url, $arguments, $accept) 
