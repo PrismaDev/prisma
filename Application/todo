@@ -7,6 +7,8 @@ Pontos a definir ainda:
 
 - Implementar requests ao banco (faltacursar, microhorario, selecionadas, estatisticas, admin coisas)
 
+- Implementar filtro do falta cursar
+
 - Terminar de escrever scripts que populam a base (decidir se ficarao do lado da aplicacao ou do banco de dados - mais inclinado para o lado da aplicacao por motivos de manutencao).
 
 - Configurar APC pra melhorar performance

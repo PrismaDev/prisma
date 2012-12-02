@@ -1,66 +1,65 @@
 <?php
 
-namespace Framework
+namespace Framework;
 
-class Auth
+use Framework\Router;
+
+abstract class Auth
 {
-	public static function verify($login, $passwd)
-	{
-		// TODO: implement database query for that 
-		$login_bd = 'prisma';
-		$passwd_bd = sha1('ptest');
+	private $uriToRedirect;
 
-		return $login == $login_bd && $passwd == $passwd_bd;
+	public function __construct($uriToRedirect)
+	{
+		$this->uriToRedirect = $uriToRedirect;
 	}
 
-	public static function isLogged()
+	abstract protected function checkAccount($login, $password);
+
+	abstract protected function checkSessionHash($login, $sessionHash);
+
+	public function isLogged($permission)
 	{
-		if(!isset($_SESSION['auth'])) return false;
+		if(!isset($_COOKIE['hash'])) return false;
+		if(!isset($_COOKIE['login'])) return false;
+		if(!isset($_COOKIE['type'])) return false;
 
-		$login = $_SESSION['auth']['login'];
-		$passwd = $_SESSION['auth']['passwd'];
+		$hashSession 	= $_COOKIE['sessionHash'];
+		$login 		= $_COOKIE['login'];
 
-		return verify($login, $passwd);
+		return $this->checkSessionHash($login, $hashSession);
 	}
 
-	public static function login($login, $passwd)
+	public function login($login, $passwd)
 	{
-		if(verify($login, $passwd))
+		list($success, $hash, $type) = $this->checkAccount($login, $passwd);
+
+		if($success)
 		{
-			$_SESSION = array();
-			$_SESSION['auth'] = array();
-			$_SESSION['auth']['login'] = $login;
-			$_SESSION['auth']['passwd'] = $passwd;
+			$expire = time()+(60*60*24*3); //expires within 3 days
+
+			setcookie('hash', $hash, $expire);
+			setcookie('login', $login, $expire);
+			setcookie('type', $type, $expire);
 
 			return true;
 		}
 		return false;
 	}
 
-	public static function logout()
+	public function logout()
 	{
-		session_unset();
-		session_destroy();
-		unset($_SESSION);
-		$_SESSION = array();
-	}
+		setcookie('hash', '', time()-3600);
+		setcookie('login', '', time()-3600);
+		setcookie('type', '', time()-3600);
 
-	/* -->> shall be handled by apache
-	public static function httpsCheck()
-	{
-		if ($_SERVER['HTTPS'] != 'on') { 
-		    $url = 'https://'. $_SERVER['SERVER_NAME'] . '/papelmanteiga/src'; 
-		    header('Location: $url'); 
-		    exit; 
-		}  
+		Router::redirectRoute('/');
 	}
-	*/
 
 	/*
-	public static function savePageLog()
+	public function savePageLog()
 	{
-		$sql = "INSERT INTO \"LogPagina\"(\"FK_CodUsuario\", \"CaminhoPagina\")
-			VALUES (".$_SESSION['auth']['Codigo'].", '".$_SERVER['SCRIPT_NAME']."');";
+		$sql = 'INSERT INTO \'LogPagina\'(\'FK_CodUsuario\', \'CaminhoPagina\')
+			VALUES ('.$_SESSION['auth']['Codigo'].', ''.$_SERVER['SCRIPT_NAME'].'');';
 			
 		@pg_query($sql);
 	}
