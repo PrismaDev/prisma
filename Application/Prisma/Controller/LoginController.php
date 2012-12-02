@@ -4,6 +4,8 @@ namespace Prisma\Controller;
 
 use Framework\RestController;
 use Framework\ViewLoader;
+use Framework\Router;
+use Prisma\Library\Auth;
 
 Class LoginController extends RestController
 {
@@ -19,9 +21,29 @@ Class LoginController extends RestController
 	
 	public function performPost($url, $arguments, $accept) 
 	{
-		return 'POST';
+		$login 	= $arguments['matricula'];
+		$passwd = sha1($arguments['senha']);
+		$type 	= $arguments['tipo'];
 
-		//TODO
+		if(Auth::login($login, $passwd, $type))
+		{
+			switch($type)
+			{
+				case 'Administrador':
+					Router::redirectRoute('/admin'); //TODO: verificar se esta correto
+
+				case 'Coordenador':
+					Router::redirectRoute('/stats'); //TODO: verificar se esta correto
+
+				case 'Aluno':
+					Router::redirectRoute('/term'); //TODO: pode encaminhar direto pra main
+
+				default:
+					Router::redirectRoute('/login?invalidLogin');
+			}
+		}
+
+		Router::redirectRoute('/login?invalidLogin');
 	}
 }
 

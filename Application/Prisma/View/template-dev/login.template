@@ -6,7 +6,8 @@
 	<hr>
 	<div class="row-fluid" id="login-container">
 		<div class="span3 offset2" id="loginForm">
-			<form name="loginForm" method="post" action="loginAction.php">
+			<form name="loginForm" method="post" action="/login">
+				<input type="hidden" name="tipo" value="Aluno" />
 				<label for="matricula"><%= str.get('matriculaLabel') %></label><input type="text" name="matricula" /><br />
 				<label for="senha"><%= str.get('passwordLabel') %></label><input type="password" name="senha" /><br />
 				<input class="btn btn-inverse rightFloated" type="submit" value="<%= str.get('submitButtonLabel') %>" />

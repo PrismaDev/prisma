@@ -14,6 +14,12 @@ return array(
 					'controller' => 'Prisma\Controller\LoginController',
 				),
 			),
+			'logout' => array(
+				'action' => array(
+					'type' => 'controller',
+					'controller' => 'Prisma\Controller\LogoutController',
+				),
+			),
 			'main' => array(
 				'action' => array(
 					'type' => 'controller',
