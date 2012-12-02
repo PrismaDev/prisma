@@ -31,6 +31,8 @@ class MicroHorario
 		$dbh = Database::getConnection();
 		$dbh->beginTransaction();
 
+		$dbh->exec('DELETE FROM "Turma" WHERE "PeriodoAno" = '.Common::getPeriodoAno().';');
+
 		while($row = self::csvRead($file))
 		{
 			if(count($row) < 6) continue; //skip meta data
