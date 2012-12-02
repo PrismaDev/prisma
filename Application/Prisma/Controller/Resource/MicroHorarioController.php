@@ -14,14 +14,14 @@ class MicroHorarioController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return 'it works';
+		return json_encode(MicroHorario::get());
 	}
 	
 	public function performPost($url, $arguments, $accept) 
 	{
 		if(!isset($_FILES['file'])) return 'error';
 
-		if(MicroHorario::save($_FILES['file']['tmp_name']))
+		if(MicroHorario::saveFromFile($_FILES['file']['tmp_name']))
 		{
 			return 'ok';
 		}
