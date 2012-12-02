@@ -100,11 +100,19 @@ div.fieldContainer {
 }
 #main-timetable-div table tr td {
   height: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
-td.ttclass0 {
+#main-timetable-div table tr td.text-top {
+  padding-top: 0px;
+  padding-bottom: 16px;
+  vertical-align: top;
+  text-align: right;
+}
+#main-timetable-div table tr td.ttclass0 {
   padding: 0;
 }
-td.ttclass0 div {
+#main-timetable-div table tr td.ttclass0 div {
   width: 97%;
   height: 99%;
   margin: auto;
@@ -116,10 +124,10 @@ td.ttclass0 div {
   border-color: #0000cc;
   text-align: center;
 }
-td.ttclass1 {
+#main-timetable-div table tr td.ttclass1 {
   padding: 0;
 }
-td.ttclass1 div {
+#main-timetable-div table tr td.ttclass1 div {
   width: 97%;
   height: 99%;
   margin: auto;

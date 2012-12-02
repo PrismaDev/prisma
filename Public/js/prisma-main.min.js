@@ -82,7 +82,7 @@ var TimetableView = Backbone.View.extend({
 
 		for (var hour=this.startH; hour<this.endH; hour++) {
 			var tr = document.createElement('tr');
-			$(tr).append('<td>'+hour+':00</td>');
+			$(tr).append('<td class="text-top">'+hour+':00</td>');
 
 			for (var day=0; day<this.ndays; day++) {
 				if (ttmat[hour][day].span==0)
@@ -110,23 +110,18 @@ var TimetableView = Backbone.View.extend({
 	resizeW: function() {},
 	resizeH: function() {},
 
-	fetchData: function() {
+	fetchData: function(classesArray) {
 		return {days: ['Segunda', 'Terca', 'Quarta', 'Quinta',
 				'Sexta', 'Sabado'],
 				startH: 7, endH: 23,
 				timetableBody: 
-					this.buildTableBody(this.testArray)		
+					this.buildTableBody(classesArray)		
 			};
 	},
 
-	returnTemplate: function() {
-		var template = _.template($('#timetable-template').html(),
-			this.fetchData());
-		return template;
-	},
-
-	render: function() {
-		this.$el.html(this.template(this.fetchData()));
+	render: function(classesArray) {
+		if (!classesArray) classesArray = this.testArray;
+		this.$el.html(this.template(this.fetchData(classesArray)));
 	}
 });
 
