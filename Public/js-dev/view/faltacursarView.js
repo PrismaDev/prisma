@@ -54,6 +54,7 @@ var FaltacursarView = Backbone.View.extend({
         		$(this.classesDiv).removeClass('hidden');
 			$(this.classesDiv).addClass('almostHalf');	
 			faltacursarClasseslistView.resizeH();			
+			faltacursarClasseslistView.resizeW();			
 		}
 	},
 
@@ -74,6 +75,7 @@ var FaltacursarView = Backbone.View.extend({
 	},
 	resizeH: function() {
 		this.calculateTableScroll();
+		faltacursarClasseslistView.resizeH();
 	},
 
 	initJS: function() {

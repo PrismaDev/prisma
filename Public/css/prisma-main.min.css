@@ -29,7 +29,6 @@ tr.warning {
   background-color: #e8e36c;
 }
 #faltacursar-classes-div {
-  border: solid 1px green;
   border-top: solid 1px #eeeeee;
 }
 #main-faltacursar-div .table {
@@ -84,12 +83,10 @@ div.fieldContainer {
 #main-sidebar-div {
   width: 40%;
   float: left;
-  border: solid 1px red;
 }
 #main-timetable-div {
   width: 60%;
   float: left;
-  border: solid 1px blue;
 }
 #main-faltacursar-div,
 #main-microhorario-div,
