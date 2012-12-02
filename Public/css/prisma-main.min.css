@@ -79,16 +79,21 @@ div.fieldContainer {
 }
 #main-selected-div ul {
   list-style-type: none;
-  background-color: #c0c0c0;
-  padding-left: 1%;
-  padding-top: 1%;
-  padding-bottom: 1%;
 }
-#main-selected-div ul li {
-  width: 27%;
+#main-selected-div ul.selectedSortable {
+  padding-top: 1%;
+}
+#main-selected-div ul.selectedSortable li {
+  width: 96%;
+  border: solid 1px #eeeeee;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  margin-top: 2%;
+  margin-left: 1%;
   margin-right: 1%;
-  display: inline-block;
-  text-align: center;
 }
 #main-timetable-div table {
   width: 100%;
