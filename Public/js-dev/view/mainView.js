@@ -87,7 +87,6 @@ var MainView = Backbone.View.extend({
 		
 		var nW = w-sideW;	
 		$(this.timetableDiv).width(nW-(timeW-inTimeW)-1);
-		$(this.sidebarDiv).width(inSideW);
 	
 		if ($(this.timetableDiv).width()<$(this.timetableTable).width()) {
 			nW = w-timeW;			
@@ -162,9 +161,9 @@ var MainView = Backbone.View.extend({
 
 		this.cache();
 		this.initJS();
-	
-		this.resizeH();
+
 		this.resizeW();
+		this.resizeH();
 	}
 });
 
