@@ -6,19 +6,22 @@ var MainView = Backbone.View.extend({
 			'li': 'main-faltacursar-li',
 			'div': 'main-faltacursar-div',
 			'str': '',
-			'href': '#faltacursar'
+			'href': '#faltacursar',
+			'view': faltacursarView
 		}, 
 		'microhorario': {
 			'li': 'main-microhorario-li',
 			'div': 'main-microhorario-div',
 			'str': '',
-			'href': '#microhorario'
+			'href': '#microhorario',
+			'view': microhorarioView
 		},
 		'selected': {
 			'li': 'main-selected-li',
 			'div': 'main-selected-div',
 			'str': '',
-			'href': '#selected'
+			'href': '#selected',
+			'view': selectedView
 		}},
 
 	defaultTab: 'faltacursar',		
@@ -84,6 +87,7 @@ var MainView = Backbone.View.extend({
 		
 		var nW = w-sideW;	
 		$(this.timetableDiv).width(nW-(timeW-inTimeW)-1);
+		$(this.sidebarDiv).width(inSideW);
 	
 		if ($(this.timetableDiv).width()<$(this.timetableTable).width()) {
 			nW = w-timeW;			
@@ -115,6 +119,9 @@ var MainView = Backbone.View.extend({
 
 		$('#'+this.tabs[tab].li).addClass('active');
 		$('#'+this.tabs[tab].div).addClass('active');
+	
+		this.tabs[tab].view.resizeW();
+		this.tabs[tab].view.resizeH();
 	},
 
 	fetchStrings: function() {
