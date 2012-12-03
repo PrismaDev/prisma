@@ -12,7 +12,7 @@ Class TermController extends RestController
 	{
 		parent::__construct('GET, POST');
 
-//		Auth::accessControl('Aluno');
+		Auth::accessControl('Aluno');
 	}
 
 	public function performGet($url, $arguments, $accept) 

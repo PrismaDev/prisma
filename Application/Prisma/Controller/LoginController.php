@@ -12,6 +12,8 @@ Class LoginController extends RestController
 	public function __construct()
 	{
 		parent::__construct('GET, POST');
+
+		Auth::logout();
 	}
 
 	public function performGet($url, $arguments, $accept) 
