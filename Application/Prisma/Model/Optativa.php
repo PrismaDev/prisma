@@ -21,8 +21,8 @@ class Optativa
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "FK_Disciplina" as "CodigoDisciplina", "AlunoDisciplinaApto"( ? , "FK_Disciplina") as "Apto"
-						FROM "OptativaDisciplina" WHERE "FK_Optativa" = ?;');
+		$sth = $dbh->prepare('SELECT "Aluno", "CodigoOptativa", "CodigoDisciplina", "Situacao", "Apto"
+					FROM "FaltaCursarOptativaDisciplina" WHERE "Aluno" = ? AND "CodigoOptativa" = ?;');
 		$sth->execute(array($login, $opID));
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
