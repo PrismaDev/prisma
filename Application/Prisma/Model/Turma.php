@@ -6,6 +6,18 @@ use Framework\Database;
 
 class Turma
 {
+	public static function getByDisciplina($discID)
+	{
+		$dbh = Database::getConnection();	
+
+		$sth = $dbh->prepare('SELECT t."PK_Turma", t."Codigo", t."PeriodoAno", t."Vagas", t."Destino", t."HorasDistancia", t."SHF", p."Nome" as "NomeProfessor" 
+						FROM "Turma" t INNER JOIN "Professor" p ON (t."FK_Professor" = p."PK_Professor")
+						WHERE "FK_Disciplina" = ?;');
+		$sth->execute(array($discID));
+
+		return $sth->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
 	public static function persist($data)
 	{
 		$dbh = Database::getConnection();	
@@ -18,6 +30,13 @@ class Turma
 			$error = $dbh->errorInfo();
 			throw new \Exception('['.$error[0].'/'.$error[1].']: '.$error[2]);
 		}
+
+		return self::getId($data);
+	}
+
+	public static function getId($data)
+	{
+		$dbh = Database::getConnection();	
 
 		$sth = $dbh->prepare('SELECT "PK_Turma" FROM "Turma" t WHERE t."FK_Disciplina" = :FK_Disciplina AND t."Codigo" = :Codigo AND t."PeriodoAno" = :PeriodoAno;');	
 		$sth->execute(array(
@@ -36,3 +55,4 @@ class Turma
 		}
 	}
 }
+

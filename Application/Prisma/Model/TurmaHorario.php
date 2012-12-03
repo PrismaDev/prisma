@@ -6,6 +6,18 @@ use Framework\Database;
 
 class TurmaHorario
 {
+	public static function getByTurma($turmaID)
+	{
+		$dbh = Database::getConnection();	
+
+		$sth = $dbh->prepare('SELECT "DiaSemana", "HoraInicial", "HoraFinal"
+					FROM "TurmaHorario" WHERE "FK_Turma" = ?;');
+		$sth->execute(array($turmaID));
+
+		return $sth->fetchAll(\PDO::FETCH_ASSOC);
+
+	}
+
 	public static function persist($data)
 	{
 		$dbh = Database::getConnection();	

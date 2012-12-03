@@ -33,16 +33,5 @@ class Database
 	{
 		self::$dbh = null;
 	}
-
-	public static function fetchAllFrom($name)
-	{
-		$sth = self::$dbh->prepare('SELECT * FROM "'.$name.'"');
-
-		$sth->execute();
-
-		if(!$sth) return false;
-
-		return $sth->fetchAll(\PDO::FETCH_ASSOC);
-	}
 }
 

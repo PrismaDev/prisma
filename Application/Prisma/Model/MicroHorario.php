@@ -12,10 +12,60 @@ use Prisma\Model\TurmaHorario;
 
 class MicroHorario
 {
-	public static function get($filters = array())
+	public static function get($login, $filters = array(), $limit = 0, $offset = 0)
 	{
-		//TODO: check if it is right
-		return Database::fetchAllFrom('MicroHorario');
+		$dbh = Database::getConnection();	
+
+		$sql = 'SELECT "CodigoDisciplina", "NomeDisciplina", "NomeProfessor", "Creditos", "PK_Turma",
+				"CodigoTurma", "Destino", "Vagas", "HorasDistancia", "SHF", "Situacao", "Apto" 
+					FROM "MicroHorarioAluno" WHERE "Aluno" = \''.$login.'\'';
+
+		$sql .= self::makeGetFilter($filters, 'CodigoDisciplina', 'like');
+		$sql .= self::makeGetFilter($filters, 'NomeDisciplina', 'like');
+		$sql .= self::makeGetFilter($filters, 'NomeProfessor', 'like');
+		$sql .= self::makeGetFilter($filters, 'Creditos', 'equal');
+		$sql .= self::makeGetFilter($filters, 'CodigoTurma', 'like');
+		$sql .= self::makeGetFilter($filters, 'Destino', 'like');
+		$sql .= self::makeGetFilter($filters, 'Vagas', 'equal');
+		$sql .= self::makeGetFilter($filters, 'HorasDistancia', 'equal');
+		$sql .= self::makeGetFilter($filters, 'SHF', 'equal');
+
+		if($limit > 0)
+		{
+			$sql .= ' LIMIT '.$limit." OFFSET ".$offset;
+		}
+
+		$sql .= ';';
+
+		$sth = $dbh->prepare($sql);
+		$sth->execute();
+
+		$rows = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$rowsLen = count($rows);
+
+		for($i = 0; $i < $rowsLen; ++$i)
+		{
+			$rows[$i]['Horarios'] = TurmaHorario::getByTurma($rows[$i]['PK_Turma']);
+		}
+
+		return $rows;
+	}
+
+	private static function makeGetFilter($filters, $column, $type)
+	{
+		if(isset($filters[$column]) && !empty($filters[$column]))
+		{
+			switch($type)
+			{
+				case 'like':
+					return ' AND "'.$column.'" ILIKE \'%'.$filters[$column].'%\'';
+
+				case 'equal':
+					return ' AND "'.$column.'" ='.$filters[$column];
+			}
+		}
+
+		return '';	
 	}
 
 	public static function saveFromFile($file)

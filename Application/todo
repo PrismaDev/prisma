@@ -1,15 +1,16 @@
 
 Pontos a definir ainda:
 
-- Fazer controle de conexao do banco conseguir selecionar o esquema a ser utilizado (talvez seja necessario preparar uma consulta para tal)
-
-- Terminar de escrever controle de acesso (o prisma ira extender a classe Auth do Framework e cada controller definira qual tipo de usuario pode acessa-lo) 
-
 - Implementar requests ao banco (faltacursar, microhorario, selecionadas, estatisticas, admin coisas)
 
 - Implementar filtro do falta cursar
 
-- Terminar de escrever scripts que populam a base (decidir se ficarao do lado da aplicacao ou do banco de dados - mais inclinado para o lado da aplicacao por motivos de manutencao).
+- Strings de tradução do sistema
+
+- Admin deve poder ler comentarios, subir arquivos e setar variaveis
+
+
+Fine tuning:
 
 - Configurar APC pra melhorar performance
 
@@ -17,5 +18,11 @@ Pontos a definir ainda:
 
 - Turn on apache’s mod_deflate
 
-Obs: ao repopular a base com dados provinientes de arquivos pela conta de admin, não esquecer de usar transacao, para que o banco de dados não entre em um estado inconsistente.
+
+Implementar modelo do prisma necessario:
+
+- Microhorario (filtro + apto + situacao)
+- Selecionada
+- Usuario
+- Comentario
 

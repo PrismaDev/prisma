@@ -32,6 +32,12 @@ return array(
 					'controller' => 'Prisma\Controller\TermController',
 				),
 			),
+			'test' => array(
+				'action' => array(
+					'type' => 'controller',
+					'controller' => 'Prisma\Controller\TestController',
+				),
+			),
 			'api' => array(
 				'subroutes' => array(
 					'microhorario' => array(

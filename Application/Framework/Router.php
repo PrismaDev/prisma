@@ -8,9 +8,7 @@ class Router
 {
 	public static function init($config, $uri)
 	{
-		/* remove get params */
-		$uri = explode('?', $uri);
-		$uri = $uri[0];
+		$uri = self::removeGetParam($uri);
 
 		$route = self::getRoute($config['routes'], $uri);
 
@@ -18,6 +16,12 @@ class Router
 		{
 			self::redirectRoute($config['errorRoute']);
 		}
+	}
+
+	private static function removeGetParam($uri)
+	{
+		$array = explode('?', $uri);
+		return $array[0];
 	}
 
 	private static function getRoute($route, $uri)
