@@ -8,9 +8,15 @@ var LoginView = Backbone.View.extend({
 		this.loginTemplate = _.template($('#login-template').html());
 	},
 
+	initJS: function() {
+		$('.dropdown-toggle').dropdown();
+	},
+	
 	render: function() {
-		this.$el.html(this.layoutTemplate);
+		this.$el.html(this.layoutTemplate({str: loginStringsModel}));
 		$('#content-div').html(this.loginTemplate({str: loginStringsModel}));
+		
+		this.initJS();
 	}
 });
 
