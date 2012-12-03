@@ -22,10 +22,6 @@ Fine tuning:
 Implementar modelo do prisma necessario:
 
 - Microhorario (filtro + apto + situacao)
-- Disciplina (apto + situacao)
-- Optativa
-- Turma
-- TurmaHorario
 - Selecionada
 - Usuario
 - Comentario

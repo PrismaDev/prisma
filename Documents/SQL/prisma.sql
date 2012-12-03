@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.5
 -- Dumped by pg_dump version 9.1.5
--- Started on 2012-12-03 13:19:10 BRST
+-- Started on 2012-12-03 14:16:27 BRST
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -258,8 +258,8 @@ CREATE TABLE "Disciplina" (
 ALTER TABLE public."Disciplina" OWNER TO prisma;
 
 --
--- TOC entry 186 (class 1259 OID 36297)
--- Dependencies: 1962 6
+-- TOC entry 185 (class 1259 OID 36297)
+-- Dependencies: 1961 6
 -- Name: FaltaCursarDisciplina; Type: VIEW; Schema: public; Owner: prisma
 --
 
@@ -299,8 +299,8 @@ CREATE TABLE "OptativaAluno" (
 ALTER TABLE public."OptativaAluno" OWNER TO prisma;
 
 --
--- TOC entry 187 (class 1259 OID 36301)
--- Dependencies: 1963 6
+-- TOC entry 186 (class 1259 OID 36301)
+-- Dependencies: 1962 6
 -- Name: FaltaCursarOptativa; Type: VIEW; Schema: public; Owner: prisma
 --
 
@@ -325,8 +325,8 @@ CREATE TABLE "OptativaDisciplina" (
 ALTER TABLE public."OptativaDisciplina" OWNER TO prisma;
 
 --
--- TOC entry 188 (class 1259 OID 36305)
--- Dependencies: 1964 6
+-- TOC entry 187 (class 1259 OID 36305)
+-- Dependencies: 1963 6
 -- Name: FaltaCursarOptativaDisciplina; Type: VIEW; Schema: public; Owner: prisma
 --
 
@@ -467,29 +467,13 @@ CREATE TABLE "Turma" (
 ALTER TABLE public."Turma" OWNER TO prisma;
 
 --
--- TOC entry 178 (class 1259 OID 36018)
--- Dependencies: 6
--- Name: TurmaHorario; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
---
-
-CREATE TABLE "TurmaHorario" (
-    "FK_Turma" bigint NOT NULL,
-    "DiaSemana" integer NOT NULL,
-    "HoraInicial" integer NOT NULL,
-    "HoraFinal" integer NOT NULL
-);
-
-
-ALTER TABLE public."TurmaHorario" OWNER TO prisma;
-
---
--- TOC entry 185 (class 1259 OID 36223)
--- Dependencies: 1960 6
+-- TOC entry 188 (class 1259 OID 36329)
+-- Dependencies: 1964 6
 -- Name: MicroHorario; Type: VIEW; Schema: public; Owner: prisma
 --
 
 CREATE VIEW "MicroHorario" AS
-    SELECT d."PK_Codigo" AS "Disciplina", d."Nome" AS "Nome da Disciplina", p."Nome" AS "Professor", d."Creditos", t."Codigo" AS "Turma", t."Destino", t."Vagas", th."DiaSemana", th."HoraInicial", th."HoraFinal", t."HorasDistancia" AS "Horas a Distancia", t."SHF" FROM "Disciplina" d, "Turma" t, "Professor" p, "TurmaHorario" th WHERE ((((t."FK_Disciplina")::text = (d."PK_Codigo")::text) AND (p."PK_Professor" = t."FK_Professor")) AND (th."FK_Turma" = t."PK_Turma"));
+    SELECT d."PK_Codigo" AS "CodigoDisciplina", d."Nome" AS "NomeDisciplina", p."Nome" AS "NomeProfessor", d."Creditos", t."Codigo" AS "CodigoTurma", t."PK_Turma", t."Destino", t."Vagas", t."HorasDistancia", t."SHF" FROM "Disciplina" d, "Turma" t, "Professor" p WHERE (((t."FK_Disciplina")::text = (d."PK_Codigo")::text) AND (p."PK_Professor" = t."FK_Professor"));
 
 
 ALTER TABLE public."MicroHorario" OWNER TO prisma;
@@ -561,6 +545,22 @@ CREATE TABLE "TipoUsuario" (
 
 
 ALTER TABLE public."TipoUsuario" OWNER TO prisma;
+
+--
+-- TOC entry 178 (class 1259 OID 36018)
+-- Dependencies: 6
+-- Name: TurmaHorario; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
+--
+
+CREATE TABLE "TurmaHorario" (
+    "FK_Turma" bigint NOT NULL,
+    "DiaSemana" integer NOT NULL,
+    "HoraInicial" integer NOT NULL,
+    "HoraFinal" integer NOT NULL
+);
+
+
+ALTER TABLE public."TurmaHorario" OWNER TO prisma;
 
 --
 -- TOC entry 161 (class 1259 OID 35689)
@@ -12013,7 +12013,7 @@ CREATE RULE "TurmaDuplicada" AS ON INSERT TO "Turma" WHERE (EXISTS (SELECT 1 FRO
 
 
 --
--- TOC entry 1961 (class 2618 OID 36235)
+-- TOC entry 1960 (class 2618 OID 36235)
 -- Dependencies: 178 178 178 178 178 178 178 2074
 -- Name: TurmaHorarioDuplicado; Type: RULE; Schema: public; Owner: prisma
 --
@@ -12023,7 +12023,7 @@ CREATE RULE "TurmaHorarioDuplicado" AS ON INSERT TO "TurmaHorario" WHERE (EXISTS
 
 --
 -- TOC entry 2039 (class 2606 OID 36267)
--- Dependencies: 172 1986 162 2074
+-- Dependencies: 172 162 1986 2074
 -- Name: FK_AlunoDisciplina_Aluno; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12033,7 +12033,7 @@ ALTER TABLE ONLY "AlunoDisciplina"
 
 --
 -- TOC entry 2040 (class 2606 OID 36272)
--- Dependencies: 173 172 2005 2074
+-- Dependencies: 2005 173 172 2074
 -- Name: FK_AlunoDisciplina_AlunoDisciplinaStatus; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12053,7 +12053,7 @@ ALTER TABLE ONLY "AlunoDisciplina"
 
 --
 -- TOC entry 2044 (class 2606 OID 36008)
--- Dependencies: 1986 177 162 2074
+-- Dependencies: 162 177 1986 2074
 -- Name: FK_AlunoTurmaSelecionada_Aluno; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12063,7 +12063,7 @@ ALTER TABLE ONLY "AlunoTurmaSelecionada"
 
 --
 -- TOC entry 2045 (class 2606 OID 36013)
--- Dependencies: 177 2013 176 2074
+-- Dependencies: 177 176 2013 2074
 -- Name: FK_AlunoTurmaSelecionada_Turma; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12073,7 +12073,7 @@ ALTER TABLE ONLY "AlunoTurmaSelecionada"
 
 --
 -- TOC entry 2036 (class 2606 OID 36154)
--- Dependencies: 162 2030 184 2074
+-- Dependencies: 2030 162 184 2074
 -- Name: FK_Aluno_Curso; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12083,7 +12083,7 @@ ALTER TABLE ONLY "Aluno"
 
 --
 -- TOC entry 2035 (class 2606 OID 36149)
--- Dependencies: 1983 161 162 2074
+-- Dependencies: 1983 162 161 2074
 -- Name: FK_Aluno_Usuario; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12113,7 +12113,7 @@ ALTER TABLE ONLY "OptativaAluno"
 
 --
 -- TOC entry 2048 (class 2606 OID 36292)
--- Dependencies: 2009 174 179 2074
+-- Dependencies: 179 2009 174 2074
 -- Name: FK_OptativaAluno_Optativa; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12123,7 +12123,7 @@ ALTER TABLE ONLY "OptativaAluno"
 
 --
 -- TOC entry 2050 (class 2606 OID 36068)
--- Dependencies: 180 171 2001 2074
+-- Dependencies: 171 2001 180 2074
 -- Name: FK_OptativaDisciplina_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12133,7 +12133,7 @@ ALTER TABLE ONLY "OptativaDisciplina"
 
 --
 -- TOC entry 2049 (class 2606 OID 36063)
--- Dependencies: 2009 174 180 2074
+-- Dependencies: 180 2009 174 2074
 -- Name: FK_OptativaDisciplina_Optativa; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12143,7 +12143,7 @@ ALTER TABLE ONLY "OptativaDisciplina"
 
 --
 -- TOC entry 2053 (class 2606 OID 36092)
--- Dependencies: 2001 183 171 2074
+-- Dependencies: 2001 171 183 2074
 -- Name: FK_PreRequisitoGrupoDisciplina_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12153,7 +12153,7 @@ ALTER TABLE ONLY "PreRequisitoGrupoDisciplina"
 
 --
 -- TOC entry 2052 (class 2606 OID 36087)
--- Dependencies: 183 182 2026 2074
+-- Dependencies: 182 2026 183 2074
 -- Name: FK_PreRequisitoGrupoDisciplina_PreRequisitoGrupo; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12163,7 +12163,7 @@ ALTER TABLE ONLY "PreRequisitoGrupoDisciplina"
 
 --
 -- TOC entry 2051 (class 2606 OID 36097)
--- Dependencies: 182 2001 171 2074
+-- Dependencies: 171 2001 182 2074
 -- Name: FK_PreRequisitoGrupo_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12173,7 +12173,7 @@ ALTER TABLE ONLY "PreRequisitoGrupo"
 
 --
 -- TOC entry 2037 (class 2606 OID 35888)
--- Dependencies: 164 161 1983 2074
+-- Dependencies: 1983 161 164 2074
 -- Name: FK_Sugestao_Usuario; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12183,7 +12183,7 @@ ALTER TABLE ONLY "Comentario"
 
 --
 -- TOC entry 2046 (class 2606 OID 36168)
--- Dependencies: 178 2013 176 2074
+-- Dependencies: 176 2013 178 2074
 -- Name: FK_TurmaHorario_Turma; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12193,7 +12193,7 @@ ALTER TABLE ONLY "TurmaHorario"
 
 --
 -- TOC entry 2042 (class 2606 OID 36211)
--- Dependencies: 1996 167 176 2074
+-- Dependencies: 176 1996 167 2074
 -- Name: FK_Turma_Professor; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12213,7 +12213,7 @@ ALTER TABLE ONLY "Usuario"
 
 --
 -- TOC entry 2043 (class 2606 OID 36216)
--- Dependencies: 176 2001 171 2074
+-- Dependencies: 2001 176 171 2074
 -- Name: PK_Turma_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -12221,7 +12221,7 @@ ALTER TABLE ONLY "Turma"
     ADD CONSTRAINT "PK_Turma_Disciplina" FOREIGN KEY ("FK_Disciplina") REFERENCES "Disciplina"("PK_Codigo") ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2012-12-03 13:19:10 BRST
+-- Completed on 2012-12-03 14:16:27 BRST
 
 --
 -- PostgreSQL database dump complete

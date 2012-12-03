@@ -20,7 +20,7 @@ Class TestController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return json_encode(FaltaCursar::getAll('oi'));
+		return json_encode(MicroHorario::get('',array()));
 	}
 }
 
