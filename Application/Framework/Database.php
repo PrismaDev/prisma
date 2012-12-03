@@ -42,7 +42,7 @@ class Database
 
 		if(!$sth) return false;
 
-		return $sth->fetchAll();
+		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}
 }
 

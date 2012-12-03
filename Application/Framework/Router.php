@@ -8,6 +8,10 @@ class Router
 {
 	public static function init($config, $uri)
 	{
+		/* remove get params */
+		$uri = explode('?', $uri);
+		$uri = $uri[0];
+
 		$route = self::getRoute($config['routes'], $uri);
 
 		if($route == null || !self::handleRoute($route))
