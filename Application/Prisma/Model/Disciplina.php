@@ -10,7 +10,7 @@ class Disciplina
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "PK_Codigo", "Nome", "Creditos" FROM "Disciplina";');
+		$sth = $dbh->prepare('SELECT "PK_Codigo" as "CodigoDisciplina", "Nome" as "NomeDisciplina", "Creditos" FROM "Disciplina";');
 		$sth->execute();
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
@@ -20,7 +20,7 @@ class Disciplina
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "Aluno", "Codigo", "Nome", "Creditos", "Situacao", "Tentativas", "Apto"
+		$sth = $dbh->prepare('SELECT "Aluno", "Codigo" as "CodigoDisciplina", "Nome", "Creditos", "Situacao", "Tentativas", "Apto"
 					FROM "FaltaCursarDisciplina" WHERE ad."FK_Aluno" = ?;');
 		$sth->execute(array($login));
 
@@ -31,7 +31,7 @@ class Disciplina
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "PK_Codigo", "Nome", "Creditos" FROM "Disciplina" WHERE "PK_Codigo" = ?;');
+		$sth = $dbh->prepare('SELECT "PK_Codigo" as "CodigoDisciplina", "Nome" as "NomeDisciplina", "Creditos" FROM "Disciplina" WHERE "PK_Codigo" = ?;');
 		$sth->execute(array($id));
 
 		return $sth->fetch(\PDO::FETCH_ASSOC);
