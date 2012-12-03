@@ -13,9 +13,16 @@
 		
 		border-collapse: separate;
 		border-spacing: 0px 15px;
+
+		tbody {
+			margin-top: 0;
+		}
+		
+		thead {
+			padding: 0;
+		}
 		
 		tr, thead {
-			margin-top: 1%;
 			height: 40px;
 			
 			td, th {
@@ -25,24 +32,28 @@
 				border: solid 1px @lightGrey;
 
 				text-align: center;
-			}
+			
 
-			td.radio {
-				width: 20px;
+				&.radio {
+					width: 20px;
 				
-				input {
-					margin: auto;
+					input {
+						margin: auto;
+					}
 				}
-			}
 
-			td.classDroppable {
-				height: 100%;
-				.shadow(2px,2px,4px);
-
-				div {
+				&.classDroppable {
 					height: 100%;
-					background-color: white;
-					vertical-align: middle;
+					.shadow(2px,2px,4px);
+
+					div {
+						height: 100%;
+						padding-top: @tdPadding;
+						padding-bottom: @tdPadding;
+						
+						background-color: white;
+						vertical-align: middle;
+					}
 				}
 			}
 		}

@@ -96,9 +96,14 @@ div.fieldContainer {
   border-collapse: separate;
   border-spacing: 0px 15px;
 }
+#main-selected-div table tbody {
+  margin-top: 0;
+}
+#main-selected-div table thead {
+  padding: 0;
+}
 #main-selected-div table tr,
 #main-selected-div table thead {
-  margin-top: 1%;
   height: 40px;
 }
 #main-selected-div table tr td,
@@ -113,23 +118,33 @@ div.fieldContainer {
   text-align: center;
 }
 #main-selected-div table tr td.radio,
-#main-selected-div table thead td.radio {
+#main-selected-div table thead td.radio,
+#main-selected-div table tr th.radio,
+#main-selected-div table thead th.radio {
   width: 20px;
 }
 #main-selected-div table tr td.radio input,
-#main-selected-div table thead td.radio input {
+#main-selected-div table thead td.radio input,
+#main-selected-div table tr th.radio input,
+#main-selected-div table thead th.radio input {
   margin: auto;
 }
 #main-selected-div table tr td.classDroppable,
-#main-selected-div table thead td.classDroppable {
+#main-selected-div table thead td.classDroppable,
+#main-selected-div table tr th.classDroppable,
+#main-selected-div table thead th.classDroppable {
   height: 100%;
   -moz-box-shadow: inset 2px 2px 4px #333333;
   -webkit-box-shadow: inset 2px 2px 4px #333333;
   box-shadow: inset 2px 2px 4px #333333;
 }
 #main-selected-div table tr td.classDroppable div,
-#main-selected-div table thead td.classDroppable div {
+#main-selected-div table thead td.classDroppable div,
+#main-selected-div table tr th.classDroppable div,
+#main-selected-div table thead th.classDroppable div {
   height: 100%;
+  padding-top: 8px;
+  padding-bottom: 8px;
   background-color: white;
   vertical-align: middle;
 }
