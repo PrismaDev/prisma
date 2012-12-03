@@ -14,8 +14,14 @@ class MicroHorario
 {
 	public static function get($filters = array())
 	{
-		//TODO: check if it is right
-		return Database::fetchAllFrom('MicroHorario');
+		$dbh = Database::getConnection();	
+
+		$sth = $dbh->prepare('SELECT "Disciplina", "Nome da Disciplina", "Professor", "Creditos", 
+				       "Turma", "Destino", "Vagas", "DiaSemana", "HoraInicial", "HoraFinal", 
+				       "Horas a Distancia", "SHF" FROM "MicroHorario"');
+		$sth->execute();
+
+		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
 	public static function saveFromFile($file)

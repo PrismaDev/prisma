@@ -6,6 +6,26 @@ use Framework\Database;
 
 class Disciplina
 {
+	public static function getAll()
+	{
+		$dbh = Database::getConnection();	
+
+		$sth = $dbh->prepare('SELECT * FROM "Disciplina";');
+		$sth->execute();
+
+		return $sth->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	public static function getById($id)
+	{
+		$dbh = Database::getConnection();	
+
+		$sth = $dbh->prepare('SELECT "PK_Codigo", "Nome", "Creditos" FROM "Disciplina" WHERE "PK_Codigo" = ?;');
+		$sth->execute(array($id));
+
+		return $sth->fetch(\PDO::FETCH_ASSOC);
+	}
+
 	public static function persist($data)
 	{
 		$dbh = Database::getConnection();	

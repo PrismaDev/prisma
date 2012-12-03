@@ -20,24 +20,28 @@ class Auth
 
 	public static function isLogged()
 	{
-		if(!isset($_COOKIE['hash'])) return false;
+		if(!isset($_COOKIE['session'])) return false;
 
-		return self::checkHash($_COOKIE['hash']);
+		return self::checkHash($_COOKIE['session']);
 	}
 
 	public static function login($login, $passwd, $type)
 	{
 		if($hash = self::checkAccount($login, $passwd, $type))
 		{
-			$expire = time()+(60*60*24*3); //expires within 3 days
-
-			setcookie('hash', $hash, $expire);
-			setcookie('login', $login, $expire);
-			setcookie('type', $type, $expire);
+			self::setSessionCookies($hash, $type);
 
 			return true;
 		}
 		return false;
+	}
+
+	protected static function setSessionCookies($hash, $type)
+	{
+			$expire = time()+(60*60*24*3); //expires within 3 days
+
+			setcookie('session', $hash, $expire);
+			setcookie('type', $type, $expire);
 	}
 
 	protected static function checkAccount($login, $passwd, $type)
@@ -87,8 +91,7 @@ class Auth
 
 	public static function logout()
 	{
-		setcookie('hash', '', time()-3600);
-		setcookie('login', '', time()-3600);
+		setcookie('session', '', time()-3600);
 		setcookie('type', '', time()-3600);
 	}
 
