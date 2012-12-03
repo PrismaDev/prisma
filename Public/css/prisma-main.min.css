@@ -148,6 +148,66 @@ div.fieldContainer {
   background-color: white;
   vertical-align: middle;
 }
+#main-selected-div table tr.row0 td {
+  padding: 0;
+}
+#main-selected-div table tr.row0 td div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #b4b4ff;
+  border: solid 1px;
+  border-color: #4e4eff;
+  text-align: center;
+}
+#main-selected-div table tr.row1 td {
+  padding: 0;
+}
+#main-selected-div table tr.row1 td div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #c8ffa0;
+  border: solid 1px;
+  border-color: #8dff3a;
+  text-align: center;
+}
+#main-selected-div table tr.row2 td {
+  padding: 0;
+}
+#main-selected-div table tr.row2 td div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #dcc8fa;
+  border: solid 1px;
+  border-color: #a16bf1;
+  text-align: center;
+}
+#main-selected-div table tr.row3 td {
+  padding: 0;
+}
+#main-selected-div table tr.row3 td div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #ffc878;
+  border: solid 1px;
+  border-color: #ff9e12;
+  text-align: center;
+}
 #main-timetable-div table {
   width: 100%;
   height: 100%;
@@ -177,9 +237,9 @@ div.fieldContainer {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  background-color: #9999ff;
+  background-color: #b4b4ff;
   border: solid 1px;
-  border-color: #0000cc;
+  border-color: #4e4eff;
   text-align: center;
 }
 #main-timetable-div table tr td.ttclass1 {
@@ -192,9 +252,39 @@ div.fieldContainer {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  background-color: #99ff99;
+  background-color: #c8ffa0;
   border: solid 1px;
-  border-color: #00cc00;
+  border-color: #8dff3a;
+  text-align: center;
+}
+#main-timetable-div table tr td.ttclass2 {
+  padding: 0;
+}
+#main-timetable-div table tr td.ttclass2 div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #dcc8fa;
+  border: solid 1px;
+  border-color: #a16bf1;
+  text-align: center;
+}
+#main-timetable-div table tr td.ttclass3 {
+  padding: 0;
+}
+#main-timetable-div table tr td.ttclass3 div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #ffc878;
+  border: solid 1px;
+  border-color: #ff9e12;
   text-align: center;
 }
 #main-sidebar-div {

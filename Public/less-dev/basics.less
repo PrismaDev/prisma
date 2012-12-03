@@ -35,3 +35,21 @@ body {
   }
 }
 
+.classMixin(@color) {
+	padding: 0;
+
+	div {
+		width: 97%; //to keep border even in min resize
+		height: 99%;
+		
+		margin: auto;
+
+		.border-radius(@classesBorderRadius);
+
+		background-color: @color;
+		border: solid 1px;
+		border-color: darken(@color,20%);
+
+		text-align: center;
+	}
+}

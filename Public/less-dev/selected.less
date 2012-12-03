@@ -44,7 +44,7 @@
 
 				&.classDroppable {
 					height: 100%;
-					.shadow(2px,2px,4px);
+					.shadow(2px,2px,4px);					
 
 					div {
 						height: 100%;
@@ -54,8 +54,25 @@
 						background-color: white;
 						vertical-align: middle;
 					}
+				
 				}
 			}
+		}
+
+		tr.row0 td {
+			.classMixin(@class0Colour);
+		}
+
+		tr.row1 td {
+			.classMixin(@class1Colour);
+		}
+
+		tr.row2 td {
+			.classMixin(@class2Colour);
+		}
+
+		tr.row3 td {
+			.classMixin(@class3Colour);
 		}
 	}
 }

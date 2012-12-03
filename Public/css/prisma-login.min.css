@@ -12,6 +12,18 @@ body {
   min-width: 1024px;
   min-height: 768px;
 }
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
 #login-container div {
   background-color: #eeeeee;
   border: solid #eeeeee 1px;

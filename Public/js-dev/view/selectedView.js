@@ -151,9 +151,6 @@ var SelectedView = Backbone.View.extend({
 				});
 				$(this).append($(ui.draggable));
 			},
-			out: function(event, ui) {
-			//	$(this).enable();
-			}
 		});
 	},	
 

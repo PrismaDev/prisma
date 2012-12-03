@@ -123,7 +123,7 @@
 </script>
 
 <script type="text/underscore-template" id="selected-row-template">
-	<tr>
+	<tr class="row<%= index %>">
 		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="1"
 				checked="checked"/>
