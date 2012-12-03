@@ -119,18 +119,19 @@ div.fieldContainer {
 #main-selected-div table tr td.radio input,
 #main-selected-div table thead td.radio input {
   margin: auto;
-  vertical-align: middle;
+}
+#main-selected-div table tr td.classDroppable,
+#main-selected-div table thead td.classDroppable {
+  height: 100%;
+  -moz-box-shadow: inset 2px 2px 4px #333333;
+  -webkit-box-shadow: inset 2px 2px 4px #333333;
+  box-shadow: inset 2px 2px 4px #333333;
 }
 #main-selected-div table tr td.classDroppable div,
 #main-selected-div table thead td.classDroppable div {
   height: 100%;
   background-color: white;
-}
-#main-selected-div table tr td.classDroppable.empty,
-#main-selected-div table thead td.classDroppable.empty {
-  -moz-box-shadow: inset 2px 2px 4px #333333;
-  -webkit-box-shadow: inset 2px 2px 4px #333333;
-  box-shadow: inset 2px 2px 4px #333333;
+  vertical-align: middle;
 }
 #main-timetable-div table {
   width: 100%;

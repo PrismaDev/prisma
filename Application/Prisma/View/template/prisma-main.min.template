@@ -132,7 +132,7 @@
 			<td class="classDroppable empty">
 		<% else { %>	
 			<td class="classDroppable">
-				<div class="optionSelected">
+				<div class="classDraggable">
 					<button type="button" class="close">×</button>
 					<%= options[0].subjectCode %> - <%= options[0].classCode %>
 				</div>
@@ -145,7 +145,7 @@
 			<td class="classDroppable empty">
 		<% else { %>	
 			<td class="classDroppable">
-				<div class="optionSelected">
+				<div class="classDraggable">
 					<button type="button" class="close">×</button>
 					<%= options[1].subjectCode %> - <%= options[1].classCode %>
 				</div>
@@ -158,7 +158,7 @@
 			<td class="classDroppable empty">
 		<% else { %>	
 			<td class="classDroppable">
-				<div class="optionSelected">
+				<div class="classDraggable">
 					<button type="button" class="close">×</button>
 					<%= options[2].subjectCode %> - <%= options[2].classCode %>
 				</div>

@@ -44,16 +44,15 @@ var SelectedView = Backbone.View.extend({
 			occupy+=$(this).width();
 		});
 
-		var perc = (100*occupy)/(3*w);
+		var perc = Math.ceil((100.*occupy)/(3.*w));
 		$tds.css('width',perc+'%');
 	},
 
 	deleteClass: function(e) {
 		var button = e.target;
 		$(button.parentNode.parentNode).addClass('empty');
-		button.parentNode.parentNode.removeChild(button.parentNode);
-
 		this.equalDroppables();
+		button.parentNode.parentNode.removeChild(button.parentNode);
 	},
 
 	buildRow: function(index, classArray) {
@@ -91,7 +90,7 @@ var SelectedView = Backbone.View.extend({
 		this.initJS();
 	},
 
-	initJS: function() {
+	sortableInit: function() {
 		var me=this;
 
 		this.$el.find('tbody.selectedSortable').sortable({
@@ -127,6 +126,34 @@ var SelectedView = Backbone.View.extend({
 				$('input[name="'+index+'"][value="'+value+'"]').prop('checked', true);
 			});
 		});
+	},
+
+	draggableInit: function() {
+		this.$el.find('div.classDraggable').draggable({
+			revert: 'invalid'
+		});
+	},
+
+	droppableInit: function() {
+		var $drop = this.$el.find('td.classDroppable').droppable({
+			drop: function(event, ui) {	
+				$(this).append($(ui.draggable));
+			},
+			out: function(event, ui) {
+			//	$(this).enable();
+				$(ui.draggable).css({
+					'position': 'relative',
+					'top':'0px','bottom':'0px',
+					'left':'0px','right': '0px'});
+				$(ui.draggable).removeClass('inplace');
+			}
+		});
+	},	
+
+	initJS: function() {
+		this.sortableInit();
+		this.draggableInit();
+		this.droppableInit();
 	}
 });
 
