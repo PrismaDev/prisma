@@ -2,11 +2,34 @@
 	ul {
 		list-style-type: none;
 
+		li {
+			.clearfix();
+			
+			div, span, input {
+				float: left;
+				margin: 1%;
+			}
+		}
+
+		div input {
+			float: left;
+			margin: 5px;
+		}
+
+		div.classDroppable {
+			border: solid 1px @lightGrey;	
+			height: 100%;
+
+			width: 15%;
+		}
+
 		&.selectedSortable {
 			padding-top: 1%;
 			
 			li {
 				width: 96%;
+				height: 30px;
+
 				border: solid 1px @lightGrey;	
 				
 				padding-top: @tdPadding;

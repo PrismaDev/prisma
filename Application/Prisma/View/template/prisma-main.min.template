@@ -122,6 +122,22 @@
 	</table>
 </script>
 
+<script type="text/underscore-template" id="selected-row-template">
+	<li>
+		<input type="radio" name="item+<%= index %>" value="1"
+			checked="checked"/>
+		<div class="classDroppable"></div>
+		<div class="selectedOr"><%= orStr %></div>
+		<input type="radio" name="item+<%= index %>" value="2"/>
+		<div class="classDroppable"></div>
+		<div class="selectedOr"><%= orStr %></div>
+		<input type="radio" name="item+<%= index %>" value="3"/>
+		<div class="classDroppable"></div>
+		<div class="selectedOr"><%= orStr %></div>
+		<input type="radio" name="item+<%= index %>" value="none"/>
+		<span><%= noneStr %></span>
+	</li>
+</script>
 <script type="text/underscore-template" id="faltacursar-template">
 	<table id="faltacursar-subject-table" class="table table-bordered table-condensed">
 		<thead>

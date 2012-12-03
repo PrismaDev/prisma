@@ -22,5 +22,6 @@ $(PROD)/prisma-main.min.template: classeslist.template \
 				main.template \
 				microhorario.template \
 				timetable.template \
+				selected.template \
 				faltacursar.template
 	cat > $@ $^
