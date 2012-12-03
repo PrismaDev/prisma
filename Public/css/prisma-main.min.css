@@ -105,6 +105,7 @@ div.fieldContainer {
 #main-selected-div table thead td,
 #main-selected-div table tr th,
 #main-selected-div table thead th {
+  padding: 0px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -116,8 +117,16 @@ div.fieldContainer {
   margin: auto;
   vertical-align: middle;
 }
-#main-selected-div table td.classDroppable {
-  width: 30%;
+#main-selected-div table tr td.classDroppable div,
+#main-selected-div table thead td.classDroppable div {
+  height: 100%;
+  background-color: white;
+}
+#main-selected-div table tr td.classDroppable.empty,
+#main-selected-div table thead td.classDroppable.empty {
+  -moz-box-shadow: inset 2px 2px 4px #333333;
+  -webkit-box-shadow: inset 2px 2px 4px #333333;
+  box-shadow: inset 2px 2px 4px #333333;
 }
 #main-timetable-div table {
   width: 100%;

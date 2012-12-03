@@ -128,15 +128,42 @@
 			<input type="radio" name="item<%= index %>" value="1"
 				checked="checked"/>
 		</td>
-		<td class="classDroppable"></td>
+		<% if (options[0]==undefined) %>
+			<td class="classDroppable empty">
+		<% else { %>	
+			<td class="classDroppable">
+				<div class="optionSelected">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					<%= options[0].subjectCode %> - <%= options[0].classCode %>
+				</div>
+		<% } %>
+		</td>
 		<td>
 			<input type="radio" name="item<%= index %>" value="2"/>
 		</td>
-		<td class="classDroppable"></td>
+		<% if (options[1]==undefined) %>
+			<td class="classDroppable empty">
+		<% else { %>	
+			<td class="classDroppable">
+				<div class="optionSelected">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					<%= options[1].subjectCode %> - <%= options[1].classCode %>
+				</div>
+		<% } %>
+		</td>
 		<td>
 			<input type="radio" name="item<%= index %>" value="3"/>
 		</td>
-		<td class="classDroppable"></td>
+		<% if (options[2]==undefined) %>
+			<td class="classDroppable empty">
+		<% else { %>	
+			<td class="classDroppable">
+				<div class="optionSelected">
+					<button type="button" class="close" data-dismiss="alert">×</button>
+					<%= options[2].subjectCode %> - <%= options[2].classCode %>
+				</div>
+		<% } %>
+		</td>
 		<td>
 			<input type="radio" name="item<%= index %>" value="none"/>
 		</td>

@@ -1,3 +1,9 @@
+.shadow(@v, @h, @spread) {
+   -moz-box-shadow:    inset @v @h @spread #333;
+   -webkit-box-shadow: inset @v @h @spread #333;
+   box-shadow:         inset @v @h @spread #333;
+}
+
 #main-selected-div {
 	table {
 		width: 98%;
@@ -13,6 +19,8 @@
 			height: 40px;
 			
 			td, th {
+				padding: 0px;
+
 				.border-radius(4px);
 				border: solid 1px @lightGrey;
 
@@ -23,10 +31,17 @@
 				margin: auto;
 				vertical-align: middle;
 			}
-		}
 
-		td.classDroppable {
-			width: 30%;
+			td.classDroppable {
+				div {
+					height: 100%;
+					background-color: white;
+				}
+
+				&.empty {
+					.shadow(2px,2px,4px);
+				}
+			}
 		}
 	}
 }

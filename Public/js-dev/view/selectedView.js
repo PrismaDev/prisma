@@ -2,6 +2,30 @@ var SelectedView = Backbone.View.extend({
 	templateRow: '',
 	templateTable: '',
 
+	testArray: [
+		[
+			{subjectCode: 'aaa', classCode: 'bbb'},
+			{subjectCode: 'aaa', classCode: 'bbb'}
+		],
+		[
+			{subjectCode: 'aaa', classCode: 'bbb'}
+		],
+		[
+			{subjectCode: 'aaa', classCode: 'bbb'},
+			{subjectCode: 'aaa', classCode: 'bbb'},
+			{subjectCode: 'aaa', classCode: 'bbb'}
+		],
+		[
+			{subjectCode: 'aaa', classCode: 'bbb'},
+			{subjectCode: 'aaa', classCode: 'bbb'}
+		],
+		[
+			{subjectCode: 'aaa', classCode: 'bbb'},
+			{subjectCode: 'aaa', classCode: 'bbb'},
+			{subjectCode: 'aaa', classCode: 'bbb'}
+		]
+	],
+
 	initialize: function() {
 		this.templateRow = _.template($('#selected-row-template').html());
 		this.templateTable = _.template($('#selected-table-template').html());
@@ -46,7 +70,10 @@ var SelectedView = Backbone.View.extend({
 	},
 
 	buildRow: function(index, classArray) {
-		return	this.templateRow({'index': index});
+		return	this.templateRow({
+			'index': index,
+			'options': classArray
+		});
 	},
 
 	resizeH: function() {},
@@ -56,7 +83,7 @@ var SelectedView = Backbone.View.extend({
 		this.$el.html(this.templateTable(this.fetchStrings()));
 		var tbody = this.$el.find('tbody');
 
-		for (var i=0; i<7; i++)
+		for (var i=0; i<rowsArray.length; i++)
 			$(tbody).append(this.buildRow(i,rowsArray[i]));
 	},
 
@@ -68,26 +95,7 @@ var SelectedView = Backbone.View.extend({
 	},
 
 	fetchData: function() { //this will be a model function
-		return [
-			[
-				{subcode: 'ENG1232',
-				classcode: '3VA'},
-				{subcode: 'ENG1232',
-				classcode: '3VA'}
-			],
-			[
-				{subcode: 'ENG1232',
-				classcode: '3VA'}
-			],
-			[	
-				{subcode: 'ENG1232',
-				classcode: '3VA'},
-				{subcode: 'ENG1232',
-				classcode: '3VA'},
-				{subcode: 'ENG1232',
-				classcode: '3VA'}
-			]
-		];
+		return this.testArray;
 	},
 
 	render: function() {
