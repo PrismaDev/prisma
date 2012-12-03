@@ -89,51 +89,35 @@ div.fieldContainer {
   float: left;
   padding-right: 2%;
 }
-#main-selected-div ul {
-  list-style-type: none;
-}
-#main-selected-div ul li {
-  *zoom: 1;
-}
-#main-selected-div ul li:before,
-#main-selected-div ul li:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-#main-selected-div ul li:after {
-  clear: both;
-}
-#main-selected-div ul li div,
-#main-selected-div ul li span,
-#main-selected-div ul li input {
-  float: left;
-  margin: 1%;
-}
-#main-selected-div ul div input {
-  float: left;
-  margin: 5px;
-}
-#main-selected-div ul div.classDroppable {
-  border: solid 1px #eeeeee;
-  height: 100%;
-  width: 15%;
-}
-#main-selected-div ul.selectedSortable {
-  padding-top: 1%;
-}
-#main-selected-div ul.selectedSortable li {
-  width: 96%;
-  height: 30px;
-  border: solid 1px #eeeeee;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+#main-selected-div table {
+  width: 98%;
+  margin: auto;
   margin-top: 2%;
-  margin-left: 1%;
-  margin-right: 1%;
+  border-collapse: separate;
+  border-spacing: 0px 15px;
+}
+#main-selected-div table tr,
+#main-selected-div table thead {
+  margin-top: 1%;
+  height: 40px;
+}
+#main-selected-div table tr td,
+#main-selected-div table thead td,
+#main-selected-div table tr th,
+#main-selected-div table thead th {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  border: solid 1px #eeeeee;
+  text-align: center;
+}
+#main-selected-div table tr td input,
+#main-selected-div table thead td input {
+  margin: auto;
+  vertical-align: middle;
+}
+#main-selected-div table td.classDroppable {
+  width: 30%;
 }
 #main-timetable-div table {
   width: 100%;

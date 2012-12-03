@@ -1,46 +1,32 @@
 #main-selected-div {
-	ul {
-		list-style-type: none;
-
-		li {
-			.clearfix();
+	table {
+		width: 98%;
+		
+		margin: auto;
+		margin-top: 2%;		
+		
+		border-collapse: separate;
+		border-spacing: 0px 15px;
+		
+		tr, thead {
+			margin-top: 1%;
+			height: 40px;
 			
-			div, span, input {
-				float: left;
-				margin: 1%;
+			td, th {
+				.border-radius(4px);
+				border: solid 1px @lightGrey;
+
+				text-align: center;
+			}
+
+			td input {
+				margin: auto;
+				vertical-align: middle;
 			}
 		}
 
-		div input {
-			float: left;
-			margin: 5px;
-		}
-
-		div.classDroppable {
-			border: solid 1px @lightGrey;	
-			height: 100%;
-
-			width: 15%;
-		}
-
-		&.selectedSortable {
-			padding-top: 1%;
-			
-			li {
-				width: 96%;
-				height: 30px;
-
-				border: solid 1px @lightGrey;	
-				
-				padding-top: @tdPadding;
-				padding-bottom: @tdPadding;
-
-				.border-radius(@defaultBorderRadius);
-					
-				margin-top: 2%;
-				margin-left: 1%;
-				margin-right: 1%;
-			}
+		td.classDroppable {
+			width: 30%;
 		}
 	}
 }

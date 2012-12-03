@@ -1,34 +1,70 @@
 var SelectedView = Backbone.View.extend({
-	template: '',
+	templateRow: '',
+	templateTable: '',
 
 	initialize: function() {
-		this.template = _.template($('#selected-row-template').html());
+		this.templateRow = _.template($('#selected-row-template').html());
+		this.templateTable = _.template($('#selected-table-template').html());
 	},
 
 	initJS: function() {
-		this.$el.find('ul.selectedSortable').sortable();
+		var me=this;
+
+		this.$el.find('tbody.selectedSortable').sortable({
+			//Based on http://stackoverflow.com/questions/1307705/jquery-ui-sortable-with-table-and-tr-width/1372954#1372954
+	
+			helper: function(e, tr) {
+				var $originals = tr.children();
+    				var $helper = tr.clone();
+
+				$helper.children().each(function(index)
+    				{
+      					$(this).width($originals.eq(index).width())
+    					$(this).height($originals.eq(index).height());
+				});
+    				return $helper;
+  			},	
+		
+			//Based http://www.ilovecolors.com.ar/preserving-radio-button-checked-state-during-drag-and-drop-jquery/
+			start: function (e, ui) {
+        			var radio_checked= {};
+            
+				me.$el.find('input[type="radio"]', this).each(function(){
+					if($(this).is(':checked'))
+						radio_checked[$(this).attr('name')] = $(this).val();
+					$(document).data('radio_checked', radio_checked);
+				});
+
+			}
+		}).bind('sortstop', function (event, ui) {
+			var radio_restore = $(document).data('radio_checked');
+
+			$.each(radio_restore, function(index, value){
+				$('input[name="'+index+'"][value="'+value+'"]').prop('checked', true);
+			});
+		});
 	},
 
 	buildRow: function(index, classArray) {
-		return this.template({'index': index,
-				'orStr': 'OU',
-				'noneStr': 'N/A'});
+		return	this.templateRow({'index': index});
 	},
 
 	resizeH: function() {},
 	resizeW: function() {},
 
 	buildSelected: function(rowsArray) {
-		var ul = document.createElement('ul');
-		$(ul).addClass('selectedSortable');
-		
-		var l = rowsArray.length;
-		rowsArray[l]=[];
+		this.$el.html(this.templateTable(this.fetchStrings()));
+		var tbody = this.$el.find('tbody');
 
 		for (var i=0; i<7; i++)
-			$(ul).append(this.buildRow(i,rowsArray[i]));
+			$(tbody).append(this.buildRow(i,rowsArray[i]));
+	},
 
-		return ul;
+	fetchStrings: function() {
+		return {'option1Label': '1a opcao',
+			'option2Label': '2a opcao',
+			'option3Label': '3a opcao',
+			'noneLabel': 'N/A'};
 	},
 
 	fetchData: function() { //this will be a model function
@@ -56,7 +92,7 @@ var SelectedView = Backbone.View.extend({
 
 	render: function() {
 		var data = this.fetchData();
-		this.$el.html(this.buildSelected(data));
+		this.buildSelected(data);
 		this.initJS();
 	}
 });
