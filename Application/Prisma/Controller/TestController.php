@@ -8,6 +8,7 @@ use Prisma\Model\MicroHorario;
 use Prisma\Model\FaltaCursar;
 use Prisma\Model\Disciplina;
 use Prisma\Model\Optativa;
+use Prisma\Model\Selecionada;
 use Prisma\Model\Turma;
 use Prisma\Model\TurmaHorario;
 
@@ -20,7 +21,13 @@ Class TestController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return json_encode(MicroHorario::get('aluno',array('NomeDisciplina'=>'prog')));
+		Selecionada::persist(array(
+			'FK_Aluno' => 'aluno',
+			'FK_Turma' => 3,
+			'Opcao' => 4,
+			'NoLinha' => 5
+		));
+		return json_encode(Selecionada::get('aluno'));
 	}
 }
 
