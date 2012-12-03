@@ -20,7 +20,7 @@ Class TestController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return json_encode(MicroHorario::get('',array()));
+		return json_encode(MicroHorario::get('aluno',array('NomeDisciplina'=>'prog')));
 	}
 }
 

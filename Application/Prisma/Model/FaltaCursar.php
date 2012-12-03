@@ -23,14 +23,16 @@ class FaltaCursar
 	public static function getDisciplinas($login)
 	{
 		$disciplinas = Disciplina::getByUserDepend($login);
+		$disciplinasSize = count($disciplinas);
 		
-		foreach($disciplinas as $disciplina)
+		for($i = 0; $i < $disciplinasSize; ++$i)
 		{
-			$disciplina['turmas'] = Turma::getByDisciplina($disciplina['CodigoDisciplina']);
+			$disciplinas[$i]['turmas'] = Turma::getByDisciplina($disciplina[$i]['CodigoDisciplina']);
+			$disciplinaSize = count($disciplinas[$i]);
 
-			foreach($disciplina['turmas'] as $turma)
+			for($j = 0; $j < $disciplinaSize; ++$j)
 			{
-				$turma['horarios'] = TurmaHorario::getByTurma($turma['PK_Turma']);
+				$discipinas[$i][$j]['horarios'] = TurmaHorario::getByTurma($discipinas[$i][$j]['PK_Turma']);
 			}
 		}
 
@@ -40,10 +42,11 @@ class FaltaCursar
 	public static function getOptativas($login)
 	{
 		$optativas = Optativa::getByUserDepend($login);
+		$optativasSize = count($optativas);
 
-		foreach($optativas as $optativa)
+		for($i = 0; $i < $optativasSize; ++$i)
 		{
-			$optativa['disciplinas'] = Optativa::getDisciplinas($login, $optativa['CodigoOptativa']);
+			$optativas[$i]['disciplinas'] = Optativa::getDisciplinas($login, $optativas[$i]['CodigoOptativa']);
 		}
 
 		return $optativas;

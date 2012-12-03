@@ -17,8 +17,8 @@ class MicroHorario
 		$dbh = Database::getConnection();	
 
 		$sql = 'SELECT "CodigoDisciplina", "NomeDisciplina", "NomeProfessor", "Creditos", "PK_Turma",
-						"CodigoTurma", "Destino", "Vagas", "HorasDistancia", "SHF"
-					FROM "MicroHorario" WHERE true';
+				"CodigoTurma", "Destino", "Vagas", "HorasDistancia", "SHF", "Situacao", "Apto" 
+					FROM "MicroHorarioAluno" WHERE "Aluno" = \''.$login.'\'';
 
 		$sql .= self::makeGetFilter($filters, 'CodigoDisciplina', 'like');
 		$sql .= self::makeGetFilter($filters, 'NomeDisciplina', 'like');
