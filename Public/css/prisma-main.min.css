@@ -112,8 +112,12 @@ div.fieldContainer {
   border: solid 1px #eeeeee;
   text-align: center;
 }
-#main-selected-div table tr td input,
-#main-selected-div table thead td input {
+#main-selected-div table tr td.radio,
+#main-selected-div table thead td.radio {
+  width: 20px;
+}
+#main-selected-div table tr td.radio input,
+#main-selected-div table thead td.radio input {
   margin: auto;
   vertical-align: middle;
 }

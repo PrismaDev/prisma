@@ -124,7 +124,7 @@
 
 <script type="text/underscore-template" id="selected-row-template">
 	<tr>
-		<td>
+		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="1"
 				checked="checked"/>
 		</td>
@@ -133,12 +133,12 @@
 		<% else { %>	
 			<td class="classDroppable">
 				<div class="optionSelected">
-					<button type="button" class="close" data-dismiss="alert">×</button>
+					<button type="button" class="close">×</button>
 					<%= options[0].subjectCode %> - <%= options[0].classCode %>
 				</div>
 		<% } %>
 		</td>
-		<td>
+		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="2"/>
 		</td>
 		<% if (options[1]==undefined) %>
@@ -146,12 +146,12 @@
 		<% else { %>	
 			<td class="classDroppable">
 				<div class="optionSelected">
-					<button type="button" class="close" data-dismiss="alert">×</button>
+					<button type="button" class="close">×</button>
 					<%= options[1].subjectCode %> - <%= options[1].classCode %>
 				</div>
 		<% } %>
 		</td>
-		<td>
+		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="3"/>
 		</td>
 		<% if (options[2]==undefined) %>
@@ -159,12 +159,12 @@
 		<% else { %>	
 			<td class="classDroppable">
 				<div class="optionSelected">
-					<button type="button" class="close" data-dismiss="alert">×</button>
+					<button type="button" class="close">×</button>
 					<%= options[2].subjectCode %> - <%= options[2].classCode %>
 				</div>
 		<% } %>
 		</td>
-		<td>
+		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="none"/>
 		</td>
 	</li>

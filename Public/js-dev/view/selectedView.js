@@ -31,6 +31,66 @@ var SelectedView = Backbone.View.extend({
 		this.templateTable = _.template($('#selected-table-template').html());
 	},
 
+	events: {
+		'click button.close': 'deleteClass' 
+	},
+
+	equalDroppables: function() {
+		var $tr = this.$el.find('tbody tr').first();
+		var w = $tr.width();
+		var occupy=0;
+
+		var $tds = $tr.find('td.classDroppable').each(function(index) {
+			occupy+=$(this).width();
+		});
+
+		var perc = (100*occupy)/(3*w);
+		$tds.css('width',perc+'%');
+	},
+
+	deleteClass: function(e) {
+		var button = e.target;
+		$(button.parentNode.parentNode).addClass('empty');
+		button.parentNode.parentNode.removeChild(button.parentNode);
+
+		this.equalDroppables();
+	},
+
+	buildRow: function(index, classArray) {
+		return	this.templateRow({
+			'index': index,
+			'options': classArray
+		});
+	},
+
+	resizeH: function() {},
+	resizeW: function() {},
+
+	buildSelected: function(rowsArray) {
+		this.$el.html(this.templateTable(this.fetchStrings()));
+		var tbody = this.$el.find('tbody');
+
+		for (var i=0; i<rowsArray.length; i++)
+			$(tbody).append(this.buildRow(i,rowsArray[i]));
+	},
+
+	fetchStrings: function() {
+		return {'option1Label': '1a opcao',
+			'option2Label': '2a opcao',
+			'option3Label': '3a opcao',
+			'noneLabel': 'N/A'};
+	},
+
+	fetchData: function() { //this will be a model function
+		return this.testArray;
+	},
+
+	render: function() {
+		var data = this.fetchData();
+		this.buildSelected(data);
+		this.initJS();
+	},
+
 	initJS: function() {
 		var me=this;
 
@@ -67,41 +127,6 @@ var SelectedView = Backbone.View.extend({
 				$('input[name="'+index+'"][value="'+value+'"]').prop('checked', true);
 			});
 		});
-	},
-
-	buildRow: function(index, classArray) {
-		return	this.templateRow({
-			'index': index,
-			'options': classArray
-		});
-	},
-
-	resizeH: function() {},
-	resizeW: function() {},
-
-	buildSelected: function(rowsArray) {
-		this.$el.html(this.templateTable(this.fetchStrings()));
-		var tbody = this.$el.find('tbody');
-
-		for (var i=0; i<rowsArray.length; i++)
-			$(tbody).append(this.buildRow(i,rowsArray[i]));
-	},
-
-	fetchStrings: function() {
-		return {'option1Label': '1a opcao',
-			'option2Label': '2a opcao',
-			'option3Label': '3a opcao',
-			'noneLabel': 'N/A'};
-	},
-
-	fetchData: function() { //this will be a model function
-		return this.testArray;
-	},
-
-	render: function() {
-		var data = this.fetchData();
-		this.buildSelected(data);
-		this.initJS();
 	}
 });
 
