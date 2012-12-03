@@ -31,7 +31,7 @@ class Turma
 			throw new \Exception('['.$error[0].'/'.$error[1].']: '.$error[2]);
 		}
 
-		return getId($data);
+		return self::getId($data);
 	}
 
 	public static function getId($data)

@@ -10,8 +10,19 @@ class Disciplina
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT * FROM "Disciplina";');
+		$sth = $dbh->prepare('SELECT "PK_Codigo", "Nome", "Creditos" FROM "Disciplina";');
 		$sth->execute();
+
+		return $sth->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	public static function getByUserDepend($login)
+	{
+		$dbh = Database::getConnection();	
+
+		$sth = $dbh->prepare('SELECT "Aluno", "Codigo", "Nome", "Creditos", "Situacao", "Tentativas", "Apto"
+					FROM "FaltaCursarDisciplina" WHERE ad."FK_Aluno" = ?;');
+		$sth->execute(array($login));
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}
