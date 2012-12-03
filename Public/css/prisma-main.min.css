@@ -138,16 +138,6 @@ div.fieldContainer {
   -webkit-box-shadow: inset 2px 2px 4px #333333;
   box-shadow: inset 2px 2px 4px #333333;
 }
-#main-selected-div table tr td.classDroppable div,
-#main-selected-div table thead td.classDroppable div,
-#main-selected-div table tr th.classDroppable div,
-#main-selected-div table thead th.classDroppable div {
-  height: 100%;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  background-color: white;
-  vertical-align: middle;
-}
 #main-selected-div table tr.row0 td {
   padding: 0;
 }
