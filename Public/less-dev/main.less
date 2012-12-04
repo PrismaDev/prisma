@@ -13,26 +13,15 @@
 @tabsPaddingRight: 1%;
 @tabsPaddingTop: 0;
 
-#container-div {
-	padding: 0;
-	display: table;
-	width: 100%;
-}
 
 #main-sidebar-div {
-	width: @defaultSidebarWidth;	
-	padding: 0;
-	display: table-cell;
-
-	vertical-align: top;
+	width: @defaultSidebarWidth;
+	float: left;
 }
 
 #main-timetable-div {
-	padding: 0;
-	display: table-cell;
-	border: solid 1px blue;
-	
-	vertical-align: top;
+	width: 100%-@defaultSidebarWidth;
+	float: left;
 }
 
 #main-faltacursar-div, 

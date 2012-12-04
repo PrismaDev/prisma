@@ -53,9 +53,9 @@ var MainView = Backbone.View.extend({
 		this.layoutTemplate = _.template($('#layout-template').html());
 		this.fetchStrings();
 		var me = this;
-
+	
 		$(window).resize(function() {
-//			me.resizeH();
+			me.resizeH();
 		});
 	},
 
@@ -67,48 +67,12 @@ var MainView = Backbone.View.extend({
 		this.tabsNav = document.getElementById('main-tabs-nav');
 	},
 
-	resizeW: function() {
-		this.setTimetableWFromSidebarW();
-		$.each(this.childrenViews, function(index, value) {
-			value.resizeW();
-		});
-	},
-
 	resizeH: function() {
 		this.equalMainDivsHeight();
+	
 		$.each(this.childrenViews, function(index, value) {
 			value.resizeH();
 		});
-	},
-
-	//All the -1 in the widths of this function are due to
-	//jquery flooring its floats – damn you, jquery
-
-	setTimetableWFromSidebarW: function() {
-		var w = $(this.container).width();
-		console.log(w);
-	
-		var sideW = $(this.sidebarDiv).outerWidth(true);
-		var inSideW = $(this.sidebarDiv).width();			
-
-		console.log(inSideW+' == '+Utils.width(this.sidebarDiv,w));	
-	
-		var timeW = $(this.timetableDiv).outerWidth(true);
-		var inTimeW = $(this.timetableDiv).width();
-		
-		var ttwidth=(w-(sideW+1))-(timeW+1-inTimeW);
-		var perc=Math.floor(100.*ttwidth/w);	
-
-		var oldwidth = $(this.timetableDiv).css('width');
-		$(this.timetableDiv).css('width',perc+'%');
-		
-		if ($(this.timetableDiv).width()<$(this.timetableTable).outerWidth(true)) {
-			$(this.timetableDiv).css('width',oldwidth);
-			
-			var sbwidth = (w-(timeW+1))-(sideW+1-inSideW);
-			perc=Math.floor(100.*sbwidth/w);
-			$(this.sidebarDiv).css('width',perc+'%');
-		}
 	},
 
 	equalMainDivsHeight: function() {
@@ -120,23 +84,6 @@ var MainView = Backbone.View.extend({
 		microhorarioView.$el.height(innerH);
 		selectedView.$el.height(innerH);
 	},	
-
-
-	initJS: function() {
-		var me = this;
-		var tabsW = 0;
-
-		$(this.tabsNav).find('li').each(function() {
-			tabsW+=$(this).outerWidth(true);
-		});
-		tabsW+=1 //another flooring problem
-			
-		$(this.sidebarDiv).resizable({
-			handles: 'e, w',
-			minWidth: tabsW,
-			containment: "parent"
-		});	
-	},
 
 	setActiveTab: function(tab) {
 		$('#main-tabs-nav li').removeClass('active');
@@ -177,8 +124,6 @@ var MainView = Backbone.View.extend({
 		this.rendered=true;
 
 		this.cache();
-		this.initJS();
-
 		this.resizeH();
 	}
 });
