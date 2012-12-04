@@ -9,16 +9,15 @@ var ClasseslistView = Backbone.View.extend({
 
 	cache: function() {
 		this.classesTableHead = this.$('.dataTables_scrollHead');
-		//console.log(this.classesTableHead);
 		this.classesTableBody = this.$('.dataTables_scrollBody');
-		//console.log(this.classesTableBody);
 	},
 
-	resizeW: function() {
+	resize: function() {
 		this.classesDatatable.fnAdjustColumnSizing(false);
+		this.calculateTableScroll();
 	},
 
-	resizeH: function() {},
+	calculateTableScroll: function() {},
 
 	initialize: function() {
 		this.template = _.template($('#classeslist-template').html());
@@ -31,13 +30,7 @@ var ClasseslistView = Backbone.View.extend({
 			'sDom': this.options.sDom,
 			'bPaginate': false,
 			'bScrollCollapse': true,
-			'sScrollY': '100px',
-			'fnDrawCallback': function(oSettings) {
-				me.resizeH();
-				//console.log('Redraw - '+
-				//	$(me.classesTableBody).height());	
-			}
-			
+			'sScrollY': '100px'
 		});
 	},
 
@@ -65,15 +58,18 @@ var ClasseslistView = Backbone.View.extend({
 });
 
 var MicrohorarioClasseslistView = ClasseslistView.extend({
-	resizeH: function() {
+	calculateTableScroll: function() {
 		var h=0;
-		$(this.el).siblings(':not(.hidden)').each(function(index) {
-			h+=$(this).outerHeight();
-		});
-
-		var diff = $(this.el).outerHeight()-$(this.el).height();
-		var totH = $(this.el).parent()-h-diff;
-		
+		if (!$('#microhorario-filter').hasClass('hidden'))
+			h+=$('#microhorario-filter').outerHeight(true);
+		h+=$('#microhorario-togglefilter').outerHeight(true);
+	
+		console.log(h);
+		var diff = $(this.el).outerHeight(true)-$(this.el).height();
+		console.log(diff);
+		var totH = $(this.el).parent().height()-h-diff;
+		console.log(totH);	
+	
 		$(this.el).height(totH);
 		var headH = $(this.classesTableHead).outerHeight();
 		$(this.classesTableBody).height(totH-headH);
@@ -82,9 +78,7 @@ var MicrohorarioClasseslistView = ClasseslistView.extend({
 var microhorarioClasseslistView = new MicrohorarioClasseslistView({sDom: 't'});
 
 var FaltacursarClasseslistView = ClasseslistView.extend({
-	datatableFilter: '',	
-	
-	resizeH: function() {
+	calculateTableScroll: function() {
 		var h = this.$el.height();
 		var headerH= this.$el.find('.dataTables_filter').outerHeight(true)+
 			$(this.classesTableHead).outerHeight(true);
@@ -92,7 +86,6 @@ var FaltacursarClasseslistView = ClasseslistView.extend({
 			$(this.classesTableBody).height();
 
 		$(this.classesTableBody).height(h-headerH-diff);
-		//console.log($(this.classesTableBody))
 	},
 });
 var faltacursarClasseslistView = new FaltacursarClasseslistView({sDom: 'ft'});

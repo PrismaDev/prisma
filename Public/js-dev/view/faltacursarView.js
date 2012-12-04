@@ -29,6 +29,8 @@ var FaltacursarView = Backbone.View.extend({
 
 	initialize: function() {
 		this.template = _.template($('#faltacursar-template').html());
+
+		$(window).resize(this.resize);
 	},
 
 	events: {
@@ -70,9 +72,13 @@ var FaltacursarView = Backbone.View.extend({
         		$(this.classesDiv).removeClass('hidden');
 			$(this.classesDiv).addClass('almostHalf');				
 
-			faltacursarClasseslistView.resizeH();
-			faltacursarClasseslistView.resizeW();
+			faltacursarClasseslistView.resize();
 		}
+	},
+
+	resize: function() {
+		this.subjectDatatable.fnAdjustColumnSizing(false);
+		this.calculateTableScroll();
 	},
 
 	calculateTableScroll: function() {
@@ -83,17 +89,6 @@ var FaltacursarView = Backbone.View.extend({
 		var notHeight = $(this.subjectTableBody).outerHeight(true)-
 			$(this.subjectTableBody).height();
 		$(this.subjectTableBody).height(h-headerH-notHeight);
-	},
-
-	resizeW: function() {
-		this.subjectDatatable.fnAdjustColumnSizing(false);
-		this.calculateTableScroll();
-		faltacursarClasseslistView.resizeW();
-	},
-
-	resizeH: function() {
-		this.calculateTableScroll();
-		faltacursarClasseslistView.resizeH();
 	},
 
 	initJS: function() {
@@ -156,8 +151,8 @@ var FaltacursarView = Backbone.View.extend({
 		faltacursarClasseslistView.setElement('#faltacursar-classes-div');
 		faltacursarClasseslistView.render(this.testArray);
 
-		this.resizeH();
-		this.resizeW();
+		this.subjectDatatable.fnAdjustColumnSizing(false);
+		this.calculateTableScroll();
 	}
 });
 

@@ -25,14 +25,6 @@ var MicrohorarioView = Backbone.View.extend ({
 		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'}
 	],
 		
-	resizeW: function() {
-		microhorarioClasseslistView.resizeW();
-	},
-
-	resizeH: function() {
-		microhorarioClasseslistView.resizeH();
-	},
-
 	events: {
 		"click #moreFiltersButton": "moreFilters",
 		"click #lessFiltersButton": "lessFilters",
@@ -45,24 +37,32 @@ var MicrohorarioView = Backbone.View.extend ({
 		$('#hiddenFilters').removeClass('hidden');
 		$('#lessFiltersButton').removeClass('hidden');
 		$('#moreFiltersButton').addClass('hidden');
+		
+		microhorarioClasseslistView.resize();
 	},
 	
 	lessFilters: function() {
 		$('#hiddenFilters').addClass('hidden');
 		$('#lessFiltersButton').addClass('hidden');
 		$('#moreFiltersButton').removeClass('hidden');
+		
+		microhorarioClasseslistView.resize();
 	},
 
 	openFilters: function() {
 		$('#microhorario-filter').removeClass('hidden');
 		$('#openFiltersButton').addClass('hidden');
 		$('#closeFiltersButton').removeClass('hidden');
+
+		microhorarioClasseslistView.resize();
 	},
 
 	closeFilters: function() {
 		$('#microhorario-filter').addClass('hidden');
 		$('#openFiltersButton').removeClass('hidden');
 		$('#closeFiltersButton').addClass('hidden');
+		
+		microhorarioClasseslistView.resize();
 	},
 
 	//Methods
@@ -78,8 +78,6 @@ var MicrohorarioView = Backbone.View.extend ({
 		if (qStatus==this.queryStatus) {
 			this.closeFilters();
 			microhorarioClasseslistView.render(data);
-			microhorarioClasseslistView.resizeH();
-			microhorarioClasseslistView.resizeW();
 			return;			
 		}
 
@@ -91,6 +89,10 @@ var MicrohorarioView = Backbone.View.extend ({
 			this.$resultsDiv.html(this.waitingTemplate({
 			waitingImgURL: this.waitingImgURL
 		}));
+	},
+
+	resize: function() {
+		microhorarioClasseslistView.resize();
 	},
 
 	fetchStrings: function() {
@@ -112,7 +114,7 @@ var MicrohorarioView = Backbone.View.extend ({
 		this.$resultsDiv = $('#microhorario-results');
 		microhorarioClasseslistView.setElement(this.$resultsDiv);		
 		microhorarioClasseslistView.render([]);
-
+		
 		this.changeState(this.queryStatus, this.testArray);		
 	}
 });

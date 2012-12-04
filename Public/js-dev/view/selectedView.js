@@ -35,6 +35,8 @@ var SelectedView = Backbone.View.extend({
 		'click button.close': 'deleteClass' 
 	},
 
+	resize: function() {},
+
 	equalDroppables: function() {
 		var $tr = this.$el.find('tbody tr').first();
 		var w = $tr.width();
@@ -60,9 +62,6 @@ var SelectedView = Backbone.View.extend({
 			'options': classArray
 		});
 	},
-
-	resizeH: function() {},
-	resizeW: function() {},
 
 	buildSelected: function(rowsArray) {
 		this.$el.html(this.templateTable(this.fetchStrings()));

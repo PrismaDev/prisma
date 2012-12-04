@@ -55,7 +55,7 @@ var MainView = Backbone.View.extend({
 		var me = this;
 	
 		$(window).resize(function() {
-			me.resizeH();
+			me.equalMainDivsHeight();
 		});
 	},
 
@@ -65,14 +65,6 @@ var MainView = Backbone.View.extend({
 		this.timetableTable = document.getElementById('main-timetable-div table');
 		this.container = document.getElementById('container-div');
 		this.tabsNav = document.getElementById('main-tabs-nav');
-	},
-
-	resizeH: function() {
-		this.equalMainDivsHeight();
-	
-		$.each(this.childrenViews, function(index, value) {
-			value.resizeH();
-		});
 	},
 
 	equalMainDivsHeight: function() {
@@ -92,8 +84,7 @@ var MainView = Backbone.View.extend({
 		$('#'+this.tabs[tab].li).addClass('active');
 		$('#'+this.tabs[tab].div).addClass('active');
 	
-		this.tabs[tab].view.resizeW();
-		this.tabs[tab].view.resizeH();
+		this.tabs[tab].view.resize();
 	},
 
 	fetchStrings: function() {
@@ -124,7 +115,7 @@ var MainView = Backbone.View.extend({
 		this.rendered=true;
 
 		this.cache();
-		this.resizeH();
+		this.equalMainDivsHeight();
 	}
 });
 
