@@ -109,7 +109,7 @@ var SelectedView = Backbone.View.extend({
 			//Based http://www.ilovecolors.com.ar/preserving-radio-button-checked-state-during-drag-and-drop-jquery/
 			start: function (e, ui) {
         			var radio_checked= {};
-            
+
 				me.$el.find('input[type="radio"]', this).each(function(){
 					if($(this).is(':checked'))
 						radio_checked[$(this).attr('name')] = $(this).val();
@@ -135,7 +135,11 @@ var SelectedView = Backbone.View.extend({
 
 	droppableInit: function() {
 		var $drop = this.$el.find('td.classDroppable').droppable({
-			drop: function(event, ui) {	
+			drop: function(event, ui) {
+				console.log('this:');
+				console.log($(this));
+				console.log('draggable:')
+				console.log(ui.draggable);
 				if ($(this).has('div.classDraggable')) {
 					$(ui.draggable).parent().append(
 						$(this).find('div.classDraggable')
@@ -150,6 +154,7 @@ var SelectedView = Backbone.View.extend({
 				});
 				$(this).append($(ui.draggable));
 			},
+			accept: '.classDraggable'
 		});
 	},	
 
