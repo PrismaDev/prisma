@@ -30,7 +30,10 @@ var ClasseslistView = Backbone.View.extend({
 			'sDom': this.options.sDom,
 			'bPaginate': false,
 			'bScrollCollapse': true,
-			'sScrollY': '100px'
+			'sScrollY': '100px',
+			'fnDrawCallback': function(oSettings) {
+				me.calculateTableScroll();
+			}
 		});
 	},
 
@@ -64,11 +67,8 @@ var MicrohorarioClasseslistView = ClasseslistView.extend({
 			h+=$('#microhorario-filter').outerHeight(true);
 		h+=$('#microhorario-togglefilter').outerHeight(true);
 	
-		console.log(h);
 		var diff = $(this.el).outerHeight(true)-$(this.el).height();
-		console.log(diff);
 		var totH = $(this.el).parent().height()-h-diff;
-		console.log(totH);	
 	
 		$(this.el).height(totH);
 		var headH = $(this.classesTableHead).outerHeight();

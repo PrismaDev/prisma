@@ -29,8 +29,10 @@ var FaltacursarView = Backbone.View.extend({
 
 	initialize: function() {
 		this.template = _.template($('#faltacursar-template').html());
-
-		$(window).resize(this.resize);
+		var me=this;
+		$(window).resize(function() {
+			me.resize();
+		});
 	},
 
 	events: {
@@ -77,6 +79,8 @@ var FaltacursarView = Backbone.View.extend({
 	},
 
 	resize: function() {
+		if (!this.subjectDatatable)
+			this.subjectDatatable = $('#faltacursar-subject-table').dataTable();
 		this.subjectDatatable.fnAdjustColumnSizing(false);
 		this.calculateTableScroll();
 	},

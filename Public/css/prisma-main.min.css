@@ -93,16 +93,20 @@ div.fieldContainer {
   float: left;
   padding-right: 2%;
 }
-#microhorario-toggleFilter {
+#microhorario-togglefilter,
+#microhorario-filter {
   *zoom: 1;
 }
-#microhorario-toggleFilter:before,
-#microhorario-toggleFilter:after {
+#microhorario-togglefilter:before,
+#microhorario-filter:before,
+#microhorario-togglefilter:after,
+#microhorario-filter:after {
   display: table;
   content: "";
   line-height: 0;
 }
-#microhorario-toggleFilter:after {
+#microhorario-togglefilter:after,
+#microhorario-filter:after {
   clear: both;
 }
 #main-selected-div table {
