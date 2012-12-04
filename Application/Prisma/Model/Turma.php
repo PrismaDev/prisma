@@ -6,13 +6,28 @@ use Framework\Database;
 
 class Turma
 {
+	public static function getByFilter($filters)
+	{
+		$dbh = Database::getConnection();	
+		/*
+
+		$sth = $dbh->prepare('SELECT "PK_Turma", "CodigoTurma", "CodigoDisciplina", "PeriodoAno", "Vagas", 
+						"Destino", "HorasDistancia", "SHF", "NomeProfessor"
+					FROM "TurmaProfessor" WHERE "CodigoDisciplina" = ?;');
+		$sth->execute(array($discID));
+
+		return $sth->fetchAll(\PDO::FETCH_ASSOC);
+		*/
+
+	}
+
 	public static function getByDisciplina($discID)
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT t."PK_Turma", t."Codigo", t."PeriodoAno", t."Vagas", t."Destino", t."HorasDistancia", t."SHF", p."Nome" as "NomeProfessor" 
-						FROM "Turma" t INNER JOIN "Professor" p ON (t."FK_Professor" = p."PK_Professor")
-						WHERE "FK_Disciplina" = ?;');
+		$sth = $dbh->prepare('SELECT "PK_Turma", "CodigoTurma", "CodigoDisciplina", "PeriodoAno", "Vagas", 
+						"Destino", "HorasDistancia", "SHF", "NomeProfessor"
+					FROM "TurmaProfessor" WHERE "CodigoDisciplina" = ?;');
 		$sth->execute(array($discID));
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);

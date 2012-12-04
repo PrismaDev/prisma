@@ -46,6 +46,19 @@ return array(
 							'controller' => 'Prisma\Controller\Resource\MicroHorarioController',
 						),
 					),
+					'selecionada' => array(
+						'action' => array(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\SelecionadaController',
+						),
+					),
+					'faltacursar' => array(
+						'action' => array(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\FaltaCursarController',
+						),
+					),
+
 				),
 			),
 			'error' => array(
