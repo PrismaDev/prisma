@@ -3,6 +3,7 @@ PROD = ../js
 VIEW = view
 CTRL = controller
 MDL = model
+LIB = lib
 
 ## Compiler definition ##
 CC = java -jar /usr/bin/closure-compiler.jar
@@ -21,7 +22,7 @@ DEP_LOGIN = $(VIEW)/loginView.js \
 DEP_TERM = $(VIEW)/termView.js \
 	$(CTRL)/termRouter.js
 
-DEP_MAIN =  $(VIEW)/timetableView.js \
+DEP_MAIN = $(VIEW)/timetableView.js \
 	$(VIEW)/faltacursarView.js \
 	$(VIEW)/microhorarioView.js \
 	$(VIEW)/selectedView.js \

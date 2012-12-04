@@ -1,5 +1,5 @@
 <script type="text/underscore-template" id="main-template">		
-	<div class="span12">
+	<div id="container-div">
 			<div id="main-sidebar-div">
 				<ul class="nav nav-tabs" id="main-tabs-nav">
 					<% _.each(tabs, function(tab) { %>
@@ -18,6 +18,5 @@
 
 			<div id="main-timetable-div">
 			</div>
-		</div>
 	</div>
 </script>

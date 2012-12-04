@@ -284,13 +284,22 @@ div.fieldContainer {
   border-color: #ff9e12;
   text-align: center;
 }
+#container-div {
+  padding: 0;
+  display: table;
+  width: 100%;
+}
 #main-sidebar-div {
   width: 40%;
-  float: left;
+  padding: 0;
+  display: table-cell;
+  vertical-align: top;
 }
 #main-timetable-div {
-  width: 60%;
-  float: left;
+  padding: 0;
+  display: table-cell;
+  border: solid 1px blue;
+  vertical-align: top;
 }
 #main-faltacursar-div,
 #main-microhorario-div,
