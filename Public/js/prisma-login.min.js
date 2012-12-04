@@ -10,6 +10,9 @@ var LoginView = Backbone.View.extend({
 
 	initJS: function() {
 		$('.dropdown-toggle').dropdown();
+		$('ul div.dropdown-menu').click(function(e) {
+			e.stopPropagation();
+		});
 	},
 	
 	render: function() {
