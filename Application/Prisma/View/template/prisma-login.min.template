@@ -64,7 +64,7 @@
 		
 		<hr>	
 		<div class="row-fluid">
-			<div id="main-footer-div" class="span12">
+			<div id="footer-div" class="span12">
 				<p>A footer</p>
 			</div>
 		</div>

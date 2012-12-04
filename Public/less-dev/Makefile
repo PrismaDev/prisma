@@ -14,6 +14,7 @@ clean:
 $(PROD)/prisma-main.min.css: main.less\
 				basics.less\
 				tables.less\
+				layout.less\
 				datatablesAdds.less\
 				faltacursar.less\
 				microhorario.less\
@@ -23,11 +24,14 @@ $(PROD)/prisma-main.min.css: main.less\
 	$(CC) $(CFLAGS) main.less > $@
 
 $(PROD)/prisma-login.min.css: login.less\
+				layout.less\
 				nav.less\
 				basics.less\
 				variables.less
 	$(CC) $(CFLAGS) login.less > $@
 
 $(PROD)/prisma-term.min.css: term.less\
+				layout.less\
+				variables.less\
 				nav.less
 	$(CC) $(CFLAGS) term.less > $@
