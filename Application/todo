@@ -1,9 +1,9 @@
 
 Pontos a definir ainda:
 
-- Permitir aluno filtrar micro horario pelo horario
+- Criar metodo em turma de forma que pegue tambem os seus horarios
 
-- Adicionar getByFilter em Disciplina, Turma, TurmaHorario
+- Fazer controller de optativa
 
 - Strings de tradução do sistema
 
