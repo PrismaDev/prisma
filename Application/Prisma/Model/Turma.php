@@ -3,32 +3,18 @@
 namespace Prisma\Model;
 
 use Framework\Database;
+use Prisma\Library\Common;
 
 class Turma
 {
-	public static function getByFilter($filters)
-	{
-		$dbh = Database::getConnection();	
-		/*
-
-		$sth = $dbh->prepare('SELECT "PK_Turma", "CodigoTurma", "CodigoDisciplina", "PeriodoAno", "Vagas", 
-						"Destino", "HorasDistancia", "SHF", "NomeProfessor"
-					FROM "TurmaProfessor" WHERE "CodigoDisciplina" = ?;');
-		$sth->execute(array($discID));
-
-		return $sth->fetchAll(\PDO::FETCH_ASSOC);
-		*/
-
-	}
-
 	public static function getByDisciplina($discID)
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "PK_Turma", "CodigoTurma", "CodigoDisciplina", "PeriodoAno", "Vagas", 
+		$sth = $dbh->prepare('SELECT "PK_Turma", "CodigoTurma", "PeriodoAno", "Vagas", 
 						"Destino", "HorasDistancia", "SHF", "NomeProfessor"
-					FROM "TurmaProfessor" WHERE "CodigoDisciplina" = ?;');
-		$sth->execute(array($discID));
+					FROM "TurmaProfessor" WHERE "CodigoDisciplina" = ? AND "PeriodoAno" = ?;');
+		$sth->execute(array($discID, Common::getPeriodoAno()));
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}

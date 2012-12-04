@@ -17,7 +17,7 @@ class MicroHorarioController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return json_encode(MicroHorario::get($_COOKIE['login'], $arguments));
+		return json_encode(MicroHorario::getByFilter($_COOKIE['login'], $arguments));
 	}
 	
 	public function performPost($url, $arguments, $accept) 
