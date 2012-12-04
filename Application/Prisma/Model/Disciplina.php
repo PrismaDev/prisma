@@ -48,7 +48,7 @@ class Disciplina
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "Aluno", "Nome", "Nome", "Creditos", "Situacao", "PeriodoSugerido", "Tentativas", "Apto"
+		$sth = $dbh->prepare('SELECT "Aluno", "Codigo", "Nome", "Creditos", "Situacao", "PeriodoSugerido", "Tentativas", "Apto"
 					FROM "FaltaCursarDisciplina" WHERE "Aluno" = ?;');
 		$sth->execute(array($login));
 
