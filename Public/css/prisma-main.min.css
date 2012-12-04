@@ -222,6 +222,134 @@ div.fieldContainer {
   border-color: #ff9e12;
   text-align: center;
 }
+#main-selected-div table tr.row4 td {
+  padding: 0;
+  height: 100%;
+}
+#main-selected-div table tr.row4 td div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #96c88c;
+  border: solid 1px;
+  border-color: #5ba14d;
+  text-align: center;
+}
+#main-selected-div table tr.row5 td {
+  padding: 0;
+  height: 100%;
+}
+#main-selected-div table tr.row5 td div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #a0fac8;
+  border: solid 1px;
+  border-color: #3ff590;
+  text-align: center;
+}
+#main-selected-div table tr.row6 td {
+  padding: 0;
+  height: 100%;
+}
+#main-selected-div table tr.row6 td div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #e6becd;
+  border: solid 1px;
+  border-color: #ca7494;
+  text-align: center;
+}
+#main-selected-div table tr.row7 td {
+  padding: 0;
+  height: 100%;
+}
+#main-selected-div table tr.row7 td div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #f096be;
+  border: solid 1px;
+  border-color: #e33d87;
+  text-align: center;
+}
+#main-selected-div table tr.row8 td {
+  padding: 0;
+  height: 100%;
+}
+#main-selected-div table tr.row8 td div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #dcf0aa;
+  border: solid 1px;
+  border-color: #b8e153;
+  text-align: center;
+}
+#main-selected-div table tr.row9 td {
+  padding: 0;
+  height: 100%;
+}
+#main-selected-div table tr.row9 td div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #a0b4f0;
+  border: solid 1px;
+  border-color: #486ee2;
+  text-align: center;
+}
+#main-selected-div table tr.row10 td {
+  padding: 0;
+  height: 100%;
+}
+#main-selected-div table tr.row10 td div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #e6beb4;
+  border: solid 1px;
+  border-color: #cc7c68;
+  text-align: center;
+}
+#main-selected-div table tr.row11 td {
+  padding: 0;
+  height: 100%;
+}
+#main-selected-div table tr.row11 td div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #bee6fa;
+  border: solid 1px;
+  border-color: #5fc2f3;
+  text-align: center;
+}
 #main-timetable-div table {
   width: 100%;
   height: 100%;
@@ -298,6 +426,134 @@ div.fieldContainer {
   background-color: #ffc878;
   border: solid 1px;
   border-color: #ff9e12;
+  text-align: center;
+}
+#main-timetable-div table tr td.ttclass4 {
+  padding: 0;
+  height: 100%;
+}
+#main-timetable-div table tr td.ttclass4 div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #96c88c;
+  border: solid 1px;
+  border-color: #5ba14d;
+  text-align: center;
+}
+#main-timetable-div table tr td.ttclass5 {
+  padding: 0;
+  height: 100%;
+}
+#main-timetable-div table tr td.ttclass5 div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #a0fac8;
+  border: solid 1px;
+  border-color: #3ff590;
+  text-align: center;
+}
+#main-timetable-div table tr td.ttclass6 {
+  padding: 0;
+  height: 100%;
+}
+#main-timetable-div table tr td.ttclass6 div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #e6becd;
+  border: solid 1px;
+  border-color: #ca7494;
+  text-align: center;
+}
+#main-timetable-div table tr td.ttclass7 {
+  padding: 0;
+  height: 100%;
+}
+#main-timetable-div table tr td.ttclass7 div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #f096be;
+  border: solid 1px;
+  border-color: #e33d87;
+  text-align: center;
+}
+#main-timetable-div table tr td.ttclass8 {
+  padding: 0;
+  height: 100%;
+}
+#main-timetable-div table tr td.ttclass8 div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #dcf0aa;
+  border: solid 1px;
+  border-color: #b8e153;
+  text-align: center;
+}
+#main-timetable-div table tr td.ttclass9 {
+  padding: 0;
+  height: 100%;
+}
+#main-timetable-div table tr td.ttclass9 div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #a0b4f0;
+  border: solid 1px;
+  border-color: #486ee2;
+  text-align: center;
+}
+#main-timetable-div table tr td.ttclass10 {
+  padding: 0;
+  height: 100%;
+}
+#main-timetable-div table tr td.ttclass10 div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #e6beb4;
+  border: solid 1px;
+  border-color: #cc7c68;
+  text-align: center;
+}
+#main-timetable-div table tr td.ttclass11 {
+  padding: 0;
+  height: 100%;
+}
+#main-timetable-div table tr td.ttclass11 div {
+  width: 97%;
+  height: 99%;
+  margin: auto;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #bee6fa;
+  border: solid 1px;
+  border-color: #5fc2f3;
   text-align: center;
 }
 #main-sidebar-div {
