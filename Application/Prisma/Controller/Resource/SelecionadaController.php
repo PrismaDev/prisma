@@ -17,7 +17,7 @@ class SelecionadaController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return json_encode(Selecionada::get($_COOKIE['login']));
+		return json_encode(Selecionada::getAll($_COOKIE['login']));
 	}
 	
 	public function performPost($url, $arguments, $accept) 

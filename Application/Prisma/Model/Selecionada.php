@@ -6,7 +6,7 @@ use Framework\Database;
 
 class Selecionada
 {
-	public static function get($aluno)
+	public static function getAll($aluno)
 	{
 		$dbh = Database::getConnection();
 

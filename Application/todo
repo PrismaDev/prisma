@@ -3,7 +3,7 @@ Pontos a definir ainda:
 
 - Criar metodo em turma de forma que pegue tambem os seus horarios
 
-- Fazer controller de optativa
+- Fazer controller de optativa (assim como modelo retornar também suas disciplinas)
 
 - Strings de tradução do sistema
 
