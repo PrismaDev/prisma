@@ -12,24 +12,100 @@ use Prisma\Model\TurmaHorario;
 
 class MicroHorario
 {
-	public static function get($login, $filters = array())
+	public static function getByFilter($login, $filters = array())
 	{
-		$disciplinas = Disciplina::getMicroHorario($login, $filters);
-		$disciplinasSize = count($disciplinas);
-			
-		for($i = 0; $i < $disciplinasSize; ++$i)
+		$microhorario = self::getRowsByFilter($filters);
+		$disciplinas = self::getRowsDepend($login, $microhorario);
+
+		return array(
+			'microhorario' => $microhorario,
+			'disciplinas' => $disciplinas,
+		);
+	}
+
+	private static function getRowsDepend($login, $rows)
+	{
+		$disciplinas = array();
+		$discCount = 0;
+
+		$discUsed = array();
+
+		foreach($rows as $tuple)
 		{
-			$disciplinas[$i]['turmas'] = Turma::getByFilter($filters);
-			$turmasSize = count($disciplinas[$i]['turmas']);
+			if(isset($discUsed[$tuple['CodigoDisciplina']])) continue;
+			$discUsed[$tuple['CodigoDisciplina']] = true;
+
+			$disciplinas[$discCount] = Disciplina::getByUserAndId($login, $tuple['CodigoDisciplina']);
+
+			$disciplinas[$discCount]['turmas'] = Turma::getByDisciplina($tuple['CodigoDisciplina']);
+			$turmasSize = count($disciplinas[$discCount]['turmas']);
 
 			for($j = 0; $j < $turmasSize; ++$j)
 			{
-				//$disciplinas[$i]['turmas'][$j]['horarios'] = TurmaHorario::getByTurma($disciplinas[$i]['turmas'][$j]['PK_Turma']);
+				$disciplinas[$discCount]['turmas'][$j]['horarios'] = TurmaHorario::getByTurma($disciplinas[$discCount]['turmas'][$j]['PK_Turma']);
 			}
+
+			++$discCount;
 		}
 
 		return $disciplinas;
 	}
+
+	private static function getRowsByFilter($filters)
+	{
+		$dbh = Database::getConnection();
+
+		$sql = 'SELECT "CodigoDisciplina", "PK_Turma" FROM "MicroHorario" WHERE "PeriodoAno" = '.Common::getPeriodoAno();
+
+		$sql .= self::makeSqlFilter($filters, 'CodigoDisciplina', 0);
+		$sql .= self::makeSqlFilter($filters, 'NomeDisciplina', 0);
+		$sql .= self::makeSqlFilter($filters, 'Creditos', 1);
+		$sql .= self::makeSqlFilter($filters, 'CodigoTurma', 0);
+		$sql .= self::makeSqlFilter($filters, 'Vagas', 1);
+		$sql .= self::makeSqlFilter($filters, 'Destino', 0);
+		$sql .= self::makeSqlFilter($filters, 'HorasDistancia', 1);
+		$sql .= self::makeSqlFilter($filters, 'SHF', 1);
+		$sql .= self::makeSqlFilter($filters, 'NomeProfessor', 0);
+		$sql .= self::makeSqlFilter($filters, 'DiaSemana', 1);
+		$sql .= self::makeSqlFilter($filters, 'HoraInicial', 0);
+		$sql .= self::makeSqlFilter($filters, 'HoraFinal', 0);
+
+		$sql .= ' GROUP BY "CodigoDisciplina", "PK_Turma"';
+
+		if(isset($filters['Pagina']) && !empty($filters['Pagina']) && isset($filters['Quantidade']) && !empty($filters['Quantidade']))
+		{
+			$limit = $filters['Quantidade'];
+			$offset = $limit * $filters['Pagina'];
+
+			$sql .= 'LIMIT '.$limit.' OFFSET '.$offset;
+		}
+
+		$sql .= ';';
+
+		$sth = $dbh->prepare($sql);
+		$sth->execute();
+
+		return $sth->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	private static function makeSqlFilter($filters, $column, $type)
+	{
+		if(isset($filters[$column]) && !empty($filters[$column]))
+		{
+			switch($type)
+			{
+				CASE 0:
+					return ' AND "'.$column.'" ILIKE \'%'.$filters[$column].'%\'';
+
+				CASE 1:
+					return ' AND "'.$column.'" = '.$filters[$column];
+			}
+		}
+
+		return '';
+	}
+
+	/* --------------------------------------------------------------------------------------- */
 
 	public static function saveFromFile($file)
 	{
