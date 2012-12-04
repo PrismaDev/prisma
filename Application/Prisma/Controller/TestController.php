@@ -21,13 +21,8 @@ Class TestController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		Selecionada::persist(array(
-			'FK_Aluno' => 'aluno',
-			'FK_Turma' => 3,
-			'Opcao' => 4,
-			'NoLinha' => 5
-		));
-		return json_encode(Selecionada::get('aluno'));
+
+		return json_encode(FaltaCursar::getAll('aluno'));
 	}
 }
 

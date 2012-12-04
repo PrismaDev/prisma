@@ -16,9 +16,11 @@ class MicroHorario
 	{
 		$dbh = Database::getConnection();	
 
-		$sql = 'SELECT "CodigoDisciplina", "NomeDisciplina", "NomeProfessor", "Creditos", "PK_Turma",
-				"CodigoTurma", "Destino", "Vagas", "HorasDistancia", "SHF", "Situacao", "Apto" 
-					FROM "MicroHorarioAluno" WHERE "Aluno" = \''.$login.'\'';
+	//	$sql = 'SELECT "CodigoDisciplina", "NomeDisciplina", "NomeProfessor", "Creditos", "PK_Turma",
+	//			"CodigoTurma", "Destino", "Vagas", "HorasDistancia", "SHF", "Situacao", "Apto" 
+	//				FROM "MicroHorarioAluno" WHERE "Aluno" = \''.$login.'\'';
+		$sql = 'SELECT "CodigoDisciplina", "PK_Turma"
+					FROM "MicroHorario" WHERE TRUE';
 
 		$sql .= self::makeGetFilter($filters, 'CodigoDisciplina', 'like');
 		$sql .= self::makeGetFilter($filters, 'NomeDisciplina', 'like');
@@ -45,7 +47,7 @@ class MicroHorario
 
 		for($i = 0; $i < $rowsLen; ++$i)
 		{
-			$rows[$i]['Horarios'] = TurmaHorario::getByTurma($rows[$i]['PK_Turma']);
+//			$rows[$i]['Horarios'] = TurmaHorario::getByTurma($rows[$i]['PK_Turma']);
 		}
 
 		return $rows;

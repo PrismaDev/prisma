@@ -1,9 +1,9 @@
 
 Pontos a definir ainda:
 
-- Implementar requests ao banco (faltacursar, microhorario, selecionadas, estatisticas, admin coisas)
+- Permitir aluno filtrar micro horario pelo horario
 
-- Implementar filtro do falta cursar
+- Adicionar getByFilter em Disciplina, Turma, TurmaHorario
 
 - Strings de tradução do sistema
 
@@ -21,8 +21,8 @@ Fine tuning:
 
 Implementar modelo do prisma necessario:
 
-- Microhorario (filtro + apto + situacao)
-- Selecionada
+- MicroHorario (retornar com dados completos de turma e disciplina organizado em forma de arvore)
+- Selecionada (retornar com dados completo de turma e disciplina)
 - Usuario
 - Comentario
 

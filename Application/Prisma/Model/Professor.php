@@ -18,8 +18,15 @@ class Professor
 			throw new \Exception('['.$error[0].'/'.$error[1].']: '.$error[2]);
 		}
 
-		$sth = $dbh->prepare('SELECT "PK_Professor" FROM "Professor" WHERE "Nome" = :Nome;');	
-		$sth->execute($data);
+		return self::getId($data['Nome']);
+	}
+
+	public static function getId($nome)
+	{
+		$dbh = Database::getConnection();	
+
+		$sth = $dbh->prepare('SELECT "PK_Professor" FROM "Professor" WHERE "Nome" = ?;');	
+		$sth->execute(array($nome));
 
 		if($result = $sth->fetch())
 		{
@@ -29,5 +36,6 @@ class Professor
 		{
 			//TODO: handle error
 		}
+
 	}
 }

@@ -22,17 +22,17 @@ class FaltaCursar
 
 	public static function getDisciplinas($login)
 	{
-		$disciplinas = Disciplina::getByUserDepend($login);
+		$disciplinas = Disciplina::getFaltaCursar($login);
 		$disciplinasSize = count($disciplinas);
 		
 		for($i = 0; $i < $disciplinasSize; ++$i)
 		{
-			$disciplinas[$i]['turmas'] = Turma::getByDisciplina($disciplina[$i]['CodigoDisciplina']);
-			$disciplinaSize = count($disciplinas[$i]);
+			$disciplinas[$i]['turmas'] = Turma::getByDisciplina($disciplinas[$i]['Codigo']);
+			$turmasSize = count($disciplinas[$i]['turmas']);
 
-			for($j = 0; $j < $disciplinaSize; ++$j)
+			for($j = 0; $j < $turmasSize; ++$j)
 			{
-				$discipinas[$i][$j]['horarios'] = TurmaHorario::getByTurma($discipinas[$i][$j]['PK_Turma']);
+				$disciplinas[$i]['turmas'][$j]['horarios'] = TurmaHorario::getByTurma($disciplinas[$i]['turmas'][$j]['PK_Turma']);
 			}
 		}
 

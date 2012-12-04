@@ -16,12 +16,12 @@ class Disciplina
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
-	public static function getByUserDepend($login)
+	public static function getFaltaCursar($login)
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "Aluno", "Codigo" as "CodigoDisciplina", "Nome", "Creditos", "Situacao", "Tentativas", "Apto"
-					FROM "FaltaCursarDisciplina" WHERE ad."FK_Aluno" = ?;');
+		$sth = $dbh->prepare('SELECT "Aluno", "Codigo", "Nome", "Creditos", "Situacao", "PeriodoSugerido", "Tentativas", "Apto"
+					FROM "FaltaCursarDisciplina" WHERE "Aluno" = ?;');
 		$sth->execute(array($login));
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
