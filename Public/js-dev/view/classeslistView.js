@@ -46,7 +46,7 @@ var ClasseslistView = Backbone.View.extend({
 
 	fetchData: function(classesArray) {
 		return $.extend({}, this.fetchStrings(),
-			{'classes': classesArray});
+			{classes: classesArray});
 	},
 
 	render: function(classesArray) {

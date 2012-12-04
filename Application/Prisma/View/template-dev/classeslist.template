@@ -10,8 +10,8 @@
 		<tbody>
 			<% _.each(classes, function(classO) { %>
 				<tr>
-					<td><%= classO.subjectCode %></td>
-					<td><%= classO.subjectName %></td>
+					<td><%= classO.get('CodigoDisciplina') %></td>
+					<td><%= classO.get('NomeDisciplina') %></td>
 					<td><%= classO.professorName %></td>
 					<td><%= classO.schedule %></td>
 					<td><%= classO.code %></td>	

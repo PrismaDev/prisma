@@ -22,7 +22,8 @@ DEP_LOGIN = $(VIEW)/loginView.js \
 DEP_TERM = $(VIEW)/termView.js \
 	$(CTRL)/termRouter.js
 
-DEP_MAIN = $(VIEW)/timetableView.js \
+DEP_MAIN = $(MDL)/microhorarioModel.js \
+	$(VIEW)/timetableView.js \
 	$(VIEW)/faltacursarView.js \
 	$(MDL)/mainStringsModel.js \
 	$(VIEW)/microhorarioView.js \

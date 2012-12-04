@@ -30,7 +30,7 @@
 						</li>
 					<% }); %>
 				</ul>
-				<div class="tab-content" id="main-tab-panes">
+				<div class="tab-content foreground" id="main-tab-panes">
 					<% _.each(tabs, function(tab) { %>
 						<div class="tab-pane" id="<%= tab.div %>">
 						</div>
@@ -38,7 +38,7 @@
 				</div>
 			</div>
 
-			<div id="main-timetable-div">
+			<div id="main-timetable-div" class="foreground">
 			</div>
 	</div>
 </script>
@@ -50,7 +50,7 @@
 			id="closeFiltersButton" />
 	</div>
 	<div id="microhorario-filter">
-		<form>
+		<form id="microhorario-form">
 			<div class="fieldContainer">
 				<label for="subjectCode"><%= str.get('subjectCodeLabel') %></label>
 				<input type="text" name="subjectCode" />
