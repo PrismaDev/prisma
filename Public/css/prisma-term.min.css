@@ -1,0 +1,7 @@
+.dropdown-menu {
+  padding: 10px;
+  background-color: black;
+}
+ul.dropdown-menu a {
+  color: #777777;
+}

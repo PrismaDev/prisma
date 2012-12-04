@@ -41,6 +41,13 @@ tr.blocked {
 tr.warning {
   background-color: #e8e36c;
 }
+.dropdown-menu {
+  padding: 10px;
+  background-color: black;
+}
+ul.dropdown-menu a {
+  color: #777777;
+}
 #faltacursar-classes-div {
   width: 100%;
   border-top: solid 1px #eeeeee;

@@ -24,6 +24,13 @@ body {
 .clearfix:after {
   clear: both;
 }
+.dropdown-menu {
+  padding: 10px;
+  background-color: black;
+}
+ul.dropdown-menu a {
+  color: #777777;
+}
 #login-container div {
   background-color: #eeeeee;
   border: solid #eeeeee 1px;
@@ -42,8 +49,4 @@ div#logo-div {
 div#loginForm input[type="submit"] {
   margin-right: 5%;
   float: right;
-}
-div.dropdown-menu {
-  padding: 10px;
-  background-color: black;
 }

@@ -18,11 +18,16 @@ $(PROD)/prisma-main.min.css: main.less\
 				faltacursar.less\
 				microhorario.less\
 				timetable.less\
-				selected.less
+				selected.less\
+				nav.less
 	$(CC) $(CFLAGS) main.less > $@
 
-$(PROD)/prisma-login.min.css: login.less
+$(PROD)/prisma-login.min.css: login.less\
+				nav.less\
+				basics.less\
+				variables.less
 	$(CC) $(CFLAGS) login.less > $@
 
-$(PROD)/prisma-term.min.css: term.less
+$(PROD)/prisma-term.min.css: term.less\
+				nav.less
 	$(CC) $(CFLAGS) term.less > $@

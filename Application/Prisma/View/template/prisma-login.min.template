@@ -51,7 +51,7 @@
 								<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
-								<li><%= logoutStr %></li>	
+								<li><a href="#"><%= logoutStr %></a></li>	
 							</ul>
 						</li>
 					</ul>
