@@ -24,6 +24,7 @@ DEP_TERM = $(VIEW)/termView.js \
 
 DEP_MAIN = $(VIEW)/timetableView.js \
 	$(VIEW)/faltacursarView.js \
+	$(MDL)/mainStringsModel.js \
 	$(VIEW)/microhorarioView.js \
 	$(VIEW)/selectedView.js \
 	$(VIEW)/mainView.js \

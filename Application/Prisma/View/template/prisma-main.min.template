@@ -44,39 +44,75 @@
 </script>
 <script type="text/underscore-template" id="microhorario-template">
 	<div id="microhorario-togglefilter">
-		<input type="button" class="btn btn-link hidden rightFloated" value="<%= openFiltersStr %>"
+		<input type="button" class="btn btn-link hidden rightFloated" value="<%= str.get('openFiltersStr') %>"
 			id="openFiltersButton" />
-		<input type="button" class="btn btn-link rightFloated" value="<%= closeFiltersStr %>"
+		<input type="button" class="btn btn-link rightFloated" value="<%= str.get('closeFiltersStr') %>"
 			id="closeFiltersButton" />
 	</div>
 	<div id="microhorario-filter">
 		<form>
 			<div class="fieldContainer">
-				<label for="subjectCode"><%= subjectCodeStr %></label>
+				<label for="subjectCode"><%= str.get('subjectCodeLabel') %></label>
 				<input type="text" name="subjectCode" />
 			</div>
 			<div class="fieldContainer">
-				<label for="subjectName"><%= subjectNameStr %></label>
+				<label for="subjectName"><%= str.get('subjectNameLabel') %></label>
 				<input type="text" name="subjectName" />
 			</div>
 			
 			<div class="fieldContainer">
-				<label for="professorName"><%= professorNameStr %></label>
+				<label for="professorName"><%= str.get('professorNameLabel') %></label>
 				<input type="text" name="professorName" />
 			</div>		
+
+			<div class="fieldContainer">
+				<input type="checkbox" name="toggleBlockedDisabled" value="hide" />
+				<label for="toggleBlockedDisabled">
+					<%= str.get('toggleBlockedDisabledLabel') %>
+				</label>
+			</div>
 	
 			<div id="hiddenFilters" class="hidden">
-				<p>a hidden filter</p>
+				<div class="fieldContainer">
+					<label for="nCredits"><%= str.get('nCreditsLabel') %></label>
+					<input type="text" name="nCredits" />
+				</div>
+				<div class="fieldContainer">
+					<label for="day"><%= str.get('dayLabel') %></label>
+					<input type="text" name="day" />
+				</div>
+				<div class="fieldContainer">
+					<label for="timeBegin"><%= str.get('timeBeginLabel') %></label>
+					<input type="text" name="timeBegin" />
+				</div>
+				<div class="fieldContainer">
+					<label for="timeEnd"><%= str.get('timeEndLabel') %></label>
+					<input type="text" name="timeEnd" />
+				</div>
+				<div class="fieldContainer">
+					<input type="checkbox" name="noFixedSchedule" value="true" />
+					<label for="noFixedSchedule">
+						<%= str.get('noFixedScheduleLabel') %>
+					</label>
+				</div>
+				<div class="fieldContainer">
+					<input type="checkbox" name="distanceHours" value="true" />
+					<label for="distanceHours">
+						<%= str.get('distanceHoursLabel') %>
+					</label>
+				</div>
 			</div>
 
 			<div class="buttonContainer">
-				<input type="button" class="btn btn-link hidden" value="<%= lessFiltersStr %>"
+				<input type="button" class="btn btn-link hidden" value="<%= str.get('lessFiltersStr') %>"
 					id="lessFiltersButton" />
-				<input type="button" class="btn btn-link" value="<%=moreFiltersStr %>"
+				<input type="button" class="btn btn-link" value="<%= str.get('moreFiltersStr') %>"
 					id="moreFiltersButton" />
 
-				<input class="btn btn-primary rightFloated" type="reset" id="resetQuery" />
-				<input class="btn btn-danger rightFloated" type="submit" id="submitQuery" />
+				<input class="btn btn-primary rightFloated" type="reset" id="resetQuery"
+					value="<%= str.get('resetButtonLabel') %>" />
+				<input class="btn btn-danger rightFloated" type="submit" id="submitQuery"
+					value="<%= str.get('submitButtonLabel') %>" />
 			</div>
 		</form>
 	</div>
@@ -90,7 +126,7 @@
 
 <script type="text/underscore-template" id="microhorario-noquery-template">
 	<div class="alert alert-info">
-		<%= noQueryStr %>
+		<%= str.get('noQueryStr') %>
 	</div>
 </script>
 <script type="text/underscore-template" id="timetable-template">
@@ -182,7 +218,7 @@
 					<td><%= subject.name %></td>
 					<td><%= subject.term %></td>
 					<td>
-						<a href="<%= subject.link %>" class="btn btn-link btn-small">
+						<a href="<%= subject.link %>" class="btn btn-link btn-small ementaButton">
 							<%= moreInfoStr %>
 						</a>
 					</td>

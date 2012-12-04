@@ -35,10 +35,6 @@ var FaltacursarView = Backbone.View.extend({
 		});
 	},
 
-	events: {
-		"click #faltacursar-subject-table tr": 'clickOnRow'
-	},
-
 	cache: function() {
 		this.subjectTableWrapper = $('#faltacursar-subject-table_wrapper');
 		this.classesDiv = $('#faltacursar-classes-div');
@@ -49,6 +45,11 @@ var FaltacursarView = Backbone.View.extend({
 					 .dataTables_scrollHead');
 		this.subjectTableBody = $('#faltacursar-subject-table_wrapper\
 					 .dataTables_scrollBody');
+	},
+
+	events: {
+		"click #faltacursar-subject-table tr": 'clickOnRow',
+		"click #faltacursar-subject-table .ementaButton": 'clickOnEmenta'
 	},
 
 	clickOnRow: function(e) {
@@ -76,6 +77,10 @@ var FaltacursarView = Backbone.View.extend({
 
 			faltacursarClasseslistView.resize();
 		}
+	},
+
+	clickOnEmenta: function(e) {
+		e.stopPropagation();
 	},
 
 	resize: function() {

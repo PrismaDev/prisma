@@ -104,21 +104,11 @@ var MicrohorarioView = Backbone.View.extend ({
 		microhorarioClasseslistView.resize();
 	},
 
-	fetchStrings: function() {
-		return {noQueryStr: 'No query',
-			subjectCodeStr: 'Codigo da Disciplina:',
-			subjectNameStr: 'Nome da Disciplina:',
-			professorNameStr: 'Nome do Professor:',
-			toggleBlocked: 'Exibir disciplinas bloqueadas',
-			moreFiltersStr: 'More filters',
-			lessFiltersStr: 'Less filters',
-			openFiltersStr: 'Open filters',
-			closeFiltersStr: 'Close filters'		
-		};
-	},
-
 	render: function() {
-		this.$el.html(this.template(this.fetchStrings()));
+		console.log(microhorarioStringsModel);
+		this.$el.html(this.template({
+			str: microhorarioStringsModel
+		}));
 		
 		this.$resultsDiv = $('#microhorario-results');
 		microhorarioClasseslistView.setElement(this.$resultsDiv);		

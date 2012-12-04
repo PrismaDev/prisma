@@ -13,7 +13,7 @@
 					<td><%= subject.name %></td>
 					<td><%= subject.term %></td>
 					<td>
-						<a href="<%= subject.link %>" class="btn btn-link btn-small">
+						<a href="<%= subject.link %>" class="btn btn-link btn-small ementaButton">
 							<%= moreInfoStr %>
 						</a>
 					</td>
