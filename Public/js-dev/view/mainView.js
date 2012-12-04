@@ -1,6 +1,7 @@
 var MainView = Backbone.View.extend({
 	el: 'body',
-	template: '',
+	mainTemplate: '',
+	layoutTemplate: '',
 	rendered: false,
 	tabs: {'faltacursar': {
 			'li': 'main-faltacursar-li',
@@ -40,8 +41,16 @@ var MainView = Backbone.View.extend({
 	container: '',
 	tabsNav: '',
 
+	testData: {
+		'hiStr': 'Olá',
+		'user': {'name': 'Bobteco da Silva'},
+		'logoutStr': 'Logout',
+		'loggedIn': true
+	},
+
 	initialize: function() {
-		this.template = _.template($('#main-template').html());
+		this.mainTemplate = _.template($('#main-template').html());
+		this.layoutTemplate = _.template($('#layout-template').html());
 		this.fetchStrings();
 		var me = this;
 
@@ -154,7 +163,8 @@ var MainView = Backbone.View.extend({
 	},	
 
 	render: function() {
-		this.$el.html(this.template({tabs: this.tabs}));
+		this.$el.html(this.layoutTemplate(this.testData));
+		$('#content-div').html(this.mainTemplate({tabs: this.tabs}));
 		
 		this.renderSubviews();
 		this.rendered=true;
@@ -162,8 +172,8 @@ var MainView = Backbone.View.extend({
 		this.cache();
 		this.initJS();
 
-		this.resizeH();
-		this.resizeW();
+//		this.resizeH();
+//		this.resizeW();
 	}
 });
 

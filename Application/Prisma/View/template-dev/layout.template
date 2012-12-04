@@ -3,7 +3,7 @@
 		<div class="navbar navbar-inverse">
 			<div class="navbar-inner">
 				<span class="brand">PrISMA</span>
-				<% if (!str.user) { %>
+				<% if (!loggedIn) { %>
 					<ul class="nav pull-right">
 						<li class="dropdown">
   							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -12,27 +12,32 @@
 							</a>
 							<div class="dropdown-menu">
 								<form>
-									<label for="username"><%= str.matriculaLabel %></label>
+									<label for="username"><%= str.get('matriculaLabel') %></label>
 									<input type="text" name="matricula" />
-									<label for="password"><%= str.passwordLabel %></label>
+									<label for="password"><%= str.get('passwordLabel') %></label>
 									<input type="password" name="password" />
-									<input type="submit" value="<%= str.submitButtonLabel %>" />
+									<input class="btn pull-right" type="submit" value="<%= str.get('submitButtonLabel') %>" />
 								</form>
 							</div>
 						</li>
 					</ul>
 				<% } else { %>
-					<div class="dropdown pull-right">
-  						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-							<%= hiStr %>,<%=user.name %>
-						</a>
-						<a href="#"><%= logoutStr %></a>
-					</div>
+					<ul class="nav pull-right">
+						<li class="dropdown">
+  							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+								<%= hiStr %>, <%= user.name %>
+								<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li><%= logoutStr %></li>	
+							</ul>
+						</li>
+					</ul>
 				<% } %>
 			</div>
 		</div>	
 				
-		<div id="content-div">
+		<div class="row-fluid" id="content-div">
 		</div>
 		
 		<hr>	

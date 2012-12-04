@@ -43,3 +43,7 @@ div#loginForm input[type="submit"] {
   margin-right: 5%;
   float: right;
 }
+div.dropdown-menu {
+  padding: 10px;
+  background-color: black;
+}
