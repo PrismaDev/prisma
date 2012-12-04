@@ -24,5 +24,7 @@ class Selecionada
 		$sth = $dbh->prepare('INSERT INTO "AlunoTurmaSelecionada"("FK_Aluno", "FK_Turma", "Opcao", "NoLinha")
 					VALUES (:FK_Aluno, :FK_Turma, :Opcao, :NoLinha);');
 		$sth->execute($data);
+	
+		return $sth->rowCount > 0;
 	}
 }
