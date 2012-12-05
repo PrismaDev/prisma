@@ -1,13 +1,39 @@
 @import "nav.less";
 
-body {
+@footerHeight: 50px;
+
+//Sticky footer based on http://twitter.github.com/bootstrap/examples/sticky-footer.html
+html, body {
+	height: 100%;
 	background-color: @almostWhite;
 }
 
-#content-div  div.foreground {
-	background-color: white;
+
+#content-div {	
+	div.foreground {
+		background-color: white;
+	}
+}
+
+#wrap-div {
+	min-height: 100%;
+    	height: auto !important;
+    	height: 100%;
+    	margin: 0 auto -@footerHeight;
+}
+
+#push-div {
+	height: @footerHeight;
 }
 
 #footer-div {
-	padding-top: @tdPadding;
+	height: @footerHeight;
+}
+
+#footer-div .row-fluid {
+	height: 100%;
+	padding: 5px;
+	
+	.border-radius(@defaultBorderRadius);
+	background-color: grey;
 }
