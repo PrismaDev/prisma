@@ -107,21 +107,13 @@ var TimetableView = Backbone.View.extend({
 		return $(tbody).html();
 	},
 
-	resizeW: function() {},
-	resizeH: function() {},
-
-	fetchData: function(classesArray) {
-		return {days: ['Segunda', 'Terca', 'Quarta', 'Quinta',
-				'Sexta', 'Sabado'],
-				startH: 7, endH: 23,
-				timetableBody: 
-					this.buildTableBody(classesArray)		
-			};
-	},
-
 	render: function(classesArray) {
 		if (!classesArray) classesArray = this.testArray;
-		this.$el.html(this.template(this.fetchData(classesArray)));
+		this.$el.html(this.template({
+			timetableStr: timetableStringsModel
+		}));
+	
+		this.$el.find('tbody').html(this.buildTableBody(classesArray));
 	}
 });
 

@@ -1,11 +1,15 @@
 <script type="text/underscore" id="classeslist-template">
 	<table class="table table-bordered table-condensed">
 		<thead>
-			<th><%= subjectCodeLabel %></th>
-			<th><%= subjectNameLabel %></th>
-			<th><%= professorNameLabel %></th>
-			<th><%= scheduleLabel %></th>
-			<th><%= classCodeLabel %></th>
+			<th><%= classesTableStr.get('subjectCodeLabel') %></th>
+			<th><%= classesTableStr.get('subjectNameLabel') %></th>
+			<th><%= classesTableStr.get('professorNameLabel') %></th>
+			<th><%= classesTableStr.get('scheduleLabel') %></th>
+			<th><%= classesTableStr.get('classCodeLabel') %></th>
+		
+			<% if (linkEmenta) { %>
+				<th><%= classesTableStr.get('ementaHeaderLabel') %></th>
+			<% } %>
 		</thead>
 		<tbody>
 			<% _.each(classes, function(classO) { %>
@@ -15,6 +19,15 @@
 					<td><%= classO.professorName %></td>
 					<td><%= classO.schedule %></td>
 					<td><%= classO.code %></td>	
+				
+					<% if (linkEmenta) { %>
+						<td>
+							<a href="<%= classesTableStr.get('ementaBaseLink')+classO.subjectCode %>"
+								class="btn btn-link btn-small ementaButton" target="_blank">
+							<%= classesTableStr.get('ementaLinkLabel') %>
+						</a>
+					</td>
+					<% } %>
 				</tr>
 			<% }); %>
 		</tbody>
@@ -133,12 +146,11 @@
 	<table class="table table-bordered">
 		<thead>
 			<th></th>
-			<% _.each(days, function(day) { %>
+			<% _.each(timetableStr.get('daysLabel'), function(day) { %>
 				<th><%= day %>
 			<% }); %>
 		</thead>
 		<tbody>
-			<%= timetableBody %>
 		</tbody>
 	</table>
 </script>
@@ -194,10 +206,10 @@
 <script type="text/underscore-template" id="selected-table-template">
 	<table>
 		<thead>
-			<th colspan="2"><%= option1Label %></th>
-			<th colspan="2"><%= option2Label %></th>
-			<th colspan="2"><%= option3Label %></th>
-			<th><%= noneLabel %></th>
+			<th colspan="2"><%= selectedStr.get('option1Label') %></th>
+			<th colspan="2"><%= selectedStr.get('option2Label') %></th>
+			<th colspan="2"><%= selectedStr.get('option3Label') %></th>
+			<th><%= selectedStr.get('noneLabel') %></th>
 		</thead>
 		<tbody class="selectedSortable">
 		</tbody>
@@ -206,10 +218,11 @@
 <script type="text/underscore-template" id="faltacursar-template">
 	<table id="faltacursar-subject-table" class="table table-bordered table-condensed">
 		<thead>
-			<th><%= codeStr %></th>
-			<th><%= nameStr %></th>
-			<th><%= termStr %></th>
-			<th><%= infoStr %></th>
+			<th><%= subjectTableStr.get('subjectCodeLabel') %></th>
+			<th><%= subjectTableStr.get('subjectNameLabel') %></th>
+			<th><%= subjectTableStr.get('termLabel') %></th>
+			<th><%= subjectTableStr.get('creditsLabel') %></th>
+			<th><%= subjectTableStr.get('ementaHeaderLabel') %></th>
 		</thead>
 		<tbody>
 			<% _.each(subjects, function(subject) { %>
@@ -217,9 +230,11 @@
 					<td><%= subject.code %></td>
 					<td><%= subject.name %></td>
 					<td><%= subject.term %></td>
+					<td><%= subject.credits %></td>
 					<td>
-						<a href="<%= subject.link %>" class="btn btn-link btn-small ementaButton">
-							<%= moreInfoStr %>
+						<a href="<%= subjectTableStr.get('ementaBaseLink')+subject.code %>"
+								class="btn btn-link btn-small ementaButton" target="_blank">
+							<%= subjectTableStr.get('ementaLinkLabel') %>
 						</a>
 					</td>
 				</tr>

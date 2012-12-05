@@ -116,44 +116,36 @@ var FaltacursarView = Backbone.View.extend({
 		$('#faltacursar-subject-table_wrapper').addClass('whole');
 	},		
 
-	fetchStrings: function() {
-		return {codeStr: 'Codigo', nameStr: 'Nome da Disciplina',
-			moreInfoStr: 'Ementa', termStr: 'Periodo',
-			infoStr: 'Ementa'};
-	},
-
 	fetchSubjects: function() {
-		return {subjects: [
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#'}
-		]};
-	},
-
-	fetchData: function() {
-		var data = $.extend({}, this.fetchStrings(),
-			this.fetchSubjects());
-		return data;
+		return [
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
+		];
 	},
 
 	render: function() {
-		this.$el.html(this.template(this.fetchData()));
+		this.$el.html(this.template({
+			subjects: this.fetchSubjects(),
+			subjectTableStr: subjectTableStringsModel
+		}));
 		this.initJS();
 
 		this.cache();

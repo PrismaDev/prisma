@@ -1,6 +1,7 @@
 var ClasseslistView = Backbone.View.extend({
 	template: '',
 	el: '',
+	linkEmenta: '',
 
 	//Cached
 	classesDatatable: '',
@@ -36,23 +37,12 @@ var ClasseslistView = Backbone.View.extend({
 		});
 	},
 
-	fetchStrings: function() {
-		return {'subjectCodeLabel': 'Disciplina',
-			'subjectNameLabel': 'Nome da disciplina',
-			'professorNameLabel': 'Professor',
-			'classCodeLabel': 'Turma',
-			'scheduleLabel': 'Horarios'};
-	},
-
-	fetchData: function(classesArray) {
-		return $.extend({}, this.fetchStrings(),
-			{classes: classesArray});
-	},
-
 	render: function(classesArray) {
-		this.$el.html(this.template(
-			this.fetchData(classesArray)
-		));	
+		this.$el.html(this.template({
+			classes: classesArray,
+			classesTableStr: classesTableStringsModel,
+			linkEmenta: this.linkEmenta
+		}));	
 
 		this.initJS();
 		this.cache();
@@ -60,6 +50,8 @@ var ClasseslistView = Backbone.View.extend({
 });
 
 var MicrohorarioClasseslistView = ClasseslistView.extend({
+	linkEmenta: true,
+
 	calculateTableScroll: function() {
 		var h=0;
 		if (!$('#microhorario-filter').hasClass('hidden'))
@@ -77,6 +69,8 @@ var MicrohorarioClasseslistView = ClasseslistView.extend({
 var microhorarioClasseslistView = new MicrohorarioClasseslistView({sDom: 't'});
 
 var FaltacursarClasseslistView = ClasseslistView.extend({
+	linkEmenta: false,
+
 	calculateTableScroll: function() {
 		var h = this.$el.height();
 		var headerH= this.$el.find('.dataTables_filter').outerHeight(true)+

@@ -1,11 +1,15 @@
 <script type="text/underscore" id="classeslist-template">
 	<table class="table table-bordered table-condensed">
 		<thead>
-			<th><%= subjectCodeLabel %></th>
-			<th><%= subjectNameLabel %></th>
-			<th><%= professorNameLabel %></th>
-			<th><%= scheduleLabel %></th>
-			<th><%= classCodeLabel %></th>
+			<th><%= classesTableStr.get('subjectCodeLabel') %></th>
+			<th><%= classesTableStr.get('subjectNameLabel') %></th>
+			<th><%= classesTableStr.get('professorNameLabel') %></th>
+			<th><%= classesTableStr.get('scheduleLabel') %></th>
+			<th><%= classesTableStr.get('classCodeLabel') %></th>
+		
+			<% if (linkEmenta) { %>
+				<th><%= classesTableStr.get('ementaHeaderLabel') %></th>
+			<% } %>
 		</thead>
 		<tbody>
 			<% _.each(classes, function(classO) { %>
@@ -15,6 +19,15 @@
 					<td><%= classO.professorName %></td>
 					<td><%= classO.schedule %></td>
 					<td><%= classO.code %></td>	
+				
+					<% if (linkEmenta) { %>
+						<td>
+							<a href="<%= classesTableStr.get('ementaBaseLink')+classO.subjectCode %>"
+								class="btn btn-link btn-small ementaButton" target="_blank">
+							<%= classesTableStr.get('ementaLinkLabel') %>
+						</a>
+					</td>
+					<% } %>
 				</tr>
 			<% }); %>
 		</tbody>

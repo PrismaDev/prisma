@@ -2,12 +2,11 @@
 	<table class="table table-bordered">
 		<thead>
 			<th></th>
-			<% _.each(days, function(day) { %>
+			<% _.each(timetableStr.get('daysLabel'), function(day) { %>
 				<th><%= day %>
 			<% }); %>
 		</thead>
 		<tbody>
-			<%= timetableBody %>
 		</tbody>
 	</table>
 </script>

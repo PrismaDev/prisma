@@ -30,3 +30,56 @@ var MicrohorarioStringsModel = Backbone.Model.extend({
 	}
 });
 var microhorarioStringsModel = new MicrohorarioStringsModel();
+
+var SelectedStringsModel = Backbone.Model.extend({
+	defaults: {
+		'option1Label': '1ª opção',
+		'option2Label': '2ª opção',
+		'option3Label': '3ª opção',
+		'noneLabel': 'N/A'
+	}
+});
+
+var selectedStringsModel = new SelectedStringsModel();
+
+var TimetableStringsModel = Backbone.Model.extend({
+	defaults: {
+		'daysLabel': [
+			'Segunda',
+			'Terça',
+			'Quarta',
+			'Quinta',
+			'Sexta',
+			'Sábado'
+		]
+	}
+});
+
+var timetableStringsModel = new TimetableStringsModel();
+
+var SubjectTableStringsModel = Backbone.Model.extend({
+	defaults: {
+		'subjectCodeLabel': 'Código da disciplina',
+		'subjectNameLabel': 'Nome da disciplina',
+		'termLabel': 'Período',
+		'creditsLabel': 'Nº de créditos',
+		'ementaHeaderLabel': 'Ementa',
+		'ementaLinkLabel': 'Ver ementa',
+		'ementaBaseLink': 'http://www.puc-rio.br/ferramentas/ementas/ementa.aspx?cd='
+	}
+});
+
+var subjectTableStringsModel = new SubjectTableStringsModel();
+
+var ClassesTableStringsModel = SubjectTableStringsModel.extend({
+	defaults: {
+		'classCodeLabel': 'Código da turma',
+		'professorNameLabel': 'Professor',
+		'scheduleLabel': 'Horários'
+	}
+});
+//Based on http://stackoverflow.com/questions/6549149/extending-the-defaults-of-a-model-superclass-in-backbone-js
+_.extend(ClassesTableStringsModel.prototype.defaults, 
+		SubjectTableStringsModel.prototype.defaults);
+
+var classesTableStringsModel = new ClassesTableStringsModel();

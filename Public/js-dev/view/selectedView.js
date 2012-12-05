@@ -64,18 +64,13 @@ var SelectedView = Backbone.View.extend({
 	},
 
 	buildSelected: function(rowsArray) {
-		this.$el.html(this.templateTable(this.fetchStrings()));
+		this.$el.html(this.templateTable({
+			selectedStr: selectedStringsModel
+		}));
 		var tbody = this.$el.find('tbody');
 
 		for (var i=0; i<rowsArray.length; i++)
 			$(tbody).append(this.buildRow(i,rowsArray[i]));
-	},
-
-	fetchStrings: function() {
-		return {'option1Label': '1a opcao',
-			'option2Label': '2a opcao',
-			'option3Label': '3a opcao',
-			'noneLabel': 'N/A'};
 	},
 
 	fetchData: function() { //this will be a model function
