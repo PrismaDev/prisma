@@ -28,6 +28,11 @@ Class MainController extends RestController
 
 		$disciplinas = array();
 		$discUsed = array();
+		$depend = array(); //Nota da Luiza: isso estava
+				//quebrando meu codigo, fiz um conserto
+				//mas não sei se era isso que você queria,
+				//olha depois
+		
 		foreach($disciplinas as $disciplina)
 		{
 			$codigoDisciplina = $disciplina['CodigoDisciplina'];
@@ -57,7 +62,7 @@ Class MainController extends RestController
 		{
 			$codigoDisciplina = $selecionada['CodigoDisciplina'];
 
-			if(isset($discUSed[$codigoDisciplina])) 
+			if(isset($discUsed[$codigoDisciplina])) 
 				continue;
 			$discUSed[$codigoDisciplina] = true;
 
@@ -73,7 +78,7 @@ Class MainController extends RestController
 			'dependencia' => $depend
 		);
 
-		return ViewLoader::load('Prisma', 'general.phtml', array('section' => 'main', 'data' => $data));
+		return ViewLoader::load('Prisma', 'general.phtml', array('section' => 'main', 'data'=> $data));
 	}
 }
 

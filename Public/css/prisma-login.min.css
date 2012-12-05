@@ -30,6 +30,9 @@
 .dropdown-menu a {
   color: #777777;
 }
+body {
+  min-width: 1024px;
+}
 html,
 body {
   height: 100%;

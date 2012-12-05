@@ -48,7 +48,7 @@ var MainView = Backbone.View.extend({
 		var me = this;
 	
 		$(window).resize(function() {
-			me.equalMainDivsHeight();
+		//	me.equalMainDivsHeight();
 		});
 	},
 
@@ -77,7 +77,7 @@ var MainView = Backbone.View.extend({
 		$('#'+this.tabs[tab].li).addClass('active');
 		$('#'+this.tabs[tab].div).addClass('active');
 	
-		this.tabs[tab].view.resize();
+	//	this.tabs[tab].view.resize();
 	},
 
 	fetchStrings: function() {
