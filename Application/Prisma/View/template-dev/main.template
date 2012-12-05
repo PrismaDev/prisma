@@ -2,9 +2,9 @@
 	<div id="container-div">
 			<div id="main-sidebar-div">
 				<ul class="nav nav-tabs" id="main-tabs-nav">
-					<% _.each(tabs, function(tab) { %>
+					<% _.each(tabs, function(tab, tabName) { %>
 						<li id="<%= tab.li %>">
-							<a href="<%= tab.href %>"><%= tab.str %></a>
+							<a href="<%= tab.href %>"><%= mainStr.get(tabName+'TabLabel') %></a>
 						</li>
 					<% }); %>
 				</ul>
