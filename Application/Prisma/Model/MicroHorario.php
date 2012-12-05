@@ -46,7 +46,7 @@ class MicroHorario
 
 			if(isset($filters['Pagina']))
 			{
-				$offset = $limit * $filters['Pagina'];
+				$offset = $filters['Quantidade'] * $filters['Pagina'];
 
 				$sql .= ' OFFSET '.$offset;
 			}
