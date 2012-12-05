@@ -10,7 +10,7 @@ class Selecionada
 	{
 		$dbh = Database::getConnection();
 
-		$sth = $dbh->prepare('SELECT "FK_Turma", "Opcao", "NoLinha"
+		$sth = $dbh->prepare('SELECT "DisciplinaDaTurma"("FK_Turma") as "CodigoDisciplina", "FK_Turma", "Opcao", "NoLinha"
 					FROM "AlunoTurmaSelecionada" WHERE "FK_Aluno" = ?;');
 		$sth->execute(array($aluno));
 
