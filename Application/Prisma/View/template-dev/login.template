@@ -4,15 +4,34 @@
 			<h1><%= layoutStr.get('projectNameStr') %></h1>
 		</div>
 	</div>
-	<div class="row-fluid" id="login-container">
-		<div class="span4 offset4" id="login-form">
-			<form name="loginForm" method="post" action="/login">
-				<input type="hidden" name="tipo" value="Aluno" />
-				<label for="matricula"><%= loginStr.get('matriculaLabel') %></label><input type="text" name="matricula" /><br />
-				<label for="senha"><%= loginStr.get('passwordLabel') %></label><input type="password" name="senha" /><br />
-				<input class="btn btn-inverse rightFloated" type="submit" value="<%= loginStr.get('submitButtonLabel') %>" />
-			</form>
+	<div id="login-container">
+		<div class="row-fluid">
+			<div class="span4 offset4 content">
+				<%= loginStr.get('infoText') %>	
+			</div>
 		</div>
+		<div class="row-fluid">
+			<div class="span4 offset4 content" id="login-form">
+				<form name="loginForm" method="post" action="/login">
+					<input type="hidden" name="tipo" value="Aluno" />
+					<div class="row-fluid">
+						<div class="help-block"><%= loginStr.get('loginHelpText') %></div>
+					</div>
+					<div class="row-fluid">
+						<div class="span2 offset2">
+							<label for="matricula"><%= loginStr.get('matriculaLabel') %></label><input type="text" name="matricula" /><br />
+							<label for="senha"><%= loginStr.get('passwordLabel') %></label><input type="password" name="senha" /><br />
+						</div>
+					</div>
+					<div class="row-fluid>
+						<div class="span4">
+							<input class="btn btn-inverse rightFloated" type="submit" value="<%= loginStr.get('submitButtonLabel') %>" />
+							<span class="help-block"><%= loginStr.get('forgotPasswordText') %><span>
+						</div>
+					</div>
+				</form>
+			</div>
+		<div>
 	</div>
 </script>
 
