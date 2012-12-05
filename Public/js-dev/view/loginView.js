@@ -21,7 +21,10 @@ var LoginView = Backbone.View.extend({
 				layoutStr: layoutStringsModel,
 				loggedIn: false
 		}));
-		$('#content-div').html(this.loginTemplate({str: loginStringsModel}));
+		$('#content-div').html(this.loginTemplate({
+			loginStr: loginStringsModel,
+			layoutStr: layoutStringsModel
+		}));
 		
 		this.initJS();
 	}

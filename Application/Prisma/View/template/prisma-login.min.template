@@ -1,15 +1,17 @@
 <script type="text/underscore-template" id="login-template">
+	<div class="row-fluid">
+		<div class="span4 offset4" id="logo-div">
+			<h1><%= layoutStr.get('projectNameStr') %></h1>
+		</div>
+	</div>
 	<div class="row-fluid" id="login-container">
-		<div class="span3 offset2" id="loginForm">
+		<div class="span4 offset4" id="login-form">
 			<form name="loginForm" method="post" action="/login">
 				<input type="hidden" name="tipo" value="Aluno" />
-				<label for="matricula"><%= str.get('matriculaLabel') %></label><input type="text" name="matricula" /><br />
-				<label for="senha"><%= str.get('passwordLabel') %></label><input type="password" name="senha" /><br />
-				<input class="btn btn-inverse rightFloated" type="submit" value="<%= str.get('submitButtonLabel') %>" />
+				<label for="matricula"><%= loginStr.get('matriculaLabel') %></label><input type="text" name="matricula" /><br />
+				<label for="senha"><%= loginStr.get('passwordLabel') %></label><input type="password" name="senha" /><br />
+				<input class="btn btn-inverse rightFloated" type="submit" value="<%= loginStr.get('submitButtonLabel') %>" />
 			</form>
-		</div>
-		<div class="span4">
-			<p>a help box</p>
 		</div>
 	</div>
 </script>
