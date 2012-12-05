@@ -1,3 +1,12 @@
+var MainStringsModel = Backbone.Model.extend({
+	defaults: {
+		'faltacursarTabLabel': 'Falta Cursar',
+		'microhorarioTabLabel': 'Micro Horário',
+		'selectedTabLabel': 'Selecionadas'
+	}
+});
+var mainStringsModel = new MainStringsModel();
+
 var MicrohorarioStringsModel = Backbone.Model.extend({
 	defaults: {
 		'openFiltersStr': 'Abrir filtros',
@@ -20,5 +29,4 @@ var MicrohorarioStringsModel = Backbone.Model.extend({
 		'submitButtonLabel': 'Buscar'
 	}
 });
-
 var microhorarioStringsModel = new MicrohorarioStringsModel();

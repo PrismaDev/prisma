@@ -105,7 +105,7 @@ var MicrohorarioView = Backbone.View.extend ({
 		microhorarioClasseslistView.setElement(this.$resultsDiv);		
 		microhorarioClasseslistView.render([]);
 		
-		this.changeState(this.noQueryStatus, this.testArray);		
+		this.changeState(this.noQueryStatus);		
 	}
 });
 
