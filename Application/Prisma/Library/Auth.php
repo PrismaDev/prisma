@@ -76,8 +76,7 @@ class Auth
 	protected static function checkHash($hash)
 	{
 		$dbh = Database::getConnection();
-
-		$sth = $dbh->prepare('SELECT 1 FROM "Usuario" WHERE "HashSessao"=?;');
+		$sth = $dbh->prepare('SELECT 1 FROM "Usuario" WHERE "HashSessao"=? AND (now() <= "UltimoAcesso" + interval \''.(60*60*24*3).' second\');');
 		$sth->execute(array($hash));
 	
 		return $sth->fetch() != false;
