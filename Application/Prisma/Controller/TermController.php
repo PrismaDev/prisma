@@ -4,6 +4,7 @@ namespace Prisma\Controller;
 
 use Framework\RestController;
 use Framework\ViewLoader;
+use Framework\Router;
 use Prisma\Library\Auth;
 
 Class TermController extends RestController
@@ -19,14 +20,12 @@ Class TermController extends RestController
 	{
 		//TODO
 
-		return ViewLoader::load('Prisma', 'term.phtml', array());
+		return ViewLoader::load('Prisma', 'general.phtml', array('section' => 'term'));
 	}
 	
 	public function performPost($url, $arguments, $accept) 
 	{
-		return 'POST';
-
-		//TODO
+		Router::redirectRoute('/main');
 	}
 }
 

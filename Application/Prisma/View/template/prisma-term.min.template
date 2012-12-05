@@ -3,7 +3,7 @@
 		<%= termText %>
 	</textarea>
 		
-	<form name="termForm" method="post" action="termAction.php">
+	<form name="termForm" method="post" action="/term">
 		<input type="checkbox" name="acceptedTerm" />
 		<label for="acceptedTerm"><%= acceptTermStr %></label><br />
 		<input type="button" value="<%= backButtonStr %>" onclick="termController.backToLogin()" />
