@@ -23,14 +23,11 @@ class FaltaCursarController extends RestController
 		$disciplinas = Disciplina::getFaltaCursar($login);
 		$optativas = Optativa::getByUserDepend($login);
 
-		$disciplinasLen = count($disciplinas);
-		$optativasLen = count($optativas);
-
 		$discUsed = array(); 
 		$depend = array();
-		for($i = 0; $i < $disciplinasLen; ++$i)
+		foreach($disciplinas as $disciplina)
 		{
-			$codigoDisciplina = $disciplinas[$i]['CodigoDisciplina'];
+			$codigoDisciplina = $disciplina['CodigoDisciplina'];
 
 			if(isset($discUSed[$codigoDisciplina])) 
 				continue;
@@ -38,13 +35,13 @@ class FaltaCursarController extends RestController
 
 			$depend[] = Disciplina::getByUserIdDepend($login, $codigoDisciplina);
 		}
-		for($i = 0; $i < $optativasLen; ++$i)
+		foreach($optativas as $optativa)
 		{
-			$optDiscLen = count($optativas[$i]['disciplinas']);
+			$optDiscLen = count($optativa['disciplinas']);
 
-			for($j = 0; $j < $optDiscLen; ++$j)
+			foreach($optativa['disciplinas'] as $disciplina)
 			{
-				$codigoDisciplina = $optativas[$i]['disciplinas'][$j]['CodigoDisciplina'];
+				$codigoDisciplina = $disciplina['CodigoDisciplina'];
 
 				if(isset($discUSed[$codigoDisciplina])) 
 					continue;
@@ -59,7 +56,7 @@ class FaltaCursarController extends RestController
 				'disciplinas' => $disciplinas,
 				'optativas' => $optativas,
 			),
-			'disciplinas' => $depend
+			'dependencia' => $depend
 		);
 
 		return json_encode($data);

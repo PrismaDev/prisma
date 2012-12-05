@@ -5,6 +5,7 @@ namespace Prisma\Controller\Resource;
 use Framework\RestController;
 use Prisma\Library\Auth;
 use Prisma\Model\Selecionada;
+use Prisma\Model\Disciplina;
 
 class SelecionadaController extends RestController
 {
@@ -12,12 +13,34 @@ class SelecionadaController extends RestController
 	{
 		parent::__construct('GET, POST');
 
-//		Auth::accessControl('Aluno');
+		Auth::accessControl('Aluno');
 	}
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return json_encode(Selecionada::getAll($_COOKIE['login']));
+		$login = $_COOKIE['login'];
+
+		$selecionadas = Selecionada::getAll($login);
+
+		$discUsed = array();
+		$depend = array();
+		foreach($selecionadas as $selecionada)
+		{
+			$codigoDisciplina = $selecionada['CodigoDisciplina'];
+
+			if(isset($discUSed[$codigoDisciplina])) 
+				continue;
+			$discUSed[$codigoDisciplina] = true;
+
+			$depend[] = Disciplina::getByUserIdDepend($login, $codigoDisciplina);
+		}
+
+		$data = array(
+			'selecionadas' => $selecionadas,
+			'dependencia' => $depend
+		);
+
+		return json_encode($data);
 	}
 	
 	public function performPost($url, $arguments, $accept) 

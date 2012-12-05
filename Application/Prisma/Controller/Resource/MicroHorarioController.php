@@ -12,12 +12,12 @@ class MicroHorarioController extends RestController
 	public function __construct()
 	{
 		parent::__construct('GET, POST');
-
-//		Auth::accessControl('Administrador');
 	}
 
 	public function performGet($url, $arguments, $accept) 
 	{
+		Auth::accessControl('Aluno');
+
 		$microhorario = MicroHorario::getByFilter($arguments);
 
 		$disciplinas = array();
@@ -32,7 +32,7 @@ class MicroHorarioController extends RestController
 
 		$data = array(
 			'microhorario' => $microhorario,
-			'disciplinas' => $disciplinas
+			'dependencia' => $disciplinas
 		);
 
 		return json_encode($data);
@@ -40,6 +40,8 @@ class MicroHorarioController extends RestController
 	
 	public function performPost($url, $arguments, $accept) 
 	{
+		Auth::accessControl('Administrador');
+
 		if(!isset($_FILES['file'])) return 'error';
 
 		if(MicroHorario::saveFromFile($_FILES['file']['tmp_name']))
