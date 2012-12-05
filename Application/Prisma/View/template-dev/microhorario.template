@@ -6,7 +6,7 @@
 			id="closeFiltersButton" />
 	</div>
 	<div id="microhorario-filter">
-		<form>
+		<form id="microhorario-form">
 			<div class="fieldContainer">
 				<label for="subjectCode"><%= str.get('subjectCodeLabel') %></label>
 				<input type="text" name="subjectCode" />

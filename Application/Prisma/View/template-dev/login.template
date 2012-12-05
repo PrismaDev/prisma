@@ -1,9 +1,4 @@
 <script type="text/underscore-template" id="login-template">
-	<div class="row-fluid" id="login-header">
-		<div id="logo-div" class="span12">
-		</div>
-	</div>
-	<hr>
 	<div class="row-fluid" id="login-container">
 		<div class="span3 offset2" id="loginForm">
 			<form name="loginForm" method="post" action="/login">

@@ -31,7 +31,8 @@ $(PROD)/prisma-login.min.css: login.less\
 	$(CC) $(CFLAGS) login.less > $@
 
 $(PROD)/prisma-term.min.css: term.less\
-				layout.less\
 				variables.less\
+				basics.less\
+				layout.less\
 				nav.less
 	$(CC) $(CFLAGS) term.less > $@

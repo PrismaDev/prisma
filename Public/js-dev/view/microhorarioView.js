@@ -10,35 +10,13 @@ var MicrohorarioView = Backbone.View.extend ({
 	waitingStatus: 'waiting',
 
 	waitingImgURL: 'http://i.stack.imgur.com/FhHRx.gif',
-	testArray: [
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'}
-	],
 		
 	events: {
 		"click #moreFiltersButton": "moreFilters",
 		"click #lessFiltersButton": "lessFilters",
 		"click #openFiltersButton": "openFilters",
-		"click #closeFiltersButton": "closeFilters"
+		"click #closeFiltersButton": "closeFilters",
+		"submit #microhorario-form": "query"
 	},
 
 	//Event handlers
@@ -74,7 +52,21 @@ var MicrohorarioView = Backbone.View.extend ({
 		microhorarioClasseslistView.resize();
 	},
 
-	//Methods
+	query: function() {
+		this.changeState(this.waitingStatus);
+		var microhorarioModel = new MicrohorarioModel();
+		var me=this;
+
+		microhorarioModel.fetch({
+			sucess: function(microhorario) {
+				me.changeState(me.queryStatus,
+					microhorario);
+			}
+		});
+
+		return false;		
+	},
+
 	initialize: function() {
 		this.template = _.template($('#microhorario-template').html());
 		this.waitingTemplate = _.template($('#microhorario-waiting-template').html());
@@ -92,12 +84,12 @@ var MicrohorarioView = Backbone.View.extend ({
 
 		if (qStatus==this.noQueryStatus)
 			this.$resultsDiv.html(this.noQueryTemplate({
-				noQueryStr: 'No query' //temporary
+				str: microhorarioStringsModel
 			}));
 		else 
 			this.$resultsDiv.html(this.waitingTemplate({
-			waitingImgURL: this.waitingImgURL
-		}));
+				waitingImgURL: this.waitingImgURL
+			}));
 	},
 
 	resize: function() {
@@ -105,7 +97,6 @@ var MicrohorarioView = Backbone.View.extend ({
 	},
 
 	render: function() {
-		console.log(microhorarioStringsModel);
 		this.$el.html(this.template({
 			str: microhorarioStringsModel
 		}));
@@ -114,7 +105,7 @@ var MicrohorarioView = Backbone.View.extend ({
 		microhorarioClasseslistView.setElement(this.$resultsDiv);		
 		microhorarioClasseslistView.render([]);
 		
-		this.changeState(this.queryStatus, this.testArray);		
+		this.changeState(this.noQueryStatus);		
 	}
 });
 

@@ -41,13 +41,6 @@ var MainView = Backbone.View.extend({
 	container: '',
 	tabsNav: '',
 
-	testData: {
-		'hiStr': 'Olá',
-		'user': {'name': 'Bobteco da Silva'},
-		'logoutStr': 'Logout',
-		'loggedIn': true
-	},
-
 	initialize: function() {
 		this.mainTemplate = _.template($('#main-template').html());
 		this.layoutTemplate = _.template($('#layout-template').html());
@@ -108,7 +101,10 @@ var MainView = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.$el.html(this.layoutTemplate(this.testData));
+		this.$el.html(this.layoutTemplate({
+			layoutStr: layoutStringsModel,
+			loggedIn: true
+		}));
 		$('#content-div').html(this.mainTemplate({tabs: this.tabs}));
 		
 		this.renderSubviews();
