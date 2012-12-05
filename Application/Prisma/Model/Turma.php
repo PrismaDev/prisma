@@ -4,9 +4,24 @@ namespace Prisma\Model;
 
 use Framework\Database;
 use Prisma\Library\Common;
+use Prisma\Model\TurmaHorario;
 
 class Turma
 {
+	public static function getByDisciplinaDepend($discID)
+	{
+		$turmas = self::getByDisciplina($discID);
+		$turmasSize = count($turmas);
+
+
+		for($i = 0; $i < $turmasSize; ++$i)
+		{
+			$turmas[$i]['horarios'] = TurmaHorario::getByTurma($turmas[$i]['PK_Turma']);
+		}
+
+		return $turmas;
+	}
+
 	public static function getByDisciplina($discID)
 	{
 		$dbh = Database::getConnection();	

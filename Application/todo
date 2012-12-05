@@ -1,10 +1,6 @@
 
 Pontos a definir ainda:
 
-- Criar metodo em turma de forma que pegue tambem os seus horarios
-
-- Fazer controller de optativa
-
 - Strings de tradução do sistema
 
 - Admin deve poder ler comentarios, subir arquivos e setar variaveis
@@ -21,7 +17,6 @@ Fine tuning:
 
 Implementar modelo do prisma necessario:
 
-- MicroHorario (retornar com dados completos de turma e disciplina organizado em forma de arvore)
 - Selecionada (retornar com dados completo de turma e disciplina)
 - Usuario
 - Comentario

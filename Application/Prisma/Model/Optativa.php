@@ -10,9 +10,27 @@ class Optativa
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "Aluno", "CodigoOptativa", "NomeOptativa", "PeriodoSugerido"
+		$sth = $dbh->prepare('SELECT "CodigoOptativa", "NomeOptativa", "PeriodoSugerido"
 					FROM "FaltaCursarOptativa" WHERE "Aluno" = ?;');
 		$sth->execute(array($login));
+
+		$optativas = $sth->fetchAll(\PDO::FETCH_ASSOC);
+		$optativasLen = count($optativas);
+
+		for($i = 0; $i < $optativasLen; ++$i)
+		{
+			$optativas[$i]['disciplinas'] = self::getByOptativa($optativas[$i]['CodigoOptativa']);
+		}
+
+		return $optativas;
+	}
+
+	public static function getByOptativa($opID)
+	{
+		$dbh = Database::getConnection();
+
+		$sth = $dbh->prepare('SELECT "FK_Disciplina" as "CodigoDisciplina" FROM "OptativaDisciplina" WHERE "FK_Optativa" = ?;');
+		$sth->execute(array($opID));
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}
