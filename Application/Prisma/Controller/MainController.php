@@ -26,12 +26,8 @@ Class MainController extends RestController
 		$optativas = Optativa::getByUserDepend($login);
 		$selecionadas = Selecionada::getAll($login);
 
-		$disciplinas = array();
 		$discUsed = array();
-		$depend = array(); //Nota da Luiza: isso estava
-				//quebrando meu codigo, fiz um conserto
-				//mas não sei se era isso que você queria,
-				//olha depois
+		$depend = array();
 		
 		foreach($disciplinas as $disciplina)
 		{
