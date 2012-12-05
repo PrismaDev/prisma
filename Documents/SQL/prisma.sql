@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.5
 -- Dumped by pg_dump version 9.1.5
--- Started on 2012-12-05 08:28:57 BRST
+-- Started on 2012-12-05 18:41:50 BRST
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -11534,7 +11534,7 @@ COPY "TurmaHorario" ("FK_Turma", "DiaSemana", "HoraInicial", "HoraFinal") FROM s
 --
 
 COPY "Usuario" ("PK_Login", "Senha", "Nome", "HashSessao", "TermoAceito", "FK_TipoUsuario", "UltimoAcesso") FROM stdin;
-aluno	06b3e18deab1e5e3365853925f7559ede5838421	Aluno Teste	91df25f8ff373d8087dfc6f34d7170e3a0dc9e78	f	3	2012-12-05 08:18:26.536443-02
+aluno	06b3e18deab1e5e3365853925f7559ede5838421	Aluno Teste	10d6bbfcb7af44b1e134f9457f5005ef55398807	f	3	2012-12-05 14:25:42.272274-02
 \.
 
 
@@ -12061,7 +12061,7 @@ ALTER TABLE ONLY "Turma"
     ADD CONSTRAINT "PK_Turma_Disciplina" FOREIGN KEY ("FK_Disciplina") REFERENCES "Disciplina"("PK_Codigo") ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2012-12-05 08:28:57 BRST
+-- Completed on 2012-12-05 18:41:50 BRST
 
 --
 -- PostgreSQL database dump complete
