@@ -7,7 +7,7 @@ var LoginStringsModel = Backbone.Model.extend({
 			dígito verificador e a mesma senha que você utiliza\
 			para o PUC Online',
 		'forgotPasswordText': 'Se você esqueceu sua senha, <a href=\
-			"http://www.puc-rio.br/ensinopesq/academicas/">Clique aqui</a>\
+			"http://www.puc-rio.br/ensinopesq/academicas/">clique aqui</a>\
 			 para acessar o PUC Online e recuperá-la',
 		'infoText': 'O PrISMA, Programa de Instrução à Solicitação da\
 			Matrícula Acadêmica, é um sistema desenvolvido por alunos\

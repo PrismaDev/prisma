@@ -3,6 +3,20 @@ var LoginView = Backbone.View.extend({
 	layoutTemplate: '',
 	loginTemplate: '',
 
+	events: {
+		'click ul div.dropdown-menu': 'preventClose',
+		'click #open-login-button': 'openLogin' 
+	},
+
+	preventClose: function(e) {
+		e.stopPropagation();
+	},
+
+	openLogin: function() {
+		$('#open-login-button-container').addClass('hidden');
+		$('#login-form-container').removeClass('hidden');
+	},
+
 	initialize: function() {
 		this.layoutTemplate = _.template($('#layout-template').html());
 		this.loginTemplate = _.template($('#login-template').html());
@@ -10,9 +24,6 @@ var LoginView = Backbone.View.extend({
 
 	initJS: function() {
 		$('.dropdown-toggle').dropdown();
-		$('ul div.dropdown-menu').click(function(e) {
-			e.stopPropagation();
-		});
 	},
 	
 	render: function() {

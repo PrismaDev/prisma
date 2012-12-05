@@ -85,6 +85,9 @@ body {
   font-size: 500%;
   letter-spacing: -3px;
 }
+#open-login-button-container {
+  margin-top: 1%;
+}
 #login-container {
   margin-top: 20%;
 }
@@ -95,15 +98,12 @@ body {
   -moz-border-radius: 6px;
   border-radius: 6px;
   padding-left: 1%;
-  padding-bottom: 1%;
   margin-top: 1%;
   margin-bottom: 1%;
 }
-#login-container button {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-div#loginForm input[type="submit"] {
+#login-form input[type="submit"] {
   margin-right: 5%;
-  float: right;
+}
+#login-form span.help-block {
+  margin-bottom: 0;
 }
