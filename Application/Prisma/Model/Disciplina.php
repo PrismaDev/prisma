@@ -3,6 +3,7 @@
 namespace Prisma\Model;
 
 use Framework\Database;
+use Prisma\Model\Turma;
 
 class Disciplina
 {
@@ -20,14 +21,22 @@ class Disciplina
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "Codigo", "Nome", "Creditos", "Situacao", "PeriodoSugerido", "Tentativas", "Apto"
-					FROM "FaltaCursarDisciplina" WHERE "Aluno" = ?;');
+		$sth = $dbh->prepare('SELECT "FK_Disciplina" as "CodigoDisciplina", "PeriodoSugerido", "Tentativas"
+					FROM "AlunoDisciplina" WHERE "FK_Status" <> \'CP\' AND "FK_Aluno" = ?;');
 		$sth->execute(array($login));
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
-	public static function getByUserAndId($login, $id)
+	public static function getByUserIdDepend($login, $id)
+	{
+		$disciplina = self::getByUserId($login, $id);
+		$disciplina['turmas'] = Turma::getByDisciplinaDepend($id);
+
+		return $disciplina;
+	}
+
+	public static function getByUserId($login, $id)
 	{
 		$dbh = Database::getConnection();	
 

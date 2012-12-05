@@ -12,43 +12,11 @@ use Prisma\Model\TurmaHorario;
 
 class MicroHorario
 {
-	public static function getByFilter($login, $filters = array())
+	public static function getByFilter($filters = array())
 	{
 		$microhorario = self::getRowsByFilter($filters);
-		$disciplinas = self::getRowsDepend($login, $microhorario);
 
-		return array(
-			'microhorario' => $microhorario,
-			'disciplinas' => $disciplinas,
-		);
-	}
-
-	private static function getRowsDepend($login, $rows)
-	{
-		$disciplinas = array();
-		$discCount = 0;
-
-		$discUsed = array();
-
-		foreach($rows as $tuple)
-		{
-			if(isset($discUsed[$tuple['CodigoDisciplina']])) continue;
-			$discUsed[$tuple['CodigoDisciplina']] = true;
-
-			$disciplinas[$discCount] = Disciplina::getByUserAndId($login, $tuple['CodigoDisciplina']);
-
-			$disciplinas[$discCount]['turmas'] = Turma::getByDisciplina($tuple['CodigoDisciplina']);
-			$turmasSize = count($disciplinas[$discCount]['turmas']);
-
-			for($j = 0; $j < $turmasSize; ++$j)
-			{
-				$disciplinas[$discCount]['turmas'][$j]['horarios'] = TurmaHorario::getByTurma($disciplinas[$discCount]['turmas'][$j]['PK_Turma']);
-			}
-
-			++$discCount;
-		}
-
-		return $disciplinas;
+		return $microhorario;
 	}
 
 	private static function getRowsByFilter($filters)

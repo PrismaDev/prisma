@@ -21,9 +21,7 @@ Class TestController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return json_encode(Disciplina::getById('JUR1932'));
-	//	return json_encode(Turma::getByDisciplina('INF1007'));
-	//	return json_encode(MicroHorario::get('aluno', array('CodigoDisciplina'=>'inf')));
+		return json_encode(Optativa::getByUserDepend($_COOKIE['login']));
 	}
 }
 
