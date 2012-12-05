@@ -51,7 +51,10 @@ tr.disabled {
   padding: 10px;
   background-color: black;
 }
-ul.dropdown-menu a {
+.dropdown-menu .help-block {
+  font-size: small;
+}
+.dropdown-menu a {
   color: #777777;
 }
 html,

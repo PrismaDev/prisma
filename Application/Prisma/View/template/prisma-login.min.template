@@ -8,9 +8,10 @@
 		<div class="row-fluid">
 			<div class="span4 offset4 content">
 				<%= loginStr.get('infoText') %>	
+				</div>
 			</div>
-		</div>
-		<div class="row-fluid">
+		</div>	
+		<div class="row-fluid hidden" id="login-form-container">
 			<div class="span4 offset4 content" id="login-form">
 				<form name="loginForm" method="post" action="/login">
 					<input type="hidden" name="tipo" value="Aluno" />
@@ -32,12 +33,22 @@
 				</form>
 			</div>
 		<div>
+		<div class="row-fluid" id="login-button-container">
+			<div class="span4 offset4 content">	
+				<button type="button" class="btn btn-success btn-block"><%= loginStr.get('openLoginButtonLabel')%></button>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span4 offset4 content">
+				<button type="button" class="btn btn-primary btn-block disabled"><%= loginStr.get('tutorialButtonLabel')%></button>
+			</div>
+		</div>
 	</div>
 </script>
 
 
 <script type="text/underscore-template" id="layout-template">
-	<div id="wrap-id">
+	<div id="wrap-div">
 		<div class="container-fluid">
 			<div class="navbar navbar-inverse">
 				<div class="navbar-inner">
@@ -52,11 +63,16 @@
 								<div class="dropdown-menu">
 									<form name="loginForm" method="post" action="/login">
 										<input type="hidden" name="tipo" value="Aluno" />
-										<label for="username"><%= loginStr.get('matriculaLabel') %></label>
-										<input type="text" name="matricula" />
-										<label for="password"><%= loginStr.get('passwordLabel') %></label>
-										<input type="password" name="senha" />
-										<input class="btn pull-right" type="submit" value="<%= loginStr.get('submitButtonLabel') %>" />
+										<div>
+											<label for="username"><%= loginStr.get('matriculaLabel') %></label>
+											<input type="text" name="matricula" />
+											<label for="password"><%= loginStr.get('passwordLabel') %></label>
+											<input type="password" name="senha" />
+										</div>
+										<div>
+											<input class="btn pull-right" type="submit" value="<%= loginStr.get('submitButtonLabel') %>" />
+											<span class="help-block"><%= loginStr.get('forgotPasswordText') %></span>
+										</div>
 									</form>
 								</div>
 							</li>

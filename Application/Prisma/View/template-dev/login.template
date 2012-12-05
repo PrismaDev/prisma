@@ -8,9 +8,10 @@
 		<div class="row-fluid">
 			<div class="span4 offset4 content">
 				<%= loginStr.get('infoText') %>	
+				</div>
 			</div>
-		</div>
-		<div class="row-fluid">
+		</div>	
+		<div class="row-fluid hidden" id="login-form-container">
 			<div class="span4 offset4 content" id="login-form">
 				<form name="loginForm" method="post" action="/login">
 					<input type="hidden" name="tipo" value="Aluno" />
@@ -32,6 +33,16 @@
 				</form>
 			</div>
 		<div>
+		<div class="row-fluid" id="login-button-container">
+			<div class="span4 offset4 content">	
+				<button type="button" class="btn btn-success btn-block"><%= loginStr.get('openLoginButtonLabel')%></button>
+			</div>
+		</div>
+		<div class="row-fluid">
+			<div class="span4 offset4 content">
+				<button type="button" class="btn btn-primary btn-block disabled"><%= loginStr.get('tutorialButtonLabel')%></button>
+			</div>
+		</div>
 	</div>
 </script>
 

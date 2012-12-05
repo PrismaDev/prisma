@@ -1,5 +1,5 @@
 <script type="text/underscore-template" id="layout-template">
-	<div id="wrap-id">
+	<div id="wrap-div">
 		<div class="container-fluid">
 			<div class="navbar navbar-inverse">
 				<div class="navbar-inner">
@@ -14,11 +14,16 @@
 								<div class="dropdown-menu">
 									<form name="loginForm" method="post" action="/login">
 										<input type="hidden" name="tipo" value="Aluno" />
-										<label for="username"><%= loginStr.get('matriculaLabel') %></label>
-										<input type="text" name="matricula" />
-										<label for="password"><%= loginStr.get('passwordLabel') %></label>
-										<input type="password" name="senha" />
-										<input class="btn pull-right" type="submit" value="<%= loginStr.get('submitButtonLabel') %>" />
+										<div>
+											<label for="username"><%= loginStr.get('matriculaLabel') %></label>
+											<input type="text" name="matricula" />
+											<label for="password"><%= loginStr.get('passwordLabel') %></label>
+											<input type="password" name="senha" />
+										</div>
+										<div>
+											<input class="btn pull-right" type="submit" value="<%= loginStr.get('submitButtonLabel') %>" />
+											<span class="help-block"><%= loginStr.get('forgotPasswordText') %></span>
+										</div>
 									</form>
 								</div>
 							</li>
