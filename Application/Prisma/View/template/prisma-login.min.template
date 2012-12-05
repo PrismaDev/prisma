@@ -33,11 +33,12 @@
 								<b class="caret"></b>
 							</a>
 							<div class="dropdown-menu">
-								<form>
+								<form name="loginForm" method="post" action="/login">
+									<input type="hidden" name="tipo" value="Aluno" />
 									<label for="username"><%= str.get('matriculaLabel') %></label>
 									<input type="text" name="matricula" />
 									<label for="password"><%= str.get('passwordLabel') %></label>
-									<input type="password" name="password" />
+									<input type="password" name="senha" />
 									<input class="btn pull-right" type="submit" value="<%= str.get('submitButtonLabel') %>" />
 								</form>
 							</div>
@@ -51,7 +52,7 @@
 								<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="#"><%= logoutStr %></a></li>	
+								<li><a href="/logout"><%= logoutStr %></a></li>	
 							</ul>
 						</li>
 					</ul>
