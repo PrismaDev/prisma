@@ -15,7 +15,7 @@ Class MainController extends RestController
 	{
 		parent::__construct('GET');
 
-//		Auth::accessControl('Aluno');
+		Auth::accessControl('Aluno');
 	}
 
 	public function performGet($url, $arguments, $accept) 
