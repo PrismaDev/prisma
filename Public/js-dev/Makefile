@@ -21,6 +21,7 @@ DEP_LOGIN = $(MDL)/loginStringsModel.js \
 	$(CTRL)/loginRouter.js
 
 DEP_TERM = $(MDL)/layoutStringsModel.js \
+	$(MDL)/termStringsModel.js \
 	$(VIEW)/termView.js \
 	$(CTRL)/termRouter.js
 
