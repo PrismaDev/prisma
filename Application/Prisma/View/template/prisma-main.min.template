@@ -230,7 +230,7 @@
 	</div>
 </script>
 <script type="text/underscore-template" id="layout-template">
-	<div id="wrap-div">
+	<div id="wrap-id">
 		<div class="container-fluid">
 			<div class="navbar navbar-inverse">
 				<div class="navbar-inner">
@@ -243,11 +243,12 @@
 									<b class="caret"></b>
 								</a>
 								<div class="dropdown-menu">
-									<form>
+									<form name="loginForm" method="post" action="/login">
+										<input type="hidden" name="tipo" value="Aluno" />
 										<label for="username"><%= loginStr.get('matriculaLabel') %></label>
 										<input type="text" name="matricula" />
 										<label for="password"><%= loginStr.get('passwordLabel') %></label>
-										<input type="password" name="password" />
+										<input type="password" name="senha" />
 										<input class="btn pull-right" type="submit" value="<%= loginStr.get('submitButtonLabel') %>" />
 									</form>
 								</div>
@@ -261,7 +262,7 @@
 									<b class="caret"></b>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a href="#"><%= layoutStr.get('logoutStr') %></a></li>	
+									<li><a href="/logout"><%= layoutStr.get('logoutStr') %></a></li>	
 								</ul>
 							</li>
 						</ul>
