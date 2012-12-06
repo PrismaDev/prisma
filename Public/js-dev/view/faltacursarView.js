@@ -143,7 +143,7 @@ var FaltacursarView = Backbone.View.extend({
 
 	render: function() {
 		this.$el.html(this.template({
-			subjects: this.fetchSubjects(),
+			subjects: faltacursarModel.getData(),
 			subjectTableStr: subjectTableStringsModel
 		}));
 		this.initJS();

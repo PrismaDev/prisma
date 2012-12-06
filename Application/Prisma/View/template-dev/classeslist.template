@@ -22,8 +22,9 @@
 				
 					<% if (linkEmenta) { %>
 						<td>
-							<a href="<%= classesTableStr.get('ementaBaseLink')+classO.subjectCode %>"
-								class="btn btn-link btn-small ementaButton" target="_blank">
+							<button type="button"
+								class="btn btn-link btn-small ementaButton"
+								onclick="window.open('<%=classesTableStr.get('ementaBaseLink')+classO.subjectCode%>');">
 							<%= classesTableStr.get('ementaLinkLabel') %>
 						</a>
 					</td>
