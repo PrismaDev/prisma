@@ -13,42 +13,30 @@ class FaltaCursarController extends RestController
 	public function __construct()
 	{
 		parent::__construct('GET, POST');
-
-		Auth::accessControl('Aluno');
 	}
 
 	public function performGet($url, $arguments, $accept) 
 	{
+		Auth::accessControl('Aluno');
+
 		$login = $_COOKIE['login'];
 
 		$disciplinas = Disciplina::getFaltaCursar($login);
 		$optativas = Optativa::getByUserDepend($login);
 
-		$discUsed = array(); 
-		$depend = array();
+		$discHash = array();
 		foreach($disciplinas as $disciplina)
 		{
-			$codigoDisciplina = $disciplina['CodigoDisciplina'];
-
-			if(isset($discUsed[$codigoDisciplina])) 
-				continue;
-			$discUSed[$codigoDisciplina] = true;
-
-			$depend[] = Disciplina::getByUserIdDepend($login, $codigoDisciplina);
+			$discHash[$disciplina['CodigoDisciplina']] = 1;
 		}
 		foreach($optativas as $optativa)
 		{
 			foreach($optativa['Disciplinas'] as $disciplina)
 			{
-				$codigoDisciplina = $disciplina['CodigoDisciplina'];
-
-				if(isset($discUsed[$codigoDisciplina])) 
-					continue;
-				$discUSed[$codigoDisciplina] = true;
-
-				$depend[] = Disciplina::getByUserIdDepend($login, $codigoDisciplina);
+				$discHash[$disciplina['CodigoDisciplina']] = 1;
 			}
 		}
+		$depend = Disciplina::getByUserDiscSetDepend($login, $discHash);
 
 		$data = //Common::namesMinimizer
 		(
@@ -70,6 +58,8 @@ class FaltaCursarController extends RestController
 	
 	public function performPost($url, $arguments, $accept) 
 	{
+		Auth::accessControl('Administrador');
+
 		//TODO
 	}
 

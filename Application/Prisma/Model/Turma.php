@@ -13,7 +13,6 @@ class Turma
 		$turmas = self::getByDisciplina($discID);
 		$turmasSize = count($turmas);
 
-
 		for($i = 0; $i < $turmasSize; ++$i)
 		{
 			$turmas[$i]['Horarios'] = TurmaHorario::getByTurma($turmas[$i]['PK_Turma']);
@@ -30,6 +29,57 @@ class Turma
 						"Destino", "HorasDistancia", "SHF", "NomeProfessor"
 					FROM "TurmaProfessor" WHERE "CodigoDisciplina" = ? AND "PeriodoAno" = ?;');
 		$sth->execute(array($discID, Common::getPeriodoAno()));
+
+		return $sth->fetchAll(\PDO::FETCH_ASSOC);
+	}
+
+	public static function getByDiscSetDepend($disciplinaHash)
+	{
+		$turmas = self::getByDiscSet($disciplinaHash);
+		
+		$myTurmaHash = array();
+		foreach($turmas as $k=>$turma)
+		{
+			$myTurmaHash[$turma['PK_Turma']] = $k; 
+		}
+
+		$horarios = TurmaHorario::getByTurmaSet($myTurmaHash);
+
+		foreach($horarios as $horario)
+		{
+			$idx = $myTurmaHash[$horario['FK_Turma']];
+			unset($horario['FK_Turma']);
+
+			$turmas[$idx]['Horarios'][] = $horario;
+		}
+
+		return $turmas;
+	}
+
+	public static function getByDiscSet($disciplinaHash)
+	{
+		$dbh = Database::getConnection();	
+
+		$sql = 'SELECT "PK_Turma", "CodigoDisciplina", "CodigoTurma", "PeriodoAno", "Vagas", 
+				"Destino", "HorasDistancia", "SHF", "NomeProfessor"
+			FROM "TurmaProfessor" WHERE "PeriodoAno" = ? AND "CodigoDisciplina" IN (';		
+
+		$comma = false;
+		foreach($disciplinaHash as $codigoDisciplina=>$index)
+		{
+			if($index >= 0)
+			{
+				if(!$comma) $comma = true;
+				else $sql .= ', ';
+
+				$sql .= '\''.$codigoDisciplina.'\'';
+			}
+		}
+
+		$sql .= ');';
+
+		$sth = $dbh->prepare($sql);
+		$sth->execute(array(Common::getPeriodoAno()));
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}

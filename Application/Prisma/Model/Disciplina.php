@@ -7,16 +7,6 @@ use Prisma\Model\Turma;
 
 class Disciplina
 {
-	public static function getAll()
-	{
-		$dbh = Database::getConnection();	
-
-		$sth = $dbh->prepare('SELECT "PK_Nome" as "CodigoDisciplina", "Nome" as "NomeDisciplina", "Creditos" FROM "Disciplina";');
-		$sth->execute();
-
-		return $sth->fetchAll(\PDO::FETCH_ASSOC);
-	}
-
 	public static function getFaltaCursar($login)
 	{
 		$dbh = Database::getConnection();	
@@ -47,15 +37,54 @@ class Disciplina
 		return $sth->fetch(\PDO::FETCH_ASSOC);
 	}
 
-
-	public static function getById($id)
+	public static function getByUserDiscSetDepend($login, $disciplinaHash)
 	{
-		$dbh = Database::getConnection();	
+		$disciplinas = self::getByUserDiscSet($login, $disciplinaHash);
 
-		$sth = $dbh->prepare('SELECT "PK_Codigo" as "CodigoDisciplina", "Nome" as "NomeDisciplina", "Creditos" FROM "Disciplina" WHERE "PK_Codigo" = ?;');
-		$sth->execute(array($id));
+		$myDiscHash = array();
+		foreach($disciplinas as $k=>$disciplina)
+		{
+			$myDiscHash[$disciplina['CodigoDisciplina']] = $k;
+		}
 
-		return $sth->fetch(\PDO::FETCH_ASSOC);
+		$turmas = Turma::getByDiscSetDepend($myDiscHash);
+
+		foreach($turmas as $turma)
+		{
+			$idx = $myDiscHash[$turma['CodigoDisciplina']];
+			unset($turma['CodigoDisciplina']);
+
+			$disciplinas[$idx]['Turmas'][] = $turma;
+		}
+
+		return $disciplinas;
+	}
+
+	public static function getByUserDiscSet($login, $disciplinaHash)
+	{
+		$dbh = Database::getConnection();
+
+		$sql = 'SELECT "CodigoDisciplina", "NomeDisciplina", "Creditos", "Situacao", "Apto"
+				FROM "MicroHorarioDisciplina" WHERE "Aluno" = ? AND "CodigoDisciplina" IN (';
+
+		$comma = false;
+		foreach($disciplinaHash as $codigoDisciplina=>$index)
+		{
+			if($index >= 0)
+			{
+				if(!$comma) $comma = true;
+				else $sql .= ', ';
+
+				$sql .= '\''.$codigoDisciplina.'\'';
+			}
+		}
+
+		$sql .= ');';
+
+		$sth = $dbh->prepare($sql);
+		$sth->execute(array($login));
+
+		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
 	public static function persist($data)

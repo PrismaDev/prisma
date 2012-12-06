@@ -21,15 +21,13 @@ class MicroHorarioController extends RestController
 
 		$microhorario = MicroHorario::getByFilter($arguments);
 
-		$disciplinas = array();
-		$discUsed = array();
-		foreach($microhorario as $row)
+		$discHash = array();
+		foreach($microhorario as $tuple)
 		{
-			if(isset($discUsed[$row['CodigoDisciplina']])) continue;
-			$discUsed[$row['CodigoDisciplina']] = true;
-
-			$disciplinas[] = Disciplina::getByUserIdDepend($_COOKIE['login'], $row['CodigoDisciplina']);
+			$discHash[$tuple['CodigoDisciplina']] = 1;
 		}
+
+		$depend = Disciplina::getByUserDiscSetDepend($_COOKIE['login'], $discHash);
 
 		$data = //Common::namesMinimizer
 		(
@@ -38,7 +36,7 @@ class MicroHorarioController extends RestController
 				array
 				(
 					'MicroHorario' => $microhorario,
-					'Dependencia' => $disciplinas
+					'Dependencia' => $depend
 				)
 			)
 		);
@@ -61,5 +59,4 @@ class MicroHorarioController extends RestController
 			return 'error';
 		}
 	}
-
 }

@@ -2,39 +2,28 @@
 Pontos a definir ainda:
 
 - Strings de tradução do sistema
-
 - Admin deve poder ler comentarios, subir arquivos e setar variaveis
 
 
 Fine tuning:
 
 - Configurar APC pra melhorar performance
-
 - Configurar apache para redirecionar para https
-
 - Turn on apache’s mod_deflate
 
 
 Implementar modelo do prisma necessario:
 
-- Selecionada (retornar com dados completo de turma e disciplina)
-- Usuario
 - Comentario
+- Estatisticas
+- Log
 
 
 Corrigir:
 
 - Colocar pagina de manutencao no prisma antigo.
 
-- Impedir request completo do microhorario
-
 - Implementar upload dos arquivos de Faltacursar/cursando/cursado, Optativas, Prerequisitos
-
-- Tentar fazer uma requisicao apenas para pegar todas as disciplinas/turmas/horarios.
-
-- Possibilitar o client dizer quais disciplinas ele já tem, pra evitar carregamento disnecessario.
-
-- Definir dicionario para nome das variaveis de forma a diminuir o trafego de dados.
 
 - Verificar se controle de acesso esta ok
 

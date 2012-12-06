@@ -27,42 +27,23 @@ Class MainController extends RestController
 		$optativas = Optativa::getByUserDepend($login);
 		$selecionadas = Selecionada::getAll($login);
 
-		$discUsed = array();
-		$depend = array();
-		
+		$discHash = array();
 		foreach($disciplinas as $disciplina)
 		{
-			$codigoDisciplina = $disciplina['CodigoDisciplina'];
-
-			if(isset($discUsed[$codigoDisciplina])) 
-				continue;
-			$discUSed[$codigoDisciplina] = true;
-
-			$depend[] = Disciplina::getByUserIdDepend($login, $codigoDisciplina);
+			$discHash[$disciplina['CodigoDisciplina']] = 1;
 		}
 		foreach($optativas as $optativa)
 		{
 			foreach($optativa['Disciplinas'] as $disciplina)
 			{
-				$codigoDisciplina = $disciplina['CodigoDisciplina'];
-
-				if(isset($discUsed[$codigoDisciplina])) 
-					continue;
-				$discUSed[$codigoDisciplina] = true;
-
-				$depend[] = Disciplina::getByUserIdDepend($login, $codigoDisciplina);
+				$discHash[$disciplina['CodigoDisciplina']] = 1;
 			}
 		}
 		foreach($selecionadas as $selecionada)
 		{
-			$codigoDisciplina = $selecionada['CodigoDisciplina'];
-
-			if(isset($discUsed[$codigoDisciplina])) 
-				continue;
-			$discUSed[$codigoDisciplina] = true;
-
-			$depend[] = Disciplina::getByUserIdDepend($login, $codigoDisciplina);
+			$discHash[$selecionada['CodigoDisciplina']] = 1;
 		}
+		$depend = Disciplina::getByUserDiscSetDepend($login, $discHash);
 
 		$data = //Common::namesMinimizer
 		(
