@@ -2,13 +2,19 @@ var MainRouter = Backbone.Router.extend({
 	routes: {
 		'': 'main',
 		':tab': 'tabs'
+	},
+
+	loadPage: function() {
+		subjectList.add(DATA_VIEW.dependencia);
+		faltacursarModel.set(DATA_VIEW.faltacursar);
+		mainView.render();
 	}
 });
 
 var mainRouter = new MainRouter();
 
 mainRouter.on('route:main', function() {
-	mainView.render();
+	this.loadPage();
 	mainRouter.navigate(mainView.defaultTab,
 		{trigger: true});
 });
@@ -19,7 +25,7 @@ mainRouter.on('route:tabs', function(tab) {
 			{trigger: true, replace: true});
 	
 	if (!mainView.rendered)
-		mainView.render();
+		this.loadPage();
 	mainView.setActiveTab(tab);
 });
 

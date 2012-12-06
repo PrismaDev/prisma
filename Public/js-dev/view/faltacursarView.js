@@ -11,22 +11,6 @@ var FaltacursarView = Backbone.View.extend({
 	subjectTableHeader: '',	
 	subjectTableBody: '',	
 
-	testArray: [
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'}
-	],
-
-
 	initialize: function() {
 		this.template = _.template($('#faltacursar-template').html());
 		var me=this;
@@ -75,7 +59,12 @@ var FaltacursarView = Backbone.View.extend({
         		$(this.classesDiv).removeClass('hidden');
 			$(this.classesDiv).addClass('almostHalf');				
 
+			var id=$(row).attr('id');
+			faltacursarClasseslistView.render(
+				faltacursarModel.getSubjectClasses(id)
+			);
 			faltacursarClasseslistView.resize();
+			this.calculateScrollTop(row);
 		}
 	},
 
@@ -88,6 +77,17 @@ var FaltacursarView = Backbone.View.extend({
 			this.subjectDatatable = $('#faltacursar-subject-table').dataTable();
 		this.subjectDatatable.fnAdjustColumnSizing(false);
 		this.calculateTableScroll();
+	},
+
+	calculateScrollTop: function(row) {
+		var rIndex = this.subjectDatatable.fnGetPosition($(row)[0]);
+		var w=0;
+
+		$(this.subjectTableBody).find('tr').slice(0,rIndex+1).each(function(index) {
+			w+=$(this).height();
+		});
+
+		$(this.subjectTableBody).scrollTop(w);
 	},
 
 	calculateTableScroll: function() {
@@ -104,7 +104,7 @@ var FaltacursarView = Backbone.View.extend({
 		var me = this;
 
 		this.subjectDatatable = $('#faltacursar-subject-table').dataTable({
-			'sDom': 'ft',
+			'sDom': 'ftS',
 			'bPaginate': false,
 			'bScrollCollapse': true,
 			'sScrollY': '200px',
@@ -116,41 +116,15 @@ var FaltacursarView = Backbone.View.extend({
 		$('#faltacursar-subject-table_wrapper').addClass('whole');
 	},		
 
-	fetchSubjects: function() {
-		return [
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'MAT1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-			{code: 'ENG1015', name: 'Teste teste teste', term: '2', link: '#', credits: '4'},
-		];
-	},
-
 	render: function() {
 		this.$el.html(this.template({
-			subjects: this.fetchSubjects(),
+			subjects: faltacursarModel.getSubjects(),
 			subjectTableStr: subjectTableStringsModel
 		}));
 		this.initJS();
 
 		this.cache();
 		faltacursarClasseslistView.setElement('#faltacursar-classes-div');
-		faltacursarClasseslistView.render(this.testArray);
 
 		this.subjectDatatable.fnAdjustColumnSizing(false);
 		this.calculateTableScroll();

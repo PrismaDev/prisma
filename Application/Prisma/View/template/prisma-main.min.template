@@ -1,29 +1,34 @@
 <script type="text/underscore" id="classeslist-template">
 	<table class="table table-bordered table-condensed">
 		<thead>
-			<th><%= classesTableStr.get('subjectCodeLabel') %></th>
-			<th><%= classesTableStr.get('subjectNameLabel') %></th>
+			<% if (subjectInfo) { %>
+				<th><%= classesTableStr.get('subjectCodeLabel') %></th>
+				<th><%= classesTableStr.get('subjectNameLabel') %></th>
+			<% } %>
 			<th><%= classesTableStr.get('professorNameLabel') %></th>
 			<th><%= classesTableStr.get('scheduleLabel') %></th>
 			<th><%= classesTableStr.get('classCodeLabel') %></th>
 		
-			<% if (linkEmenta) { %>
+			<% if (subjectInfo) { %>
 				<th><%= classesTableStr.get('ementaHeaderLabel') %></th>
 			<% } %>
 		</thead>
 		<tbody>
 			<% _.each(classes, function(classO) { %>
-				<tr>
-					<td><%= classO.subjectCode %></td>
-					<td><%= classO.subjectName %></td>
+				<tr id="<%= classO.subjectCode %>-<%= classO.code %>">
+					<% if (subjectInfo) { %>
+						<td><%= classO.subjectCode %></td>
+						<td><%= classO.subjectName %></td>
+					<% } %>
 					<td><%= classO.professorName %></td>
 					<td><%= classO.schedule %></td>
 					<td><%= classO.code %></td>	
 				
-					<% if (linkEmenta) { %>
+					<% if (subjectInfo) { %>
 						<td>
-							<a href="<%= classesTableStr.get('ementaBaseLink')+classO.subjectCode %>"
-								class="btn btn-link btn-small ementaButton" target="_blank">
+							<button type="button"
+								class="btn btn-link btn-small ementaButton"
+								onclick="window.open('<%=classesTableStr.get('ementaBaseLink')+classO.subjectCode%>');">
 							<%= classesTableStr.get('ementaLinkLabel') %>
 						</a>
 					</td>
@@ -226,7 +231,7 @@
 		</thead>
 		<tbody>
 			<% _.each(subjects, function(subject) { %>
-				<tr>
+				<tr id="<%= subject.code %>">
 					<td><%= subject.code %></td>
 					<td><%= subject.name %></td>
 					<td><%= subject.term %></td>
