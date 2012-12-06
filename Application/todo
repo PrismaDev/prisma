@@ -21,3 +21,37 @@ Implementar modelo do prisma necessario:
 - Usuario
 - Comentario
 
+
+Corrigir:
+
+- Mandar pra lea novamente especificacao dos CSVs
+
+- Confirmar reuniao do PrISMA na semana que vem (perigo: nao viram nada do sistema ainda)
+
+- Colocar pagina de manutencao no prisma antigo.
+
+- Linkar pagina de termo de compromisso com o sistema direitinho. (O que faz se o cara não aceita o termo?)
+
+- Impedir request completo do microhorario
+
+- Implementar upload dos arquivos de Faltacursar/cursando/cursado, Optativas, Prerequisitos
+
+- Tentar fazer uma requisicao apenas para pegar todas as disciplinas/turmas/horarios.
+
+- Possibilitar o client dizer quais disciplinas ele já tem, pra evitar carregamento disnecessario.
+
+- Definir dicionario para nome das variaveis de forma a diminuir o trafego de dados.
+
+- Verificar se controle de acesso esta ok
+
+- Permitir administrador liberar ou não acesso ao sistema, subir arquivos, colocar sistema em manutencao.
+
+- Verificar setup do servidor oficial.
+
+- Implementar estatisticas do sistema no banco de dados
+
+- Implementar logs do sistema (inclusive api pra logar client)
+
+- Documentar banco de dados
+
+- Documentar servidor (inclusive o framework que foi escrito)

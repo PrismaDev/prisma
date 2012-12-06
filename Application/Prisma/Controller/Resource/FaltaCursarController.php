@@ -29,7 +29,7 @@ class FaltaCursarController extends RestController
 		{
 			$codigoDisciplina = $disciplina['CodigoDisciplina'];
 
-			if(isset($discUSed[$codigoDisciplina])) 
+			if(isset($discUsed[$codigoDisciplina])) 
 				continue;
 			$discUSed[$codigoDisciplina] = true;
 
@@ -43,7 +43,7 @@ class FaltaCursarController extends RestController
 			{
 				$codigoDisciplina = $disciplina['CodigoDisciplina'];
 
-				if(isset($discUSed[$codigoDisciplina])) 
+				if(isset($discUsed[$codigoDisciplina])) 
 					continue;
 				$discUSed[$codigoDisciplina] = true;
 

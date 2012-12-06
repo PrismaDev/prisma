@@ -28,7 +28,7 @@ class SelecionadaController extends RestController
 		{
 			$codigoDisciplina = $selecionada['CodigoDisciplina'];
 
-			if(isset($discUSed[$codigoDisciplina])) 
+			if(isset($discUsed[$codigoDisciplina])) 
 				continue;
 			$discUSed[$codigoDisciplina] = true;
 

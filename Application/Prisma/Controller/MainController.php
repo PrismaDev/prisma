@@ -33,7 +33,7 @@ Class MainController extends RestController
 		{
 			$codigoDisciplina = $disciplina['CodigoDisciplina'];
 
-			if(isset($discUSed[$codigoDisciplina])) 
+			if(isset($discUsed[$codigoDisciplina])) 
 				continue;
 			$discUSed[$codigoDisciplina] = true;
 
@@ -47,7 +47,7 @@ Class MainController extends RestController
 			{
 				$codigoDisciplina = $disciplina['CodigoDisciplina'];
 
-				if(isset($discUSed[$codigoDisciplina])) 
+				if(isset($discUsed[$codigoDisciplina])) 
 					continue;
 				$discUSed[$codigoDisciplina] = true;
 
