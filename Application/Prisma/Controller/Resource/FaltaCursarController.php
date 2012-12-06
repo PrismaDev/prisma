@@ -3,6 +3,7 @@
 namespace Prisma\Controller\Resource;
 
 use Framework\RestController;
+use Prisma\Library\Common;
 use Prisma\Library\Auth;
 use Prisma\Model\Disciplina;
 use Prisma\Model\Optativa;
@@ -49,15 +50,22 @@ class FaltaCursarController extends RestController
 			}
 		}
 
-		$data = array(
-			'Faltacursar' => array(
-				'Disciplinas' => $disciplinas,
-				'Optativas' => $optativas,
-			),
-			'Dependencia' => $depend
+		$data = //Common::namesMinimizer
+		(
+			json_encode
+			(
+				array
+				(
+					'FaltaCursar' => array(
+						'Disciplinas' => $disciplinas,
+						'Optativas' => $optativas,
+					),
+					'Dependencia' => $depend
+				)
+			)
 		);
 
-		return json_encode($data);
+		return $data;
 	}
 	
 	public function performPost($url, $arguments, $accept) 

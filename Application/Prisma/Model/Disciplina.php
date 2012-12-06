@@ -21,7 +21,7 @@ class Disciplina
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "FK_Disciplina" as "CodigoDisciplina", "Periodo", "Tentativas"
+		$sth = $dbh->prepare('SELECT "FK_Disciplina" as "CodigoDisciplina", "Periodo" as "PeriodoAno", "Tentativas"
 					FROM "AlunoDisciplina" WHERE "FK_Status" <> \'CP\' AND "FK_Aluno" = ?;');
 		$sth->execute(array($login));
 

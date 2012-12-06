@@ -1,59 +1,80 @@
 <?php
 
 return array(
-	'routes' => array(
-		'action' => array(
+	'routes' => array
+	(
+		'action' => array
+		(
 			'type' => 'redirect',
 			'uri' => '/login',
 		),
 
-		'subroutes' => array(
-			'login' => array(
-				'action' => array(
+		'subroutes' => array
+		(
+			'login' => array
+			(
+				'action' => array
+				(
 					'type' => 'controller',
 					'controller' => 'Prisma\Controller\LoginController',
 				),
 			),
-			'logout' => array(
-				'action' => array(
+			'logout' => array
+			(
+				'action' => array
+				(
 					'type' => 'controller',
 					'controller' => 'Prisma\Controller\LogoutController',
 				),
 			),
-			'main' => array(
-				'action' => array(
+			'main' => array
+			(
+				'action' => array
+				(
 					'type' => 'controller',
 					'controller' => 'Prisma\Controller\MainController',
 				),
 			),
-			'term' => array(
-				'action' => array(
+			'term' => array
+			(
+				'action' => array
+				(
 					'type' => 'controller',
 					'controller' => 'Prisma\Controller\TermController',
 				),
 			),
-			'test' => array(
-				'action' => array(
+			'test' => array
+			(
+				'action' => array
+				(
 					'type' => 'controller',
 					'controller' => 'Prisma\Controller\TestController',
 				),
 			),
-			'api' => array(
-				'subroutes' => array(
-					'microhorario' => array(
-						'action' => array(
+			'api' => array
+			(
+				'subroutes' => array
+				(
+					'microhorario' => array
+					(
+						'action' => array
+						(
 							'type' => 'controller',
 							'controller' => 'Prisma\Controller\Resource\MicroHorarioController',
 						),
 					),
-					'selecionada' => array(
-						'action' => array(
+					'selecionada' => array
+					(
+						'action' => array
+						(
 							'type' => 'controller',
 							'controller' => 'Prisma\Controller\Resource\SelecionadaController',
 						),
 					),
-					'faltacursar' => array(
-						'action' => array(
+					'faltacursar' => array
+					(
+						'action' => array
+						(
 							'type' => 'controller',
 							'controller' => 'Prisma\Controller\Resource\FaltaCursarController',
 						),
@@ -61,8 +82,10 @@ return array(
 
 				),
 			),
-			'error' => array(
-				'action' => array(
+			'error' => array
+			(
+				'action' => array
+				(
 					'type' => 'controller',
 					'controller' => 'Prisma\Controller\ErrorController',
 				),

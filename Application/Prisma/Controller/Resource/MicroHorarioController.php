@@ -3,6 +3,7 @@
 namespace Prisma\Controller\Resource;
 
 use Framework\RestController;
+use Prisma\Library\Common;
 use Prisma\Model\MicroHorario;
 use Prisma\Model\Disciplina;
 use Prisma\Library\Auth;
@@ -30,12 +31,19 @@ class MicroHorarioController extends RestController
 			$disciplinas[] = Disciplina::getByUserIdDepend($_COOKIE['login'], $row['CodigoDisciplina']);
 		}
 
-		$data = array(
-			'MicroHorario' => $microhorario,
-			'Dependencia' => $disciplinas
+		$data = //Common::namesMinimizer
+		(
+			json_encode
+			(
+				array
+				(
+					'MicroHorario' => $microhorario,
+					'Dependencia' => $disciplinas
+				)
+			)
 		);
 
-		return json_encode($data);
+		return $data;
 	}
 	
 	public function performPost($url, $arguments, $accept) 

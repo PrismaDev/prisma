@@ -5,6 +5,7 @@ namespace Prisma\Controller;
 use Framework\RestController;
 use Framework\ViewLoader;
 use Prisma\Library\Auth;
+use Prisma\Library\Common;
 use Prisma\Model\Disciplina;
 use Prisma\Model\Optativa;
 use Prisma\Model\Selecionada;
@@ -63,16 +64,24 @@ Class MainController extends RestController
 			$depend[] = Disciplina::getByUserIdDepend($login, $codigoDisciplina);
 		}
 
-		$data = array(
-			'FaltaCursar' => array(
-				'Disciplinas' => $disciplinas,	
-				'Optativas' => $optativas,
-			),
-			'Selecionadas' => $selecionadas,
-			'Dependencia' => $depend
+		$data = //Common::namesMinimizer
+		(
+			json_encode
+			(
+				array
+				(
+					'FaltaCursar' => array
+					(
+						'Disciplinas' => $disciplinas,	
+						'Optativas' => $optativas,
+					),
+					'Selecionadas' => $selecionadas,
+					'Dependencia' => $depend
+				)
+			)
 		);
 
-		return ViewLoader::load('Prisma', 'general.phtml', array('section' => 'main', 'data'=> $data));
+		return ViewLoader::load('Prisma', 'general.phtml', array('section' => 'main', 'DATA_VIEW' => $data));
 	}
 }
 

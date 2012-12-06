@@ -10,7 +10,7 @@ class Optativa
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "CodigoOptativa", "NomeOptativa", "PeriodoSugerido"
+		$sth = $dbh->prepare('SELECT "CodigoOptativa", "NomeOptativa", "PeriodoSugerido" as "PeriodoAno"
 					FROM "FaltaCursarOptativa" WHERE "Aluno" = ?;');
 		$sth->execute(array($login));
 

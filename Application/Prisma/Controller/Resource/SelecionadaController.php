@@ -3,6 +3,7 @@
 namespace Prisma\Controller\Resource;
 
 use Framework\RestController;
+use Prisma\Library\Common;
 use Prisma\Library\Auth;
 use Prisma\Model\Selecionada;
 use Prisma\Model\Disciplina;
@@ -35,12 +36,19 @@ class SelecionadaController extends RestController
 			$depend[] = Disciplina::getByUserIdDepend($login, $codigoDisciplina);
 		}
 
-		$data = array(
-			'Selecionadas' => $selecionadas,
-			'Dependencia' => $depend
+		$data = //Common::namesMinimizer
+		(
+			json_encode
+			(
+				array
+				(
+					'Selecionadas' => $selecionadas,
+					'Dependencia' => $depend
+				)
+			)
 		);
 
-		return json_encode($data);
+		return $data;
 	}
 	
 	public function performPost($url, $arguments, $accept) 
