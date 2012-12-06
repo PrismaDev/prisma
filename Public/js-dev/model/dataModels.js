@@ -2,7 +2,17 @@ ClassModel = Backbone.Model.extend({
 	idAttribute: 'PK_Turma',
 	
 	printSchedule: function() {
-		return 'a schedule';
+		var div = document.createElement('div');
+		var daysAbbr=classesTableStringsModel.get('daysAbbr');
+
+		_.each(this.get('horarios'), function(horario) {
+			var span=document.createElement('span');
+			span.innerHTML=daysAbbr[horario.DiaSemana-2]+' '
+				+horario.HoraInicial+'-'+horario.HoraFinal+'<br/>';
+			div.appendChild(span);
+		});
+
+		return div.innerHTML;
 	}
 });
 

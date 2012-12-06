@@ -83,7 +83,7 @@ var FaltacursarView = Backbone.View.extend({
 		var rIndex = this.subjectDatatable.fnGetPosition($(row)[0]);
 		var w=0;
 
-		$(this.subjectTableBody).find('tr').each(function(index) {
+		$(this.subjectTableBody).find('tr').slice(0,rIndex+1).each(function(index) {
 			w+=$(this).height();
 		});
 

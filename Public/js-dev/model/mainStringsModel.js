@@ -75,7 +75,15 @@ var ClassesTableStringsModel = SubjectTableStringsModel.extend({
 	defaults: {
 		'classCodeLabel': 'Código da turma',
 		'professorNameLabel': 'Professor',
-		'scheduleLabel': 'Horários'
+		'scheduleLabel': 'Horários',
+		'daysAbbr': [
+			'Seg',
+			'Ter',
+			'Qua',
+			'Qui',
+			'Sex',
+			'Sab'
+		]
 	}
 });
 //Based on http://stackoverflow.com/questions/6549149/extending-the-defaults-of-a-model-superclass-in-backbone-js
