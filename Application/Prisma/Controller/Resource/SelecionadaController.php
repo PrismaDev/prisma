@@ -36,8 +36,8 @@ class SelecionadaController extends RestController
 		}
 
 		$data = array(
-			'selecionadas' => $selecionadas,
-			'dependencia' => $depend
+			'Selecionadas' => $selecionadas,
+			'Dependencia' => $depend
 		);
 
 		return json_encode($data);

@@ -24,10 +24,6 @@ Implementar modelo do prisma necessario:
 
 Corrigir:
 
-- Mandar pra lea novamente especificacao dos CSVs
-
-- Confirmar reuniao do PrISMA na semana que vem (perigo: nao viram nada do sistema ainda)
-
 - Colocar pagina de manutencao no prisma antigo.
 
 - Linkar pagina de termo de compromisso com o sistema direitinho. (O que faz se o cara não aceita o termo?)
@@ -55,4 +51,13 @@ Corrigir:
 - Documentar banco de dados
 
 - Documentar servidor (inclusive o framework que foi escrito)
+
+- Rodar bateria de testes automatizados no lado do servidor
+
+
+--------------------------------------------------------------------------
+
+- Mudei case das variaveis do JSON.
+- Aplicar dicionario no JSON.
+- Explicar semantica de periodo, na relacao aluno disciplina.
 

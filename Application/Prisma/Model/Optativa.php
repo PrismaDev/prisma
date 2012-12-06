@@ -19,7 +19,7 @@ class Optativa
 
 		for($i = 0; $i < $optativasLen; ++$i)
 		{
-			$optativas[$i]['disciplinas'] = self::getByOptativa($optativas[$i]['CodigoOptativa']);
+			$optativas[$i]['Disciplinas'] = self::getByOptativa($optativas[$i]['CodigoOptativa']);
 		}
 
 		return $optativas;

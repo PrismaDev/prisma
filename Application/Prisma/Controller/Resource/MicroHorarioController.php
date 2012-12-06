@@ -31,8 +31,8 @@ class MicroHorarioController extends RestController
 		}
 
 		$data = array(
-			'microhorario' => $microhorario,
-			'dependencia' => $disciplinas
+			'MicroHorario' => $microhorario,
+			'Dependencia' => $disciplinas
 		);
 
 		return json_encode($data);

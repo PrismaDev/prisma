@@ -31,7 +31,7 @@ class Disciplina
 	public static function getByUserIdDepend($login, $id)
 	{
 		$disciplina = self::getByUserId($login, $id);
-		$disciplina['turmas'] = Turma::getByDisciplinaDepend($id);
+		$disciplina['Turmas'] = Turma::getByDisciplinaDepend($id);
 
 		return $disciplina;
 	}

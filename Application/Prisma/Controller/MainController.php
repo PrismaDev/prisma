@@ -41,9 +41,7 @@ Class MainController extends RestController
 		}
 		foreach($optativas as $optativa)
 		{
-			$optDiscLen = count($optativa['disciplinas']);
-
-			foreach($optativa['disciplinas'] as $disciplina)
+			foreach($optativa['Disciplinas'] as $disciplina)
 			{
 				$codigoDisciplina = $disciplina['CodigoDisciplina'];
 
@@ -66,12 +64,12 @@ Class MainController extends RestController
 		}
 
 		$data = array(
-			'faltacursar' => array(
-				'disciplinas' => $disciplinas,	
-				'optativas' => $optativas,
+			'FaltaCursar' => array(
+				'Disciplinas' => $disciplinas,	
+				'Optativas' => $optativas,
 			),
-			'selecionadas' => $selecionadas,
-			'dependencia' => $depend
+			'Selecionadas' => $selecionadas,
+			'Dependencia' => $depend
 		);
 
 		return ViewLoader::load('Prisma', 'general.phtml', array('section' => 'main', 'data'=> $data));

@@ -16,7 +16,7 @@ class Turma
 
 		for($i = 0; $i < $turmasSize; ++$i)
 		{
-			$turmas[$i]['horarios'] = TurmaHorario::getByTurma($turmas[$i]['PK_Turma']);
+			$turmas[$i]['Horarios'] = TurmaHorario::getByTurma($turmas[$i]['PK_Turma']);
 		}
 
 		return $turmas;

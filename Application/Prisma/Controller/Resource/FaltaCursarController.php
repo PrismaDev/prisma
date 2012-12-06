@@ -37,9 +37,7 @@ class FaltaCursarController extends RestController
 		}
 		foreach($optativas as $optativa)
 		{
-			$optDiscLen = count($optativa['disciplinas']);
-
-			foreach($optativa['disciplinas'] as $disciplina)
+			foreach($optativa['Disciplinas'] as $disciplina)
 			{
 				$codigoDisciplina = $disciplina['CodigoDisciplina'];
 
@@ -52,11 +50,11 @@ class FaltaCursarController extends RestController
 		}
 
 		$data = array(
-			'faltacursar' => array(
-				'disciplinas' => $disciplinas,
-				'optativas' => $optativas,
+			'Faltacursar' => array(
+				'Disciplinas' => $disciplinas,
+				'Optativas' => $optativas,
 			),
-			'dependencia' => $depend
+			'Dependencia' => $depend
 		);
 
 		return json_encode($data);
