@@ -4,13 +4,20 @@ namespace Prisma\Library;
 
 use Framework\Router;
 use Framework\Database;
+use Prisma\Model\Usuario;
 
 class Auth
 {
-	public static function accessControl($type)
+	public static function accessControl($type, $termCheck = true)
 	{
 		if(isset($_COOKIE['type']) && $_COOKIE['type'] == $type && self::isLogged()) 
 		{
+			if($termCheck && $type == 'Aluno' && !Usuario::wasTermAccepted($_COOKIE['login']))
+			{
+				self::accessDenied();
+				return false;
+			}
+
 			return true;
 		}
 
@@ -38,11 +45,11 @@ class Auth
 
 	protected static function setSessionCookies($hash, $login, $type)
 	{
-			$expire = time()+(60*60*24*3); //expires within 3 days
+		$expire = time()+(60*60*24*3); //expires within 3 days
 
-			setcookie('session', $hash, $expire);
-			setcookie('login', $login, $expire);
-			setcookie('type', $type, $expire);
+		setcookie('session', $hash, $expire);
+		setcookie('login', $login, $expire);
+		setcookie('type', $type, $expire);
 	}
 
 	protected static function checkAccount($login, $passwd, $type)
@@ -82,7 +89,7 @@ class Auth
 		return $sth->fetch() != false;
 	}
 
-	protected static function accessDenied()
+	public static function accessDenied()
 	{
 		self::logout();
 

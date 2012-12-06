@@ -26,8 +26,6 @@ Corrigir:
 
 - Colocar pagina de manutencao no prisma antigo.
 
-- Linkar pagina de termo de compromisso com o sistema direitinho. (O que faz se o cara não aceita o termo?)
-
 - Impedir request completo do microhorario
 
 - Implementar upload dos arquivos de Faltacursar/cursando/cursado, Optativas, Prerequisitos
