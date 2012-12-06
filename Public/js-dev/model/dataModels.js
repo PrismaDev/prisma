@@ -1,5 +1,9 @@
 ClassModel = Backbone.Model.extend({
-	idAttribute: 'PK_Turma'
+	idAttribute: 'PK_Turma',
+	
+	printSchedule: function() {
+		return 'a schedule';
+	}
 });
 
 ClassList = Backbone.Collection.extend({

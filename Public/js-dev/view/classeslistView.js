@@ -1,7 +1,7 @@
 var ClasseslistView = Backbone.View.extend({
 	template: '',
 	el: '',
-	linkEmenta: '',
+	subjectInfo: '',
 
 	//Cached
 	classesDatatable: '',
@@ -41,7 +41,7 @@ var ClasseslistView = Backbone.View.extend({
 		this.$el.html(this.template({
 			classes: classesArray,
 			classesTableStr: classesTableStringsModel,
-			linkEmenta: this.linkEmenta
+			subjectInfo: this.subjectInfo
 		}));	
 
 		this.initJS();
@@ -50,7 +50,7 @@ var ClasseslistView = Backbone.View.extend({
 });
 
 var MicrohorarioClasseslistView = ClasseslistView.extend({
-	linkEmenta: true,
+	subjectInfo: true,
 
 	calculateTableScroll: function() {
 		var h=0;
@@ -69,7 +69,7 @@ var MicrohorarioClasseslistView = ClasseslistView.extend({
 var microhorarioClasseslistView = new MicrohorarioClasseslistView({sDom: 't'});
 
 var FaltacursarClasseslistView = ClasseslistView.extend({
-	linkEmenta: false,
+	subjectInfo: false,
 
 	calculateTableScroll: function() {
 		var h = this.$el.height();

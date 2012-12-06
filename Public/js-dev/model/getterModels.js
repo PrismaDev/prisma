@@ -1,7 +1,6 @@
 var FaltacursarModel = Backbone.Model.extend({
-	getData: function() {
+	getSubjects: function() {
 		var array=new Array();
-		console.log(this);			
 		
 		_.each(this.get('disciplinas'), function(disciplina) {
 			var subjectModel = subjectList.get(disciplina.CodigoDisciplina);
@@ -13,7 +12,26 @@ var FaltacursarModel = Backbone.Model.extend({
 				'credits': subjectModel.get('Creditos')			
 			};
 
-			console.log(object);
+			array.push(object);
+		});
+
+		return array;
+	},
+
+	getSubjectClasses: function(subjectId) {
+		var subjectModel = subjectList.get(subjectId);
+		var classList = subjectModel.get('turmas');
+		var array=new Array();
+
+		_.each(classList.models, function(classO) {
+			var object={
+				'subjectCode': subjectId,
+				'subjectName': subjectModel.get('NomeDisciplina'),
+				'professorName': classO.get('NomeProfessor'),
+				'code': classO.get('CodigoTurma'),
+				'schedule': classO.printSchedule()
+			};
+
 			array.push(object);
 		});
 
@@ -22,3 +40,5 @@ var FaltacursarModel = Backbone.Model.extend({
 });
 
 var faltacursarModel = new FaltacursarModel();
+
+
