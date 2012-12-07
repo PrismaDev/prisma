@@ -46,7 +46,7 @@ class MicroHorarioController extends RestController
 	
 	public function performPost($url, $arguments, $accept) 
 	{
-//		Auth::accessControl('Administrador');
+		Auth::accessControl('Administrador');
 
 		if(!isset($_FILES['file'])) return 'error';
 

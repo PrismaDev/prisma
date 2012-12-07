@@ -34,11 +34,11 @@ Class LoginController extends RestController
 			{
 				case 'Administrador':
 					Router::redirectRoute('/admin'); //TODO: verificar se esta correto
-					break;
+					return;
 
 				case 'Coordenador':
 					Router::redirectRoute('/stats'); //TODO: verificar se esta correto
-					break;
+					return;
 
 				case 'Aluno':
 					if(Usuario::wasTermAccepted($login))
@@ -49,17 +49,11 @@ Class LoginController extends RestController
 					{
 						Router::redirectRoute('/term'); //TODO: pode encaminhar direto pra main
 					}
-					break;
-
-				default:
-					Router::redirectRoute('/login?invalidLogin');
-					break;
+					return;
 			}
 		}
-		else
-		{
-			Router::redirectRoute('/login?invalidLogin');
-		}
+
+		Router::redirectRoute('/login?invalidLogin');
 	}
 }
 

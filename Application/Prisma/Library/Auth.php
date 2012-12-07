@@ -101,9 +101,13 @@ class Auth
 
 	public static function logout()
 	{
-		setcookie('session', '', time()-3600);
-		setcookie('login', '', time()-3600);
-		setcookie('type', '', time()-3600);
+		$path 		= '/';
+		$serverName 	= $_SERVER['SERVER_NAME'];
+		$secure 	= false;
+
+		setcookie('session', '', time()-3600, $path, $serverName, $secure);
+		setcookie('login', '', time()-3600, $path, $serverName, $secure);
+		setcookie('type', '', time()-3600, $path, $serverName, $secure);
 	}
 
 	/*
