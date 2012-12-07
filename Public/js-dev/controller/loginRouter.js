@@ -1,10 +1,17 @@
 var LoginRouter = Backbone.Router.extend({
 	routes: {
-		'': 'login'
+		'': 'login',
+		'': 'login',
+		'*span': 'other'
 	}
 });
 
 var loginRouter = new LoginRouter();
+
+loginRouter.on('route:other', function() {
+	this.navigate('', {trigger: true});
+});
+
 loginRouter.on('route:login', function() {
 	loginView.render();
 });
