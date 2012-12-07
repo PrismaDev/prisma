@@ -10,7 +10,7 @@ class Optativa
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "CodigoOptativa", "NomeOptativa", "PeriodoSugerido"
+		$sth = $dbh->prepare('SELECT "CodigoOptativa", "NomeOptativa", "PeriodoSugerido" as "PeriodoAno"
 					FROM "FaltaCursarOptativa" WHERE "Aluno" = ?;');
 		$sth->execute(array($login));
 
@@ -19,7 +19,7 @@ class Optativa
 
 		for($i = 0; $i < $optativasLen; ++$i)
 		{
-			$optativas[$i]['disciplinas'] = self::getByOptativa($optativas[$i]['CodigoOptativa']);
+			$optativas[$i]['Disciplinas'] = self::getByOptativa($optativas[$i]['CodigoOptativa']);
 		}
 
 		return $optativas;

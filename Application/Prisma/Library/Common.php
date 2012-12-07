@@ -47,6 +47,49 @@ class Common
 		}
 	}
 
+	public static function namesMinimizer($str)
+	{
+		$dic = array(
+			'Dependencia'		=> 'DP',
+			'FaltaCursar'		=> 'FC',
+			'Selecionada'		=> 'SLC',
+			'MicroHorario' 		=> 'MH',
+			'Disciplinas'		=> 'DCs',
+			'Turmas'		=> 'TRs',
+			'Optativas'		=> 'OPs',
+			'Horarios'		=> 'HRs',
+			'CodigoDisciplina' 	=> 'CD',
+			'CodigoTurma' 		=> 'CT',
+			'CodigoOptativa'	=> 'CO',
+			'PK_Turma'		=> 'IDT',
+			'FK_Turma'		=> 'IDT',
+			'NomeDisciplina' 	=> 'ND',
+			'NomeProfessor' 	=> 'NP',
+			'NomeOptativa'		=> 'NO',
+			'Creditos'		=> 'CR',
+			'Situacao'		=> 'ST',
+			'Apto'			=> 'APT',
+			'Vagas'			=> 'VG',
+			'Destino'		=> 'DT',
+			'HorasDistancia'	=> 'HD',
+			//'SHF'			=> 'SHF',
+			'PeriodoAno'		=> 'PA',
+			'Tentativas'		=> 'TTs',
+			'Opcao'			=> 'OP',
+			'NoLinha'		=> 'NL',
+			'DiaSemana'		=> 'DS',
+			'HoraInicial'		=> 'HI',
+			'HoraFinal'		=> 'HF',
+		);
+
+		foreach($dic as $k=>$v)
+		{
+			$str = str_replace($k,$v,$str);
+		}
+
+		return $str;
+	}
+
 	public static function weekdayToInteger($str)
 	{
 		switch(strtoupper($str))

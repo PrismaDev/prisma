@@ -6,6 +6,7 @@ use Framework\RestController;
 use Framework\ViewLoader;
 use Framework\Router;
 use Prisma\Library\Auth;
+use Prisma\Model\Usuario;
 
 Class LoginController extends RestController
 {
@@ -33,25 +34,26 @@ Class LoginController extends RestController
 			{
 				case 'Administrador':
 					Router::redirectRoute('/admin'); //TODO: verificar se esta correto
-					break;
+					return;
 
 				case 'Coordenador':
 					Router::redirectRoute('/stats'); //TODO: verificar se esta correto
-					break;
+					return;
 
 				case 'Aluno':
-					Router::redirectRoute('/term'); //TODO: pode encaminhar direto pra main
-					break;
-
-				default:
-					Router::redirectRoute('/login?invalidLogin');
-					break;
+					if(Usuario::wasTermAccepted($login))
+					{
+						Router::redirectRoute('/main'); //TODO: pode encaminhar direto pra main
+					}
+					else
+					{
+						Router::redirectRoute('/term'); //TODO: pode encaminhar direto pra main
+					}
+					return;
 			}
 		}
-		else
-		{
-			Router::redirectRoute('/login?invalidLogin');
-		}
+
+		Router::redirectRoute('/login?invalidLogin');
 	}
 }
 

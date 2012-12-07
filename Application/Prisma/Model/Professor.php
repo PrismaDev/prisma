@@ -36,6 +36,5 @@ class Professor
 		{
 			//TODO: handle error
 		}
-
 	}
 }

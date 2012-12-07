@@ -5,6 +5,7 @@ namespace Prisma\Controller;
 use Framework\RestController;
 use Framework\ViewLoader;
 use Prisma\Library\Auth;
+use Prisma\Library\Common;
 use Prisma\Model\Disciplina;
 use Prisma\Model\Optativa;
 use Prisma\Model\Selecionada;
@@ -26,55 +27,42 @@ Class MainController extends RestController
 		$optativas = Optativa::getByUserDepend($login);
 		$selecionadas = Selecionada::getAll($login);
 
-		$discUsed = array();
-		$depend = array();
-		
+		$discHash = array();
 		foreach($disciplinas as $disciplina)
 		{
-			$codigoDisciplina = $disciplina['CodigoDisciplina'];
-
-			if(isset($discUSed[$codigoDisciplina])) 
-				continue;
-			$discUSed[$codigoDisciplina] = true;
-
-			$depend[] = Disciplina::getByUserIdDepend($login, $codigoDisciplina);
+			$discHash[$disciplina['CodigoDisciplina']] = 1;
 		}
 		foreach($optativas as $optativa)
 		{
-			$optDiscLen = count($optativa['disciplinas']);
-
-			foreach($optativa['disciplinas'] as $disciplina)
+			foreach($optativa['Disciplinas'] as $disciplina)
 			{
-				$codigoDisciplina = $disciplina['CodigoDisciplina'];
-
-				if(isset($discUSed[$codigoDisciplina])) 
-					continue;
-				$discUSed[$codigoDisciplina] = true;
-
-				$depend[] = Disciplina::getByUserIdDepend($login, $codigoDisciplina);
+				$discHash[$disciplina['CodigoDisciplina']] = 1;
 			}
 		}
 		foreach($selecionadas as $selecionada)
 		{
-			$codigoDisciplina = $selecionada['CodigoDisciplina'];
-
-			if(isset($discUsed[$codigoDisciplina])) 
-				continue;
-			$discUSed[$codigoDisciplina] = true;
-
-			$depend[] = Disciplina::getByUserIdDepend($login, $codigoDisciplina);
+			$discHash[$selecionada['CodigoDisciplina']] = 1;
 		}
+		$depend = Disciplina::getByUserDiscSetDepend($login, $discHash);
 
-		$data = array(
-			'faltacursar' => array(
-				'disciplinas' => $disciplinas,	
-				'optativas' => $optativas,
-			),
-			'selecionadas' => $selecionadas,
-			'dependencia' => $depend
+		$data = Common::namesMinimizer
+		(
+			json_encode
+			(
+				array
+				(
+					'FaltaCursar' => array
+					(
+						'Disciplinas' => $disciplinas,	
+						'Optativas' => $optativas,
+					),
+					'Selecionadas' => $selecionadas,
+					'Dependencia' => $depend
+				)
+			)
 		);
 
-		return ViewLoader::load('Prisma', 'general.phtml', array('section' => 'main', 'data'=> $data));
+		return ViewLoader::load('Prisma', 'general.phtml', array('section' => 'main', 'DATA_VIEW' => $data));
 	}
 }
 

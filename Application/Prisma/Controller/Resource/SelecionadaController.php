@@ -3,6 +3,7 @@
 namespace Prisma\Controller\Resource;
 
 use Framework\RestController;
+use Prisma\Library\Common;
 use Prisma\Library\Auth;
 use Prisma\Model\Selecionada;
 use Prisma\Model\Disciplina;
@@ -22,25 +23,26 @@ class SelecionadaController extends RestController
 
 		$selecionadas = Selecionada::getAll($login);
 
-		$discUsed = array();
-		$depend = array();
+		$discHash = array();
 		foreach($selecionadas as $selecionada)
 		{
-			$codigoDisciplina = $selecionada['CodigoDisciplina'];
-
-			if(isset($discUSed[$codigoDisciplina])) 
-				continue;
-			$discUSed[$codigoDisciplina] = true;
-
-			$depend[] = Disciplina::getByUserIdDepend($login, $codigoDisciplina);
+			$discHash[$selecionada['CodigoDisciplina']] = 1;
 		}
+		$depend = Disciplina::getByUserDiscSetDepend($login, $discHash);
 
-		$data = array(
-			'selecionadas' => $selecionadas,
-			'dependencia' => $depend
+		$data = Common::namesMinimizer
+		(
+			json_encode
+			(
+				array
+				(
+					'Selecionadas' => $selecionadas,
+					'Dependencia' => $depend
+				)
+			)
 		);
 
-		return json_encode($data);
+		return $data;
 	}
 	
 	public function performPost($url, $arguments, $accept) 

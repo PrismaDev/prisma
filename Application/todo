@@ -2,22 +2,44 @@
 Pontos a definir ainda:
 
 - Strings de tradução do sistema
-
 - Admin deve poder ler comentarios, subir arquivos e setar variaveis
 
 
 Fine tuning:
 
 - Configurar APC pra melhorar performance
-
 - Configurar apache para redirecionar para https
-
 - Turn on apache’s mod_deflate
 
 
 Implementar modelo do prisma necessario:
 
-- Selecionada (retornar com dados completo de turma e disciplina)
-- Usuario
 - Comentario
+- Estatisticas
+- Log
+
+
+Corrigir:
+
+- Colocar pagina de manutencao no prisma antigo.
+
+- Implementar upload dos arquivos de Faltacursar/cursando/cursado, Optativas, Prerequisitos
+
+- Verificar se controle de acesso esta ok
+
+- Permitir administrador liberar ou não acesso ao sistema, subir arquivos, colocar sistema em manutencao.
+
+- Verificar setup do servidor oficial.
+
+- Implementar estatisticas do sistema no banco de dados
+-- Quantas aluno selecionaram tal turma em qual opcao
+-- Quantidade de alunos que selecionaram um horario especifico
+
+- Implementar logs do sistema (inclusive api pra logar client)
+
+- Documentar banco de dados
+
+- Documentar servidor (inclusive o framework que foi escrito)
+
+- Rodar bateria de testes automatizados no lado do servidor
 

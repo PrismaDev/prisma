@@ -21,7 +21,7 @@ Class TestController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return json_encode(Optativa::getByUserDepend($_COOKIE['login']));
+		return json_encode(Disciplina::getByUserDiscSetDepend($_COOKIE['login'], array('INF1005'=>true, 'ENG1000'=>true)));
 	}
 }
 
