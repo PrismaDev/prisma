@@ -45,7 +45,7 @@ Class MainController extends RestController
 		}
 		$depend = Disciplina::getByUserDiscSetDepend($login, $discHash);
 
-		$data = Common::namesMinimizer
+		$data = //Common::namesMinimizer
 		(
 			json_encode
 			(

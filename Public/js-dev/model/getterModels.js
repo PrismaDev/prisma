@@ -2,13 +2,13 @@ var FaltacursarModel = Backbone.Model.extend({
 	getSubjects: function() {
 		var array=new Array();
 		
-		_.each(this.get('disciplinas'), function(disciplina) {
+		_.each(this.get('Disciplinas'), function(disciplina) {
 			var subjectModel = subjectList.get(disciplina.CodigoDisciplina);
 	
 			var object={
 				'code': subjectModel.get('CodigoDisciplina'),
 				'name': subjectModel.get('NomeDisciplina'),
-				'term': disciplina.PeriodoSugerido,
+				'term': disciplina.PeriodoAno,
 				'credits': subjectModel.get('Creditos')			
 			};
 
@@ -20,7 +20,7 @@ var FaltacursarModel = Backbone.Model.extend({
 
 	getSubjectClasses: function(subjectId) {
 		var subjectModel = subjectList.get(subjectId);
-		var classList = subjectModel.get('turmas');
+		var classList = subjectModel.get('Turmas');
 		var array=new Array();
 
 		_.each(classList.models, function(classO) {

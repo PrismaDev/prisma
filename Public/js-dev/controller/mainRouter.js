@@ -5,8 +5,8 @@ var MainRouter = Backbone.Router.extend({
 	},
 
 	loadPage: function() {
-		subjectList.add(DATA_VIEW.dependencia);
-		faltacursarModel.set(DATA_VIEW.faltacursar);
+		subjectList.add(DATA_VIEW.Dependencia);
+		faltacursarModel.set(DATA_VIEW.FaltaCursar);
 		mainView.render();
 	}
 });
