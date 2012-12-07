@@ -91,7 +91,7 @@ class Disciplina
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('INSERT INTO "Disciplina"("PK_Nome", "Nome", "Creditos") VALUES (:PK_Codigo, :Nome, :Creditos);');
+		$sth = $dbh->prepare('INSERT INTO "Disciplina"("PK_Codigo", "Nome", "Creditos") VALUES (:PK_Codigo, :Nome, :Creditos);');
 
 		if(!$sth->execute($data))
 		{
@@ -99,6 +99,6 @@ class Disciplina
 			throw new \Exception('['.$error[0].'/'.$error[1].']: '.$error[2]);
 		}
 
-		return $data['PK_Nome'];
+		return $data['PK_Codigo'];
 	}
 }
