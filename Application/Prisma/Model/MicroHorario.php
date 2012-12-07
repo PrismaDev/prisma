@@ -14,13 +14,6 @@ class MicroHorario
 {
 	public static function getByFilter($filters = array())
 	{
-		$microhorario = self::getRowsByFilter($filters);
-
-		return $microhorario;
-	}
-
-	private static function getRowsByFilter($filters)
-	{
 		$dbh = Database::getConnection();
 
 		$sql = 'SELECT "CodigoDisciplina", "PK_Turma" FROM "MicroHorario" WHERE "PeriodoAno" = '.Common::getPeriodoAno();
