@@ -73,6 +73,7 @@ body {
 body {
   background-image: url('../img/Prisma copy.JPG');
   background-position: center;
+  background-repeat: no-repeat;
 }
 #logo-div {
   margin-top: 2%;
