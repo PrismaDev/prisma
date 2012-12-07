@@ -29,7 +29,7 @@ class MicroHorarioController extends RestController
 
 		$depend = Disciplina::getByUserDiscSetDepend($_COOKIE['login'], $discHash);
 
-		$data = //Common::namesMinimizer
+		$data = Common::namesMinimizer
 		(
 			json_encode
 			(

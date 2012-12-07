@@ -32,6 +32,8 @@ Corrigir:
 - Verificar setup do servidor oficial.
 
 - Implementar estatisticas do sistema no banco de dados
+-- Quantas aluno selecionaram tal turma em qual opcao
+-- Quantidade de alunos que selecionaram um horario especifico
 
 - Implementar logs do sistema (inclusive api pra logar client)
 
@@ -40,11 +42,4 @@ Corrigir:
 - Documentar servidor (inclusive o framework que foi escrito)
 
 - Rodar bateria de testes automatizados no lado do servidor
-
-
---------------------------------------------------------------------------
-
-- Mudei case das variaveis do JSON.
-- Aplicar dicionario no JSON.
-- Explicar semantica de periodo, na relacao aluno disciplina.
 
