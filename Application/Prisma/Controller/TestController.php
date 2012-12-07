@@ -11,6 +11,7 @@ use Prisma\Model\Optativa;
 use Prisma\Model\Selecionada;
 use Prisma\Model\Turma;
 use Prisma\Model\TurmaHorario;
+use Prisma\Model\Usuario;
 
 Class TestController extends RestController
 {
@@ -21,7 +22,7 @@ Class TestController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return json_encode(Disciplina::getByUserDiscSetDepend($_COOKIE['login'], array('INF1005'=>true, 'ENG1000'=>true)));
+		return json_encode(Usuario::getById($_COOKIE['login']));
 	}
 }
 
