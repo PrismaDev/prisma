@@ -6,6 +6,16 @@ use Framework\Database;
 
 class Usuario
 {
+	public static function getById($login)
+	{
+		$dbh = Database::getConnection();	
+
+		$sth = $dbh->prepare('SELECT "Nome" as "NomeUsuario", "UltimoAcesso" FROM "Usuario" WHERE "PK_Login" = ? AND "TermoAceito"=TRUE;');
+		$sth->execute(array($login));
+
+		return $sth->fetch(\PDO::FETCH_ASSOC);	
+	}
+
 	public static function acceptTerm($login, $accept)
 	{
 		$dbh = Database::getConnection();	
