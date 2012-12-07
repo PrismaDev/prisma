@@ -45,11 +45,14 @@ class Auth
 
 	protected static function setSessionCookies($hash, $login, $type)
 	{
-		$expire = time()+(60*60*24*3); //expires within 3 days
+		$expire 	= time()+(60*60*24*3); //expires within 3 days
+		$path 		= '/';
+		$serverName 	= $_SERVER['SERVER_NAME'];
+		$secure 	= false;
 
-		setcookie('session', $hash, $expire);
-		setcookie('login', $login, $expire);
-		setcookie('type', $type, $expire);
+		setcookie('session', $hash, $expire, $path, $serverName, $secure);
+		setcookie('login', $login, $expire, $path, $serverName, $secure);
+		setcookie('type', $type, $expire, $path, $serverName, $secure);
 	}
 
 	protected static function checkAccount($login, $passwd, $type)
