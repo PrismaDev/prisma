@@ -79,7 +79,14 @@ return array(
 							'controller' => 'Prisma\Controller\Resource\FaltaCursarController',
 						),
 					),
-
+					'curso' => array
+					(
+						'action' => array
+						(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\CursoController',
+						),
+					),
 				),
 			),
 			'error' => array
