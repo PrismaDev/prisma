@@ -28,8 +28,8 @@ class MicroHorario
 		$sql .= self::makeSqlFilter($filters, 'SHF', 1);
 		$sql .= self::makeSqlFilter($filters, 'NomeProfessor', 0);
 		$sql .= self::makeSqlFilter($filters, 'DiaSemana', 1);
-		$sql .= self::makeSqlFilter($filters, 'HoraInicial', 0);
-		$sql .= self::makeSqlFilter($filters, 'HoraFinal', 0);
+		$sql .= self::makeSqlFilter($filters, 'HoraInicial', 1);
+		$sql .= self::makeSqlFilter($filters, 'HoraFinal', 1);
 
 		$sql .= ' GROUP BY "CodigoDisciplina", "PK_Turma"';
 
