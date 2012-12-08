@@ -103,6 +103,14 @@ return array(
 							'controller' => 'Prisma\Controller\Resource\PreRequisitoController',
 						),
 					),
+					'optativa' => array
+					(
+						'action' => array
+						(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\OptativaController',
+						),
+					),
 				),
 			),
 			'error' => array

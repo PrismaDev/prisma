@@ -19,6 +19,8 @@ class PreRequisito
 		$dbh = Database::getConnection();
 		$dbh->beginTransaction();
 
+		$dbh->exec('DELETE FROM "PreRequisitoGrupo";');
+
 		$skip = true;
 		while($row = fgetcsv($file, 1000, ';'))
 		{ 
@@ -33,11 +35,6 @@ class PreRequisito
 
 		$dbh->commit();
 		return true;
-	}
-
-	private static function clearDatabaseData()
-	{
-		//TODO: implement
 	}
 
 	private static function persistRow($row)

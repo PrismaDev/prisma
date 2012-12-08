@@ -45,4 +45,53 @@ class Optativa
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}
+
+	/* ------------------------------------------------------------------- */
+
+	public static function saveFromFile($file)
+	{
+		$file = fopen($file, 'r');
+
+		if(!$file)
+		{
+			// TODO: log
+			return false;
+		}
+
+		$dbh = Database::getConnection();
+		$dbh->beginTransaction();
+
+		$dbh->exec('DELETE FROM "Optativa";');
+
+		$skip = true;
+		while($row = fgetcsv($file, 1000, ';'))
+		{ 
+			if(count($row) < 2) continue;
+
+			if(!self::persistRow($row))
+			{
+				$dbh->rollback();
+				return false;
+			}
+		}
+
+		$dbh->commit();
+		return true;
+	}
+
+	private static function persistRow($row)
+	{
+		$dbh = Database::getConnection();
+
+		$sth = $dbh->prepare('INSERT INTO "Optativa"("PK_Codigo", "Nome") VALUES (?, ?);');
+		$sth->execute(array($row[0], $row[1]));
+
+		if(isset($row[2]) && !empty($row[2]))
+		{
+			$sth = $dbh->prepare('INSERT INTO "OptativaDisciplina"("FK_Optativa", "FK_Disciplina") VALUES (?, ?);');
+			$sth->execute(array($row[0], $row[2]));
+		}
+
+		return $sth->rowCount() > 0;
+	}
 }
