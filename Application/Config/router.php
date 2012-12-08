@@ -79,7 +79,38 @@ return array(
 							'controller' => 'Prisma\Controller\Resource\FaltaCursarController',
 						),
 					),
-
+					'curso' => array
+					(
+						'action' => array
+						(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\CursoController',
+						),
+					),
+					'usuario' => array
+					(
+						'action' => array
+						(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\UsuarioController',
+						),
+					),
+					'prerequisito' => array
+					(
+						'action' => array
+						(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\PreRequisitoController',
+						),
+					),
+					'optativa' => array
+					(
+						'action' => array
+						(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\OptativaController',
+						),
+					),
 				),
 			),
 			'error' => array

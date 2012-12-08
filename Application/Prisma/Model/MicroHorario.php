@@ -85,9 +85,6 @@ class MicroHorario
 		$dbh = Database::getConnection();
 		$dbh->beginTransaction();
 
-		$dbh->exec('DELETE FROM "Turma" WHERE "PeriodoAno" = '.Common::getPeriodoAno().';');
-		$dbh->exec('SELECT setval(\'seq_turma\', COALESCE((SELECT MAX("PK_Turma") FROM "Turma"), 1));');
-
 		$skip = true;
 		while($row = self::csvRead($file))
 		{ 

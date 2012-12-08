@@ -59,7 +59,13 @@ class Auth
 	{
 		$dbh = Database::getConnection();
 
-		$sth = $dbh->prepare('UPDATE "Usuario" SET "HashSessao" = ?, "UltimoAcesso" = now() WHERE "PK_Login" = ? AND "Senha" = ? AND "FK_TipoUsuario" = (SELECT "PK_TipoUsuario" FROM "TipoUsuario" WHERE "Nome" = ?);');
+		$sth = $dbh->prepare('UPDATE "Usuario" SET "HashSessao" = ?, "UltimoAcesso" = now() 
+					WHERE "PK_Login" = ? AND 
+					"Senha" = ? AND 
+					"FK_TipoUsuario" = 
+					(
+						SELECT "PK_TipoUsuario" FROM "TipoUsuario" WHERE "Nome" = ?
+					);');
 
 		$hash = self::makeHash($login, $passwd);
 

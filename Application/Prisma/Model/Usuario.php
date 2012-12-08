@@ -52,4 +52,60 @@ class Usuario
 			//TODO: handle error
 		}
 	}
+
+	/* --------------------------------------------------------------- */
+
+	public static function saveFromFile($file)
+	{
+		$file = fopen($file, 'r');
+
+		if(!$file)
+		{
+			// TODO: log
+			return false;
+		}
+
+		$dbh = Database::getConnection();
+		$dbh->beginTransaction();
+
+		$skip = true;
+		while($row = fgetcsv($file, 1000, ';'))
+		{ 
+			if(count($row) < 4) continue;
+
+			if(!self::persistRow($row))
+			{
+			print_r($row);
+			print_r($dbh->errorInfo());
+				$dbh->rollback();
+				return false;
+			}
+		}
+
+		$dbh->commit();
+		return true;
+	}
+
+	private static function persistRow($row)
+	{
+		$dbh = Database::getConnection();
+
+		$sth = $dbh->prepare('INSERT INTO "Usuario"("PK_Login", "Nome", "FK_TipoUsuario") VALUES (?, ?, 3);');
+		$sth->execute(array
+		(
+			$row[0],
+			$row[1],
+		));
+
+		$sth = $dbh->prepare('INSERT INTO "Aluno"("FK_Matricula", "CoeficienteRendimento", "FK_Curso") VALUES (?, ?, ?);');
+		$sth->execute(array
+		(
+			$row[0],
+			(float)str_replace(',','.',$row[2]),
+			$row[3],
+		));
+
+		return $sth->rowCount() > 0;
+	}
+
 }
