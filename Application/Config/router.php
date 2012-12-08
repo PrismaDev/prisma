@@ -95,7 +95,14 @@ return array(
 							'controller' => 'Prisma\Controller\Resource\UsuarioController',
 						),
 					),
-
+					'prerequisito' => array
+					(
+						'action' => array
+						(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\PreRequisitoController',
+						),
+					),
 				),
 			),
 			'error' => array
