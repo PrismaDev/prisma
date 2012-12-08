@@ -88,6 +88,9 @@ class Optativa
 
 		if(isset($row[2]) && !empty($row[2]))
 		{
+			$sth = $dbh->prepare('INSERT INTO "Disciplina"("PK_Codigo", "Nome", "Creditos") VALUES (?, \'<SEM_NOME>\', 0);');
+			$sth->execute(array($row[2]));
+
 			$sth = $dbh->prepare('INSERT INTO "OptativaDisciplina"("FK_Optativa", "FK_Disciplina") VALUES (?, ?);');
 			$sth->execute(array($row[0], $row[2]));
 		}
