@@ -55,7 +55,7 @@ class Usuario
 
 	/* --------------------------------------------------------------- */
 
-	public static function saveFromFile($file)
+	public static function saveAlunoFromFile($file)
 	{
 		$file = fopen($file, 'r');
 
@@ -73,10 +73,8 @@ class Usuario
 		{ 
 			if(count($row) < 4) continue;
 
-			if(!self::persistRow($row))
+			if(!self::persistAlunoRow($row))
 			{
-			print_r($row);
-			print_r($dbh->errorInfo());
 				$dbh->rollback();
 				return false;
 			}
@@ -86,7 +84,7 @@ class Usuario
 		return true;
 	}
 
-	private static function persistRow($row)
+	private static function persistAlunoRow($row)
 	{
 		$dbh = Database::getConnection();
 
@@ -104,6 +102,68 @@ class Usuario
 			(float)str_replace(',','.',$row[2]),
 			$row[3],
 		));
+
+		return $sth->rowCount() > 0;
+	}
+
+	/* --------------------------------------------------------------- */
+
+	public static function saveHistoricoFromFile($file)
+	{
+		$file = fopen($file, 'r');
+
+		if(!$file)
+		{
+			// TODO: log
+			return false;
+		}
+
+		$dbh = Database::getConnection();
+		$dbh->beginTransaction();
+
+		$skip = true;
+		while($row = fgetcsv($file, 1000, ';'))
+		{ 
+			if(count($row) < 5) continue;
+
+			if(!self::persistHistoricoRow($row))
+			{
+			print_r($row);
+			print_r($dbh->errorInfo());
+				$dbh->rollback();
+				return false;
+			}
+		}
+
+		$dbh->commit();
+		return true;
+	}
+
+	private static function persistHistoricoRow($row)
+	{
+		$row[0] = str_pad($row[0], 7, '0', STR_PAD_LEFT);
+		if($row[4]=='FC') $row[4] = 'NC';
+
+		if(substr($row[0], 0, 3) == '131') return true;
+
+		$dbh = Database::getConnection();
+		$sth = null;
+
+		if(substr($row[3], 0, 1) == 'P' && $row[4] == 'NC') //optativa
+		{
+			$sth = $dbh->prepare('INSERT INTO "OptativaAluno"("FK_Aluno", "FK_Optativa", "PeriodoSugerido") VALUES (?, ?, ?);');
+			$sth->execute(array
+			(
+				$row[0],
+				$row[1],
+				$row[2]
+			));
+		}
+		else //disciplina
+		{
+			$sth = $dbh->prepare('INSERT INTO "AlunoDisciplina"("FK_Aluno", "FK_Disciplina", "Periodo", "FK_TipoDisciplina", "FK_Status", "Tentativas") VALUES (?, ?, ?, ?, ?, ?);');
+			$sth->execute($row);
+		}
 
 		return $sth->rowCount() > 0;
 	}

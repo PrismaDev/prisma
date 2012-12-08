@@ -3,10 +3,10 @@
 namespace Prisma\Controller\Resource;
 
 use Framework\RestController;
-use Prisma\Model\Optativa;
+use Prisma\Model\Usuario;
 use Prisma\Library\Auth;
 
-class OptativaController extends RestController
+class HistoricoController extends RestController
 {
 	public function __construct()
 	{
@@ -19,7 +19,9 @@ class OptativaController extends RestController
 
 		if(!isset($_FILES['file'])) return 'error';
 
-		if(Optativa::saveFromFile($_FILES['file']['tmp_name']))
+		set_time_limit ( 3600 );
+
+		if(Usuario::saveHistoricoFromFile($_FILES['file']['tmp_name']))
 		{
 			return 'ok';
 		}

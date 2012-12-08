@@ -111,6 +111,14 @@ return array(
 							'controller' => 'Prisma\Controller\Resource\OptativaController',
 						),
 					),
+					'historico' => array
+					(
+						'action' => array
+						(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\HistoricoController',
+						),
+					),
 				),
 			),
 			'error' => array

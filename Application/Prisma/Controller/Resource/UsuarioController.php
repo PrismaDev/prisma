@@ -19,7 +19,7 @@ class UsuarioController extends RestController
 
 		if(!isset($_FILES['file'])) return 'error';
 
-		if(Usuario::saveFromFile($_FILES['file']['tmp_name']))
+		if(Usuario::saveAlunoFromFile($_FILES['file']['tmp_name']))
 		{
 			return 'ok';
 		}
