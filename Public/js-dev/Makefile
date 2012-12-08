@@ -25,7 +25,9 @@ DEP_TERM = $(MDL)/layoutStringsModel.js \
 	$(VIEW)/termView.js \
 	$(CTRL)/termRouter.js
 
-DEP_MAIN = $(MDL)/microhorarioModel.js \
+DEP_MAIN = $(MDL)/lib.js \
+	$(MDL)/serverDictionary.js \
+	$(MDL)/microhorarioModel.js \
 	$(MDL)/layoutStringsModel.js \
 	$(MDL)/dataModels.js \
 	$(MDL)/getterModels.js\
