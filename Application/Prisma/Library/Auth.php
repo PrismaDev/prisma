@@ -61,7 +61,6 @@ class Auth
 
 		$sth = $dbh->prepare('UPDATE "Usuario" SET "HashSessao" = ?, "UltimoAcesso" = now() 
 					WHERE "PK_Login" = ? AND 
-					"Senha" = ? AND 
 					"FK_TipoUsuario" = 
 					(
 						SELECT "PK_TipoUsuario" FROM "TipoUsuario" WHERE "Nome" = ?
@@ -72,7 +71,7 @@ class Auth
 		$sth->execute(array(
 			$hash,
 			$login,
-			$passwd,
+//			$passwd,
 			$type,
 		));
 
