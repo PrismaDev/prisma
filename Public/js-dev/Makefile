@@ -31,13 +31,14 @@ DEP_MAIN = $(MDL)/lib.js \
 	$(MDL)/layoutStringsModel.js \
 	$(MDL)/dataModels.js \
 	$(MDL)/getterModels.js\
+	$(MDL)/mainStringsModel.js \
 	$(VIEW)/timetableView.js \
 	$(VIEW)/faltacursarView.js \
-	$(MDL)/mainStringsModel.js \
 	$(VIEW)/microhorarioView.js \
 	$(VIEW)/selectedView.js \
 	$(VIEW)/mainView.js \
 	$(VIEW)/classeslistView.js \
+	$(CTRL)/microhorarioController.js \
 	$(CTRL)/selectedController.js \
 	$(CTRL)/mainRouter.js
 

@@ -602,11 +602,11 @@ div.fieldContainer {
   text-align: center;
 }
 #main-sidebar-div {
-  width: 40%;
+  width: 50%;
   float: left;
 }
 #main-timetable-div {
-  width: 60%;
+  width: 50%;
   float: left;
 }
 #main-faltacursar-div,

@@ -46,6 +46,7 @@ var ClasseslistView = Backbone.View.extend({
 
 		this.initJS();
 		this.cache();
+		this.calculateTableScroll();
 	}
 });
 

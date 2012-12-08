@@ -37,7 +37,6 @@ var FaltacursarModel = Backbone.Model.extend({
 				'schedule': classO.printSchedule()
 			};
 
-			console.log(object);
 			array.push(object);
 		});
 

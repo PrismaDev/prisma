@@ -5,25 +5,9 @@ var MicrohorarioView = Backbone.View.extend ({
 	resultsDiv: '',
 
 	//status constants
-	noQueryStatus: 'noQuery',
-	queryStatus: 'query',
-	waitingStatus: 'waiting',
-
-	testArray: [
-		{'subjectCode':'MAT1161', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'},
-		{'subjectCode':'coisa', 'subjectName':'coisa', 'professorName': 'coisa', 'code': 'coisa', 'schedule': 'coisa'}
-	],
-
+	noQueryState: 'noQuery',
+	queryState: 'query',
+	waitingState: 'waiting',
 
 	waitingImgURL: 'http://i.stack.imgur.com/FhHRx.gif',
 		
@@ -69,17 +53,8 @@ var MicrohorarioView = Backbone.View.extend ({
 	},
 
 	query: function() {
-		this.changeState(this.waitingStatus);
-		var microhorarioModel = new MicrohorarioModel();
-		var me=this;
-
-		microhorarioModel.fetch({
-			sucess: function(microhorario) {
-				me.changeState(me.queryStatus,
-					microhorario);
-			}
-		});
-
+		this.changeState(this.waitingState);
+		microhorarioController.fetchData();
 		return false;		
 	},
 
@@ -89,16 +64,16 @@ var MicrohorarioView = Backbone.View.extend ({
 		this.noQueryTemplate = _.template($('#microhorario-noquery-template').html());
 	},
 
-	changeState: function(qStatus, data) {
+	changeState: function(qState, data) {
 		if (typeof data == undefined) data=[];
 
-		if (qStatus==this.queryStatus) {
+		if (qState==this.queryState) {
 			this.closeFilters();
 			microhorarioClasseslistView.render(data);
 			return;			
 		}
 
-		if (qStatus==this.noQueryStatus)
+		if (qState==this.noQueryState)
 			this.$resultsDiv.html(this.noQueryTemplate({
 				str: microhorarioStringsModel
 			}));
@@ -121,7 +96,7 @@ var MicrohorarioView = Backbone.View.extend ({
 		microhorarioClasseslistView.setElement(this.$resultsDiv);		
 		microhorarioClasseslistView.render([]);
 		
-		this.changeState(this.queryStatus, this.testArray);		
+		this.changeState(this.noQueryState);		
 	}
 });
 

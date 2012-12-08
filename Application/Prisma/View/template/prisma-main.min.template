@@ -70,17 +70,17 @@
 	<div id="microhorario-filter">
 		<form id="microhorario-form">
 			<div class="fieldContainer">
-				<label for="subjectCode"><%= str.get('subjectCodeLabel') %></label>
-				<input type="text" name="subjectCode" />
+				<label for="CodigoDisciplina"><%= str.get('subjectCodeLabel') %></label>
+				<input type="text" name="CodigoDisciplina" />
 			</div>
 			<div class="fieldContainer">
-				<label for="subjectName"><%= str.get('subjectNameLabel') %></label>
-				<input type="text" name="subjectName" />
+				<label for="NomeDisciplina"><%= str.get('subjectNameLabel') %></label>
+				<input type="text" name="NomeDisciplina" />
 			</div>
 			
 			<div class="fieldContainer">
-				<label for="professorName"><%= str.get('professorNameLabel') %></label>
-				<input type="text" name="professorName" />
+				<label for="NomeProfessor"><%= str.get('professorNameLabel') %></label>
+				<input type="text" name="NomeProfessor" />
 			</div>		
 
 			<div class="fieldContainer">
@@ -92,30 +92,30 @@
 	
 			<div id="hiddenFilters" class="hidden">
 				<div class="fieldContainer">
-					<label for="nCredits"><%= str.get('nCreditsLabel') %></label>
-					<input type="text" name="nCredits" />
+					<label for="Creditos"><%= str.get('nCreditsLabel') %></label>
+					<input type="text" name="Creditos" />
 				</div>
 				<div class="fieldContainer">
 					<label for="day"><%= str.get('dayLabel') %></label>
-					<input type="text" name="day" />
+					<input type="text" name="DiaSemana" />
 				</div>
 				<div class="fieldContainer">
-					<label for="timeBegin"><%= str.get('timeBeginLabel') %></label>
-					<input type="text" name="timeBegin" />
+					<label for="HoraInicial"><%= str.get('timeBeginLabel') %></label>
+					<input type="text" name="HoraInicial" />
 				</div>
 				<div class="fieldContainer">
-					<label for="timeEnd"><%= str.get('timeEndLabel') %></label>
-					<input type="text" name="timeEnd" />
+					<label for="HoraFinal"><%= str.get('timeEndLabel') %></label>
+					<input type="text" name="HoraFinal" />
 				</div>
 				<div class="fieldContainer">
-					<input type="checkbox" name="noFixedSchedule" value="true" />
-					<label for="noFixedSchedule">
+					<input type="checkbox" name="SHF" value="1" />
+					<label for="SHF">
 						<%= str.get('noFixedScheduleLabel') %>
 					</label>
 				</div>
 				<div class="fieldContainer">
-					<input type="checkbox" name="distanceHours" value="true" />
-					<label for="distanceHours">
+					<input type="checkbox" name="HorasDistancia" value="1" />
+					<label for="HorasDistancia">
 						<%= str.get('distanceHoursLabel') %>
 					</label>
 				</div>
