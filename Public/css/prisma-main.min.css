@@ -50,8 +50,8 @@ tr.disabled {
 .dropdown-menu .help-block {
   font-size: small;
 }
-.dropdown-menu a {
-  color: #777777;
+.dropdown-menu li > a {
+  color: #999999;
 }
 body {
   min-width: 1024px;
