@@ -1,0 +1,183 @@
+
+=============== JSON Doc ===============
+
+1/ Dicionario:
+
+Para minimizar a transferencia de dados entre o servidor e o navegador do usuario, alguns nomes de variaveis foram substituidos por nomes menores. Dessa maneira foi possivel conseguir uma diminuição de até 40% no tráfego de dados.
+
+'Matricula'		=> 'MT',
+'NomeAluno'		=> 'NA',
+'CR'			=> 'CR',
+'Dependencia'		=> 'DP',
+'FaltaCursar'		=> 'FC',
+'Selecionada'		=> 'SLC',
+'MicroHorario' 		=> 'MH',
+'Disciplinas'		=> 'DCs',
+'Turmas'		=> 'TRs',
+'Optativas'		=> 'OPs',
+'Horarios'		=> 'HRs',
+'CodigoDisciplina' 	=> 'CD',
+'CodigoTurma' 		=> 'CT',
+'CodigoOptativa'	=> 'CO',
+'PK_Turma'		=> 'IDT',
+'FK_Turma'		=> 'IDT',
+'NomeDisciplina' 	=> 'ND',
+'NomeProfessor' 	=> 'NP',
+'NomeOptativa'		=> 'NO',
+'Creditos'		=> 'CRs',
+'Situacao'		=> 'ST',
+'Apto'			=> 'APT',
+'Vagas'			=> 'VG',
+'Destino'		=> 'DT',
+'HorasDistancia'	=> 'HD',
+'SHF'			=> 'SHF',
+'PeriodoAno'		=> 'PA',
+'Tentativas'		=> 'TTs',
+'Opcao'			=> 'OP',
+'NoLinha'		=> 'NL',
+'DiaSemana'		=> 'DS',
+'HoraInicial'		=> 'HI',
+'HoraFinal'		=> 'HF',
+
+
+2/ Especificacao dos JSONs utilizados: 
+
+-- Formatos em comum
+
+Aluno:
+{
+	Matricula: < string >,
+	NomeAluno: < string >,
+	CR: < string >
+}
+
+Dicionario:
+[
+	< string completa >: < string menor >,
+	...
+]
+
+Strings:
+[
+	< string id >: < texto completo >,
+	...
+]
+
+FaltaCursar:
+{
+	Disciplinas:
+	[
+		{
+			CodigoDisciplina: < string >,
+			PeriodoAno: < integer >,
+			Tentativas: < integer >
+		},
+		...
+	]
+	Optativas:
+	[
+		{
+			CodigoOptativa: < string >,
+			Disciplinas:
+			[
+				{
+					CodigoDisciplina: < string >
+				},
+				...
+			],
+			PeriodoAno: < integer >
+		}
+	]
+}
+
+MicroHorario
+[
+	{
+		CodigoDisciplina: < string >,
+		FK_Turma: < integer >
+	},
+	...
+]
+
+Selecionadas:
+[
+	{
+		CodigoDisciplina: < string >,
+		FK_Turma: < integer >,
+		NoLinha: < integer >,
+		Opcao: < integer >
+	},
+	...
+]
+
+Turma:
+{
+	PK_Turma: < integer >,
+	CodigoTurma: < string >,
+	NomeProfessor: < string >,
+	PeriodoAno: < integer >,
+	SHF: < integer >
+	HorasDistancia: < integer >,
+	Vagas: < integer >,
+	Destino: < string >,
+	Horarios:
+	[
+		{
+			DiaSemana: < integer >,
+			HoraInicial: < integer >,
+			HoraFinal: < integer >
+		},
+		...
+	]
+}
+
+Disciplina:
+{
+	CodigoDisciplina: < string >,
+	Creditos: < integer >,
+	NomeDisciplina: < string >,
+	Situacao: < string >,
+	Apto: < integer >,
+	Turmas:
+	{
+		< turma json >,
+		...
+	}
+}
+
+Dependencia:
+[
+	< disciplina json >,
+	...
+]
+
+
+-- Requests:
+
+Main:
+{
+	Aluno: < aluno json >,
+	Dicionario: < dicionario json >,
+	Strings: < strings json >,
+	FaltaCursar: < falta cursar json >,
+	Selecionadas: < selecionadas json >,
+	Dependencia: < dependencia json > 
+}
+
+MicroHorario:
+{
+	MicroHorario: < microhorario json >,
+	Dependencia: < dependencia json >
+}
+
+FaltaCursar
+{
+	FaltaCursar: < faltacursar json >,
+	Dependencia: < dependencia json >
+}
+
+Selecionada
+{
+	Selecionadas: < selecionadas json >,
+	Dependencia: < dependencia json >
+}

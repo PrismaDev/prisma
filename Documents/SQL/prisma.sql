@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.5
 -- Dumped by pg_dump version 9.1.5
--- Started on 2012-12-09 13:22:16 BRST
+-- Started on 2012-12-09 13:26:07 BRST
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -272,7 +272,7 @@ ALTER TABLE public.seq_turma OWNER TO prisma;
 -- Name: seq_turma; Type: SEQUENCE SET; Schema: public; Owner: prisma
 --
 
-SELECT pg_catalog.setval('seq_turma', 9283, true);
+SELECT pg_catalog.setval('seq_turma', 1, true);
 
 
 --
@@ -356,7 +356,7 @@ ALTER TABLE public.seq_prerequisito OWNER TO prisma;
 -- Name: seq_prerequisito; Type: SEQUENCE SET; Schema: public; Owner: prisma
 --
 
-SELECT pg_catalog.setval('seq_prerequisito', 11285, true);
+SELECT pg_catalog.setval('seq_prerequisito', 1, true);
 
 
 --
@@ -590,7 +590,7 @@ ALTER TABLE public.seq_professor OWNER TO prisma;
 -- Name: seq_professor; Type: SEQUENCE SET; Schema: public; Owner: prisma
 --
 
-SELECT pg_catalog.setval('seq_professor', 3427, true);
+SELECT pg_catalog.setval('seq_professor', 1, true);
 
 
 --
@@ -1497,7 +1497,7 @@ ALTER TABLE ONLY "Turma"
     ADD CONSTRAINT "PK_Turma_Disciplina" FOREIGN KEY ("FK_Disciplina") REFERENCES "Disciplina"("PK_Codigo") ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2012-12-09 13:22:16 BRST
+-- Completed on 2012-12-09 13:26:07 BRST
 
 --
 -- PostgreSQL database dump complete
