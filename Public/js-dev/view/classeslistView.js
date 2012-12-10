@@ -8,6 +8,21 @@ var ClasseslistView = Backbone.View.extend({
 	classesTableHead: '',
 	classesTableBody: '',
 
+	events: {
+		'click .dataTables_scrollBody tr': 'clickOnClass'
+	},
+
+	clickOnClass: function(e) {
+		var row = $(e.target).parent('tr');
+
+		if ($(row).hasClass('chosen')) {
+			$(row).removeClass('chosen');
+		}
+		else {
+			$(row).addClass('chosen');
+		}
+	},
+
 	cache: function() {
 		this.classesTableHead = this.$('.dataTables_scrollHead');
 		this.classesTableBody = this.$('.dataTables_scrollBody');

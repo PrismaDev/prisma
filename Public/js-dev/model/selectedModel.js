@@ -20,7 +20,7 @@ var SelectedModel = Backbone.Model.extend({
 	},
 
 	addClass: function(subjectId, classId) {
-		for (var i=0; i<this.maxRows, i++)
+		for (var i=0; i<this.maxRows; i++)
 			for (var j=0; j<this.nOptions; j++)
 				if (options[i][j]==null) {
 					options[i][j]={
@@ -33,9 +33,11 @@ var SelectedModel = Backbone.Model.extend({
 				}
 
 		return false;
-	}
+	},
 
 	viewChanged: function() {
 		
 	}
 });
+
+var selectedModel = new SelectedModel();

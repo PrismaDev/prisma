@@ -32,6 +32,7 @@ DEP_MAIN = $(MDL)/lib.js \
 	$(MDL)/dataModels.js \
 	$(MDL)/getterModels.js\
 	$(MDL)/mainStringsModel.js \
+	$(MDL)/selectedModel.js \
 	$(VIEW)/timetableView.js \
 	$(VIEW)/faltacursarView.js \
 	$(VIEW)/microhorarioView.js \
