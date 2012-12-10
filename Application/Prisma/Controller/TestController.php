@@ -23,16 +23,7 @@ Class TestController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		$time = time();
-
-		$dbh = Database::getConnection();	
-
-		$sth = $dbh->prepare('SELECT "AlunoDisciplinaApto" FROM "PopulaAlunoDisciplinaAptoCache" limit :limit offset :offset;');
-		$sth->execute($arguments);
-
-		echo time()-$time,'<br>';
-
-		return $sth->fetch() != false ? 'ok' : 'error';
+		return json_encode(Usuario::getAlunoById($_COOKIE['login']));
 	}
 }
 

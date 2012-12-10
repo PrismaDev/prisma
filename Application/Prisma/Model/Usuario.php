@@ -6,6 +6,16 @@ use Framework\Database;
 
 class Usuario
 {
+	public static function getAlunoById($login)
+	{
+		$dbh = Database::getConnection();	
+
+		$sth = $dbh->prepare('SELECT "Matricula", "NomeAluno", "UltimoAcesso", "CR" FROM "UsuarioAluno" where "Matricula" = ?;');
+		$sth->execute(array($login));
+
+		return $sth->fetch(\PDO::FETCH_ASSOC);	
+	}
+
 	public static function getById($login)
 	{
 		$dbh = Database::getConnection();	

@@ -5,6 +5,8 @@
 
 Para minimizar a transferencia de dados entre o servidor e o navegador do usuario, alguns nomes de variaveis foram substituidos por nomes menores. Dessa maneira foi possivel conseguir uma diminuição de até 40% no tráfego de dados.
 
+'Alunos'		=> 'ALs',
+'Strings'		=> 'STRs',
 'Matricula'		=> 'MT',
 'NomeAluno'		=> 'NA',
 'CR'			=> 'CR',
