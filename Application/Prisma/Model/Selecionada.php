@@ -16,12 +16,15 @@ class Selecionada
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
-	public static function persist($data)
+	public static function persist($login, $data)
 	{
 		$dbh = Database::getConnection();
 
+
 		$sth = $dbh->prepare('INSERT INTO "AlunoTurmaSelecionada"("FK_Aluno", "FK_Turma", "Opcao", "NoLinha")
 					VALUES (:FK_Aluno, :FK_Turma, :Opcao, :NoLinha);');
+
+		$data['FK_Aluno'] = $login;
 		$sth->execute($data);
 	
 		return $sth->rowCount > 0;
