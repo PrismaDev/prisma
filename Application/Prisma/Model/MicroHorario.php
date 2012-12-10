@@ -33,16 +33,15 @@ class MicroHorario
 
 		$sql .= ' GROUP BY "CodigoDisciplina", "PK_Turma"';
 
-		if(isset($filters['Quantidade']))
+		if(!isset($filters['Quantidade'])) $limit = 5;
+		else $limit = $filters['Quantidade'];
+
+		$sql .= 'LIMIT '.$limit;
+		if(isset($filters['Pagina']))
 		{
-			$sql .= 'LIMIT '.$filters['Quantidade'];
+			$offset = $limit * $filters['Pagina'];
 
-			if(isset($filters['Pagina']))
-			{
-				$offset = $filters['Quantidade'] * $filters['Pagina'];
-
-				$sql .= ' OFFSET '.$offset;
-			}
+			$sql .= ' OFFSET '.$offset;
 		}
 
 		$sql .= ';';

@@ -3,6 +3,8 @@
 chdir(dirname(__DIR__).'/Application');
 require_once 'autoload.php';
 
+set_time_limit ( 3600 );
+
 error_reporting(E_ALL);
 //error_reporting(0);
 

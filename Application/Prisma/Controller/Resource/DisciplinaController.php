@@ -3,10 +3,10 @@
 namespace Prisma\Controller\Resource;
 
 use Framework\RestController;
-use Prisma\Model\Usuario;
+use Prisma\Model\Disciplina;
 use Prisma\Library\Auth;
 
-class HistoricoController extends RestController
+class DisciplinaController extends RestController
 {
 	public function __construct()
 	{
@@ -19,9 +19,7 @@ class HistoricoController extends RestController
 
 		if(!isset($_FILES['file'])) return 'error';
 
-		set_time_limit ( 3600 );
-
-		if(Usuario::saveHistoricoFromFile($_FILES['file']['tmp_name']))
+		if(Disciplina::saveFromFile($_FILES['file']['tmp_name']))
 		{
 			return 'ok';
 		}

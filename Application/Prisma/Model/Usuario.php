@@ -85,6 +85,8 @@ class Usuario
 
 			if(!self::persistAlunoRow($row))
 			{
+			print_r($row);
+			print_r($dbh->errorInfo());
 				$dbh->rollback();
 				return false;
 			}
@@ -171,7 +173,7 @@ class Usuario
 		}
 		else //disciplina
 		{
-			$sth = $dbh->prepare('INSERT INTO "Disciplina"("PK_Codigo", "Nome", "Creditos") VALUES (?, \'<SEM_NOME>\', 0);');
+			$sth = $dbh->prepare('INSERT INTO "Disciplina"("PK_Codigo", "Nome", "Creditos") VALUES (?, \'Disciplina sem nome\', 0);');
 			$sth->execute(array($row[1]));
 
 			$sth = $dbh->prepare('INSERT INTO "AlunoDisciplina"("FK_Aluno", "FK_Disciplina", "Periodo", "FK_TipoDisciplina", "FK_Status", "Tentativas") VALUES (?, ?, ?, ?, ?, ?);');

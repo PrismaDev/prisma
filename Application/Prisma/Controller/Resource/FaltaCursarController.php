@@ -7,6 +7,7 @@ use Prisma\Library\Common;
 use Prisma\Library\Auth;
 use Prisma\Model\Disciplina;
 use Prisma\Model\Optativa;
+use Prisma\Model\Usuario;
 
 class FaltaCursarController extends RestController
 {
@@ -58,9 +59,17 @@ class FaltaCursarController extends RestController
 	
 	public function performPost($url, $arguments, $accept) 
 	{
-		Auth::accessControl('Administrador');
+//		Auth::accessControl('Administrador');
 
-		//TODO
+		if(!isset($_FILES['file'])) return 'error';
+
+		if(Usuario::saveHistoricoFromFile($_FILES['file']['tmp_name']))
+		{
+			return 'ok';
+		}
+		else
+		{
+			return 'error';
+		}
 	}
-
 }
