@@ -60,9 +60,15 @@ var SelectedView = Backbone.View.extend({
 	},
 
 	buildRow: function(index, classArray) {
+		var arr=new Array();
+
+		for (var i=0; i<classArray.length; i++)
+			arr.push(this.templateDraggable(classArray[i]));
+	
 		return	this.templateRow({
 			'index': index,
-			'options': classArray
+			'options': classArray,
+			'template': arr
 		});
 	},
 
@@ -137,10 +143,6 @@ var SelectedView = Backbone.View.extend({
 	droppableInit: function() {
 		var $drop = this.$el.find('td.classDroppable').droppable({
 			drop: function(event, ui) {
-				console.log('this:');
-				console.log($(this));
-				console.log('draggable:')
-				console.log(ui.draggable);
 				if ($(this).has('div.classDraggable')) {
 					$(ui.draggable).parent().append(
 						$(this).find('div.classDraggable')

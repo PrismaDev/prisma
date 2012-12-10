@@ -167,16 +167,19 @@
 				checked="checked"/>
 		</td>
 		<td class="classDroppable">
+			<%= template[0]? template[0] : '' %>
 		</td>
 		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="2"/>
 		</td>
 		<td class="classDroppable">
+			<%= template[1]? template[1] : '' %>
 		</td>
 		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="3"/>
 		</td>
 		<td class="classDroppable">
+			<%= template[2]? template[2] : '' %>
 		</td>
 		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="none"/>
@@ -198,12 +201,10 @@
 </script>
 
 <script type="text/underscore-template" id="selected-draggable-template">
-	<td class="classDroppable">
-		<div class="classDraggable">
-			<button type="button" class="close">×</button>
-			<%= subjectCode %> - <%= classCode %>
-		</div>
-	</td>
+	<div class="classDraggable">
+		<button type="button" class="close">×</button>
+		<%= subjectCode %> - <%= classCode %>
+	</div>
 </script>
 <script type="text/underscore-template" id="faltacursar-template">
 	<table id="faltacursar-subject-table" class="table table-bordered table-condensed">
