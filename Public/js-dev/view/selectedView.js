@@ -2,7 +2,6 @@ var SelectedView = Backbone.View.extend({
 	templateRow: '',
 	templateTable: '',
 	templateDraggable: '',
-	nRows: 12,
 
 	testArray: [
 		[
@@ -81,7 +80,7 @@ var SelectedView = Backbone.View.extend({
 		for (var i=0; i<rowsArray.length; i++)
 			$(tbody).append(this.buildRow(i,rowsArray[i]));
 	
-		for (var i=rowsArray.length; i<this.nRows; i++)
+		for (var i=rowsArray.length; i<selectedModel.maxRows; i++)
 			$(tbody).append(this.buildRow(i,[]));
 	},
 
