@@ -9,6 +9,7 @@ use Prisma\Library\Common;
 use Prisma\Model\Disciplina;
 use Prisma\Model\Optativa;
 use Prisma\Model\Selecionada;
+use Prisma\Model\Usuario;
 
 Class MainController extends RestController
 {
@@ -23,6 +24,7 @@ Class MainController extends RestController
 	{
 		$login = $_COOKIE['login'];
 
+		$aluno = Usuario::getAlunoById($login);
 		$disciplinas = Disciplina::getFaltaCursar($login);
 		$optativas = Optativa::getByUserDepend($login);
 		$selecionadas = Selecionada::getAll($login);
@@ -52,6 +54,7 @@ Class MainController extends RestController
 			(
 				array
 				(
+					'Aluno' => $aluno,
 					'FaltaCursar' => array
 					(
 						'Disciplinas' => $disciplinas,	
@@ -62,8 +65,7 @@ Class MainController extends RestController
 				)
 			)
 		);
-
-		$data = '{"Dicionario":'.json_encode($dicionario).',"Data":'.$data.'}';
+		$data = '{"Dicionario":'.str_replace('\"', '', json_encode($dicionario)).',"Data":'.$data.'}';
 
 		return ViewLoader::load('Prisma', 'general.phtml', array('section' => 'main', 'DATA_VIEW' => $data));
 	}
