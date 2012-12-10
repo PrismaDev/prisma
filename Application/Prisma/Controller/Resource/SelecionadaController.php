@@ -47,12 +47,14 @@ class SelecionadaController extends RestController
 	
 	public function performPost($url, $arguments, $accept) 
 	{
+		$login = $_COOKIE['login'];
+
 		$rows = json_decode($arguments['json']);
 		$len = count($rows);
 
 		for($i = 0; $i < $len; ++$i)
 		{
-			if(!Selecionada::persist($rows[$i]))
+			if(!Selecionada::persist($login, $rows[$i]))
 			{
 				return 'error';
 			}
