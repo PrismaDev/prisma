@@ -4,7 +4,6 @@ function MicrohorarioController() {
 
 	this.fetchData = function() {
 		var me=this;
-		console.log($(formEl).serialize());
 
 		$.ajax({
 			url: url,
@@ -17,8 +16,6 @@ function MicrohorarioController() {
 			}
 		});
 	}
-
-	
 
 	this.handleData = function(data) {
 		subjectList.add(data[serverDictionary.get('Dependencia')]);
