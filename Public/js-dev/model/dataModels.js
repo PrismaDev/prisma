@@ -9,8 +9,6 @@ var HorariosList = Backbone.Collection.extend({
 });
 
 var ClassModel = Backbone.Model.extend({
-	idAttribute: serverDictionary.get('PK_Turma'),
-
 	initialize: function() {
 		var horariosArray = this.get('Horarios');
 		var horariosList = new HorariosList(horariosArray);
@@ -38,12 +36,28 @@ var ClassModel = Backbone.Model.extend({
 });
 
 ClassList = Backbone.Collection.extend({
-	model: ClassModel
+	model: ClassModel,
+
+	add: function(models, options) {
+		var me=this;
+		var array=new Array();
+
+		_.each(models, function(model) {
+			if (typeof model == me.model)
+				array.push(model);
+			else {
+				var idName = serverDictionary.get('PK_Turma');
+				var nModel = new ClassModel($.extend({},
+					{id: model[idName]},model));
+				array.push(nModel);
+			}
+		});
+
+		return Backbone.Collection.prototype.add.call(this,array,options);
+	}
 });
 
 SubjectModel = Backbone.Model.extend({
-	idAttribute: serverDictionary.get('CodigoDisciplina'),
-
 	initialize: function() {
 		var classesArray = this.get('Turmas');
 		var classesList = new ClassList(classesArray);
@@ -56,7 +70,25 @@ SubjectModel = Backbone.Model.extend({
 });
 
 SubjectList = Backbone.Collection.extend({
-	model: SubjectModel
+	model: SubjectModel,
+
+	add: function(models, options) {
+		var me=this;
+		var array=new Array();
+
+		_.each(models, function(model) {
+			if (typeof model == me.model)
+				array.push(model);
+			else {
+				var idName = serverDictionary.get('CodigoDisciplina');
+				var nModel = new SubjectModel($.extend({},
+					{id: model[idName]},model));
+				array.push(nModel);
+			}
+		});
+
+		return Backbone.Collection.prototype.add.call(this,array,options);
+	}
 })
 
 var subjectList = new SubjectList();

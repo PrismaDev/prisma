@@ -1,6 +1,8 @@
 var SelectedView = Backbone.View.extend({
 	templateRow: '',
 	templateTable: '',
+	templateDraggable: '',
+	nRows: 12,
 
 	testArray: [
 		[
@@ -29,6 +31,7 @@ var SelectedView = Backbone.View.extend({
 	initialize: function() {
 		this.templateRow = _.template($('#selected-row-template').html());
 		this.templateTable = _.template($('#selected-table-template').html());
+		this.templateDraggable = _.template($('#selected-draggable-template').html());
 	},
 
 	events: {
@@ -71,6 +74,9 @@ var SelectedView = Backbone.View.extend({
 
 		for (var i=0; i<rowsArray.length; i++)
 			$(tbody).append(this.buildRow(i,rowsArray[i]));
+	
+		for (var i=rowsArray.length; i<this.nRows; i++)
+			$(tbody).append(this.buildRow(i,[]));
 	},
 
 	fetchData: function() { //this will be a model function

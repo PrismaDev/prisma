@@ -166,41 +166,17 @@
 			<input type="radio" name="item<%= index %>" value="1"
 				checked="checked"/>
 		</td>
-		<% if (options[0]==undefined) %>
-			<td class="classDroppable empty">
-		<% else { %>	
-			<td class="classDroppable">
-				<div class="classDraggable">
-					<button type="button" class="close">×</button>
-					<%= options[0].subjectCode %> - <%= options[0].classCode %>
-				</div>
-		<% } %>
+		<td class="classDroppable">
 		</td>
 		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="2"/>
 		</td>
-		<% if (options[1]==undefined) %>
-			<td class="classDroppable empty">
-		<% else { %>	
-			<td class="classDroppable">
-				<div class="classDraggable">
-					<button type="button" class="close">×</button>
-					<%= options[1].subjectCode %> - <%= options[1].classCode %>
-				</div>
-		<% } %>
+		<td class="classDroppable">
 		</td>
 		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="3"/>
 		</td>
-		<% if (options[2]==undefined) %>
-			<td class="classDroppable empty">
-		<% else { %>	
-			<td class="classDroppable">
-				<div class="classDraggable">
-					<button type="button" class="close">×</button>
-					<%= options[2].subjectCode %> - <%= options[2].classCode %>
-				</div>
-		<% } %>
+		<td class="classDroppable">
 		</td>
 		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="none"/>
@@ -219,6 +195,15 @@
 		<tbody class="selectedSortable">
 		</tbody>
 	</table>
+</script>
+
+<script type="text/underscore-template" id="selected-draggable-template">
+	<td class="classDroppable">
+		<div class="classDraggable">
+			<button type="button" class="close">×</button>
+			<%= subjectCode %> - <%= classCode %>
+		</div>
+	</td>
 </script>
 <script type="text/underscore-template" id="faltacursar-template">
 	<table id="faltacursar-subject-table" class="table table-bordered table-condensed">

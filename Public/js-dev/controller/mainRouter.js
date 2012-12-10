@@ -5,8 +5,9 @@ var MainRouter = Backbone.Router.extend({
 	},
 
 	loadPage: function() {
-		subjectList.add(DATA_VIEW[serverDictionary.get('Dependencia')]);
-		faltacursarModel.set(DATA_VIEW[serverDictionary.get('FaltaCursar')]);
+		serverDictionary.set(DATA_VIEW.Dicionario);
+		subjectList.add(DATA_VIEW.Data[serverDictionary.get('Dependencia')]);
+		faltacursarModel.set(DATA_VIEW.Data[serverDictionary.get('FaltaCursar')]);
 		mainView.render();
 	}
 });
