@@ -119,6 +119,14 @@ return array(
 							'controller' => 'Prisma\Controller\Resource\HistoricoController',
 						),
 					),
+					'sugestao' => array
+					(
+						'action' => array
+						(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\SugestaoController',
+						),
+					),
 				),
 			),
 			'error' => array

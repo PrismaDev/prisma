@@ -23,8 +23,6 @@ Corrigir:
 
 - Implementar sistema de logs
 
-- Implementar sistema de sugestoes
-
 - Implementar estatisticas do sistema no banco de dados
 -- Quantas aluno selecionaram tal turma em qual opcao
 -- Quantidade de alunos que selecionaram um horario especifico
