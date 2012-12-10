@@ -3,6 +3,7 @@
 namespace Prisma\Model;
 
 use Framework\Database;
+use Prisma\Library\Common;
 use Prisma\Model\Turma;
 
 class Disciplina
@@ -86,6 +87,50 @@ class Disciplina
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}
+
+	/* --------------------------------------------------------------------------- */
+
+	public static function saveFromFile($file)
+	{
+		$file = fopen($file, 'r');
+
+		if(!$file)
+		{
+			// TODO: log
+			return false;
+		}
+
+		$dbh = Database::getConnection();
+		$dbh->beginTransaction();
+
+		$skip = true;
+		while($row = fgetcsv($file, 1000, ';'))
+		{ 
+			if(count($row) < 3) continue;
+
+			Common::escapeGarbageChars($row);
+
+			if(!self::persistRow($row))
+			{
+				$dbh->rollback();
+				return false;
+			}
+		}
+
+		$dbh->commit();
+		return true;
+	}
+
+	private static function persistRow($row)
+	{
+		$dbh = Database::getConnection();
+
+		$sth = $dbh->prepare('INSERT INTO "Disciplina"("PK_Codigo", "Nome", "Creditos") VALUES (?, ?, ?);');
+		
+		return $sth->execute($row) != false;
+	}
+
+	/* --------------------------------------------------------------------------- */
 
 	public static function persist($data)
 	{

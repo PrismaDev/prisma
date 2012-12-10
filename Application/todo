@@ -27,8 +27,6 @@ Corrigir:
 -- Quantas aluno selecionaram tal turma em qual opcao
 -- Quantidade de alunos que selecionaram um horario especifico
 
-- Colocar pagina de manutencao no prisma antigo.
-
 - Permitir administrador liberar ou não acesso ao sistema, subir arquivos, colocar sistema em manutencao.
 
 - Verificar setup do servidor oficial.

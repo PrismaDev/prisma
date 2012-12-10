@@ -111,14 +111,6 @@ return array(
 							'controller' => 'Prisma\Controller\Resource\OptativaController',
 						),
 					),
-					'historico' => array
-					(
-						'action' => array
-						(
-							'type' => 'controller',
-							'controller' => 'Prisma\Controller\Resource\HistoricoController',
-						),
-					),
 					'sugestao' => array
 					(
 						'action' => array
@@ -127,6 +119,15 @@ return array(
 							'controller' => 'Prisma\Controller\Resource\SugestaoController',
 						),
 					),
+					'disciplina' => array
+					(
+						'action' => array
+						(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\DisciplinaController',
+						),
+					),
+
 				),
 			),
 			'error' => array

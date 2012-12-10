@@ -41,7 +41,7 @@ class PreRequisito
 	{
 		$dbh = Database::getConnection();
 
-		$sth = $dbh->prepare('INSERT INTO "Disciplina"("PK_Codigo", "Nome", "Creditos") VALUES (?, \'<SEM_NOME>\', 0);');
+		$sth = $dbh->prepare('INSERT INTO "Disciplina"("PK_Codigo", "Nome", "Creditos") VALUES (?, \'Disciplina sem nome\', 0);');
 		$sth->execute(array($row[0]));
 
 		$sth = $dbh->prepare('INSERT INTO "PreRequisitoGrupo"("CreditosMinimos", "FK_Disciplina") VALUES (?, ?);');
@@ -55,7 +55,7 @@ class PreRequisito
 		{
 			if(isset($row[$i]) && !empty($row[$i]))
 			{
-				$sth = $dbh->prepare('INSERT INTO "Disciplina"("PK_Codigo", "Nome", "Creditos") VALUES (?, \'<SEM_NOME>\', 0);');
+				$sth = $dbh->prepare('INSERT INTO "Disciplina"("PK_Codigo", "Nome", "Creditos") VALUES (?, \'Disciplina sem nome\', 0);');
 				$sth->execute(array($row[$i]));
 
 				$sth = $dbh->prepare('INSERT INTO "PreRequisitoGrupoDisciplina"("FK_PreRequisitoGrupo", "FK_Disciplina") VALUES (?, ?);');

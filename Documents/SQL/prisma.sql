@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.1.5
 -- Dumped by pg_dump version 9.1.5
--- Started on 2012-12-09 13:26:07 BRST
+-- Started on 2012-12-10 14:02:31 BRST
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -13,7 +13,7 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 195 (class 3079 OID 11646)
+-- TOC entry 197 (class 3079 OID 11646)
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -21,8 +21,8 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2112 (class 0 OID 0)
--- Dependencies: 195
+-- TOC entry 2122 (class 0 OID 0)
+-- Dependencies: 197
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
@@ -32,7 +32,7 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 209 (class 1255 OID 53885)
+-- TOC entry 212 (class 1255 OID 54553)
 -- Dependencies: 6
 -- Name: AlunoCreditosCursados(character varying); Type: FUNCTION; Schema: public; Owner: prisma
 --
@@ -51,8 +51,8 @@ $_$;
 ALTER FUNCTION public."AlunoCreditosCursados"(character varying) OWNER TO prisma;
 
 --
--- TOC entry 207 (class 1255 OID 53886)
--- Dependencies: 617 6
+-- TOC entry 209 (class 1255 OID 54554)
+-- Dependencies: 6 625
 -- Name: AlunoDisciplinaApto(character varying, character varying); Type: FUNCTION; Schema: public; Owner: prisma
 --
 
@@ -85,7 +85,7 @@ $$;
 ALTER FUNCTION public."AlunoDisciplinaApto"("pAluno" character varying, "pDisciplina" character varying) OWNER TO prisma;
 
 --
--- TOC entry 208 (class 1255 OID 53887)
+-- TOC entry 210 (class 1255 OID 54555)
 -- Dependencies: 6
 -- Name: AlunoDisciplinaSituacao(character varying, character varying); Type: FUNCTION; Schema: public; Owner: prisma
 --
@@ -104,7 +104,7 @@ $_$;
 ALTER FUNCTION public."AlunoDisciplinaSituacao"(character varying, character varying) OWNER TO prisma;
 
 --
--- TOC entry 212 (class 1255 OID 53888)
+-- TOC entry 211 (class 1255 OID 54556)
 -- Dependencies: 6
 -- Name: AlunoOptativaCursada(character varying, character varying); Type: FUNCTION; Schema: public; Owner: prisma
 --
@@ -129,7 +129,7 @@ $_$;
 ALTER FUNCTION public."AlunoOptativaCursada"(character varying, character varying) OWNER TO prisma;
 
 --
--- TOC entry 210 (class 1255 OID 53889)
+-- TOC entry 213 (class 1255 OID 54557)
 -- Dependencies: 6
 -- Name: DisciplinaTemPreRequisito(character varying); Type: FUNCTION; Schema: public; Owner: prisma
 --
@@ -147,7 +147,7 @@ $_$;
 ALTER FUNCTION public."DisciplinaTemPreRequisito"(character varying) OWNER TO prisma;
 
 --
--- TOC entry 211 (class 1255 OID 53890)
+-- TOC entry 214 (class 1255 OID 54558)
 -- Dependencies: 6
 -- Name: LimpaBanco(); Type: FUNCTION; Schema: public; Owner: prisma
 --
@@ -173,7 +173,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 161 (class 1259 OID 53891)
+-- TOC entry 161 (class 1259 OID 54559)
 -- Dependencies: 6
 -- Name: Aluno; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
@@ -188,8 +188,8 @@ CREATE TABLE "Aluno" (
 ALTER TABLE public."Aluno" OWNER TO prisma;
 
 --
--- TOC entry 162 (class 1259 OID 53894)
--- Dependencies: 1997 1998 6
+-- TOC entry 162 (class 1259 OID 54562)
+-- Dependencies: 2007 2008 6
 -- Name: AlunoDisciplina; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -206,7 +206,7 @@ CREATE TABLE "AlunoDisciplina" (
 ALTER TABLE public."AlunoDisciplina" OWNER TO prisma;
 
 --
--- TOC entry 163 (class 1259 OID 53899)
+-- TOC entry 163 (class 1259 OID 54567)
 -- Dependencies: 6
 -- Name: AlunoDisciplinaAptoCache; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
@@ -221,7 +221,7 @@ CREATE TABLE "AlunoDisciplinaAptoCache" (
 ALTER TABLE public."AlunoDisciplinaAptoCache" OWNER TO prisma;
 
 --
--- TOC entry 164 (class 1259 OID 53902)
+-- TOC entry 164 (class 1259 OID 54570)
 -- Dependencies: 6
 -- Name: AlunoDisciplinaStatus; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
@@ -235,7 +235,7 @@ CREATE TABLE "AlunoDisciplinaStatus" (
 ALTER TABLE public."AlunoDisciplinaStatus" OWNER TO prisma;
 
 --
--- TOC entry 165 (class 1259 OID 53905)
+-- TOC entry 165 (class 1259 OID 54573)
 -- Dependencies: 6
 -- Name: AlunoTurmaSelecionada; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
@@ -251,7 +251,7 @@ CREATE TABLE "AlunoTurmaSelecionada" (
 ALTER TABLE public."AlunoTurmaSelecionada" OWNER TO prisma;
 
 --
--- TOC entry 166 (class 1259 OID 53908)
+-- TOC entry 166 (class 1259 OID 54576)
 -- Dependencies: 6
 -- Name: seq_turma; Type: SEQUENCE; Schema: public; Owner: prisma
 --
@@ -267,7 +267,7 @@ CREATE SEQUENCE seq_turma
 ALTER TABLE public.seq_turma OWNER TO prisma;
 
 --
--- TOC entry 2113 (class 0 OID 0)
+-- TOC entry 2123 (class 0 OID 0)
 -- Dependencies: 166
 -- Name: seq_turma; Type: SEQUENCE SET; Schema: public; Owner: prisma
 --
@@ -276,8 +276,8 @@ SELECT pg_catalog.setval('seq_turma', 1, true);
 
 
 --
--- TOC entry 167 (class 1259 OID 53910)
--- Dependencies: 1999 2000 2001 2002 6
+-- TOC entry 167 (class 1259 OID 54578)
+-- Dependencies: 2009 2010 2011 2012 6
 -- Name: Turma; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -297,8 +297,8 @@ CREATE TABLE "Turma" (
 ALTER TABLE public."Turma" OWNER TO prisma;
 
 --
--- TOC entry 168 (class 1259 OID 53917)
--- Dependencies: 1982 6
+-- TOC entry 168 (class 1259 OID 54585)
+-- Dependencies: 1990 6
 -- Name: AlunoDisciplinaTurmaSelecionada; Type: VIEW; Schema: public; Owner: prisma
 --
 
@@ -309,7 +309,7 @@ CREATE VIEW "AlunoDisciplinaTurmaSelecionada" AS
 ALTER TABLE public."AlunoDisciplinaTurmaSelecionada" OWNER TO prisma;
 
 --
--- TOC entry 169 (class 1259 OID 53921)
+-- TOC entry 169 (class 1259 OID 54589)
 -- Dependencies: 6
 -- Name: PreRequisitoGrupoDisciplina; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
@@ -323,8 +323,8 @@ CREATE TABLE "PreRequisitoGrupoDisciplina" (
 ALTER TABLE public."PreRequisitoGrupoDisciplina" OWNER TO prisma;
 
 --
--- TOC entry 170 (class 1259 OID 53924)
--- Dependencies: 1983 6
+-- TOC entry 170 (class 1259 OID 54592)
+-- Dependencies: 1991 6
 -- Name: AlunoPreRequisitoGrupoDisciplina; Type: VIEW; Schema: public; Owner: prisma
 --
 
@@ -335,7 +335,7 @@ CREATE VIEW "AlunoPreRequisitoGrupoDisciplina" AS
 ALTER TABLE public."AlunoPreRequisitoGrupoDisciplina" OWNER TO prisma;
 
 --
--- TOC entry 171 (class 1259 OID 53928)
+-- TOC entry 171 (class 1259 OID 54596)
 -- Dependencies: 6
 -- Name: seq_prerequisito; Type: SEQUENCE; Schema: public; Owner: prisma
 --
@@ -351,7 +351,7 @@ CREATE SEQUENCE seq_prerequisito
 ALTER TABLE public.seq_prerequisito OWNER TO prisma;
 
 --
--- TOC entry 2114 (class 0 OID 0)
+-- TOC entry 2124 (class 0 OID 0)
 -- Dependencies: 171
 -- Name: seq_prerequisito; Type: SEQUENCE SET; Schema: public; Owner: prisma
 --
@@ -360,8 +360,8 @@ SELECT pg_catalog.setval('seq_prerequisito', 1, true);
 
 
 --
--- TOC entry 172 (class 1259 OID 53930)
--- Dependencies: 2003 2004 6
+-- TOC entry 172 (class 1259 OID 54598)
+-- Dependencies: 2013 2014 6
 -- Name: PreRequisitoGrupo; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -375,8 +375,8 @@ CREATE TABLE "PreRequisitoGrupo" (
 ALTER TABLE public."PreRequisitoGrupo" OWNER TO prisma;
 
 --
--- TOC entry 173 (class 1259 OID 53935)
--- Dependencies: 1984 6
+-- TOC entry 173 (class 1259 OID 54603)
+-- Dependencies: 1992 6
 -- Name: AlunoPreRequisitoGrupoDisciplinaApto; Type: VIEW; Schema: public; Owner: prisma
 --
 
@@ -387,7 +387,7 @@ CREATE VIEW "AlunoPreRequisitoGrupoDisciplinaApto" AS
 ALTER TABLE public."AlunoPreRequisitoGrupoDisciplinaApto" OWNER TO prisma;
 
 --
--- TOC entry 174 (class 1259 OID 53939)
+-- TOC entry 174 (class 1259 OID 54607)
 -- Dependencies: 6
 -- Name: seq_sugestao; Type: SEQUENCE; Schema: public; Owner: prisma
 --
@@ -403,17 +403,17 @@ CREATE SEQUENCE seq_sugestao
 ALTER TABLE public.seq_sugestao OWNER TO prisma;
 
 --
--- TOC entry 2115 (class 0 OID 0)
+-- TOC entry 2125 (class 0 OID 0)
 -- Dependencies: 174
 -- Name: seq_sugestao; Type: SEQUENCE SET; Schema: public; Owner: prisma
 --
 
-SELECT pg_catalog.setval('seq_sugestao', 1, false);
+SELECT pg_catalog.setval('seq_sugestao', 2, true);
 
 
 --
--- TOC entry 175 (class 1259 OID 53941)
--- Dependencies: 2005 2006 6
+-- TOC entry 175 (class 1259 OID 54609)
+-- Dependencies: 2015 2016 6
 -- Name: Comentario; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -428,7 +428,7 @@ CREATE TABLE "Comentario" (
 ALTER TABLE public."Comentario" OWNER TO prisma;
 
 --
--- TOC entry 176 (class 1259 OID 53949)
+-- TOC entry 176 (class 1259 OID 54617)
 -- Dependencies: 6
 -- Name: Curso; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
@@ -442,7 +442,7 @@ CREATE TABLE "Curso" (
 ALTER TABLE public."Curso" OWNER TO prisma;
 
 --
--- TOC entry 177 (class 1259 OID 53952)
+-- TOC entry 177 (class 1259 OID 54620)
 -- Dependencies: 6
 -- Name: Disciplina; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
@@ -457,7 +457,7 @@ CREATE TABLE "Disciplina" (
 ALTER TABLE public."Disciplina" OWNER TO prisma;
 
 --
--- TOC entry 178 (class 1259 OID 53955)
+-- TOC entry 178 (class 1259 OID 54623)
 -- Dependencies: 6
 -- Name: Optativa; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
@@ -471,8 +471,8 @@ CREATE TABLE "Optativa" (
 ALTER TABLE public."Optativa" OWNER TO prisma;
 
 --
--- TOC entry 179 (class 1259 OID 53958)
--- Dependencies: 2007 6
+-- TOC entry 179 (class 1259 OID 54626)
+-- Dependencies: 2017 6
 -- Name: OptativaAluno; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -486,8 +486,8 @@ CREATE TABLE "OptativaAluno" (
 ALTER TABLE public."OptativaAluno" OWNER TO prisma;
 
 --
--- TOC entry 180 (class 1259 OID 53962)
--- Dependencies: 1985 6
+-- TOC entry 180 (class 1259 OID 54630)
+-- Dependencies: 1993 6
 -- Name: FaltaCursarOptativa; Type: VIEW; Schema: public; Owner: prisma
 --
 
@@ -498,7 +498,7 @@ CREATE VIEW "FaltaCursarOptativa" AS
 ALTER TABLE public."FaltaCursarOptativa" OWNER TO prisma;
 
 --
--- TOC entry 181 (class 1259 OID 53966)
+-- TOC entry 181 (class 1259 OID 54634)
 -- Dependencies: 6
 -- Name: OptativaDisciplina; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
@@ -512,8 +512,8 @@ CREATE TABLE "OptativaDisciplina" (
 ALTER TABLE public."OptativaDisciplina" OWNER TO prisma;
 
 --
--- TOC entry 182 (class 1259 OID 53969)
--- Dependencies: 1986 6
+-- TOC entry 182 (class 1259 OID 54637)
+-- Dependencies: 1994 6
 -- Name: FaltaCursarOptativaDisciplina; Type: VIEW; Schema: public; Owner: prisma
 --
 
@@ -524,7 +524,7 @@ CREATE VIEW "FaltaCursarOptativaDisciplina" AS
 ALTER TABLE public."FaltaCursarOptativaDisciplina" OWNER TO prisma;
 
 --
--- TOC entry 183 (class 1259 OID 53973)
+-- TOC entry 183 (class 1259 OID 54641)
 -- Dependencies: 6
 -- Name: seq_log; Type: SEQUENCE; Schema: public; Owner: prisma
 --
@@ -540,7 +540,7 @@ CREATE SEQUENCE seq_log
 ALTER TABLE public.seq_log OWNER TO prisma;
 
 --
--- TOC entry 2116 (class 0 OID 0)
+-- TOC entry 2126 (class 0 OID 0)
 -- Dependencies: 183
 -- Name: seq_log; Type: SEQUENCE SET; Schema: public; Owner: prisma
 --
@@ -549,8 +549,8 @@ SELECT pg_catalog.setval('seq_log', 1, true);
 
 
 --
--- TOC entry 184 (class 1259 OID 53975)
--- Dependencies: 2008 2009 2010 6
+-- TOC entry 184 (class 1259 OID 54643)
+-- Dependencies: 2018 2019 2020 6
 -- Name: Log; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -569,7 +569,7 @@ CREATE TABLE "Log" (
 ALTER TABLE public."Log" OWNER TO prisma;
 
 --
--- TOC entry 185 (class 1259 OID 53984)
+-- TOC entry 185 (class 1259 OID 54652)
 -- Dependencies: 6
 -- Name: seq_professor; Type: SEQUENCE; Schema: public; Owner: prisma
 --
@@ -585,7 +585,7 @@ CREATE SEQUENCE seq_professor
 ALTER TABLE public.seq_professor OWNER TO prisma;
 
 --
--- TOC entry 2117 (class 0 OID 0)
+-- TOC entry 2127 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: seq_professor; Type: SEQUENCE SET; Schema: public; Owner: prisma
 --
@@ -594,8 +594,8 @@ SELECT pg_catalog.setval('seq_professor', 1, true);
 
 
 --
--- TOC entry 186 (class 1259 OID 53986)
--- Dependencies: 2011 6
+-- TOC entry 186 (class 1259 OID 54654)
+-- Dependencies: 2021 6
 -- Name: Professor; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -608,7 +608,7 @@ CREATE TABLE "Professor" (
 ALTER TABLE public."Professor" OWNER TO prisma;
 
 --
--- TOC entry 187 (class 1259 OID 53990)
+-- TOC entry 187 (class 1259 OID 54658)
 -- Dependencies: 6
 -- Name: TurmaHorario; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
@@ -624,8 +624,8 @@ CREATE TABLE "TurmaHorario" (
 ALTER TABLE public."TurmaHorario" OWNER TO prisma;
 
 --
--- TOC entry 188 (class 1259 OID 53993)
--- Dependencies: 1987 6
+-- TOC entry 188 (class 1259 OID 54661)
+-- Dependencies: 1995 6
 -- Name: MicroHorario; Type: VIEW; Schema: public; Owner: prisma
 --
 
@@ -636,8 +636,8 @@ CREATE VIEW "MicroHorario" AS
 ALTER TABLE public."MicroHorario" OWNER TO prisma;
 
 --
--- TOC entry 189 (class 1259 OID 53998)
--- Dependencies: 1988 6
+-- TOC entry 189 (class 1259 OID 54666)
+-- Dependencies: 1996 6
 -- Name: MicroHorarioDisciplina; Type: VIEW; Schema: public; Owner: prisma
 --
 
@@ -648,7 +648,19 @@ CREATE VIEW "MicroHorarioDisciplina" AS
 ALTER TABLE public."MicroHorarioDisciplina" OWNER TO prisma;
 
 --
--- TOC entry 190 (class 1259 OID 54003)
+-- TOC entry 195 (class 1259 OID 55228)
+-- Dependencies: 2005 6
+-- Name: PopulaAlunoDisciplinaAptoCache; Type: VIEW; Schema: public; Owner: prisma
+--
+
+CREATE VIEW "PopulaAlunoDisciplinaAptoCache" AS
+    SELECT "AlunoDisciplinaApto"("AlunoDisciplina"."FK_Aluno", "AlunoDisciplina"."FK_Disciplina") AS "AlunoDisciplinaApto" FROM "AlunoDisciplina" WHERE (("AlunoDisciplina"."FK_Status")::text <> 'CP'::text);
+
+
+ALTER TABLE public."PopulaAlunoDisciplinaAptoCache" OWNER TO prisma;
+
+--
+-- TOC entry 190 (class 1259 OID 54671)
 -- Dependencies: 6
 -- Name: TipoDisciplina; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
@@ -662,7 +674,7 @@ CREATE TABLE "TipoDisciplina" (
 ALTER TABLE public."TipoDisciplina" OWNER TO prisma;
 
 --
--- TOC entry 191 (class 1259 OID 54006)
+-- TOC entry 191 (class 1259 OID 54674)
 -- Dependencies: 6
 -- Name: TipoUsuario; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
@@ -676,8 +688,8 @@ CREATE TABLE "TipoUsuario" (
 ALTER TABLE public."TipoUsuario" OWNER TO prisma;
 
 --
--- TOC entry 192 (class 1259 OID 54009)
--- Dependencies: 1989 6
+-- TOC entry 192 (class 1259 OID 54677)
+-- Dependencies: 1997 6
 -- Name: TurmaProfessor; Type: VIEW; Schema: public; Owner: prisma
 --
 
@@ -688,8 +700,8 @@ CREATE VIEW "TurmaProfessor" AS
 ALTER TABLE public."TurmaProfessor" OWNER TO prisma;
 
 --
--- TOC entry 193 (class 1259 OID 54013)
--- Dependencies: 2012 6
+-- TOC entry 193 (class 1259 OID 54681)
+-- Dependencies: 2022 6
 -- Name: Usuario; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -707,8 +719,20 @@ CREATE TABLE "Usuario" (
 ALTER TABLE public."Usuario" OWNER TO prisma;
 
 --
--- TOC entry 194 (class 1259 OID 54017)
--- Dependencies: 2013 6
+-- TOC entry 196 (class 1259 OID 55234)
+-- Dependencies: 2006 6
+-- Name: UsuarioAluno; Type: VIEW; Schema: public; Owner: prisma
+--
+
+CREATE VIEW "UsuarioAluno" AS
+    SELECT u."PK_Login" AS "Matricula", u."Nome" AS "NomeAluno", u."UltimoAcesso", a."CoeficienteRendimento" AS "CR" FROM ("Usuario" u JOIN "Aluno" a ON (((u."PK_Login")::text = (a."FK_Matricula")::text))) WHERE (u."FK_TipoUsuario" = 3);
+
+
+ALTER TABLE public."UsuarioAluno" OWNER TO prisma;
+
+--
+-- TOC entry 194 (class 1259 OID 54685)
+-- Dependencies: 2023 6
 -- Name: VariavelAmbiente; Type: TABLE; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -722,8 +746,8 @@ CREATE TABLE "VariavelAmbiente" (
 ALTER TABLE public."VariavelAmbiente" OWNER TO prisma;
 
 --
--- TOC entry 2086 (class 0 OID 53891)
--- Dependencies: 161 2107
+-- TOC entry 2096 (class 0 OID 54559)
+-- Dependencies: 161 2117
 -- Data for Name: Aluno; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -732,8 +756,8 @@ COPY "Aluno" ("FK_Matricula", "CoeficienteRendimento", "FK_Curso") FROM stdin;
 
 
 --
--- TOC entry 2087 (class 0 OID 53894)
--- Dependencies: 162 2107
+-- TOC entry 2097 (class 0 OID 54562)
+-- Dependencies: 162 2117
 -- Data for Name: AlunoDisciplina; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -742,8 +766,8 @@ COPY "AlunoDisciplina" ("FK_Aluno", "FK_Disciplina", "FK_Status", "Tentativas", 
 
 
 --
--- TOC entry 2088 (class 0 OID 53899)
--- Dependencies: 163 2107
+-- TOC entry 2098 (class 0 OID 54567)
+-- Dependencies: 163 2117
 -- Data for Name: AlunoDisciplinaAptoCache; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -752,8 +776,8 @@ COPY "AlunoDisciplinaAptoCache" ("Aluno", "Disciplina", "Apto") FROM stdin;
 
 
 --
--- TOC entry 2089 (class 0 OID 53902)
--- Dependencies: 164 2107
+-- TOC entry 2099 (class 0 OID 54570)
+-- Dependencies: 164 2117
 -- Data for Name: AlunoDisciplinaStatus; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -765,8 +789,8 @@ NC	Não cumpriu
 
 
 --
--- TOC entry 2090 (class 0 OID 53905)
--- Dependencies: 165 2107
+-- TOC entry 2100 (class 0 OID 54573)
+-- Dependencies: 165 2117
 -- Data for Name: AlunoTurmaSelecionada; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -775,8 +799,8 @@ COPY "AlunoTurmaSelecionada" ("FK_Aluno", "FK_Turma", "Opcao", "NoLinha") FROM s
 
 
 --
--- TOC entry 2094 (class 0 OID 53941)
--- Dependencies: 175 2107
+-- TOC entry 2104 (class 0 OID 54609)
+-- Dependencies: 175 2117
 -- Data for Name: Comentario; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -785,8 +809,8 @@ COPY "Comentario" ("PK_Sugestao", "FK_Usuario", "Comentario", "DataHora") FROM s
 
 
 --
--- TOC entry 2095 (class 0 OID 53949)
--- Dependencies: 176 2107
+-- TOC entry 2105 (class 0 OID 54617)
+-- Dependencies: 176 2117
 -- Data for Name: Curso; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -795,8 +819,8 @@ COPY "Curso" ("PK_Curso", "Nome") FROM stdin;
 
 
 --
--- TOC entry 2096 (class 0 OID 53952)
--- Dependencies: 177 2107
+-- TOC entry 2106 (class 0 OID 54620)
+-- Dependencies: 177 2117
 -- Data for Name: Disciplina; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -805,8 +829,8 @@ COPY "Disciplina" ("PK_Codigo", "Nome", "Creditos") FROM stdin;
 
 
 --
--- TOC entry 2100 (class 0 OID 53975)
--- Dependencies: 184 2107
+-- TOC entry 2110 (class 0 OID 54643)
+-- Dependencies: 184 2117
 -- Data for Name: Log; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -815,8 +839,8 @@ COPY "Log" ("PK_Log", "DataHora", "IP", "URI", "HashSessao", "Erro", "Notas", "F
 
 
 --
--- TOC entry 2097 (class 0 OID 53955)
--- Dependencies: 178 2107
+-- TOC entry 2107 (class 0 OID 54623)
+-- Dependencies: 178 2117
 -- Data for Name: Optativa; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -825,8 +849,8 @@ COPY "Optativa" ("PK_Codigo", "Nome") FROM stdin;
 
 
 --
--- TOC entry 2098 (class 0 OID 53958)
--- Dependencies: 179 2107
+-- TOC entry 2108 (class 0 OID 54626)
+-- Dependencies: 179 2117
 -- Data for Name: OptativaAluno; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -835,8 +859,8 @@ COPY "OptativaAluno" ("FK_Optativa", "FK_Aluno", "PeriodoSugerido") FROM stdin;
 
 
 --
--- TOC entry 2099 (class 0 OID 53966)
--- Dependencies: 181 2107
+-- TOC entry 2109 (class 0 OID 54634)
+-- Dependencies: 181 2117
 -- Data for Name: OptativaDisciplina; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -845,8 +869,8 @@ COPY "OptativaDisciplina" ("FK_Optativa", "FK_Disciplina") FROM stdin;
 
 
 --
--- TOC entry 2093 (class 0 OID 53930)
--- Dependencies: 172 2107
+-- TOC entry 2103 (class 0 OID 54598)
+-- Dependencies: 172 2117
 -- Data for Name: PreRequisitoGrupo; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -855,8 +879,8 @@ COPY "PreRequisitoGrupo" ("PK_PreRequisitoGrupo", "CreditosMinimos", "FK_Discipl
 
 
 --
--- TOC entry 2092 (class 0 OID 53921)
--- Dependencies: 169 2107
+-- TOC entry 2102 (class 0 OID 54589)
+-- Dependencies: 169 2117
 -- Data for Name: PreRequisitoGrupoDisciplina; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -865,8 +889,8 @@ COPY "PreRequisitoGrupoDisciplina" ("FK_PreRequisitoGrupo", "FK_Disciplina") FRO
 
 
 --
--- TOC entry 2101 (class 0 OID 53986)
--- Dependencies: 186 2107
+-- TOC entry 2111 (class 0 OID 54654)
+-- Dependencies: 186 2117
 -- Data for Name: Professor; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -875,8 +899,8 @@ COPY "Professor" ("PK_Professor", "Nome") FROM stdin;
 
 
 --
--- TOC entry 2103 (class 0 OID 54003)
--- Dependencies: 190 2107
+-- TOC entry 2113 (class 0 OID 54671)
+-- Dependencies: 190 2117
 -- Data for Name: TipoDisciplina; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -904,8 +928,8 @@ PR	Optativa religiosa
 
 
 --
--- TOC entry 2104 (class 0 OID 54006)
--- Dependencies: 191 2107
+-- TOC entry 2114 (class 0 OID 54674)
+-- Dependencies: 191 2117
 -- Data for Name: TipoUsuario; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -917,8 +941,8 @@ COPY "TipoUsuario" ("PK_TipoUsuario", "Nome") FROM stdin;
 
 
 --
--- TOC entry 2091 (class 0 OID 53910)
--- Dependencies: 167 2107
+-- TOC entry 2101 (class 0 OID 54578)
+-- Dependencies: 167 2117
 -- Data for Name: Turma; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -927,8 +951,8 @@ COPY "Turma" ("PK_Turma", "FK_Disciplina", "Codigo", "PeriodoAno", "Vagas", "Des
 
 
 --
--- TOC entry 2102 (class 0 OID 53990)
--- Dependencies: 187 2107
+-- TOC entry 2112 (class 0 OID 54658)
+-- Dependencies: 187 2117
 -- Data for Name: TurmaHorario; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -937,8 +961,8 @@ COPY "TurmaHorario" ("FK_Turma", "DiaSemana", "HoraInicial", "HoraFinal") FROM s
 
 
 --
--- TOC entry 2105 (class 0 OID 54013)
--- Dependencies: 193 2107
+-- TOC entry 2115 (class 0 OID 54681)
+-- Dependencies: 193 2117
 -- Data for Name: Usuario; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -947,8 +971,8 @@ COPY "Usuario" ("PK_Login", "Senha", "Nome", "HashSessao", "TermoAceito", "FK_Ti
 
 
 --
--- TOC entry 2106 (class 0 OID 54017)
--- Dependencies: 194 2107
+-- TOC entry 2116 (class 0 OID 54685)
+-- Dependencies: 194 2117
 -- Data for Name: VariavelAmbiente; Type: TABLE DATA; Schema: public; Owner: prisma
 --
 
@@ -958,8 +982,8 @@ manutencao	f	Desculpe. O sistema encontra-se em manutenção. Por favor, tente m
 
 
 --
--- TOC entry 2015 (class 2606 OID 54025)
--- Dependencies: 161 161 2108
+-- TOC entry 2025 (class 2606 OID 54693)
+-- Dependencies: 161 161 2118
 -- Name: PK_Aluno; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -968,8 +992,8 @@ ALTER TABLE ONLY "Aluno"
 
 
 --
--- TOC entry 2017 (class 2606 OID 54027)
--- Dependencies: 162 162 162 2108
+-- TOC entry 2027 (class 2606 OID 54695)
+-- Dependencies: 162 162 162 2118
 -- Name: PK_AlunoDisciplina; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -978,8 +1002,8 @@ ALTER TABLE ONLY "AlunoDisciplina"
 
 
 --
--- TOC entry 2019 (class 2606 OID 54029)
--- Dependencies: 163 163 163 2108
+-- TOC entry 2029 (class 2606 OID 54697)
+-- Dependencies: 163 163 163 2118
 -- Name: PK_AlunoDisciplinaAptoCache; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -988,8 +1012,8 @@ ALTER TABLE ONLY "AlunoDisciplinaAptoCache"
 
 
 --
--- TOC entry 2021 (class 2606 OID 54031)
--- Dependencies: 164 164 2108
+-- TOC entry 2031 (class 2606 OID 54699)
+-- Dependencies: 164 164 2118
 -- Name: PK_AlunoDisciplinaStatus; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -998,8 +1022,8 @@ ALTER TABLE ONLY "AlunoDisciplinaStatus"
 
 
 --
--- TOC entry 2025 (class 2606 OID 54033)
--- Dependencies: 165 165 165 2108
+-- TOC entry 2035 (class 2606 OID 54701)
+-- Dependencies: 165 165 165 2118
 -- Name: PK_AlunoTurmaSelecionada; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1008,8 +1032,8 @@ ALTER TABLE ONLY "AlunoTurmaSelecionada"
 
 
 --
--- TOC entry 2038 (class 2606 OID 54035)
--- Dependencies: 176 176 2108
+-- TOC entry 2048 (class 2606 OID 54703)
+-- Dependencies: 176 176 2118
 -- Name: PK_Curso; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1018,8 +1042,8 @@ ALTER TABLE ONLY "Curso"
 
 
 --
--- TOC entry 2040 (class 2606 OID 54037)
--- Dependencies: 177 177 2108
+-- TOC entry 2050 (class 2606 OID 54705)
+-- Dependencies: 177 177 2118
 -- Name: PK_Disciplina; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1028,8 +1052,8 @@ ALTER TABLE ONLY "Disciplina"
 
 
 --
--- TOC entry 2048 (class 2606 OID 54039)
--- Dependencies: 184 184 2108
+-- TOC entry 2058 (class 2606 OID 54707)
+-- Dependencies: 184 184 2118
 -- Name: PK_Log; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1038,8 +1062,8 @@ ALTER TABLE ONLY "Log"
 
 
 --
--- TOC entry 2042 (class 2606 OID 54041)
--- Dependencies: 178 178 2108
+-- TOC entry 2052 (class 2606 OID 54709)
+-- Dependencies: 178 178 2118
 -- Name: PK_Optativa; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1048,8 +1072,8 @@ ALTER TABLE ONLY "Optativa"
 
 
 --
--- TOC entry 2044 (class 2606 OID 54043)
--- Dependencies: 179 179 179 2108
+-- TOC entry 2054 (class 2606 OID 54711)
+-- Dependencies: 179 179 179 2118
 -- Name: PK_OptativaAluno; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1058,8 +1082,8 @@ ALTER TABLE ONLY "OptativaAluno"
 
 
 --
--- TOC entry 2046 (class 2606 OID 54045)
--- Dependencies: 181 181 181 2108
+-- TOC entry 2056 (class 2606 OID 54713)
+-- Dependencies: 181 181 181 2118
 -- Name: PK_OptativaDisciplina; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1068,8 +1092,8 @@ ALTER TABLE ONLY "OptativaDisciplina"
 
 
 --
--- TOC entry 2034 (class 2606 OID 54047)
--- Dependencies: 172 172 2108
+-- TOC entry 2044 (class 2606 OID 54715)
+-- Dependencies: 172 172 2118
 -- Name: PK_PreRequisitoGrupo; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1078,8 +1102,8 @@ ALTER TABLE ONLY "PreRequisitoGrupo"
 
 
 --
--- TOC entry 2032 (class 2606 OID 54049)
--- Dependencies: 169 169 169 2108
+-- TOC entry 2042 (class 2606 OID 54717)
+-- Dependencies: 169 169 169 2118
 -- Name: PK_PreRequisitoGrupoDisciplina; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1088,8 +1112,8 @@ ALTER TABLE ONLY "PreRequisitoGrupoDisciplina"
 
 
 --
--- TOC entry 2050 (class 2606 OID 54051)
--- Dependencies: 186 186 2108
+-- TOC entry 2060 (class 2606 OID 54719)
+-- Dependencies: 186 186 2118
 -- Name: PK_Professor; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1098,8 +1122,8 @@ ALTER TABLE ONLY "Professor"
 
 
 --
--- TOC entry 2036 (class 2606 OID 54053)
--- Dependencies: 175 175 2108
+-- TOC entry 2046 (class 2606 OID 54721)
+-- Dependencies: 175 175 2118
 -- Name: PK_Sugestao; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1108,8 +1132,8 @@ ALTER TABLE ONLY "Comentario"
 
 
 --
--- TOC entry 2055 (class 2606 OID 54055)
--- Dependencies: 190 190 2108
+-- TOC entry 2065 (class 2606 OID 54723)
+-- Dependencies: 190 190 2118
 -- Name: PK_TipoDisciplina; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1118,8 +1142,8 @@ ALTER TABLE ONLY "TipoDisciplina"
 
 
 --
--- TOC entry 2057 (class 2606 OID 54057)
--- Dependencies: 191 191 2108
+-- TOC entry 2067 (class 2606 OID 54725)
+-- Dependencies: 191 191 2118
 -- Name: PK_TipoUsuario; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1128,8 +1152,8 @@ ALTER TABLE ONLY "TipoUsuario"
 
 
 --
--- TOC entry 2029 (class 2606 OID 54059)
--- Dependencies: 167 167 2108
+-- TOC entry 2039 (class 2606 OID 54727)
+-- Dependencies: 167 167 2118
 -- Name: PK_Turma; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1138,8 +1162,8 @@ ALTER TABLE ONLY "Turma"
 
 
 --
--- TOC entry 2053 (class 2606 OID 54061)
--- Dependencies: 187 187 187 187 187 2108
+-- TOC entry 2063 (class 2606 OID 54729)
+-- Dependencies: 187 187 187 187 187 2118
 -- Name: PK_TurmaHorario; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1148,8 +1172,8 @@ ALTER TABLE ONLY "TurmaHorario"
 
 
 --
--- TOC entry 2061 (class 2606 OID 54063)
--- Dependencies: 193 193 2108
+-- TOC entry 2071 (class 2606 OID 54731)
+-- Dependencies: 193 193 2118
 -- Name: PK_Usuario; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1158,8 +1182,8 @@ ALTER TABLE ONLY "Usuario"
 
 
 --
--- TOC entry 2064 (class 2606 OID 54065)
--- Dependencies: 194 194 2108
+-- TOC entry 2074 (class 2606 OID 54733)
+-- Dependencies: 194 194 2118
 -- Name: PK_VariavelAmbiente; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1168,8 +1192,8 @@ ALTER TABLE ONLY "VariavelAmbiente"
 
 
 --
--- TOC entry 2023 (class 2606 OID 54067)
--- Dependencies: 164 164 2108
+-- TOC entry 2033 (class 2606 OID 54735)
+-- Dependencies: 164 164 2118
 -- Name: Unique_AlunoDisciplinaStatus_Nome; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1178,8 +1202,8 @@ ALTER TABLE ONLY "AlunoDisciplinaStatus"
 
 
 --
--- TOC entry 2027 (class 2606 OID 54069)
--- Dependencies: 165 165 165 165 165 2108
+-- TOC entry 2037 (class 2606 OID 54737)
+-- Dependencies: 165 165 165 165 165 2118
 -- Name: Unique_AlunoTurmaSelecionada; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1188,8 +1212,8 @@ ALTER TABLE ONLY "AlunoTurmaSelecionada"
 
 
 --
--- TOC entry 2059 (class 2606 OID 54071)
--- Dependencies: 191 191 2108
+-- TOC entry 2069 (class 2606 OID 54739)
+-- Dependencies: 191 191 2118
 -- Name: Unique_TipoUsuario_Nome; Type: CONSTRAINT; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1198,8 +1222,8 @@ ALTER TABLE ONLY "TipoUsuario"
 
 
 --
--- TOC entry 2051 (class 1259 OID 54072)
--- Dependencies: 186 2108
+-- TOC entry 2061 (class 1259 OID 54740)
+-- Dependencies: 186 2118
 -- Name: Professor_Nome_Index; Type: INDEX; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1207,8 +1231,8 @@ CREATE INDEX "Professor_Nome_Index" ON "Professor" USING btree ("Nome");
 
 
 --
--- TOC entry 2030 (class 1259 OID 54073)
--- Dependencies: 167 167 167 2108
+-- TOC entry 2040 (class 1259 OID 54741)
+-- Dependencies: 167 167 167 2118
 -- Name: Turma_Disciplina_Codigo_Periodo_Index; Type: INDEX; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1216,8 +1240,8 @@ CREATE INDEX "Turma_Disciplina_Codigo_Periodo_Index" ON "Turma" USING btree ("FK
 
 
 --
--- TOC entry 2062 (class 1259 OID 54074)
--- Dependencies: 193 2108
+-- TOC entry 2072 (class 1259 OID 54742)
+-- Dependencies: 193 2118
 -- Name: Usuario_HashSession_Index; Type: INDEX; Schema: public; Owner: prisma; Tablespace: 
 --
 
@@ -1225,8 +1249,8 @@ CREATE INDEX "Usuario_HashSession_Index" ON "Usuario" USING btree ("HashSessao")
 
 
 --
--- TOC entry 1990 (class 2618 OID 54075)
--- Dependencies: 165 165 165 165 165 165 165 165 2108
+-- TOC entry 1998 (class 2618 OID 54743)
+-- Dependencies: 165 165 165 165 165 165 165 165 2118
 -- Name: AlunoTurmaSelecionadaDuplicada; Type: RULE; Schema: public; Owner: prisma
 --
 
@@ -1234,8 +1258,8 @@ CREATE RULE "AlunoTurmaSelecionadaDuplicada" AS ON INSERT TO "AlunoTurmaSelecion
 
 
 --
--- TOC entry 1991 (class 2618 OID 54077)
--- Dependencies: 176 176 176 176 176 2108
+-- TOC entry 1999 (class 2618 OID 54745)
+-- Dependencies: 176 176 176 176 176 2118
 -- Name: CursoDuplicado; Type: RULE; Schema: public; Owner: prisma
 --
 
@@ -1243,8 +1267,8 @@ CREATE RULE "CursoDuplicado" AS ON INSERT TO "Curso" WHERE (EXISTS (SELECT 1 FRO
 
 
 --
--- TOC entry 1992 (class 2618 OID 54079)
--- Dependencies: 177 177 177 177 177 177 2108
+-- TOC entry 2000 (class 2618 OID 54747)
+-- Dependencies: 177 177 177 177 177 177 2118
 -- Name: DisciplinaDuplicada; Type: RULE; Schema: public; Owner: prisma
 --
 
@@ -1252,8 +1276,8 @@ CREATE RULE "DisciplinaDuplicada" AS ON INSERT TO "Disciplina" WHERE (EXISTS (SE
 
 
 --
--- TOC entry 1993 (class 2618 OID 54081)
--- Dependencies: 178 178 178 178 178 2108
+-- TOC entry 2001 (class 2618 OID 54749)
+-- Dependencies: 178 178 178 178 178 2118
 -- Name: OptativaDuplicada; Type: RULE; Schema: public; Owner: prisma
 --
 
@@ -1261,8 +1285,8 @@ CREATE RULE "OptativaDuplicada" AS ON INSERT TO "Optativa" WHERE (EXISTS (SELECT
 
 
 --
--- TOC entry 1994 (class 2618 OID 54083)
--- Dependencies: 186 186 186 186 2108
+-- TOC entry 2002 (class 2618 OID 54751)
+-- Dependencies: 186 186 186 186 2118
 -- Name: ProfessorDuplicado; Type: RULE; Schema: public; Owner: prisma
 --
 
@@ -1270,8 +1294,8 @@ CREATE RULE "ProfessorDuplicado" AS ON INSERT TO "Professor" WHERE (EXISTS (SELE
 
 
 --
--- TOC entry 1995 (class 2618 OID 54084)
--- Dependencies: 167 167 167 167 167 167 167 167 167 167 167 167 167 2108
+-- TOC entry 2003 (class 2618 OID 54752)
+-- Dependencies: 167 167 167 167 167 167 167 167 167 167 167 167 167 2118
 -- Name: TurmaDuplicada; Type: RULE; Schema: public; Owner: prisma
 --
 
@@ -1279,8 +1303,8 @@ CREATE RULE "TurmaDuplicada" AS ON INSERT TO "Turma" WHERE (EXISTS (SELECT 1 FRO
 
 
 --
--- TOC entry 1996 (class 2618 OID 54086)
--- Dependencies: 187 187 187 187 187 187 187 2108
+-- TOC entry 2004 (class 2618 OID 54754)
+-- Dependencies: 187 187 187 187 187 187 187 2118
 -- Name: TurmaHorarioDuplicado; Type: RULE; Schema: public; Owner: prisma
 --
 
@@ -1288,8 +1312,8 @@ CREATE RULE "TurmaHorarioDuplicado" AS ON INSERT TO "TurmaHorario" WHERE (EXISTS
 
 
 --
--- TOC entry 2067 (class 2606 OID 54087)
--- Dependencies: 2014 162 161 2108
+-- TOC entry 2077 (class 2606 OID 54755)
+-- Dependencies: 162 2024 161 2118
 -- Name: FK_AlunoDisciplina_Aluno; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1298,8 +1322,8 @@ ALTER TABLE ONLY "AlunoDisciplina"
 
 
 --
--- TOC entry 2068 (class 2606 OID 54092)
--- Dependencies: 162 2020 164 2108
+-- TOC entry 2078 (class 2606 OID 54760)
+-- Dependencies: 2030 162 164 2118
 -- Name: FK_AlunoDisciplina_AlunoDisciplinaStatus; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1308,8 +1332,8 @@ ALTER TABLE ONLY "AlunoDisciplina"
 
 
 --
--- TOC entry 2069 (class 2606 OID 54097)
--- Dependencies: 162 177 2039 2108
+-- TOC entry 2079 (class 2606 OID 54765)
+-- Dependencies: 177 2049 162 2118
 -- Name: FK_AlunoDisciplina_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1318,8 +1342,8 @@ ALTER TABLE ONLY "AlunoDisciplina"
 
 
 --
--- TOC entry 2070 (class 2606 OID 54102)
--- Dependencies: 162 2054 190 2108
+-- TOC entry 2080 (class 2606 OID 54770)
+-- Dependencies: 2064 162 190 2118
 -- Name: FK_AlunoDisciplina_TipoDisciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1328,8 +1352,8 @@ ALTER TABLE ONLY "AlunoDisciplina"
 
 
 --
--- TOC entry 2071 (class 2606 OID 54107)
--- Dependencies: 2014 161 165 2108
+-- TOC entry 2081 (class 2606 OID 54775)
+-- Dependencies: 165 161 2024 2118
 -- Name: FK_AlunoTurmaSelecionada_Aluno; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1338,8 +1362,8 @@ ALTER TABLE ONLY "AlunoTurmaSelecionada"
 
 
 --
--- TOC entry 2072 (class 2606 OID 54112)
--- Dependencies: 2028 167 165 2108
+-- TOC entry 2082 (class 2606 OID 54780)
+-- Dependencies: 167 165 2038 2118
 -- Name: FK_AlunoTurmaSelecionada_Turma; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1348,8 +1372,8 @@ ALTER TABLE ONLY "AlunoTurmaSelecionada"
 
 
 --
--- TOC entry 2065 (class 2606 OID 54117)
--- Dependencies: 161 176 2037 2108
+-- TOC entry 2075 (class 2606 OID 54785)
+-- Dependencies: 161 2047 176 2118
 -- Name: FK_Aluno_Curso; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1358,8 +1382,8 @@ ALTER TABLE ONLY "Aluno"
 
 
 --
--- TOC entry 2066 (class 2606 OID 54122)
--- Dependencies: 2060 161 193 2108
+-- TOC entry 2076 (class 2606 OID 54790)
+-- Dependencies: 161 2070 193 2118
 -- Name: FK_Aluno_Usuario; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1368,8 +1392,8 @@ ALTER TABLE ONLY "Aluno"
 
 
 --
--- TOC entry 2083 (class 2606 OID 54127)
--- Dependencies: 193 184 2060 2108
+-- TOC entry 2093 (class 2606 OID 54795)
+-- Dependencies: 184 2070 193 2118
 -- Name: FK_Log_Usuario; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1378,8 +1402,8 @@ ALTER TABLE ONLY "Log"
 
 
 --
--- TOC entry 2079 (class 2606 OID 54132)
--- Dependencies: 161 179 2014 2108
+-- TOC entry 2089 (class 2606 OID 54800)
+-- Dependencies: 161 2024 179 2118
 -- Name: FK_OptativaAluno_Aluno; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1388,8 +1412,8 @@ ALTER TABLE ONLY "OptativaAluno"
 
 
 --
--- TOC entry 2080 (class 2606 OID 54137)
--- Dependencies: 178 179 2041 2108
+-- TOC entry 2090 (class 2606 OID 54805)
+-- Dependencies: 179 2051 178 2118
 -- Name: FK_OptativaAluno_Optativa; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1398,8 +1422,8 @@ ALTER TABLE ONLY "OptativaAluno"
 
 
 --
--- TOC entry 2081 (class 2606 OID 54142)
--- Dependencies: 177 181 2039 2108
+-- TOC entry 2091 (class 2606 OID 54810)
+-- Dependencies: 2049 177 181 2118
 -- Name: FK_OptativaDisciplina_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1408,8 +1432,8 @@ ALTER TABLE ONLY "OptativaDisciplina"
 
 
 --
--- TOC entry 2082 (class 2606 OID 54147)
--- Dependencies: 178 181 2041 2108
+-- TOC entry 2092 (class 2606 OID 54815)
+-- Dependencies: 181 2051 178 2118
 -- Name: FK_OptativaDisciplina_Optativa; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1418,8 +1442,8 @@ ALTER TABLE ONLY "OptativaDisciplina"
 
 
 --
--- TOC entry 2075 (class 2606 OID 54152)
--- Dependencies: 177 169 2039 2108
+-- TOC entry 2085 (class 2606 OID 54820)
+-- Dependencies: 169 2049 177 2118
 -- Name: FK_PreRequisitoGrupoDisciplina_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1428,8 +1452,8 @@ ALTER TABLE ONLY "PreRequisitoGrupoDisciplina"
 
 
 --
--- TOC entry 2076 (class 2606 OID 54157)
--- Dependencies: 2033 172 169 2108
+-- TOC entry 2086 (class 2606 OID 54825)
+-- Dependencies: 172 2043 169 2118
 -- Name: FK_PreRequisitoGrupoDisciplina_PreRequisitoGrupo; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1438,8 +1462,8 @@ ALTER TABLE ONLY "PreRequisitoGrupoDisciplina"
 
 
 --
--- TOC entry 2077 (class 2606 OID 54162)
--- Dependencies: 2039 172 177 2108
+-- TOC entry 2087 (class 2606 OID 54830)
+-- Dependencies: 172 2049 177 2118
 -- Name: FK_PreRequisitoGrupo_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1448,8 +1472,8 @@ ALTER TABLE ONLY "PreRequisitoGrupo"
 
 
 --
--- TOC entry 2078 (class 2606 OID 54167)
--- Dependencies: 2060 175 193 2108
+-- TOC entry 2088 (class 2606 OID 54835)
+-- Dependencies: 175 193 2070 2118
 -- Name: FK_Sugestao_Usuario; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1458,8 +1482,8 @@ ALTER TABLE ONLY "Comentario"
 
 
 --
--- TOC entry 2084 (class 2606 OID 54172)
--- Dependencies: 187 167 2028 2108
+-- TOC entry 2094 (class 2606 OID 54840)
+-- Dependencies: 187 2038 167 2118
 -- Name: FK_TurmaHorario_Turma; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1468,8 +1492,8 @@ ALTER TABLE ONLY "TurmaHorario"
 
 
 --
--- TOC entry 2073 (class 2606 OID 54177)
--- Dependencies: 167 186 2049 2108
+-- TOC entry 2083 (class 2606 OID 54845)
+-- Dependencies: 167 2059 186 2118
 -- Name: FK_Turma_Professor; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1478,8 +1502,8 @@ ALTER TABLE ONLY "Turma"
 
 
 --
--- TOC entry 2085 (class 2606 OID 54182)
--- Dependencies: 2056 193 191 2108
+-- TOC entry 2095 (class 2606 OID 54850)
+-- Dependencies: 193 191 2066 2118
 -- Name: FK_Usuario_TipoUsuario; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1488,8 +1512,8 @@ ALTER TABLE ONLY "Usuario"
 
 
 --
--- TOC entry 2074 (class 2606 OID 54187)
--- Dependencies: 2039 167 177 2108
+-- TOC entry 2084 (class 2606 OID 54855)
+-- Dependencies: 167 177 2049 2118
 -- Name: PK_Turma_Disciplina; Type: FK CONSTRAINT; Schema: public; Owner: prisma
 --
 
@@ -1497,7 +1521,7 @@ ALTER TABLE ONLY "Turma"
     ADD CONSTRAINT "PK_Turma_Disciplina" FOREIGN KEY ("FK_Disciplina") REFERENCES "Disciplina"("PK_Codigo") ON UPDATE CASCADE ON DELETE CASCADE;
 
 
--- Completed on 2012-12-09 13:26:07 BRST
+-- Completed on 2012-12-10 14:02:32 BRST
 
 --
 -- PostgreSQL database dump complete

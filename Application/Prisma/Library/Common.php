@@ -37,11 +37,10 @@ class Common
 		}
 		else
 		{
+			$str = utf8_encode($str);
 			$str = trim($str);
+
 			$str = str_replace(chr(0x00), '', $str);
-			$str = str_replace(chr(0xa0), '', $str);
-			$str = str_replace(chr(0xfe), '', $str);
-			$str = str_replace(chr(0xff), '', $str);
 
 			if($str == '') $str = null;
 		}
