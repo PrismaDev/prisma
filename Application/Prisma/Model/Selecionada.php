@@ -10,8 +10,7 @@ class Selecionada
 	{
 		$dbh = Database::getConnection();
 
-		$sth = $dbh->prepare('SELECT "DisciplinaDaTurma"("FK_Turma") as "CodigoDisciplina", "FK_Turma", "Opcao", "NoLinha"
-					FROM "AlunoTurmaSelecionada" WHERE "FK_Aluno" = ?;');
+		$sth = $dbh->prepare('SELECT "CodigoDisciplina", "FK_Turma", "Opcao", "NoLinha" FROM "AlunoDisciplinaTurmaSelecionada" WHERE "MatriculaAluno" = ?;');
 		$sth->execute(array($aluno));
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);

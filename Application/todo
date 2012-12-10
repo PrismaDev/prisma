@@ -21,21 +21,19 @@ Implementar modelo do prisma necessario:
 
 Corrigir:
 
-- Colocar pagina de manutencao no prisma antigo.
+- Implementar sistema de logs
 
-- Implementar upload dos arquivos de Faltacursar/cursando/cursado, Optativas, Prerequisitos
-
-- Verificar se controle de acesso esta ok
-
-- Permitir administrador liberar ou não acesso ao sistema, subir arquivos, colocar sistema em manutencao.
-
-- Verificar setup do servidor oficial.
+- Implementar sistema de sugestoes
 
 - Implementar estatisticas do sistema no banco de dados
 -- Quantas aluno selecionaram tal turma em qual opcao
 -- Quantidade de alunos que selecionaram um horario especifico
 
-- Implementar logs do sistema (inclusive api pra logar client)
+- Colocar pagina de manutencao no prisma antigo.
+
+- Permitir administrador liberar ou não acesso ao sistema, subir arquivos, colocar sistema em manutencao.
+
+- Verificar setup do servidor oficial.
 
 - Documentar banco de dados
 
