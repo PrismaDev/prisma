@@ -26,6 +26,7 @@ Class MainController extends RestController
 		$disciplinas = Disciplina::getFaltaCursar($login);
 		$optativas = Optativa::getByUserDepend($login);
 		$selecionadas = Selecionada::getAll($login);
+		$dicionario = Common::getNamesDictionary();
 
 		$discHash = array();
 		foreach($disciplinas as $disciplina)
@@ -61,6 +62,8 @@ Class MainController extends RestController
 				)
 			)
 		);
+
+		$data = '{"Dicionario":'.json_encode($dicionario).',"Data":'.$data.'}';
 
 		return ViewLoader::load('Prisma', 'general.phtml', array('section' => 'main', 'DATA_VIEW' => $data));
 	}

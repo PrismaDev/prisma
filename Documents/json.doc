@@ -8,6 +8,8 @@ Para minimizar a transferencia de dados entre o servidor e o navegador do usuari
 'Matricula'		=> 'MT',
 'NomeAluno'		=> 'NA',
 'CR'			=> 'CR',
+'Usuario'		=> 'US',
+'UltimoAcesso'		=> 'UA',
 'Dependencia'		=> 'DP',
 'FaltaCursar'		=> 'FC',
 'Selecionada'		=> 'SLC',
@@ -49,6 +51,7 @@ Aluno:
 	Matricula: < string >,
 	NomeAluno: < string >,
 	CR: < string >
+	UltimoAcesso: < string >,
 }
 
 Dicionario:
@@ -156,12 +159,15 @@ Dependencia:
 
 Main:
 {
-	Aluno: < aluno json >,
-	Dicionario: < dicionario json >,
-	Strings: < strings json >,
-	FaltaCursar: < falta cursar json >,
-	Selecionadas: < selecionadas json >,
-	Dependencia: < dependencia json > 
+	Dicionario: < dicionario json >
+	Data:
+	{
+		Aluno: < aluno json >,
+		Strings: < strings json >,
+		FaltaCursar: < falta cursar json >,
+		Selecionadas: < selecionadas json >,
+		Dependencia: < dependencia json > 
+	}
 }
 
 MicroHorario:
@@ -181,3 +187,4 @@ Selecionada
 	Selecionadas: < selecionadas json >,
 	Dependencia: < dependencia json >
 }
+

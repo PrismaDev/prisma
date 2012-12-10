@@ -47,12 +47,71 @@ class Common
 		}
 	}
 
-	public static function namesMinimizer($str)
+	public static function invArray($array)
 	{
-		$dic = array(
+		if(is_array($array))
+		{
+			$new = array();
+
+			foreach($array as $k=>$v)
+			{
+				$new[$v] = $k;
+			}
+
+			return $new;
+		}
+		return false;
+	}
+
+	public static function getNamesDictionary()
+	{
+		return array(
+			'"Matricula"'		=> 0,
+			'"NomeAluno"'		=> 1,
+			'"CR"'			=> 2,
+			'"UltimoAcesso"'	=> 3,
+			'"Dependencia"'		=> 4,
+			'"Dependencia"'		=> 5,
+			'"FaltaCursar"'		=> 6,
+			'"Selecionadas"'	=> 7,
+			'"MicroHorario"' 	=> 8,
+			'"Disciplinas"'		=> 9,
+			'"Turmas"'		=> 10,
+			'"Optativas"'		=> 11,
+			'"Horarios"'		=> 12,
+			'"CodigoDisciplina"' 	=> 13,
+			'"CodigoTurma"' 	=> 14,
+			'"CodigoOptativa"'	=> 15,
+			'"PK_Turma"'		=> 16,
+			'"FK_Turma"'		=> 17,
+			'"NomeDisciplina"' 	=> 18,
+			'"NomeProfessor"' 	=> 19,
+			'"NomeOptativa"'	=> 20,
+			'"Creditos"'		=> 21,
+			'"Situacao"'		=> 22,
+			'"Apto"'		=> 23,
+			'"Vagas"'		=> 24,
+			'"Destino"'		=> 25,
+			'"HorasDistancia"'	=> 26,
+			'"SHF"'			=> 27,
+			'"PeriodoAno"'		=> 28,
+			'"Tentativas"'		=> 29,
+			'"Opcao"'		=> 30,
+			'"NoLinha"'		=> 31,
+			'"DiaSemana"'		=> 32,
+			'"HoraInicial"'		=> 33,
+			'"HoraFinal"'		=> 34,
+		);
+
+		return array(
+			'Matricula'		=> 'MT',
+			'NomeAluno'		=> 'NA',
+			'CR'			=> 'CR',
+			'Usuario'		=> 'US',
+			'UltimoAcesso'		=> 'UA',
 			'Dependencia'		=> 'DP',
 			'FaltaCursar'		=> 'FC',
-			'Selecionada'		=> 'SLC',
+			'Selecionadas'		=> 'SLC',
 			'MicroHorario' 		=> 'MH',
 			'Disciplinas'		=> 'DCs',
 			'Turmas'		=> 'TRs',
@@ -72,7 +131,7 @@ class Common
 			'Vagas'			=> 'VG',
 			'Destino'		=> 'DT',
 			'HorasDistancia'	=> 'HD',
-			//'SHF'			=> 'SHF',
+		//	'SHF'			=> 'SHF',
 			'PeriodoAno'		=> 'PA',
 			'Tentativas'		=> 'TTs',
 			'Opcao'			=> 'OP',
@@ -81,6 +140,12 @@ class Common
 			'HoraInicial'		=> 'HI',
 			'HoraFinal'		=> 'HF',
 		);
+
+	}
+
+	public static function namesMinimizer($str)
+	{
+		$dic = self::getNamesDictionary();
 
 		foreach($dic as $k=>$v)
 		{

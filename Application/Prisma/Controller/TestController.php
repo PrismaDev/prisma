@@ -2,8 +2,9 @@
 
 namespace Prisma\Controller;
 
+use Framework\Database;
 use Framework\RestController;
-
+use Prisma\Library\Common;
 use Prisma\Model\MicroHorario;
 use Prisma\Model\FaltaCursar;
 use Prisma\Model\Disciplina;
@@ -22,7 +23,16 @@ Class TestController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return json_encode(Usuario::getById($_COOKIE['login']));
+		$time = time();
+
+		$dbh = Database::getConnection();	
+
+		$sth = $dbh->prepare('SELECT "AlunoDisciplinaApto" FROM "PopulaAlunoDisciplinaAptoCache" limit :limit offset :offset;');
+		$sth->execute($arguments);
+
+		echo time()-$time,'<br>';
+
+		return $sth->fetch() != false ? 'ok' : 'error';
 	}
 }
 
