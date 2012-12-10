@@ -1,50 +1,8 @@
 
 =============== JSON Doc ===============
 
-1/ Dicionario:
 
-Para minimizar a transferencia de dados entre o servidor e o navegador do usuario, alguns nomes de variaveis foram substituidos por nomes menores. Dessa maneira foi possivel conseguir uma diminuição de até 40% no tráfego de dados.
-
-'Alunos'		=> 'ALs',
-'Strings'		=> 'STRs',
-'Matricula'		=> 'MT',
-'NomeAluno'		=> 'NA',
-'CR'			=> 'CR',
-'Usuario'		=> 'US',
-'UltimoAcesso'		=> 'UA',
-'Dependencia'		=> 'DP',
-'FaltaCursar'		=> 'FC',
-'Selecionada'		=> 'SLC',
-'MicroHorario' 		=> 'MH',
-'Disciplinas'		=> 'DCs',
-'Turmas'		=> 'TRs',
-'Optativas'		=> 'OPs',
-'Horarios'		=> 'HRs',
-'CodigoDisciplina' 	=> 'CD',
-'CodigoTurma' 		=> 'CT',
-'CodigoOptativa'	=> 'CO',
-'PK_Turma'		=> 'IDT',
-'FK_Turma'		=> 'IDT',
-'NomeDisciplina' 	=> 'ND',
-'NomeProfessor' 	=> 'NP',
-'NomeOptativa'		=> 'NO',
-'Creditos'		=> 'CRs',
-'Situacao'		=> 'ST',
-'Apto'			=> 'APT',
-'Vagas'			=> 'VG',
-'Destino'		=> 'DT',
-'HorasDistancia'	=> 'HD',
-'SHF'			=> 'SHF',
-'PeriodoAno'		=> 'PA',
-'Tentativas'		=> 'TTs',
-'Opcao'			=> 'OP',
-'NoLinha'		=> 'NL',
-'DiaSemana'		=> 'DS',
-'HoraInicial'		=> 'HI',
-'HoraFinal'		=> 'HF',
-
-
-2/ Especificacao dos JSONs utilizados: 
+1/ Especificacao dos JSONs utilizados: 
 
 -- Formatos em comum
 
@@ -164,7 +122,7 @@ Main:
 	Dicionario: < dicionario json >
 	Data:
 	{
-		Aluno: < aluno json >,
+		Usuario: < aluno json >,
 		Strings: < strings json >,
 		FaltaCursar: < falta cursar json >,
 		Selecionadas: < selecionadas json >,

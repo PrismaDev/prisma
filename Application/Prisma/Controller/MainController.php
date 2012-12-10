@@ -54,7 +54,7 @@ Class MainController extends RestController
 			(
 				array
 				(
-					'Aluno' => $aluno,
+					'Usuario' => $aluno,
 					'FaltaCursar' => array
 					(
 						'Disciplinas' => $disciplinas,	

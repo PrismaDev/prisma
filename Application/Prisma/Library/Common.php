@@ -68,7 +68,7 @@ class Common
 			'Strings'		=> 'w',
 			'Matricula'		=> 'e',
 			'NomeAluno'		=> 'r',
-			'Aluno'			=> 'q',
+			'Usuario'		=> 'q',
 			'CoeficienteRendimento'	=> 't',
 			'UltimoAcesso'		=> 'y',
 			'Dependencia'		=> 'u',
