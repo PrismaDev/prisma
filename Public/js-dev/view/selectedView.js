@@ -62,7 +62,8 @@ var SelectedView = Backbone.View.extend({
 		var arr=new Array();
 
 		for (var i=0; i<classArray.length; i++)
-			arr.push(this.templateDraggable(classArray[i]));
+			if (classArray[i])
+				arr.push(this.templateDraggable(classArray[i]));
 	
 		return	this.templateRow({
 			'index': index,
@@ -84,13 +85,8 @@ var SelectedView = Backbone.View.extend({
 			$(tbody).append(this.buildRow(i,[]));
 	},
 
-	fetchData: function() { //this will be a model function
-		return this.testArray;
-	},
-
 	render: function() {
-		var data = this.fetchData();
-		this.buildSelected(data);
+		this.buildSelected(selectedModel.getData());
 		this.initJS();
 	},
 

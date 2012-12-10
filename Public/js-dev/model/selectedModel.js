@@ -16,28 +16,39 @@ var SelectedModel = Backbone.Model.extend({
 	},
 
 	getData: function() {
-
+		return options;
 	},
 
-	addClass: function(subjectId, classId) {
+	removeClass: function(subjectCode, classCode) {
+		for (var i=0; i<this.maxRows; i++)
+			for (var j=0; j<this.nOptions; j++)
+				if (options[i][j].subjectCode==subjectCode &&
+					options[i][j].classCode==classCode) {
+					
+					options[i][j]=null;
+					console.log(options);
+					selectedView.render();
+					return true;
+				}
+		return false;
+	},
+
+	addClass: function(subjectCode, classCode) {
 		for (var i=0; i<this.maxRows; i++)
 			for (var j=0; j<this.nOptions; j++)
 				if (options[i][j]==null) {
 					options[i][j]={
-						'subjectCode': subjectId,
-						'classId': classId
+						'subjectCode': subjectCode,
+						'classCode': classCode
 					}
 
+					console.log(options);
 					selectedView.render();
 					return true;
 				}
 
 		return false;
 	},
-
-	viewChanged: function() {
-		
-	}
 });
 
 var selectedModel = new SelectedModel();

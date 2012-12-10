@@ -15,7 +15,9 @@
 		</thead>
 		<tbody>
 			<% _.each(classes, function(classO) { %>
-				<tr id="<%= classO.subjectCode %>-<%= classO.code %>">
+				<tr>
+					<input type="hidden" name="subjectCode" value="<%= classO.subjectCode %>" />
+					<input type="hidden" name="classCode" value="<%= classO.code %>" />
 					<% if (subjectInfo) { %>
 						<td><%= classO.subjectCode %></td>
 						<td><%= classO.subjectName %></td>

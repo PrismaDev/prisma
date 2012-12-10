@@ -22,11 +22,9 @@ var ClassModel = Backbone.Model.extend({
 	printSchedule: function() {
 		var div = document.createElement('div');
 		var daysAbbr=classesTableStringsModel.get('daysAbbr');
-		console.log(daysAbbr);
 		
 		_.each(this.get('Horarios').models, function(horario) {
 			var span=document.createElement('span');
-			console.log(horario);
 			span.innerHTML=daysAbbr[horario.get('DiaSemana')-2]+' '
 				+horario.get('HoraInicial')+'-'+horario.get('HoraFinal');
 			div.appendChild(span);

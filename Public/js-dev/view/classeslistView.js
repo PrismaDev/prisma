@@ -6,7 +6,7 @@ var ClasseslistView = Backbone.View.extend({
 	//Cached
 	classesDatatable: '',
 	classesTableHead: '',
-	classesTableBody: '',
+	lassesTableBody: '',
 
 	events: {
 		'click .dataTables_scrollBody tr': 'clickOnClass'
@@ -14,12 +14,17 @@ var ClasseslistView = Backbone.View.extend({
 
 	clickOnClass: function(e) {
 		var row = $(e.target).parent('tr');
+		var subjectCode = $(row).find('input[type="hidden"][name="subjectCode"]').attr('value');
+		var classCode = $(row).find('input[type="hidden"][name="classCode"]').attr('value');
+		console.log(subjectCode+' - '+classCode);
 
 		if ($(row).hasClass('chosen')) {
 			$(row).removeClass('chosen');
+			selectedModel.removeClass(subjectCode,classCode);
 		}
 		else {
 			$(row).addClass('chosen');
+			selectedModel.addClass(subjectCode,classCode);
 		}
 	},
 
