@@ -22,7 +22,8 @@ var SelectedModel = Backbone.Model.extend({
 	removeClass: function(subjectCode, classCode) {
 		for (var i=0; i<this.maxRows; i++)
 			for (var j=0; j<this.nOptions; j++)
-				if (options[i][j].subjectCode==subjectCode &&
+				if (options[i][j] &&
+					options[i][j].subjectCode==subjectCode &&
 					options[i][j].classCode==classCode) {
 					
 					options[i][j]=null;

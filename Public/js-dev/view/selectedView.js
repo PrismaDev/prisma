@@ -3,30 +3,6 @@ var SelectedView = Backbone.View.extend({
 	templateTable: '',
 	templateDraggable: '',
 
-	testArray: [
-		[
-			{subjectCode: 'aa1', classCode: 'bbb'},
-			{subjectCode: 'aa2', classCode: 'bbb'}
-		],
-		[
-			{subjectCode: 'aa3', classCode: 'bbb'}
-		],
-		[
-			{subjectCode: 'aa4', classCode: 'bbb'},
-			{subjectCode: 'aa5', classCode: 'bbb'},
-			{subjectCode: 'aa6', classCode: 'bbb'}
-		],
-		[
-			{subjectCode: 'aa7', classCode: 'bbb'},
-			{subjectCode: 'aa8', classCode: 'bbb'}
-		],
-		[
-			{subjectCode: 'aa9', classCode: 'bbb'},
-			{subjectCode: 'a10', classCode: 'bbb'},
-			{subjectCode: 'a11', classCode: 'bbb'}
-		]
-	],
-
 	initialize: function() {
 		this.templateRow = _.template($('#selected-row-template').html());
 		this.templateTable = _.template($('#selected-table-template').html());
@@ -54,8 +30,13 @@ var SelectedView = Backbone.View.extend({
 
 	deleteClass: function(e) {
 		var button = e.target;
+		var div = $(e.target).parent('div');
+
+		var subjectCode = $(div).find('input[type="hidden"][name="subjectCode"]').attr('value');
+		var classCode = $(div).find('input[type="hidden"][name="classCode"]').attr('value');
+		selectedModel.removeClass(subjectCode, classCode);
+
 		this.equalDroppables();
-		button.parentNode.parentNode.removeChild(button.parentNode);
 	},
 
 	buildRow: function(index, classArray) {
@@ -63,7 +44,7 @@ var SelectedView = Backbone.View.extend({
 
 		for (var i=0; i<classArray.length; i++)
 			if (classArray[i])
-				arr.push(this.templateDraggable(classArray[i]));
+				arr[i]=(this.templateDraggable(classArray[i]));
 	
 		return	this.templateRow({
 			'index': index,
