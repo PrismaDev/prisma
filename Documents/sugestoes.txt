@@ -42,6 +42,8 @@
 
 - Adicionar tela besta de admin para que seja possivel upload de arquivos.
 
+- Adicionar tela de estatisticas para visualizacao pelos departamentos.
+
 - Preparar versao offline do sistema para apresentação
 
 - Adicionar codigo de cores na simulacao e deixar radio buttons mais
@@ -57,3 +59,18 @@
 
 - Quando tem turma apenas na primeira opcao das selecionadas, fazer com que a
   coluna das demais opcoes fiquem do mesmo tamanho, e não muito menor.
+
+- Colocar campo de sugestao e email (fale conosco) no sistema.
+
+- Preparar video de screen cast no sistema, de forma a servir como help no
+  sistema.
+
+- Preparar video de screen cast no sistema, de forma a servir como help.
+
+- Corrigir bug que ocorre na timetable quando se insere turmas com mais de 3
+  dias na semana, a principio. Pode acontecer em outros casos tb.
+
+- Priorizar esta lista acima, para que seja possivel entrar o máximo de
+  funcionalidade possivel. Caso uma funcionalidade importante seja muito
+  complexa, passar para a proxima fácil, de forma que esja possível fechar a
+  maior quantidade de itens dessa lista tb.
