@@ -29,7 +29,6 @@ var SelectedModel = Backbone.Model.extend({
 					options[i][j]=null;
 					var classModel = subjectList.get(subjectCode)
 							.get('Turmas').get(classId);
-					classModel.set('Selecionada',false);
 					
 					microhorarioClasseslistView.changeRow(subjectCode, classId, false);
 					faltacursarClasseslistView.changeRow(subjectCode, classId, false);
@@ -54,7 +53,6 @@ var SelectedModel = Backbone.Model.extend({
 						'classId': classId
 					}
 
-					classModel.set('Selecionada',true);					
 					microhorarioClasseslistView.changeRow(subjectCode, classId, true);
 					faltacursarClasseslistView.changeRow(subjectCode, classId, true);
 

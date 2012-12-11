@@ -36,8 +36,7 @@ var FaltacursarModel = Backbone.Model.extend({
 				'code': classO.get('CodigoTurma'),
 				'schedule': classO.printSchedule(),
 				'subjectCode': subjectModel.get('CodigoDisciplina'),
-				'classId': classO.get('PK_Turma'),
-				'selected': classO.get('Selecionada')
+				'classId': classO.get('PK_Turma')
 			};
 
 			array.push(object);

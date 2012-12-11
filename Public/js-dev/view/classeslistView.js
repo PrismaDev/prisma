@@ -33,14 +33,19 @@ var ClasseslistView = Backbone.View.extend({
 			var _subjectCode = $(this).find('input[type="hidden"][name="subjectCode"]').attr('value');
 			var _classId = $(this).find('input[type="hidden"][name="classId"]').attr('value');	
 
-			console.log(subjectCode+' '+classId);
-			console.log(_subjectCode+' '+_classId);
-
 			if (_subjectCode==subjectCode && _classId==classId) {
 				if (select) $(this).addClass('chosen');
 				else $(this).removeClass('chosen');
 			}
 		});
+	},
+
+	markChosenRows: function() {
+		var ch = selectedModel.getData();
+
+		for (var i=0; i<selectedModel.maxRows; i++)
+			for (var j=0; j<selectedModel.nOptions; j++)
+				if (ch[i][j]) this.changeRow(ch[i][j].subjectCode, ch[i][j].classId, true);
 	},
 
 	cache: function() {
@@ -82,6 +87,7 @@ var ClasseslistView = Backbone.View.extend({
 		this.initJS();
 		this.cache();
 		this.calculateTableScroll();
+		this.markChosenRows();
 	}
 });
 
