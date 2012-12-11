@@ -48,3 +48,12 @@
   espaçados.
 
 - Colocar nome do usuario no header do sistema.
+
+- Terminar sincronizacao das selecionadas com o servidor. 
+
+- Na tela de selecionadas. Tentar deixar interações mais obvias. Isto é, que
+  linhas podem ser mudadas de posicao, que as turmas podem mudar de lugar e
+  que os radio buttons se referem à caixinha na direita, e não na esquerda.
+
+- Quando tem turma apenas na primeira opcao das selecionadas, fazer com que a
+  coluna das demais opcoes fiquem do mesmo tamanho, e não muito menor.
