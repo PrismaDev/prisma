@@ -51,7 +51,7 @@ var FaltacursarView = Backbone.View.extend({
 			$(this.classesDiv).addClass('hidden');
 		}
 		else {
-			$(this.subjectTable).find('subjectSelected')
+			$(this.subjectTable).find('tr.subjectSelected')
 				.removeClass('subjectSelected');
 			$(row).addClass('subjectSelected');
 			

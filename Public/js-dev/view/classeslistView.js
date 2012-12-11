@@ -14,6 +14,11 @@ var ClasseslistView = Backbone.View.extend({
 
 	clickOnClass: function(e) {
 		var row = $(e.target).parent('tr');
+		
+		if ($(row).hasClass('subjectBlocked'))
+			return;
+		if ($(row).hasClass('subjectDisabled'))
+			return;
 
 		var subjectCode = $(row).find('input[type="hidden"][name="subjectCode"]').attr('value');
 		var classId = $(row).find('input[type="hidden"][name="classId"]').attr('value');
