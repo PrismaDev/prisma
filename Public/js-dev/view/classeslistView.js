@@ -19,6 +19,8 @@ var ClasseslistView = Backbone.View.extend({
 			return;
 		if ($(row).hasClass('subjectDisabled'))
 			return;
+		if ($(row.find('td').first()).hasClass('dataTables_empty'))
+			return;
 
 		var subjectCode = $(row).find('input[type="hidden"][name="subjectCode"]').attr('value');
 		var classId = $(row).find('input[type="hidden"][name="classId"]').attr('value');

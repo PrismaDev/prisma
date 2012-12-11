@@ -41,6 +41,8 @@ var FaltacursarView = Backbone.View.extend({
 
 		if ($(row).hasClass('subjectBlocked'))
 			return;
+		if ($(row.find('td').first()).hasClass('dataTables_empty'))
+			return;
 
 		if ($(row).hasClass('subjectSelected')) {
 			$(row).removeClass('subjectSelected');
