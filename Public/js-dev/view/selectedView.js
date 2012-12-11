@@ -10,7 +10,14 @@ var SelectedView = Backbone.View.extend({
 	},
 
 	events: {
-		'click button.close': 'deleteClass' 
+		'click button.close': 'deleteClass',
+		'change input[type="radio"]': 'radioChange'
+	},
+
+	radioChange: function()
+	{
+		console.log('radio changed');
+		selectedController.runSimulation();
 	},
 
 	resize: function() {},

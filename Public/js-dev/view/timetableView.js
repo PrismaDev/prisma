@@ -4,38 +4,6 @@ var TimetableView = Backbone.View.extend({
 	endH: 23,
 	ndays: 6,
 
-	testArray: [
-		{
-			'nome': 'A',
-			'horarios': [
-			{
-				'diaSemana': 0,
-				'horaInicial': 7,
-				'horaFinal': 11
-			},
-			{
-				'diaSemana': 2,
-				'horaInicial': 7,
-				'horaFinal': 11	
-			}]
-		},
-		{
-			'nome': 'B',
-			'horarios': [
-			{
-				'diaSemana': 1,
-				'horaInicial': 9,
-				'horaFinal': 10
-			},
-			{
-				'diaSemana': 2,
-				'horaInicial': 13,
-				'horaFinal': 15	
-			}]
-		}
-
-	],
-
 	initialize: function() {
 		this.template = _.template($('#timetable-template').html());
 	},
@@ -54,11 +22,12 @@ var TimetableView = Backbone.View.extend({
 				}
 		}
 
+console.log(classesArray);
 		for (var i=0; i<classesArray.length; i++)
 			for (var j=0; j<classesArray[i].horarios.length; j++) {
-				var d=classesArray[i].horarios[j].diaSemana;
-				var s=classesArray[i].horarios[j].horaInicial;
-				var e=classesArray[i].horarios[j].horaFinal;
+				var d=classesArray[i].horarios[j].get('DiaSemana');
+				var s=classesArray[i].horarios[j].get('HoraInicial');
+				var e=classesArray[i].horarios[j].get('HoraFinal');
 
 				timetableMatrix[s][d].string=classesArray[i].nome;
 				timetableMatrix[s][d].span=Number(e)-Number(s);
@@ -74,7 +43,7 @@ var TimetableView = Backbone.View.extend({
 	},
 
 	buildTableBody: function(classesArray) {
-		if (typeof classesArray == undefined)
+		if (classesArray == undefined)
 			classesArray=[];
 
 		var ttmat = this.processArray(classesArray);		
@@ -108,7 +77,6 @@ var TimetableView = Backbone.View.extend({
 	},
 
 	render: function(classesArray) {
-		if (!classesArray) classesArray = this.testArray;
 		this.$el.html(this.template({
 			timetableStr: timetableStringsModel
 		}));

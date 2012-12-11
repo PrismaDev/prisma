@@ -1,12 +1,104 @@
 function SelectedController() {
 	var collidesTime = function(class1Model, class2Model) {
+		var times1 = class1Model.get('Horarios').models;
+		var times2 = class2Model.get('Horarios').models;
 
+		var gud = true;
+		for(var time1Idx in times1)
+		{
+			var time1 = times1[time1Idx];
+
+			for(var time2Idx in times2)
+			{
+				var time2 = times2[time2Idx];
+
+				if(time1.get('DiaSemana') == time2.get('DiaSemana'))
+				{
+					var hi1, hi2, hf1, hf2;
+					hi1 = time1.get('HoraInicial');
+					hi2 = time2.get('HoraInicial');
+					hf1 = time1.get('HoraFinal');
+					hf2 = time2.get('HoraFinal');
+					if(hi1 > hi2)
+					{
+						var s = hi1;
+						hi1 = hi2;
+						hi2 = s;
+
+						s = hf1;
+						hf1 = hf2;
+						hf2 = s;
+					}
+
+					if(hf1 > hi2)
+					{
+						gud = false;
+						break;
+					}
+				}
+			}
+			if(!gud) break;
+		}
+		return !gud;
 	}
 
 	this.runSimulation = function() {
-		var accepted={};
+		var accepted= new Array();
 
-			
+		var rows = $('#main-selected-div tbody tr');
+
+		_.each(rows, function(row){
+			while(1)
+			{
+				var radioValue = $(row).find('input[type="radio"]:checked').attr('value');
+
+				if(radioValue == 'none')
+				{
+					break;
+				}
+
+				var option = $(row).find('input[type="radio"]:checked').parent('td').next();
+
+				if($(option).find('div').length != 0)
+				{
+					var classId = $(option).find('input[type="hidden"][name="classCode"]').attr('value');
+					var subjectCode = $(option).find('input[type="hidden"][name="subjectCode"]').attr('value');
+					var classModel = subjectList.get(subjectCode).get('Turmas').get(classId);
+
+					var gud = true;
+					for(var classIdx in accepted)
+					{
+						var times = classModel.get('Horarios');
+						
+						if(subjectCode == accepted[classIdx].subjectCode || collidesTime(classModel, accepted[classIdx].classObj))
+						{
+							gud = false;
+							break;
+						}
+					}
+
+					if(gud)
+					{
+						accepted.push({classObj:classModel,subjectCode:subjectCode});
+						break;
+					}
+				}
+
+				$(option).next().find('input[type="radio"]').attr('checked',true);
+			}
+		});
+
+		var timetable = new Array();
+
+		for(var idx in accepted)
+		{
+			timetable.push({
+				nome: accepted[idx].subjectCode+' - '+accepted[idx].classObj.get('CodigoTurma'),
+				horarios: accepted[idx].classObj.get('Horarios').models
+			});
+		}
+
+		timetableView.render(timetable);
 	}	
 }
 
