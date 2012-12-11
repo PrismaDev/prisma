@@ -113,6 +113,8 @@ var SelectedView = Backbone.View.extend({
 			$.each(radio_restore, function(index, value){
 				$('input[name="'+index+'"][value="'+value+'"]').prop('checked', true);
 			});
+
+			selectedController.runSimulation();
 		});
 	},
 
@@ -139,6 +141,8 @@ var SelectedView = Backbone.View.extend({
 					'bottom': '0px'
 				});
 				$(this).append($(ui.draggable));
+
+				selectedController.runSimulation();
 			},
 			accept: '.classDraggable'
 		});

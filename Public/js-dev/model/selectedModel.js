@@ -43,6 +43,8 @@ var SelectedModel = Backbone.Model.extend({
 					});
 
 					selectedView.render();
+
+					selectedController.runSimulation();
 					return true;
 				}
 		return false;
@@ -75,6 +77,8 @@ var SelectedModel = Backbone.Model.extend({
 					});
 
 					selectedView.render();
+
+					selectedController.runSimulation();
 					return true;
 				}
 
