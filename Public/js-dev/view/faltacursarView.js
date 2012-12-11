@@ -1,5 +1,6 @@
 var FaltacursarView = Backbone.View.extend({
 	template: '',
+	templateRow: '',
 	subjectDatatableView: '',
 
 	//Cached variables
@@ -13,6 +14,8 @@ var FaltacursarView = Backbone.View.extend({
 
 	initialize: function() {
 		this.template = _.template($('#faltacursar-template').html());
+//		this.templateRow = _.template($('#faltacursar-template-row').html());
+
 		var me=this;
 		$(window).resize(function() {
 			me.resize();
@@ -36,8 +39,34 @@ var FaltacursarView = Backbone.View.extend({
 		"click #faltacursar-subject-table .ementaButton": 'clickOnEmenta'
 	},
 
+	handleOptativa: function(row) {
+		var codOpt = $(row).attr('id');
+		var nRows = faltacursarModel.getSubjectsOptativa(codOpt);		
+
+		if ($(row).hasClass('openOptativa')) {
+			$(row).removeClass('openOptativa');
+			$($(row).attr('id')+' ~ tr').slice(0,nRows.length).remove();
+		}
+		else {
+			$(row).addClass('openOptativa');
+			var arr=new Array();
+			console.log(nRows);	
+		
+/*			_.each(nRows, function(r) {
+
+				console.log(r);
+				arr.push(templateRow({subject: r}));
+			});*/
+
+	//		$(row).insertAfter(arr);
+		}
+	},
+
 	clickOnRow: function(e) {
 		var row=$(e.target).parent('tr');
+
+		if ($(row).hasClass('optativa'))
+			return handleOptativa(row);
 
 		if ($(row).hasClass('subjectBlocked'))
 			return;
