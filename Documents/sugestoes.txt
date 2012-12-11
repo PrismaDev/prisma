@@ -1,55 +1,32 @@
 
+FaltaCursar:
+
+- No falta cursar, diferenciar cursando de warning (apto).
+
+- Tratar enfases de cursos. Colocar disciplinas da enfase junto com o falta
+  cursar, tendo o cuidado de diferenciar o que é obrigatória do curso com o
+  que é obrigatória da enfase.
+
+- Adicionar turmas de maneira inteligente.
+
+- Ordernar as tuplas do faltacursar pelo periodo.
+
+
+
+Datatables:
+
 - Colocar botao para limpar campos de search do datatables
 
 - No datatables de turma, quando a altura de cada linha é variavel para
   comportar tantas linhas quanto forem necessarias. Acho que seria melhor toda
   linha ter um tamanho fixo e quando estourar, basta adicionar scroll.
 
-- No falta cursar, diferenciar cursando de warning (apto).
-
-- Assim que passar o mouse em cima da turma, adicionar na timetable um layer
-  mostrando como ficaria encaixado, mesmo que colida com alguém. Apenas para
-  efeito visual mesmo.
-
-- Tratar enfases de cursos. Colocar disciplinas da enfase junto com o falta
-  cursar, tendo o cuidado de diferenciar o que é obrigatória do curso com o
-  que é obrigatória da enfase.
-
 - Adicionar botao para fechar datatables de turmas, caso a turma referente à
   elas não esteja visivel na tela.
 
-- Adicionar turmas de maneira inteligente.
 
-- Ao clicar em uma turma na timetable, buscar pela disciplina em questao no
-  microhorario.
 
-- Ao clicar em uma celula vazia do timetable, buscar no microhorario pelas
-  disciplinas que podem ocupar aquele spot. Tentar colocar as disciplinas do
-  faltacursar na frente.
-
-- Ordernar as tuplas do faltacursar pelo periodo.
-
-- No banco de dados, adicionar campo de unidade de ensino.
-
-- Pensar nos warnings a serem apresentados em uma tela de resultado final.
-
-- No banco de dados, dar um jeito de atualizar falta cursar sem que os alunos
-  percam suas selcionadas. Adicionar atributo na turma dizendo se ela foi
-  deletada ou nao, assim como uma rule pra que ela possa ser sobreescrita.
-
-- Mandar recalcular apenas os aptos que foram atualizados na relacao entre
-  aluno e disciplina.
-
-- Adicionar tela besta de admin para que seja possivel upload de arquivos.
-
-- Adicionar tela de estatisticas para visualizacao pelos departamentos.
-
-- Preparar versao offline do sistema para apresentação
-
-- Adicionar codigo de cores na simulacao e deixar radio buttons mais
-  espaçados.
-
-- Colocar nome do usuario no header do sistema.
+Selecionadas:
 
 - Terminar sincronizacao das selecionadas com o servidor. 
 
@@ -60,17 +37,59 @@
 - Quando tem turma apenas na primeira opcao das selecionadas, fazer com que a
   coluna das demais opcoes fiquem do mesmo tamanho, e não muito menor.
 
-- Colocar campo de sugestao e email (fale conosco) no sistema.
 
-- Preparar video de screen cast no sistema, de forma a servir como help no
-  sistema.
 
-- Preparar video de screen cast no sistema, de forma a servir como help.
+Timetable:
+
+- Assim que passar o mouse em cima da turma, adicionar na timetable um layer
+  mostrando como ficaria encaixado, mesmo que colida com alguém. Apenas para
+  efeito visual mesmo.
+
+- Ao clicar em uma turma na timetable, buscar pela disciplina em questao no
+  microhorario.
+
+- Ao clicar em uma celula vazia do timetable, buscar no microhorario pelas
+  disciplinas que podem ocupar aquele spot. Tentar colocar as disciplinas do
+  faltacursar na frente.
+
+- Adicionar/corrigir codigo de cores na simulacao e deixar radio buttons mais
+  espaçados.
 
 - Corrigir bug que ocorre na timetable quando se insere turmas com mais de 3
   dias na semana, a principio. Pode acontecer em outros casos tb.
 
-- Priorizar esta lista acima, para que seja possivel entrar o máximo de
-  funcionalidade possivel. Caso uma funcionalidade importante seja muito
-  complexa, passar para a proxima fácil, de forma que esja possível fechar a
-  maior quantidade de itens dessa lista tb.
+- Simulacao deve sempre comecar na primeira opcao nas demais linhas.
+
+
+
+Banco de dados:
+
+- No banco de dados, dar um jeito de atualizar falta cursar sem que os alunos
+  percam suas selcionadas. Adicionar atributo na turma dizendo se ela foi
+  deletada ou nao, assim como uma rule pra que ela possa ser sobreescrita.
+
+- Mandar recalcular apenas os aptos que foram atualizados na relacao entre
+  aluno e disciplina.
+
+
+
+Outros:
+
+- Verificar pq o objeto aluno no DATA_VIEW da luiza esta vindo como false.
+
+- Colocar nome do usuario no header do sistema.
+
+- Colocar campo de sugestao e email (fale conosco) no sistema.
+
+- Preparar video de screen cast no sistema, de forma a servir como help.
+
+- Pensar nos warnings a serem apresentados em uma tela de resultado final.
+
+- Prepara arquivos de output do lado do servidor
+
+- Adicionar tela besta de admin para que seja possivel upload de arquivos.
+
+- Adicionar tela de estatisticas para visualizacao pelos departamentos.
+
+- Preparar versao offline do sistema para apresentação
+
