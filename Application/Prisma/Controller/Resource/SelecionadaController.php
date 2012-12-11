@@ -72,7 +72,7 @@ class SelecionadaController extends RestController
 
 		for($i = 0; $i < $len; ++$i)
 		{
-			if(!Selecionada::remove($login, $rows[$i]['FK_Turma']))
+			if(!Selecionada::remove($login, $rows[$i]->FK_Turma))
 			{
 				return 'error';
 			}
