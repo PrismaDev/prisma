@@ -1,0 +1,50 @@
+
+- Colocar botao para limpar campos de search do datatables
+
+- No datatables de turma, quando a altura de cada linha é variavel para
+  comportar tantas linhas quanto forem necessarias. Acho que seria melhor toda
+  linha ter um tamanho fixo e quando estourar, basta adicionar scroll.
+
+- No falta cursar, diferenciar cursando de warning (apto).
+
+- Assim que passar o mouse em cima da turma, adicionar na timetable um layer
+  mostrando como ficaria encaixado, mesmo que colida com alguém. Apenas para
+  efeito visual mesmo.
+
+- Tratar enfases de cursos. Colocar disciplinas da enfase junto com o falta
+  cursar, tendo o cuidado de diferenciar o que é obrigatória do curso com o
+  que é obrigatória da enfase.
+
+- Adicionar botao para fechar datatables de turmas, caso a turma referente à
+  elas não esteja visivel na tela.
+
+- Adicionar turmas de maneira inteligente.
+
+- Ao clicar em uma turma na timetable, buscar pela disciplina em questao no
+  microhorario.
+
+- Ao clicar em uma celula vazia do timetable, buscar no microhorario pelas
+  disciplinas que podem ocupar aquele spot. Tentar colocar as disciplinas do
+  faltacursar na frente.
+
+- Ordernar as tuplas do faltacursar pelo periodo.
+
+- No banco de dados, adicionar campo de unidade de ensino.
+
+- Pensar nos warnings a serem apresentados em uma tela de resultado final.
+
+- No banco de dados, dar um jeito de atualizar falta cursar sem que os alunos
+  percam suas selcionadas. Adicionar atributo na turma dizendo se ela foi
+  deletada ou nao, assim como uma rule pra que ela possa ser sobreescrita.
+
+- Mandar recalcular apenas os aptos que foram atualizados na relacao entre
+  aluno e disciplina.
+
+- Adicionar tela besta de admin para que seja possivel upload de arquivos.
+
+- Preparar versao offline do sistema para apresentação
+
+- Adicionar codigo de cores na simulacao e deixar radio buttons mais
+  espaçados.
+
+- Colocar nome do usuario no header do sistema.
