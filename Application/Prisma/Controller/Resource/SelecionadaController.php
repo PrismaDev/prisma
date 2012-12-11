@@ -63,4 +63,22 @@ class SelecionadaController extends RestController
 		return 'ok';
 	}
 
+	public function performDelete($url, $arguments, $accept) 
+	{
+		$login = $_COOKIE['login'];
+
+		$rows = json_decode($arguments['json']);
+		$len = count($rows);
+
+		for($i = 0; $i < $len; ++$i)
+		{
+			if(!Selecionada::remove($login, $rows[$i]['FK_Turma']))
+			{
+				return 'error';
+			}
+		}
+
+		return 'ok';
+	}
+
 }

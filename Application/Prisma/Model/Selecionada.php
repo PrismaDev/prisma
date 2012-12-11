@@ -22,11 +22,22 @@ class Selecionada
 
 
 		$sth = $dbh->prepare('INSERT INTO "AlunoTurmaSelecionada"("FK_Aluno", "FK_Turma", "Opcao", "NoLinha")
-					VALUES (:FK_Aluno, :FK_Turma, :Opcao, :NoLinha);');
+					VALUES (?, ?, ?, ?);');
+		return $sth->execute(array
+		(
+			$login,
+			$data->FK_Turma,
+			$data->Opcao,
+			$data->NoLinha,
+		));
+	}
 
-		$data['FK_Aluno'] = $login;
-		$sth->execute($data);
-	
-		return $sth->rowCount > 0;
+	public static function remove($login, $turma)
+	{
+		$dbh = Database::getConnection();
+
+		$sth = $dbh->prepare('DELETE FROM "AlunoTurmaSelecionada" WHERE "FK_Aluno" = ? AND "FK_Turma" = ?;');
+
+		return $sth->execute(array($login, $turma));
 	}
 }
