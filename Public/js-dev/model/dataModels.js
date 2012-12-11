@@ -13,6 +13,8 @@ var ClassModel = Backbone.Model.extend({
 		var horariosArray = this.get('Horarios');
 		var horariosList = new HorariosList(horariosArray);
 		this.set(serverDictionary.get('Horarios'),horariosList);
+
+		this.set(serverDictionary.get('Selecionada'), false);
 	},
 
 	get: function(attribute) {

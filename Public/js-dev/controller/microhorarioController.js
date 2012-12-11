@@ -10,7 +10,7 @@ function MicrohorarioController() {
 			type: 'GET',
 			data: $(formEl).serialize(),
 			dataType: 'json',
-			
+
 			success: function(data) {
 				me.handleData(data);
 			}
@@ -19,6 +19,7 @@ function MicrohorarioController() {
 
 	this.handleData = function(data) {
 		subjectList.add(data[serverDictionary.get('Dependencia')]);
+		console.log(subjectList);
 		var array = new Array();		
 
 		_.each(data[serverDictionary.get('MicroHorario')], function(classO) {
@@ -33,7 +34,8 @@ function MicrohorarioController() {
 				'subjectName': subjectModel.get('NomeDisciplina'),
 				'professorName' : classModel.get('NomeProfessor'),
 				'schedule': classModel.printSchedule(),
-				'code': classModel.get('CodigoTurma')
+				'code': classModel.get('CodigoTurma'),
+				'classId': classModel.get('PK_Turma')
 			};
 
 			array.push(object);

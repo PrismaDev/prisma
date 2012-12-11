@@ -15,9 +15,9 @@
 		</thead>
 		<tbody>
 			<% _.each(classes, function(classO) { %>
-				<tr>
+				<tr class="<%= classO.selected? 'chosen ': ''%>">
 					<input type="hidden" name="subjectCode" value="<%= classO.subjectCode %>" />
-					<input type="hidden" name="classCode" value="<%= classO.code %>" />
+					<input type="hidden" name="classId" value="<%= classO.classId %>" />
 					<% if (subjectInfo) { %>
 						<td><%= classO.subjectCode %></td>
 						<td><%= classO.subjectName %></td>
@@ -205,7 +205,7 @@
 <script type="text/underscore-template" id="selected-draggable-template">
 	<div class="classDraggable">
 		<input type="hidden" name="subjectCode" value="<%= subjectCode %>" />
-		<input type="hidden" name="classCode" value="<%= classCode %>" />
+		<input type="hidden" name="classCode" value="<%= classId %>" />
 		<button type="button" class="close">×</button>
 		<%= subjectCode %> - <%= classCode %>
 	</div>

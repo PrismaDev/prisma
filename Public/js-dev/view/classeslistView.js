@@ -14,18 +14,33 @@ var ClasseslistView = Backbone.View.extend({
 
 	clickOnClass: function(e) {
 		var row = $(e.target).parent('tr');
+
 		var subjectCode = $(row).find('input[type="hidden"][name="subjectCode"]').attr('value');
-		var classCode = $(row).find('input[type="hidden"][name="classCode"]').attr('value');
-		console.log(subjectCode+' - '+classCode);
+		var classId = $(row).find('input[type="hidden"][name="classId"]').attr('value');
 
 		if ($(row).hasClass('chosen')) {
 			$(row).removeClass('chosen');
-			selectedModel.removeClass(subjectCode,classCode);
+			selectedModel.removeClass(subjectCode,classId);
 		}
 		else {
 			$(row).addClass('chosen');
-			selectedModel.addClass(subjectCode,classCode);
+			selectedModel.addClass(subjectCode,classId);
 		}
+	},
+
+	changeRow: function(subjectCode, classId, select) {
+		this.$el.find('tr').each(function() {		
+			var _subjectCode = $(this).find('input[type="hidden"][name="subjectCode"]').attr('value');
+			var _classId = $(this).find('input[type="hidden"][name="classId"]').attr('value');	
+
+			console.log(subjectCode+' '+classId);
+			console.log(_subjectCode+' '+_classId);
+
+			if (_subjectCode==subjectCode && _classId==classId) {
+				if (select) $(this).addClass('chosen');
+				else $(this).removeClass('chosen');
+			}
+		});
 	},
 
 	cache: function() {

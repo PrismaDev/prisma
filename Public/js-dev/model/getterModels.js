@@ -35,7 +35,9 @@ var FaltacursarModel = Backbone.Model.extend({
 				'professorName': classO.get('NomeProfessor'),
 				'code': classO.get('CodigoTurma'),
 				'schedule': classO.printSchedule(),
-				'subjectCode': subjectModel.get('CodigoDisciplina')
+				'subjectCode': subjectModel.get('CodigoDisciplina'),
+				'classId': classO.get('PK_Turma'),
+				'selected': classO.get('Selecionada')
 			};
 
 			array.push(object);
@@ -46,7 +48,3 @@ var FaltacursarModel = Backbone.Model.extend({
 });
 
 var faltacursarModel = new FaltacursarModel();
-
-var SelectedModel = Backbone.Model.extend({
-	
-});

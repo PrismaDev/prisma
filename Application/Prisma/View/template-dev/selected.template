@@ -41,7 +41,7 @@
 <script type="text/underscore-template" id="selected-draggable-template">
 	<div class="classDraggable">
 		<input type="hidden" name="subjectCode" value="<%= subjectCode %>" />
-		<input type="hidden" name="classCode" value="<%= classCode %>" />
+		<input type="hidden" name="classCode" value="<%= classId %>" />
 		<button type="button" class="close">×</button>
 		<%= subjectCode %> - <%= classCode %>
 	</div>
