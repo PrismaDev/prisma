@@ -18,12 +18,12 @@ var ClasseslistView = Backbone.View.extend({
 		var subjectCode = $(row).find('input[type="hidden"][name="subjectCode"]').attr('value');
 		var classId = $(row).find('input[type="hidden"][name="classId"]').attr('value');
 
-		if ($(row).hasClass('chosen')) {
-			$(row).removeClass('chosen');
+		if ($(row).hasClass('classChosen')) {
+			$(row).removeClass('classChosen');
 			selectedModel.removeClass(subjectCode,classId);
 		}
 		else {
-			$(row).addClass('chosen');
+			$(row).addClass('classChosen');
 			selectedModel.addClass(subjectCode,classId);
 		}
 	},
@@ -34,8 +34,8 @@ var ClasseslistView = Backbone.View.extend({
 			var _classId = $(this).find('input[type="hidden"][name="classId"]').attr('value');	
 
 			if (_subjectCode==subjectCode && _classId==classId) {
-				if (select) $(this).addClass('chosen');
-				else $(this).removeClass('chosen');
+				if (select) $(this).addClass('classChosen');
+				else $(this).removeClass('classChosen');
 			}
 		});
 	},

@@ -15,7 +15,12 @@
 		</thead>
 		<tbody>
 			<% _.each(classes, function(classO) { %>
-				<tr class="<%= classO.selected? 'chosen ': ''%>">
+				<tr class="
+						<%= classO.status=="CP"? 'subjectDisabled ' : '' %> 
+						<%= classO.status=="EA"? 'subjectWarning ' : '' %>
+						<%= classO.able==0? 'subjectBlocked ': '' %>
+						<%= classO.able==1? 'subjectWarning ': '' %>	
+					">
 					<input type="hidden" name="subjectCode" value="<%= classO.subjectCode %>" />
 					<input type="hidden" name="classId" value="<%= classO.classId %>" />
 					<% if (subjectInfo) { %>
