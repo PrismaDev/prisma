@@ -111,6 +111,7 @@ var FaltacursarView = Backbone.View.extend({
 			'bPaginate': false,
 			'bScrollCollapse': true,
 			'sScrollY': '200px',
+			'bSort': false,
 			'fnDrawCallback': function(oSettings) {
 				me.calculateTableScroll()
 			}

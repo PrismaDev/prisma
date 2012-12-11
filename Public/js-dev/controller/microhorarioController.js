@@ -19,7 +19,6 @@ function MicrohorarioController() {
 
 	this.handleData = function(data) {
 		subjectList.add(data[serverDictionary.get('Dependencia')]);
-		console.log(subjectList);
 		var array = new Array();		
 
 		_.each(data[serverDictionary.get('MicroHorario')], function(classO) {

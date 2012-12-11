@@ -76,6 +76,7 @@ var ClasseslistView = Backbone.View.extend({
 			'bPaginate': false,
 			'bScrollCollapse': true,
 			'sScrollY': '100px',
+			'bSort': false,
 			'fnDrawCallback': function(oSettings) {
 				me.calculateTableScroll();
 			}
