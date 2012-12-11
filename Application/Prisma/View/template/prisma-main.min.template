@@ -221,7 +221,13 @@
 		</thead>
 		<tbody>
 			<% _.each(subjects, function(subject) { %>
-				<tr id="<%= subject.code %>">
+				<tr id="<%= subject.code %>" 
+					class="
+						<%= subject.able==0? 'subjectBlocked' : '' %>
+						<%= subject.able==1? 'subjectWarning' : '' %>
+						<%= subject.status=="EA"? 'subjectWarning' : '' %>
+						<%= subject.status=="CP"? 'subjectDisabled': '' %>		
+					">
 					<td><%= subject.code %></td>
 					<td><%= subject.name %></td>
 					<td><%= subject.term %></td>

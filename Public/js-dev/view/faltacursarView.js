@@ -39,8 +39,11 @@ var FaltacursarView = Backbone.View.extend({
 	clickOnRow: function(e) {
 		var row=$(e.target).parent('tr');
 
-		if ($(row).hasClass('row_selected')) {
-			$(row).removeClass('row_selected');
+		if ($(row).hasClass('subjectBlocked'))
+			return;
+
+		if ($(row).hasClass('subjectSelected')) {
+			$(row).removeClass('subjectSelected');
         		
 			$(this.subjectTableWrapper).addClass('whole')
 						.removeClass('half');
@@ -48,9 +51,9 @@ var FaltacursarView = Backbone.View.extend({
 			$(this.classesDiv).addClass('hidden');
 		}
 		else {
-			$(this.subjectTable).find('tr.row_selected')
-				.removeClass('row_selected');
-			$(row).addClass('row_selected');
+			$(this.subjectTable).find('subjectSelected')
+				.removeClass('subjectSelected');
+			$(row).addClass('subjectSelected');
 			
 			$(this.subjectTableWrapper).addClass('half')
 						.removeClass('whole');

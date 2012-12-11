@@ -28,20 +28,20 @@
   clear: both;
   margin: 0;
 }
-tr.row_selected {
-  background-color: #a0c8ff;
-}
-tr.blocked {
-  background-color: #b4ffb4;
-}
-tr.warning {
+tr.subjectBlocked {
   background-color: #ffb4aa;
 }
-tr.chosen {
+tr.subjectWarning {
   background-color: #faff96;
 }
-tr.disabled {
+tr.classChosen {
+  background-color: #b4ffb4;
+}
+tr.subjectDisabled {
   background-color: #c8c8c8;
+}
+tr.subjectSelected {
+  background-color: #a0c8ff !important;
 }
 .dropdown-menu {
   padding: 10px;

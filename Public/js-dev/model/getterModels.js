@@ -5,6 +5,7 @@ var FaltacursarModel = Backbone.Model.extend({
 
 	getSubjects: function() {
 		var array=new Array();
+		console.log(subjectList);
 		
 		_.each(this.get('Disciplinas'), function(disciplina) {
 			var subjectModel = subjectList.get(disciplina[
@@ -16,7 +17,9 @@ var FaltacursarModel = Backbone.Model.extend({
 				'code': subjectModel.get('CodigoDisciplina'),
 				'name': subjectModel.get('NomeDisciplina'),
 				'term': disciplina[serverDictionary.get('PeriodoAno')],
-				'credits': subjectModel.get('Creditos')			
+				'credits': subjectModel.get('Creditos'),		
+				'able': subjectModel.get('Apto'),
+				'status': subjectModel.get('Situacao')
 			};
 
 			array.push(object);
