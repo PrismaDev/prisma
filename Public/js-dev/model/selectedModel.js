@@ -33,6 +33,15 @@ var SelectedModel = Backbone.Model.extend({
 					microhorarioClasseslistView.changeRow(subjectCode, classId, false);
 					faltacursarClasseslistView.changeRow(subjectCode, classId, false);
 
+					$.ajax({
+						type: 'DELETE',
+						url: '/api/selecionada',
+						data: 'json='+JSON.stringify([{FK_Turma: classId}]),
+						success: function(msg){
+							console.log('DELETE // Disciplina: '+subjectCode+' // Turma: '+classId+' // Msg: '+msg);
+						}
+					});
+
 					selectedView.render();
 					return true;
 				}
@@ -55,6 +64,15 @@ var SelectedModel = Backbone.Model.extend({
 
 					microhorarioClasseslistView.changeRow(subjectCode, classId, true);
 					faltacursarClasseslistView.changeRow(subjectCode, classId, true);
+
+					$.ajax({
+						type: 'POST',
+						url: '/api/selecionada',
+						data: 'json='+JSON.stringify([{FK_Turma: classId, NoLinha: i, Opcao: j}]),
+						success: function(msg){
+							console.log('POST // Disciplina: '+subjectCode+' // Turma: '+classId+' // Msg: '+msg);
+						}
+					});
 
 					selectedView.render();
 					return true;

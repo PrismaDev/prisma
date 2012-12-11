@@ -20,7 +20,6 @@ class Selecionada
 	{
 		$dbh = Database::getConnection();
 
-
 		$sth = $dbh->prepare('INSERT INTO "AlunoTurmaSelecionada"("FK_Aluno", "FK_Turma", "Opcao", "NoLinha")
 					VALUES (?, ?, ?, ?);');
 		return $sth->execute(array
