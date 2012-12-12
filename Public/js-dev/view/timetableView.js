@@ -22,7 +22,6 @@ var TimetableView = Backbone.View.extend({
 				}
 		}
 
-console.log(classesArray);
 		for (var i=0; i<classesArray.length; i++)
 			for (var j=0; j<classesArray[i].horarios.length; j++) {
 				var d=classesArray[i].horarios[j].get('DiaSemana')-2;
@@ -31,12 +30,11 @@ console.log(classesArray);
 
 				timetableMatrix[s][d].string=classesArray[i].nome;
 				timetableMatrix[s][d].span=Number(e)-Number(s);
-				timetableMatrix[s][d].customClass='ttclass'+i;
+				timetableMatrix[s][d].customClass='ttclass'+
+					classesArray[i].cssClass;
 
-				for (var k=s+1; k<e; k++) {
+				for (var k=s+1; k<e; k++)
 					timetableMatrix[k][d].span=0;
-					timetableMatrix[k][d].customClass='ttclass'+i;
-				}
 			}
 
 		return timetableMatrix;

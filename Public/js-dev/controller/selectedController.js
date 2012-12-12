@@ -79,7 +79,16 @@ function SelectedController() {
 
 					if(gud)
 					{
-						accepted.push({classObj:classModel,subjectCode:subjectCode});
+						var cssClass="";
+						for (var i=0; i<selectedModel.maxRows; i++)
+							if ($(row).hasClass('row'+i))
+								cssClass=i;
+
+						accepted.push({
+							classObj: classModel,
+							subjectCode: subjectCode,
+							cssClass: cssClass
+						});
 						break;
 					}
 				}
@@ -94,7 +103,8 @@ function SelectedController() {
 		{
 			timetable.push({
 				nome: accepted[idx].subjectCode+' - '+accepted[idx].classObj.get('CodigoTurma'),
-				horarios: accepted[idx].classObj.get('Horarios').models
+				horarios: accepted[idx].classObj.get('Horarios').models,
+				cssClass: accepted[idx].cssClass
 			});
 		}
 
