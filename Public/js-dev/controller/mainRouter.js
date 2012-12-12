@@ -15,6 +15,7 @@ var MainRouter = Backbone.Router.extend({
 		selectedModel.setFromServer(DATA_VIEW.Data[serverDictionary.get('Selecionadas')]);
 
 		mainView.render();
+		selectedController.runSimulation();
 	}
 });
 
