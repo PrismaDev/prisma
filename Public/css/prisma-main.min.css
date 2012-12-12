@@ -167,16 +167,12 @@ div.fieldContainer {
 #main-selected-div table thead {
   padding: 0;
 }
-#main-selected-div table tr,
-#main-selected-div table thead {
-  height: 40px;
-}
 #main-selected-div table tr td,
 #main-selected-div table thead td,
 #main-selected-div table tr th,
 #main-selected-div table thead th {
   padding: 0px;
-  height: 40px;
+  height: 30px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
