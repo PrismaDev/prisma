@@ -176,6 +176,7 @@ div.fieldContainer {
 #main-selected-div table tr th,
 #main-selected-div table thead th {
   padding: 0px;
+  height: 40px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -186,7 +187,7 @@ div.fieldContainer {
 #main-selected-div table thead td.radio,
 #main-selected-div table tr th.radio,
 #main-selected-div table thead th.radio {
-  width: 20px;
+  width: 2%;
 }
 #main-selected-div table tr td.radio input,
 #main-selected-div table thead td.radio input,
@@ -198,7 +199,7 @@ div.fieldContainer {
 #main-selected-div table thead td.classDroppable,
 #main-selected-div table tr th.classDroppable,
 #main-selected-div table thead th.classDroppable {
-  height: 100%;
+  width: 31%;
   -moz-box-shadow: inset 2px 2px 4px #333333;
   -webkit-box-shadow: inset 2px 2px 4px #333333;
   box-shadow: inset 2px 2px 4px #333333;
