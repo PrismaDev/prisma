@@ -49,7 +49,7 @@ class SelecionadaController extends RestController
 	{
 		$login = $_COOKIE['login'];
 
-		$rows = json_decode($arguments['json']);
+		$rows = json_decode(str_replace('\\"','"',$arguments['json']));
 		$len = count($rows);
 
 		for($i = 0; $i < $len; ++$i)
