@@ -6,10 +6,15 @@ var MainRouter = Backbone.Router.extend({
 
 	loadPage: function() {
 		serverDictionary.set(DATA_VIEW.Dicionario);
-//		layoutStringsModel.set('userName', 
-//			DATA_VIEW.Data[serverDictionary.get('Aluno')][serverDictionary.get('NomeAluno')]);
+
+		layoutStringsModel.set('userName', 
+			DATA_VIEW.Data[serverDictionary.get('Usuario')][serverDictionary.get('NomeAluno')]);
+
 		subjectList.add(DATA_VIEW.Data[serverDictionary.get('Dependencia')]);
 		faltacursarModel.set(DATA_VIEW.Data[serverDictionary.get('FaltaCursar')]);
+		console.log(DATA_VIEW.Data[serverDictionary.get('Selecionadas')]);
+		selectedModel.setFromServer(DATA_VIEW.Data[serverDictionary.get('Selecionadas')]);
+
 		mainView.render();
 	}
 });

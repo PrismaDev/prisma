@@ -15,6 +15,17 @@ var SelectedModel = Backbone.Model.extend({
 				options[i][j]=null;
 	},
 
+	setFromServer: function(data) {
+		_.each(data, function(row) {
+			var subjectCode = row[serverDictionary.get('CodigoDisciplina')];
+			var classId = row[serverDictionary.get('FK_Turma')];
+			var i = row[serverDictionary.get('NoLinha')];
+			var j = row[serverDictionary.get('Opcao')];
+
+			console.log(subjectCode+' '+classId+' '+i+' '+j);
+		});
+	},
+
 	getData: function() {
 		return options;
 	},
