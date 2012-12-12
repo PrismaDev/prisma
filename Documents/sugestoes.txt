@@ -2,6 +2,7 @@
 FaltaCursar:
 
 - No falta cursar, diferenciar cursando de warning (apto).
+(labels gmail style - http://twitter.github.com/bootstrap/components.html#labels-badges)
 
 - Tratar enfases de cursos. Colocar disciplinas da enfase junto com o falta
   cursar, tendo o cuidado de diferenciar o que é obrigatória do curso com o
