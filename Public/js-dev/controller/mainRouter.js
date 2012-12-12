@@ -12,7 +12,6 @@ var MainRouter = Backbone.Router.extend({
 
 		subjectList.add(DATA_VIEW.Data[serverDictionary.get('Dependencia')]);
 		faltacursarModel.set(DATA_VIEW.Data[serverDictionary.get('FaltaCursar')]);
-		console.log(DATA_VIEW.Data[serverDictionary.get('Selecionadas')]);
 		selectedModel.setFromServer(DATA_VIEW.Data[serverDictionary.get('Selecionadas')]);
 
 		mainView.render();

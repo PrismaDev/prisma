@@ -22,7 +22,11 @@ var SelectedModel = Backbone.Model.extend({
 			var i = row[serverDictionary.get('NoLinha')];
 			var j = row[serverDictionary.get('Opcao')];
 
-			console.log(subjectCode+' '+classId+' '+i+' '+j);
+			options[i][j] = {
+				'subjectCode': subjectCode,
+				'classCode': subjectList.get(subjectCode).get('Turmas').get(classId).get('CodigoTurma'),
+				'classId': classId
+			};
 		});
 	},
 
