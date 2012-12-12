@@ -132,13 +132,14 @@ var FaltacursarView = Backbone.View.extend({
 		var notHeight = $(this.subjectTableBody).outerHeight(true)-
 			$(this.subjectTableBody).height();
 		$(this.subjectTableBody).height(h-headerH-notHeight);
+	
 	},
 
 	initJS: function() {
 		var me = this;
 
 		this.subjectDatatable = $('#faltacursar-subject-table').dataTable({
-			'sDom': 'ftS',
+			'sDom': 'ft',
 			'bPaginate': false,
 			'bScrollCollapse': true,
 			'sScrollY': '200px',
