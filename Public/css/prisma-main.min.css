@@ -206,7 +206,6 @@ div.fieldContainer {
 }
 #main-selected-div table tr.row0 td {
   padding: 0;
-  height: 100%;
 }
 #main-selected-div table tr.row0 td div {
   width: 97%;
@@ -222,7 +221,6 @@ div.fieldContainer {
 }
 #main-selected-div table tr.row1 td {
   padding: 0;
-  height: 100%;
 }
 #main-selected-div table tr.row1 td div {
   width: 97%;
@@ -238,7 +236,6 @@ div.fieldContainer {
 }
 #main-selected-div table tr.row2 td {
   padding: 0;
-  height: 100%;
 }
 #main-selected-div table tr.row2 td div {
   width: 97%;
@@ -254,7 +251,6 @@ div.fieldContainer {
 }
 #main-selected-div table tr.row3 td {
   padding: 0;
-  height: 100%;
 }
 #main-selected-div table tr.row3 td div {
   width: 97%;
@@ -270,7 +266,6 @@ div.fieldContainer {
 }
 #main-selected-div table tr.row4 td {
   padding: 0;
-  height: 100%;
 }
 #main-selected-div table tr.row4 td div {
   width: 97%;
@@ -286,7 +281,6 @@ div.fieldContainer {
 }
 #main-selected-div table tr.row5 td {
   padding: 0;
-  height: 100%;
 }
 #main-selected-div table tr.row5 td div {
   width: 97%;
@@ -302,7 +296,6 @@ div.fieldContainer {
 }
 #main-selected-div table tr.row6 td {
   padding: 0;
-  height: 100%;
 }
 #main-selected-div table tr.row6 td div {
   width: 97%;
@@ -318,7 +311,6 @@ div.fieldContainer {
 }
 #main-selected-div table tr.row7 td {
   padding: 0;
-  height: 100%;
 }
 #main-selected-div table tr.row7 td div {
   width: 97%;
@@ -334,7 +326,6 @@ div.fieldContainer {
 }
 #main-selected-div table tr.row8 td {
   padding: 0;
-  height: 100%;
 }
 #main-selected-div table tr.row8 td div {
   width: 97%;
@@ -350,7 +341,6 @@ div.fieldContainer {
 }
 #main-selected-div table tr.row9 td {
   padding: 0;
-  height: 100%;
 }
 #main-selected-div table tr.row9 td div {
   width: 97%;
@@ -366,7 +356,6 @@ div.fieldContainer {
 }
 #main-selected-div table tr.row10 td {
   padding: 0;
-  height: 100%;
 }
 #main-selected-div table tr.row10 td div {
   width: 97%;
@@ -382,7 +371,6 @@ div.fieldContainer {
 }
 #main-selected-div table tr.row11 td {
   padding: 0;
-  height: 100%;
 }
 #main-selected-div table tr.row11 td div {
   width: 97%;
@@ -411,8 +399,8 @@ div.fieldContainer {
   text-align: right;
 }
 #main-timetable-div table tr td.ttclass0 {
-  padding: 0;
   height: 100%;
+  padding: 0;
 }
 #main-timetable-div table tr td.ttclass0 div {
   width: 97%;
@@ -427,8 +415,8 @@ div.fieldContainer {
   text-align: center;
 }
 #main-timetable-div table tr td.ttclass1 {
-  padding: 0;
   height: 100%;
+  padding: 0;
 }
 #main-timetable-div table tr td.ttclass1 div {
   width: 97%;
@@ -443,8 +431,8 @@ div.fieldContainer {
   text-align: center;
 }
 #main-timetable-div table tr td.ttclass2 {
-  padding: 0;
   height: 100%;
+  padding: 0;
 }
 #main-timetable-div table tr td.ttclass2 div {
   width: 97%;
@@ -459,8 +447,8 @@ div.fieldContainer {
   text-align: center;
 }
 #main-timetable-div table tr td.ttclass3 {
-  padding: 0;
   height: 100%;
+  padding: 0;
 }
 #main-timetable-div table tr td.ttclass3 div {
   width: 97%;
@@ -475,8 +463,8 @@ div.fieldContainer {
   text-align: center;
 }
 #main-timetable-div table tr td.ttclass4 {
-  padding: 0;
   height: 100%;
+  padding: 0;
 }
 #main-timetable-div table tr td.ttclass4 div {
   width: 97%;
@@ -491,8 +479,8 @@ div.fieldContainer {
   text-align: center;
 }
 #main-timetable-div table tr td.ttclass5 {
-  padding: 0;
   height: 100%;
+  padding: 0;
 }
 #main-timetable-div table tr td.ttclass5 div {
   width: 97%;
@@ -507,8 +495,8 @@ div.fieldContainer {
   text-align: center;
 }
 #main-timetable-div table tr td.ttclass6 {
-  padding: 0;
   height: 100%;
+  padding: 0;
 }
 #main-timetable-div table tr td.ttclass6 div {
   width: 97%;
@@ -523,8 +511,8 @@ div.fieldContainer {
   text-align: center;
 }
 #main-timetable-div table tr td.ttclass7 {
-  padding: 0;
   height: 100%;
+  padding: 0;
 }
 #main-timetable-div table tr td.ttclass7 div {
   width: 97%;
@@ -539,8 +527,8 @@ div.fieldContainer {
   text-align: center;
 }
 #main-timetable-div table tr td.ttclass8 {
-  padding: 0;
   height: 100%;
+  padding: 0;
 }
 #main-timetable-div table tr td.ttclass8 div {
   width: 97%;
@@ -555,8 +543,8 @@ div.fieldContainer {
   text-align: center;
 }
 #main-timetable-div table tr td.ttclass9 {
-  padding: 0;
   height: 100%;
+  padding: 0;
 }
 #main-timetable-div table tr td.ttclass9 div {
   width: 97%;
@@ -571,8 +559,8 @@ div.fieldContainer {
   text-align: center;
 }
 #main-timetable-div table tr td.ttclass10 {
-  padding: 0;
   height: 100%;
+  padding: 0;
 }
 #main-timetable-div table tr td.ttclass10 div {
   width: 97%;
@@ -587,8 +575,8 @@ div.fieldContainer {
   text-align: center;
 }
 #main-timetable-div table tr td.ttclass11 {
-  padding: 0;
   height: 100%;
+  padding: 0;
 }
 #main-timetable-div table tr td.ttclass11 div {
   width: 97%;
