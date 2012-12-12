@@ -71,6 +71,9 @@ Banco de dados:
 - Mandar recalcular apenas os aptos que foram atualizados na relacao entre
   aluno e disciplina.
 
+- Adicionar informacao de curso no json de usuario
+
+- Adicionar informacao da unidade que a turma é oferecida
 
 
 Outros:
@@ -92,4 +95,6 @@ Outros:
 - Adicionar tela de estatisticas para visualizacao pelos departamentos.
 
 - Preparar versao offline do sistema para apresentação
+
+- Não estamos tratando turmas que não tem horário.
 

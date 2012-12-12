@@ -25,7 +25,7 @@ var TimetableView = Backbone.View.extend({
 console.log(classesArray);
 		for (var i=0; i<classesArray.length; i++)
 			for (var j=0; j<classesArray[i].horarios.length; j++) {
-				var d=classesArray[i].horarios[j].get('DiaSemana');
+				var d=classesArray[i].horarios[j].get('DiaSemana')-2;
 				var s=classesArray[i].horarios[j].get('HoraInicial');
 				var e=classesArray[i].horarios[j].get('HoraFinal');
 
