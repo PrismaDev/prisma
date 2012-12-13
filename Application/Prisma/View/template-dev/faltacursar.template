@@ -20,7 +20,13 @@
 					">
 					<td><%= (subject.optativa? '<img src="img/Setinha Mini copy.PNG" />': '') %></td>
 					<td><%= subject.code %></td>
-					<td><%= subject.name %></td>
+					<td><%= subject.name %>
+						<% if (subject.status=="EA") { %>
+							<span class="label label-warning">
+								<%= subjectTableStr.get('ongoingStr') %>
+							</span>
+						<% } %>
+					</td>
 					<td><%= subject.term %></td>
 					<td><%= subject.credits %></td>
 					<td>
@@ -48,7 +54,9 @@
 					">
 					<td><%= (subject.optativa? '<img src="img/Setinha Mini copy.PNG" />': '') %></td>
 					<td><%= subject.code %></td>
-					<td><%= subject.name %></td>
+					<td><%= subject.name %>
+						<%= subject.status=="EA"? '<span class="label label-warning">'+subjectTableStr.get('ongoingStr')+'</span>': '' %>
+					</td>
 					<td><%= subject.term %></td>
 					<td><%= subject.credits %></td>
 					<td>

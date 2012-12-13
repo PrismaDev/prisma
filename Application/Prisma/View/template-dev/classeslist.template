@@ -25,7 +25,13 @@
 					<input type="hidden" name="classId" value="<%= classO.classId %>" />
 					<% if (subjectInfo) { %>
 						<td><%= classO.subjectCode %></td>
-						<td><%= classO.subjectName %></td>
+						<td><%= classO.subjectName %>
+							<% if (classO.status=="EA") { %>
+								<span class="label label-warning">
+									<%= subjectTableStr.get('ongoingStr') %>
+								</span>
+							<% } %>
+						</td>
 					<% } %>
 					<td><%= classO.professorName %></td>
 					<td><%= classO.schedule %></td>

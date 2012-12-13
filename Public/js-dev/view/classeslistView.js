@@ -89,6 +89,7 @@ var ClasseslistView = Backbone.View.extend({
 		this.$el.html(this.template({
 			classes: classesArray,
 			classesTableStr: classesTableStringsModel,
+			subjectTableStr: subjectTableStringsModel,
 			subjectInfo: this.subjectInfo
 		}));	
 

@@ -65,7 +65,8 @@ var SubjectTableStringsModel = Backbone.Model.extend({
 		'creditsLabel': 'Nº de créditos',
 		'ementaHeaderLabel': 'Ementa',
 		'ementaLinkLabel': 'Ver ementa',
-		'ementaBaseLink': 'http://www.puc-rio.br/ferramentas/ementas/ementa.aspx?cd='
+		'ementaBaseLink': 'http://www.puc-rio.br/ferramentas/ementas/ementa.aspx?cd=',
+		'ongoingStr': 'Cursando'
 	}
 });
 
