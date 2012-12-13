@@ -25,7 +25,7 @@ Class LoginController extends RestController
 	public function performPost($url, $arguments, $accept) 
 	{
 		$login 	= $arguments['matricula'];
-		$passwd = sha1($arguments['senha']);
+		$passwd = $arguments['senha'];
 		$type 	= $arguments['tipo'];
 
 		if(Auth::login($login, $passwd, $type))
