@@ -5,24 +5,26 @@ var SelectedModel = Backbone.Model.extend({
 	nOptions: 3,
 
 	initialize: function() {
-		options=new Array();
+		this.options=new Array();
 
 		for (var i=0; i<this.maxRows; i++)
-			options[i]=new Array();
+			this.options[i]=new Array();
 	
 		for (var i=0; i<this.maxRows; i++)
 			for (var j=0; j<this.nOptions; j++)
-				options[i][j]=null;
+				this.options[i][j]=null;
 	},
 
 	setFromServer: function(data) {
+		var me=this;
+
 		_.each(data, function(row) {
 			var subjectCode = row[serverDictionary.get('CodigoDisciplina')];
 			var classId = row[serverDictionary.get('FK_Turma')];
 			var i = row[serverDictionary.get('NoLinha')];
 			var j = row[serverDictionary.get('Opcao')];
 
-			options[i][j] = {
+			me.options[i][j] = {
 				'subjectCode': subjectCode,
 				'classCode': subjectList.get(subjectCode).get('Turmas').get(classId).get('CodigoTurma'),
 				'classId': classId
@@ -30,8 +32,59 @@ var SelectedModel = Backbone.Model.extend({
 		});
 	},
 
+	setAll: function(data) {
+		for (var i=0; i<this.maxRows; i++)
+			for (var j=0; j<this.nOptions; j++)
+				this.options[i][j]=data[i][j];
+		
+		var arr=new Array();
+		var cnt=0;
+
+		for (var i=0; i<this.maxRows; i++) {
+			for (var j=0; j<this.nOptions; j++)
+				if (this.options[i][j]!=null) 
+					arr[cnt++]=this.formatForPost(i,j);
+		}
+
+		$.ajax({
+			type: 'POST',
+			url: '/api/selecionada',
+			data: 'json='+JSON.stringify(arr),
+			success: function(msg){
+				console.log('POST // All  // Msg: '+msg);
+			}
+		});
+	},
+
+	formatForPost: function(i,j) {
+		return {
+			'NoLinha': i,
+			'Opcao': j,
+			'FK_Turma': this.options[i][j].classId	
+		}
+	},
+
+	swapContent: function(ai, aj, bi, bj) {
+		var tmp=this.options[ai][aj];
+		this.options[ai][aj]=this.options[bi][bj];
+		this.options[bi][bj]=tmp;
+
+		var arr=new Array;
+		if (this.options[ai][aj]!=null) arr.push(this.formatForPost(ai,aj));
+		if (this.options[bi][bj]!=null) arr.push(this.formatForPost(bi,bj));
+
+		$.ajax({
+			type: 'POST',
+			url: '/api/selecionada',
+			data: 'json='+JSON.stringify(arr),
+			success: function(msg){
+				console.log('POST // Swap  // Msg: '+msg);
+			}
+		});
+	},
+
 	getData: function() {
-		return options;
+		return this.options;
 	},
 
 	removeClass: function(subjectCode, classId) {

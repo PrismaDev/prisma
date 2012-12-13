@@ -81,8 +81,10 @@ function SelectedController() {
 					{
 						var cssClass="";
 						for (var i=0; i<selectedModel.maxRows; i++)
-							if ($(row).hasClass('row'+i))
+							if ($(row).hasClass('row'+i)) {
 								cssClass=i;
+								break;
+							}
 
 						accepted.push({
 							classObj: classModel,
@@ -109,6 +111,53 @@ function SelectedController() {
 		}
 
 		timetableView.render(timetable);
+	}
+
+	var getValues = function(td) {
+		if ($(td).find('div').length==0)
+			return null;
+		
+		var classId = $(td).find('input[type="hidden"][name="classCode"]').attr('value');
+		var subjectCode = $(td).find('input[type="hidden"][name="subjectCode"]').attr('value');
+	
+		return {'subjectCode': subjectCode, 'classId': classId,
+			'classCode': subjectList.get(subjectCode).get('Turmas').get(classId).get('CodigoTurma')};
+	}
+
+	this.sortLines = function() {
+		var state = new Array();
+		for (var i=0; i<selectedModel.maxRows; i++)
+			state[i]=new Array();
+
+		var rows = $('#main-selected-div tbody tr');
+		var i=0;
+
+		_.each(rows, function(row) {
+			var tds = $(row).find('.classDroppable');	
+			var j=0;	
+
+			_.each(tds, function(td) {
+				state[i][j]=getValues(td);
+				j++;
+			});
+
+			i++;
+		});
+
+		selectedModel.setAll(state);
+	}
+
+	this.swapPlaces = function(tdA, tdB) {
+		var ai, bi, aj, bj;
+
+		var rows = $('#main-selected-div tbody tr');
+		ai = $(rows).index($(tdA).parent());			
+		bi = $(rows).index($(tdB).parent());			
+
+		aj = $($(tdA).parent().children('.classDroppable')).index(tdA);
+		bj = $($(tdB).parent().children('.classDroppable')).index(tdB);
+
+		selectedModel.swapContent(ai,aj,bi,bj);
 	}	
 }
 

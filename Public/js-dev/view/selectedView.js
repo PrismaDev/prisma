@@ -114,6 +114,7 @@ var SelectedView = Backbone.View.extend({
 				$('input[name="'+index+'"][value="'+value+'"]').prop('checked', true);
 			});
 
+			selectedController.sortLines();
 			selectedController.runSimulation();
 		});
 	},
@@ -128,6 +129,8 @@ var SelectedView = Backbone.View.extend({
 	droppableInit: function() {
 		var $drop = this.$el.find('td.classDroppable').droppable({
 			drop: function(event, ui) {
+				selectedController.swapPlaces($(this), $(ui.draggable).parent());
+				
 				if ($(this).has('div.classDraggable')) {
 					$(ui.draggable).parent().append(
 						$(this).find('div.classDraggable')
