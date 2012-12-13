@@ -10,7 +10,7 @@ class Usuario
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "Matricula", "NomeAluno", "UltimoAcesso", "CR" as "CoeficienteRendimento" FROM "UsuarioAluno" where "Matricula" = ?;');
+		$sth = $dbh->prepare('SELECT "Matricula", "NomeAluno", "Curso", "UltimoAcesso", "CR" as "CoeficienteRendimento" FROM "UsuarioAluno" where "Matricula" = ?;');
 		$sth->execute(array($login));
 
 		return $sth->fetch(\PDO::FETCH_ASSOC);	

@@ -102,6 +102,7 @@ class Common
 			'DiaSemana'		=> 'O',
 			'HoraInicial'		=> 'P',
 			'HoraFinal'		=> 'A',
+			'Curso'			=> 'S'
 		);
 	}
 
