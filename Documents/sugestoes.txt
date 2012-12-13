@@ -8,11 +8,6 @@ FaltaCursar:
   cursar, tendo o cuidado de diferenciar o que é obrigatória do curso com o
   que é obrigatória da enfase.
 
-- Adicionar turmas de maneira inteligente.
-
-- Ordernar as tuplas do faltacursar pelo periodo.
-
-
 
 Datatables:
 
@@ -26,7 +21,6 @@ Datatables:
   elas não esteja visivel na tela.
 
 
-
 Selecionadas:
 
 - Terminar sincronizacao das selecionadas com o servidor. 
@@ -34,10 +28,6 @@ Selecionadas:
 - Na tela de selecionadas. Tentar deixar interações mais obvias. Isto é, que
   linhas podem ser mudadas de posicao, que as turmas podem mudar de lugar e
   que os radio buttons se referem à caixinha na direita, e não na esquerda.
-
-- Quando tem turma apenas na primeira opcao das selecionadas, fazer com que a
-  coluna das demais opcoes fiquem do mesmo tamanho, e não muito menor.
-
 
 
 Timetable:
@@ -53,14 +43,7 @@ Timetable:
   disciplinas que podem ocupar aquele spot. Tentar colocar as disciplinas do
   faltacursar na frente.
 
-- Adicionar/corrigir codigo de cores na simulacao e deixar radio buttons mais
-  espaçados.
-
-- Corrigir bug que ocorre na timetable quando se insere turmas com mais de 3
-  dias na semana, a principio. Pode acontecer em outros casos tb.
-
 - Simulacao deve sempre comecar na primeira opcao nas demais linhas.
-
 
 
 Banco de dados:
@@ -78,10 +61,6 @@ Banco de dados:
 
 
 Outros:
-
-- Verificar pq o objeto aluno no DATA_VIEW da luiza esta vindo como false.
-
-- Colocar nome do usuario no header do sistema.
 
 - Colocar campo de sugestao e email (fale conosco) no sistema.
 

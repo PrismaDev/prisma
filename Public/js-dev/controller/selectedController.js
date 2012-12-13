@@ -42,12 +42,20 @@ function SelectedController() {
 		return !gud;
 	}
 
-	this.runSimulation = function() {
+	this.runSimulation = function(rowIdx) {
 		var accepted= new Array();
 
+		if(rowIdx == undefined || rowIdx < 0) rowIdx = 0;
+
 		var rows = $('#main-selected-div tbody tr');
+		var rowCount = 0;
 
 		_.each(rows, function(row){
+			if(rowCount > rowIdx)
+			{
+				$(row).find('input[type="radio"]').first().attr('checked', true);
+			}
+
 			while(1)
 			{
 				var radioValue = $(row).find('input[type="radio"]:checked').attr('value');
@@ -97,6 +105,8 @@ function SelectedController() {
 
 				$(option).next().find('input[type="radio"]').attr('checked',true);
 			}
+
+			rowCount++;
 		});
 
 		var timetable = new Array();

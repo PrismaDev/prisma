@@ -14,10 +14,13 @@ var SelectedView = Backbone.View.extend({
 		'change input[type="radio"]': 'radioChange'
 	},
 
-	radioChange: function()
+	radioChange: function(e)
 	{
-		console.log('radio changed');
-		selectedController.runSimulation();
+		var td = $(e.target).parent();
+		var tr = $(td).parent();
+		var trIdx = $('#main-selected-div tbody tr').index(tr);
+
+		selectedController.runSimulation(trIdx);
 	},
 
 	resize: function() {},
