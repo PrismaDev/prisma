@@ -90,11 +90,11 @@ var SelectedModel = Backbone.Model.extend({
 	removeClass: function(subjectCode, classId) {
 		for (var i=0; i<this.maxRows; i++)
 			for (var j=0; j<this.nOptions; j++)
-				if (options[i][j] &&
-					options[i][j].subjectCode==subjectCode &&
-					options[i][j].classId==classId) {
+				if (this.options[i][j] &&
+					this.options[i][j].subjectCode==subjectCode &&
+					this.options[i][j].classId==classId) {
 					
-					options[i][j]=null;
+					this.options[i][j]=null;
 					var classModel = subjectList.get(subjectCode)
 							.get('Turmas').get(classId);
 					
@@ -124,7 +124,7 @@ var SelectedModel = Backbone.Model.extend({
 				.get('Turmas').get(classId);
 		console.log(classModel);
 		
-		options[rowNumber][Option]={
+		this.options[rowNumber][Option]={
 			'subjectCode': subjectCode,
 			'classCode': classModel.get('CodigoTurma'),
 			'classId': classId
@@ -155,7 +155,8 @@ var SelectedModel = Backbone.Model.extend({
 		{
 			for (var j=0; j<this.nOptions; j++)
 			{
-				if (options[i][j]!=null && options[i][j].subjectCode==subjectCode && j != (this.nOptions-1) && options[i][j+1]==null)
+				if (this.options[i][j]!=null && this.options[i][j].subjectCode==subjectCode && 
+					j != (this.nOptions-1) && this.options[i][j+1]==null)
 				{
 					this.addClassModel(subjectCode, classId, i, j+1);
 					return true;
@@ -165,7 +166,7 @@ var SelectedModel = Backbone.Model.extend({
 
 		// seeking for empty row
 		for (var i=0; i<this.maxRows; i++)
-			if (options[i][0]==null) {
+			if (this.options[i][0]==null) {
 				this.addClassModel(subjectCode, classId, i, 0);
 				return true;
 			}
@@ -173,7 +174,7 @@ var SelectedModel = Backbone.Model.extend({
 		// else
 		for (var i=0; i<this.maxRows; i++)
 			for (var j=0; j<this.nOptions; j++)
-				if (options[i][j]==null) {
+				if (this.options[i][j]==null) {
 					this.addClassModel(subjectCode, classId, i, j);
 					return true;
 				}
