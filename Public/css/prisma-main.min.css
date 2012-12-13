@@ -393,6 +393,9 @@ div.fieldContainer {
   vertical-align: top;
   text-align: right;
 }
+#main-timetable-div table tr td span {
+  font-size: 75%;
+}
 #main-timetable-div table tr td.ttclass0 {
   height: 100%;
   padding: 0;

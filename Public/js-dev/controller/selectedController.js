@@ -104,7 +104,8 @@ function SelectedController() {
 		for(var idx in accepted)
 		{
 			timetable.push({
-				nome: subjectList.get(accepted[idx].subjectCode).get('NomeDisciplina')+'<br />'+accepted[idx].subjectCode+' - '+accepted[idx].classObj.get('CodigoTurma'),
+				string: '<span>'+subjectList.get(accepted[idx].subjectCode).get('NomeDisciplina')+'</span><br />'+
+					accepted[idx].subjectCode+' - '+accepted[idx].classObj.get('CodigoTurma'),
 				horarios: accepted[idx].classObj.get('Horarios').models,
 				cssClass: accepted[idx].cssClass
 			});

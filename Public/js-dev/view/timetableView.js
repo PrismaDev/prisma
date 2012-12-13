@@ -28,7 +28,7 @@ var TimetableView = Backbone.View.extend({
 				var s=classesArray[i].horarios[j].get('HoraInicial');
 				var e=classesArray[i].horarios[j].get('HoraFinal');
 
-				timetableMatrix[s][d].string=classesArray[i].nome;
+				timetableMatrix[s][d].string=classesArray[i].string;
 				timetableMatrix[s][d].span=Number(e)-Number(s);
 				timetableMatrix[s][d].customClass='ttclass'+
 					classesArray[i].cssClass;
