@@ -113,7 +113,9 @@ class Disciplina
 			if(!self::persistRow($row))
 			{
 				$dbh->rollback();
-				return false;
+
+				$error = $dbh->errorInfo();
+				throw new \Exception(__FILE__.'(Line '.__LINE__.'): '.$error[2]);
 			}
 		}
 
@@ -141,7 +143,7 @@ class Disciplina
 		if(!$sth->execute($data))
 		{
 			$error = $dbh->errorInfo();
-			throw new \Exception('['.$error[0].'/'.$error[1].']: '.$error[2]);
+			throw new \Exception(__FILE__.'(Line '.__LINE__.'): '.$error[2]);
 		}
 
 		return $data['PK_Codigo'];

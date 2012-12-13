@@ -27,7 +27,9 @@ class Curso
 			if(!self::persistRow($row))
 			{
 				$dbh->rollback();
-				return false;
+
+				$error = $dbh->errorInfo();
+				throw new \Exception(__FILE__.'(Line '.__LINE__.'): '.$error[2]);
 			}
 		}
 

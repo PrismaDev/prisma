@@ -22,13 +22,16 @@ class Selecionada
 
 		$sth = $dbh->prepare('INSERT INTO "AlunoTurmaSelecionada"("FK_Aluno", "FK_Turma", "Opcao", "NoLinha")
 					VALUES (?, ?, ?, ?);');
-		return $sth->execute(array
-		(
-			$login,
-			$data->FK_Turma,
-			$data->Opcao,
-			$data->NoLinha,
-		));
+
+		if($sth->execute(array($login,$data->FK_Turma,$data->Opcao,$data->NoLinha,)))
+		{
+			return true;
+		}
+		else
+		{
+			$error = $dbh->errorInfo();
+			throw new \Exception(__FILE__.'(Line '.__LINE__.'): '.$error[2]);
+		}
 	}
 
 	public static function remove($login, $turma)
@@ -37,6 +40,14 @@ class Selecionada
 
 		$sth = $dbh->prepare('DELETE FROM "AlunoTurmaSelecionada" WHERE "FK_Aluno" = ? AND "FK_Turma" = ?;');
 
-		return $sth->execute(array($login, $turma));
+		if($sth->execute(array($login, $turma)))
+		{
+			return true;
+		}
+		else
+		{
+			$error = $dbh->errorInfo();
+			throw new \Exception(__FILE__.'(Line '.__LINE__.'): '.$error[2]);
+		}
 	}
 }

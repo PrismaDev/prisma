@@ -5,6 +5,7 @@ namespace Prisma\Library;
 use Framework\Router;
 use Framework\Database;
 use Prisma\Model\Usuario;
+use Prisma\Model\LogPrisma;
 
 class Auth
 {
@@ -18,11 +19,22 @@ class Auth
 				return false;
 			}
 
+			self::makeLog();
 			return true;
 		}
 
 		self::accessDenied();
 		return false;
+	}
+
+	private static function makeLog()
+	{
+		$ip = $_SERVER['REMOTE_ADDR'];
+		$uri = $_SERVER['REQUEST_URI'];
+		$hash = $_COOKIE['session'];
+		$user = $_COOKIE['login'];
+
+		LogPrisma::pathLog($ip, $uri, $hash, $user);
 	}
 
 	public static function isLogged()

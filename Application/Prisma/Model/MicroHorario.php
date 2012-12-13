@@ -47,7 +47,11 @@ class MicroHorario
 		$sql .= ';';
 
 		$sth = $dbh->prepare($sql);
-		$sth->execute();
+		if(!$sth->execute())
+		{
+			$error = $dbh->errorInfo();
+			throw new \Exception(__FILE__.'(Line '.__LINE__.'): '.$error[2]);
+		}
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
 	}
@@ -126,60 +130,51 @@ class MicroHorario
 			11 -> pre-req
 		*/
 
-		try{
-			$discParams = array(
-				'PK_Codigo' 	=> $row[0],
-				'Nome' 		=> $row[1],
-				'Creditos' 	=> $row[3],
-			);
-			$discID = Disciplina::persist($discParams);
+		$discParams = array(
+			'PK_Codigo' 	=> $row[0],
+			'Nome' 		=> $row[1],
+			'Creditos' 	=> $row[3],
+		);
+		$discID = Disciplina::persist($discParams);
 
-			/* --------------------------------------------- */
+		/* --------------------------------------------- */
 
-			$profParams = array(
-				'Nome' 	=> $row[2],
-			);
-			$profID = Professor::persist($profParams);
+		$profParams = array(
+			'Nome' 	=> $row[2],
+		);
+		$profID = Professor::persist($profParams);
 
-			/* --------------------------------------------- */
+		/* --------------------------------------------- */
 
-			$turmaParams = array(
-				'FK_Disciplina'		=> $discID,
-				'Codigo'		=> $row[4],
-				'PeriodoAno'		=> Common::getPeriodoAno(),
-				'Vagas'			=> $row[6],
-				'Destino'		=> $row[5],
-				'HorasDistancia'	=> $row[9],
-				'SHF'			=> $row[10],
-				'FK_Professor'		=> $profID,
-			);
-			$turmaID = Turma::persist($turmaParams);
+		$turmaParams = array(
+			'FK_Disciplina'		=> $discID,
+			'Codigo'		=> $row[4],
+			'PeriodoAno'		=> Common::getPeriodoAno(),
+			'Vagas'			=> $row[6],
+			'Destino'		=> $row[5],
+			'HorasDistancia'	=> $row[9],
+			'SHF'			=> $row[10],
+			'FK_Professor'		=> $profID,
+		);
+		$turmaID = Turma::persist($turmaParams);
 
-			/* --------------------------------------------- */
+		/* --------------------------------------------- */
 
-			$horarios = self::csvParseHorario($row[8]);
-			$horLen = count($horarios);
+		$horarios = self::csvParseHorario($row[8]);
+		$horLen = count($horarios);
 
-			for($i = 0; $i < $horLen; ++$i)
-			{
-				if(!isset($horarios[$i]['DiaSemana'])) continue;
-
-				$horarioParams = array
-				(
-					'FK_Turma'	=> $turmaID,
-					'DiaSemana'	=> $horarios[$i]['DiaSemana'],
-					'HoraInicial'	=> $horarios[$i]['Horario']['Inicial'],
-					'HoraFinal'	=> $horarios[$i]['Horario']['Final'],
-				);
-				TurmaHorario::persist($horarioParams);
-			}
-		}
-		catch(\Exception $e)
+		for($i = 0; $i < $horLen; ++$i)
 		{
-			//TODO: log error message
-			echo('Query error: '.$e->getMessage());
+			if(!isset($horarios[$i]['DiaSemana'])) continue;
 
-			return false;
+			$horarioParams = array
+			(
+				'FK_Turma'	=> $turmaID,
+				'DiaSemana'	=> $horarios[$i]['DiaSemana'],
+				'HoraInicial'	=> $horarios[$i]['Horario']['Inicial'],
+				'HoraFinal'	=> $horarios[$i]['Horario']['Final'],
+			);
+			TurmaHorario::persist($horarioParams);
 		}
 
 		return true;

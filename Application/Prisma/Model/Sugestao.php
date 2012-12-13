@@ -18,7 +18,8 @@ class Sugestao
 		}
 		else
 		{
-			return false;
+			$error = $dbh->errorInfo();
+			throw new \Exception(__FILE__.'(Line '.__LINE__.'): '.$error[2]);
 		}
 	}
 }

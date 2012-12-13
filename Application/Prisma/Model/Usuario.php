@@ -31,7 +31,11 @@ class Usuario
 		$dbh = Database::getConnection();	
 
 		$sth = $dbh->prepare('UPDATE "Usuario" SET "TermoAceito"=? WHERE "PK_Login" = ?;');	
-		$sth->execute(array($accept, $login));
+		if(!$sth->execute(array($accept, $login)))
+		{
+			$error = $dbh->errorInfo();
+			throw new \Exception(__FILE__.'(Line '.__LINE__.'): '.$error[2]);
+		}
 
 		return $sth->rowCount() > 0;
 	}
@@ -85,10 +89,10 @@ class Usuario
 
 			if(!self::persistAlunoRow($row))
 			{
-			print_r($row);
-			print_r($dbh->errorInfo());
 				$dbh->rollback();
-				return false;
+
+				$error = $dbh->errorInfo();
+				throw new \Exception(__FILE__.'(Line '.__LINE__.'): '.$error[2]);
 			}
 		}
 
@@ -140,10 +144,10 @@ class Usuario
 
 			if(!self::persistHistoricoRow($row))
 			{
-			print_r($row);
-			print_r($dbh->errorInfo());
 				$dbh->rollback();
-				return false;
+
+				$error = $dbh->errorInfo();
+				throw new \Exception(__FILE__.'(Line '.__LINE__.'): '.$error[2]);
 			}
 		}
 

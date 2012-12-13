@@ -3,22 +3,36 @@
 namespace Prisma\Model;
 
 use Framework\Database;
+use Framework\Router;
 
 class LogPrisma 
 {
-	public static function persist($login, $comment)
+	public static function pathLog($ip, $uri, $hash, $user)
 	{
-		$dbh = Database::getConnection();	
+		$dbh = Database::getConnection();
 
-		$sth = $dbh->prepare('INSERT INTO "Comentario"("FK_Usuario", "Comentario") VALUES (?, ?);');
+		$sth = $dbh->prepare('INSERT INTO "Log"("IP", "URI", "HashSessao", "FK_Usuario") VALUES (?, ?, ?, ?);');
 
-		if($sth->execute(array($login, $comment)))
+		if(!$sth->execute(array($ip, $uri, $hash, $user)))
+		{	
+			$error = $dbh->errorInfo();
+			throw new \Exception(__FILE__.'(Line '.__LINE__.'): '.$error[2]);
+		}
+	}
+
+	public static function errorLog($ip, $uri, $hash, $user, $notes)
+	{
+		$dbh = Database::getConnection();
+
+		$sth = $dbh->prepare('INSERT INTO "Log"("IP", "URI", "HashSessao", "FK_Usuario", "Erro", "Notas") VALUES (?, ?, ?, ?, true, ?);');
+
+		if($sth->execute(array($ip, $uri, $hash, $user, $notes)))
 		{
 			return true;
 		}
 		else
-		{
-			return false;
+		{	
+			// TODO
 		}
 	}
 }
