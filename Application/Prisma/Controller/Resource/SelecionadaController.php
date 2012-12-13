@@ -17,6 +17,7 @@ class SelecionadaController extends RestController
 		Auth::accessControl('Aluno');
 	}
 
+/*
 	public function performGet($url, $arguments, $accept) 
 	{
 		$login = $_COOKIE['login'];
@@ -44,7 +45,8 @@ class SelecionadaController extends RestController
 
 		return $data;
 	}
-	
+*/
+
 	public function performPost($url, $arguments, $accept) 
 	{
 		$login = $_COOKIE['login'];

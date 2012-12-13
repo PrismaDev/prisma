@@ -16,6 +16,7 @@ class FaltaCursarController extends RestController
 		parent::__construct('GET, POST');
 	}
 
+/*
 	public function performGet($url, $arguments, $accept) 
 	{
 		Auth::accessControl('Aluno');
@@ -56,10 +57,11 @@ class FaltaCursarController extends RestController
 
 		return $data;
 	}
-	
+*/
+
 	public function performPost($url, $arguments, $accept) 
 	{
-//		Auth::accessControl('Administrador');
+		Auth::accessControl('Administrador');
 
 		if(!isset($_FILES['file'])) return 'error';
 
