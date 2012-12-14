@@ -49,6 +49,7 @@ function SelectedController() {
 
 		var rows = $('#main-selected-div tbody tr');
 		var rowCount = 0;
+		var creditos = 0;
 
 		_.each(rows, function(row){
 			if(rowCount > rowIdx)
@@ -72,6 +73,7 @@ function SelectedController() {
 					var classId = $(option).find('input[type="hidden"][name="classCode"]').attr('value');
 					var subjectCode = $(option).find('input[type="hidden"][name="subjectCode"]').attr('value');
 					var classModel = subjectList.get(subjectCode).get('Turmas').get(classId);
+					var subjectCreditos = subjectList.get(subjectCode).get('Creditos');
 
 					var gud = true;
 					for(var classIdx in accepted)
@@ -85,7 +87,7 @@ function SelectedController() {
 						}
 					}
 
-					if(gud)
+					if(gud && (creditos+subjectCreditos)<=30)
 					{
 						var cssClass="";
 						for (var i=0; i<selectedModel.maxRows; i++)
@@ -93,6 +95,8 @@ function SelectedController() {
 								cssClass=i;
 								break;
 							}
+
+						creditos += subjectCreditos;
 
 						accepted.push({
 							classObj: classModel,
@@ -121,6 +125,7 @@ function SelectedController() {
 			});
 		}
 
+		console.log('Quantidade de creditos: '+creditos);
 		timetableView.render(timetable);
 	}
 
