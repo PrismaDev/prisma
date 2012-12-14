@@ -35,8 +35,9 @@ class Auth
 		$uri = $_SERVER['REQUEST_URI'];
 		$hash = $_COOKIE['session'];
 		$user = $_COOKIE['login'];
+		$browser = $_SERVER['HTTP_USER_AGENT'];
 
-		LogPrisma::pathLog($ip, $uri, $hash, $user);
+		LogPrisma::pathLog($ip, $uri, $hash, $user, $browser);
 	}
 
 	public static function isLogged()

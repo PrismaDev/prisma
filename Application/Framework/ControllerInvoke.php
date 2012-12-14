@@ -20,8 +20,9 @@ class ControllerInvoke
 			$uri = $_SERVER['REQUEST_URI'];
 			$hash = $_COOKIE['session'];
 			$user = $_COOKIE['login'];
+			$browser = $_SERVER['HTTP_USER_AGENT'];
 
-			LogPrisma::errorLog($ip, $uri, $hash, $user, $e->getMessage());
+			LogPrisma::errorLog($ip, $uri, $hash, $user, $browser, $e->getMessage());
 
 			Router::redirectRoute('/error');
 			return false;
