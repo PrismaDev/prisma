@@ -60,13 +60,16 @@ class MicroHorario
 	{
 		if(isset($filters[$column]) && !empty($filters[$column]))
 		{
+			$value = str_replace('"', '', $filters[$column]);
+			$value = str_replace('\'', '', $filters[$column]);
+
 			switch($type)
 			{
 				CASE 0:
-					return ' AND "'.$column.'" ILIKE \'%'.$filters[$column].'%\'';
+					return ' AND "'.$column.'" ILIKE \'%'.$value.'%\'';
 
 				CASE 1:
-					return ' AND "'.$column.'" = '.$filters[$column];
+					return ' AND "'.$column.'" = '.$value;
 			}
 		}
 
