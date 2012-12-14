@@ -47,6 +47,10 @@ class MicroHorario
 					$filters[$filterAvail[0]] = '%'.$filters[$filterAvail[0]].'%';
 				}
 			}
+			else
+			{
+				unset($filters[$filterAvail[0]]);
+			}
 		}
 
 		$sql .= ' GROUP BY "CodigoDisciplina", "PK_Turma"';
