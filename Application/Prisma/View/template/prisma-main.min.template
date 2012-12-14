@@ -109,8 +109,12 @@
 					<input type="text" name="Creditos" />
 				</div>
 				<div class="fieldContainer">
-					<label for="day"><%= str.get('dayLabel') %></label>
-					<input type="text" name="DiaSemana" />
+					<label for="DiaSemana"><%= str.get('dayLabel') %></label>
+					<select name="DiaSemana">
+						<% _.each(timetableStr.get('daysLabel'), function(day, index) { %>
+							<option value="<%= index+2%>"><%= day %></option>
+						<% }); %>
+					</select>
 				</div>
 				<div class="fieldContainer">
 					<label for="HoraInicial"><%= str.get('timeBeginLabel') %></label>
@@ -140,10 +144,10 @@
 				<input type="button" class="btn btn-link" value="<%= str.get('moreFiltersStr') %>"
 					id="moreFiltersButton" />
 
-				<input class="btn btn-primary rightFloated" type="reset" id="resetQuery"
-					value="<%= str.get('resetButtonLabel') %>" />
-				<input class="btn btn-danger rightFloated" type="submit" id="submitQuery"
+				<input class="btn btn-primary rightFloated" type="submit" id="submitQuery"
 					value="<%= str.get('submitButtonLabel') %>" />
+				<input class="btn btn-danger rightFloated" type="reset" id="resetQuery"
+					value="<%= str.get('resetButtonLabel') %>" />
 			</div>
 		</form>
 	</div>

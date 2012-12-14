@@ -26,12 +26,17 @@ var LoginView = Backbone.View.extend({
 		$('.dropdown-toggle').dropdown();
 	},
 	
-	render: function() {
+	render: function(error) {
+		if (error==undefined)
+			error=false;
+
 		this.$el.html(this.layoutTemplate({
 				loginStr: loginStringsModel,
 				layoutStr: layoutStringsModel,
-				loggedIn: false
+				loggedIn: false,
+				error: error
 		}));
+
 		$('#content-div').html(this.loginTemplate({
 			loginStr: loginStringsModel,
 			layoutStr: layoutStringsModel

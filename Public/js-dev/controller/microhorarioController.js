@@ -4,6 +4,7 @@ function MicrohorarioController() {
 
 	this.fetchData = function() {
 		var me=this;
+		console.log($(formEl).serialize());
 
 		$.ajax({
 			url: url,
