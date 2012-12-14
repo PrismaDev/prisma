@@ -20,19 +20,20 @@ class LogPrisma
 		}
 	}
 
-	public static function errorLog($ip, $uri, $hash, $user, $notes)
+	public static function errorLog($ip, $uri, $hash, $user, $browser, $notes)
 	{
 		$dbh = Database::getConnection();
 
-		$sth = $dbh->prepare('INSERT INTO "Log"("IP", "URI", "HashSessao", "FK_Usuario", "Erro", "Browser", "Notas") VALUES (?, ?, ?, ?, true, ?, ?);');
+		$sth = $dbh->prepare('INSERT INTO "Log"("IP", "URI", "HashSessao", "FK_Usuario", "Erro", "Notas", "Browser") VALUES (?, ?, ?, ?, true, ?, ?);');
 
-		if($sth->execute(array($ip, $uri, $hash, $user, $browser, $notes)))
+		if($sth->execute(array($ip, $uri, $hash, $user, $notes, $browser)))
 		{
 			return true;
 		}
 		else
 		{	
-			// TODO
+			print_r($dbh->errorInfo());
+			exit;
 		}
 	}
 }

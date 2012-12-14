@@ -18,62 +18,60 @@ class MicroHorario
 
 		$sql = 'SELECT "CodigoDisciplina", "PK_Turma" FROM "MicroHorario" WHERE "PeriodoAno" = '.Common::getPeriodoAno();
 
-		$sql .= self::makeSqlFilter($filters, 'CodigoDisciplina', 0);
-		$sql .= self::makeSqlFilter($filters, 'NomeDisciplina', 0);
-		$sql .= self::makeSqlFilter($filters, 'Creditos', 1);
-		$sql .= self::makeSqlFilter($filters, 'CodigoTurma', 0);
-		$sql .= self::makeSqlFilter($filters, 'Vagas', 1);
-		$sql .= self::makeSqlFilter($filters, 'Destino', 0);
-		$sql .= self::makeSqlFilter($filters, 'HorasDistancia', 1);
-		$sql .= self::makeSqlFilter($filters, 'SHF', 1);
-		$sql .= self::makeSqlFilter($filters, 'NomeProfessor', 0);
-		$sql .= self::makeSqlFilter($filters, 'DiaSemana', 1);
-		$sql .= self::makeSqlFilter($filters, 'HoraInicial', 1);
-		$sql .= self::makeSqlFilter($filters, 'HoraFinal', 1);
+		$filtersAvail = array(
+			array('CodigoDisciplina', 0),
+			array('NomeDisciplina', 0),
+			array('Creditos', 1),
+			array('CodigoTurma', 0),
+			array('Vagas', 1),
+			array('Destino', 0),
+			array('HorasDistancia', 1),
+			array('SHF', 1),
+			array('NomeProfessor', 0),
+			array('DiaSemana', 1),
+			array('HoraInicial', 1),
+			array('HoraFinal', 1),
+		);
+
+		foreach($filtersAvail as $filterAvail)
+		{
+			if(isset($filters[$filterAvail[0]]) && !empty($filters[$filterAvail[0]]))
+			{
+				if($filterAvail[1])
+				{
+					$sql .= ' AND "'.$filterAvail[0].'" = :'.$filterAvail[0];
+				}
+				else
+				{
+					$sql .= ' AND "'.$filterAvail[0].'" ILIKE :'.$filterAvail[0];
+					$filters[$filterAvail[0]] = '%'.$filters[$filterAvail[0]].'%';
+				}
+			}
+		}
 
 		$sql .= ' GROUP BY "CodigoDisciplina", "PK_Turma"';
 
-		if(!isset($filters['Quantidade'])) $limit = 5;
-		else $limit = $filters['Quantidade'];
+		if(!isset($filters['Quantidade'])) 
+			$filters['Quantidade'] = 5;
+		$sql .= ' LIMIT :Quantidade';
 
-		$sql .= 'LIMIT '.$limit;
 		if(isset($filters['Pagina']))
 		{
-			$offset = $limit * $filters['Pagina'];
+			$filters['Offset'] = $filters['Quantidade']  * $filters['Pagina'];
+			unset($filters['Pagina']);
 
-			$sql .= ' OFFSET '.$offset;
+			$sql .= ' OFFSET :Offset';
 		}
-
 		$sql .= ';';
 
 		$sth = $dbh->prepare($sql);
-		if(!$sth->execute())
+		if(!$sth->execute($filters))
 		{
 			$error = $dbh->errorInfo();
 			throw new \Exception(__FILE__.'(Line '.__LINE__.'): '.$error[2]);
 		}
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
-	}
-
-	private static function makeSqlFilter($filters, $column, $type)
-	{
-		if(isset($filters[$column]) && !empty($filters[$column]))
-		{
-			$value = str_replace('"', '', $filters[$column]);
-			$value = str_replace('\'', '', $value);
-
-			switch($type)
-			{
-				CASE 0:
-					return ' AND "'.$column.'" ILIKE \'%'.$value.'%\'';
-
-				CASE 1:
-					return ' AND "'.$column.'" = '.$value;
-			}
-		}
-
-		return '';
 	}
 
 	/* --------------------------------------------------------------------------------------- */
