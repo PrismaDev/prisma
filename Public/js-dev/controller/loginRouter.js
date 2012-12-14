@@ -1,7 +1,6 @@
 var LoginRouter = Backbone.Router.extend({
 	routes: {
 		'': 'login',
-		'': 'login',
 		'*span': 'other'
 	}
 });

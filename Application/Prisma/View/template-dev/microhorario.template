@@ -65,10 +65,10 @@
 				<input type="button" class="btn btn-link" value="<%= str.get('moreFiltersStr') %>"
 					id="moreFiltersButton" />
 
-				<input class="btn btn-primary rightFloated" type="reset" id="resetQuery"
-					value="<%= str.get('resetButtonLabel') %>" />
-				<input class="btn btn-danger rightFloated" type="submit" id="submitQuery"
+				<input class="btn btn-primary rightFloated" type="submit" id="submitQuery"
 					value="<%= str.get('submitButtonLabel') %>" />
+				<input class="btn btn-danger rightFloated" type="reset" id="resetQuery"
+					value="<%= str.get('resetButtonLabel') %>" />
 			</div>
 		</form>
 	</div>
