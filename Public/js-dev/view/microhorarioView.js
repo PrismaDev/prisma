@@ -9,7 +9,7 @@ var MicrohorarioView = Backbone.View.extend ({
 	queryState: 'query',
 	waitingState: 'waiting',
 
-	waitingImgURL: 'http://i.stack.imgur.com/FhHRx.gif',
+	waitingImgURL: '/img/ajax-loader.gif',
 		
 	events: {
 		"click #moreFiltersButton": "moreFilters",
