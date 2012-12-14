@@ -61,7 +61,7 @@ class MicroHorario
 		if(isset($filters[$column]) && !empty($filters[$column]))
 		{
 			$value = str_replace('"', '', $filters[$column]);
-			$value = str_replace('\'', '', $filters[$column]);
+			$value = str_replace('\'', '', $value);
 
 			switch($type)
 			{
