@@ -14,6 +14,7 @@ use Prisma\Model\Turma;
 use Prisma\Model\TurmaHorario;
 use Prisma\Model\Usuario;
 use Prisma\Model\Sugestao;
+use Prisma\Model\Unidade;
 
 Class TestController extends RestController
 {
@@ -24,7 +25,7 @@ Class TestController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return json_encode(Sugestao::persist('0911409', 'ola mundo'));
+		return 'It works!';
 	}
 }
 

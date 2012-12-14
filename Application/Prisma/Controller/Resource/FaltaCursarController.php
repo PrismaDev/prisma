@@ -65,6 +65,7 @@ class FaltaCursarController extends RestController
 
 		if(!isset($_FILES['file'])) return 'error';
 
+		set_time_limit(3600);
 		if(Usuario::saveHistoricoFromFile($_FILES['file']['tmp_name']))
 		{
 			return 'ok';

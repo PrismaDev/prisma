@@ -117,7 +117,7 @@ class Turma
 		}
 		else
 		{
-			//TODO: handle error
+			throw new \Exception(__FILE__.'(Line '.__LINE__.'): Turma nao encontrada!');
 		}
 	}
 }

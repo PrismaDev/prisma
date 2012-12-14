@@ -102,6 +102,7 @@ class Disciplina
 
 		$dbh = Database::getConnection();
 		$dbh->beginTransaction();
+		$dbh->exec('SET client_encoding = \'ISO-8859-1\';');
 
 		$skip = true;
 		while($row = fgetcsv($file, 1000, ';'))
@@ -113,8 +114,8 @@ class Disciplina
 			if(!self::persistRow($row))
 			{
 				$dbh->rollback();
-
 				$error = $dbh->errorInfo();
+
 				throw new \Exception(__FILE__.'(Line '.__LINE__.'): '.$error[2]);
 			}
 		}

@@ -10,8 +10,8 @@ class TurmaHorario
 	{
 		$dbh = Database::getConnection();	
 
-		$sql = 'SELECT "FK_Turma", "DiaSemana", "HoraInicial", "HoraFinal"
-			FROM "TurmaHorario" WHERE "FK_Turma" IN (';
+		$sql = 'SELECT "FK_Turma", "DiaSemana", "HoraInicial", "HoraFinal", "Unidade"
+			FROM "TurmaHorarioUnidade" WHERE "FK_Turma" IN (';
 
 		$comma = false;
 		foreach($turmaHash as $codigoTurma=>$index)
@@ -37,8 +37,8 @@ class TurmaHorario
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "DiaSemana", "HoraInicial", "HoraFinal"
-					FROM "TurmaHorario" WHERE "FK_Turma" = ?;');
+		$sth = $dbh->prepare('SELECT "DiaSemana", "HoraInicial", "HoraFinal", "Unidade"
+					FROM "TurmaHorarioUnidade" WHERE "FK_Turma" = ?;');
 		$sth->execute(array($turmaID));
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);
@@ -48,8 +48,8 @@ class TurmaHorario
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('INSERT INTO "TurmaHorario"("FK_Turma", "DiaSemana", "HoraInicial", "HoraFinal")
-						VALUES (:FK_Turma, :DiaSemana, :HoraInicial, :HoraFinal);');
+		$sth = $dbh->prepare('INSERT INTO "TurmaHorario"("FK_Turma", "DiaSemana", "HoraInicial", "HoraFinal", "FK_Unidade")
+						VALUES (:FK_Turma, :DiaSemana, :HoraInicial, :HoraFinal, :FK_Unidade);');
 
 		if(!$sth->execute($data))
 		{

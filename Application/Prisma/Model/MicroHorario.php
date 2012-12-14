@@ -9,6 +9,7 @@ use Prisma\Model\Disciplina;
 use Prisma\Model\Professor;
 use Prisma\Model\Turma;
 use Prisma\Model\TurmaHorario;
+use Prisma\Model\Unidade;
 
 class MicroHorario
 {
@@ -170,15 +171,43 @@ class MicroHorario
 
 		for($i = 0; $i < $horLen; ++$i)
 		{
-			if(!isset($horarios[$i]['DiaSemana'])) continue;
+			if($horarios[$i]['Unidade'] != 'BARRA' && $horarios[$i]['Unidade'] != 'GAVEA')
+			{
+				print_r($row);
+				echo '<br>';
+				var_dump($horarios);
+				echo '<br>';
+				if(empty($horarios[$i]['Unidade'])) echo 'empty<br>';
+				else  echo 'not empty<br>';
+				echo '<br>';
+			}
 
-			$horarioParams = array
-			(
-				'FK_Turma'	=> $turmaID,
-				'DiaSemana'	=> $horarios[$i]['DiaSemana'],
-				'HoraInicial'	=> $horarios[$i]['Horario']['Inicial'],
-				'HoraFinal'	=> $horarios[$i]['Horario']['Final'],
-			);
+			$unidadeID = Unidade::persist($horarios[$i]['Unidade']);
+
+			$horarioParams = null;
+			if(isset($horarios[$i]['DiaSemana']))
+			{
+				$horarioParams = array
+				(
+					'FK_Turma'	=> $turmaID,
+					'DiaSemana'	=> $horarios[$i]['DiaSemana'],
+					'HoraInicial'	=> $horarios[$i]['Horario']['Inicial'],
+					'HoraFinal'	=> $horarios[$i]['Horario']['Final'],
+					'FK_Unidade'	=> $unidadeID,
+				);
+			}
+			else
+			{
+				$horarioParams = array
+				(
+					'FK_Turma'	=> $turmaID,
+					'DiaSemana'	=> 0,
+					'HoraInicial'	=> 0,
+					'HoraFinal'	=> 0,
+					'FK_Unidade'	=> $unidadeID,
+				);
+			}
+
 			TurmaHorario::persist($horarioParams);
 		}
 
@@ -196,37 +225,43 @@ class MicroHorario
 
 	private static function csvParseHorario($horarios)
 	{
-		$horarios = explode('  ', $horarios);
+		$horarios = explode(' ', trim($horarios));
 
-		$hor_len = count($horarios);
-
+		$offset = 0;
 		$parsed = array();
-
-		while($hor_len)
+		$parsedIdx = 0;
+		while(isset($horarios[$offset]))
 		{
-			$horario = explode(' ', $horarios[$hor_len-1]);
+			$lenFirst = strlen($horarios[$offset+0]);
 
-			$parsed[$hor_len-1] = array();
-			
-			if(strlen($horario[0]) == 3) //dia da semana
+			if($lenFirst < 3)
 			{
-				$parsed[$hor_len-1]['DiaSemana'] = Common::weekdayToInteger($horario[0]);
+				$offset++;
+				continue;
+			}
 
-				$parsed[$hor_len-1]['Horario'] = array();
-				list(
-					$parsed[$hor_len-1]['Horario']['Inicial'],
-					$parsed[$hor_len-1]['Horario']['Final']
-				) = explode('-',$horario[1]);
+			$parsed[$parsedIdx] = array();
+			
+			if($lenFirst == 3) //dia da semana
+			{
+				$parsed[$parsedIdx]['DiaSemana'] = Common::weekdayToInteger($horarios[$offset+0]);
+				list
+				(
+					$parsed[$parsedIdx]['Horario']['Inicial'],
+					$parsed[$parsedIdx]['Horario']['Final']
+				) = explode('-',$horarios[$offset+1]);
 
-//				$parsed[$hor_len-1]['Sala'] = $horario[2];
-//				$parsed[$hor_len-1]['Unidade'] = $horario[4];
+				$parsed[$parsedIdx]['Unidade'] = $horarios[$offset+4];
+
+				$offset += 6;
 			}
 			else
 			{
-				$parsed[$hor_len-1]['Unidade'] = $horario[0];
-			}
+				$parsed[$parsedIdx]['Unidade'] = $horarios[$offset+0];
 
-			--$hor_len;
+				$offset += 2;
+			}
+			$parsedIdx++;
 		}
 
 		return $parsed;

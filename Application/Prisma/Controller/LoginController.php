@@ -33,6 +33,7 @@ Class LoginController extends RestController
 			switch($type)
 			{
 				case 'Administrador':
+					return 'ok';
 					Router::redirectRoute('/admin'); //TODO: verificar se esta correto
 					return;
 
