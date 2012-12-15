@@ -28,10 +28,16 @@ var ClasseslistView = Backbone.View.extend({
 		if ($(row).hasClass('classChosen')) {
 			$(row).removeClass('classChosen');
 			selectedModel.removeClass(subjectCode,classId);
+
+			if (selectedModel.get('addedSinceLastView')>0)
+				selectedModel.set('addedSinceLastView',
+					selectedModel.get('addedSinceLastView')-1);
 		}
 		else {
 			$(row).addClass('classChosen');
 			selectedModel.addClass(subjectCode,classId);
+			selectedModel.set('addedSinceLastView',
+				selectedModel.get('addedSinceLastView')+1);
 		}
 	},
 

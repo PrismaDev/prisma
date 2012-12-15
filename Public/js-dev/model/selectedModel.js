@@ -3,6 +3,7 @@ var SelectedModel = Backbone.Model.extend({
 	viewEl: '#main-selected-div tbody',
 	maxRows: 12,
 	nOptions: 3,
+	addedSinceLastView: 0,
 
 	initialize: function() {
 		this.options=new Array();
@@ -13,6 +14,10 @@ var SelectedModel = Backbone.Model.extend({
 		for (var i=0; i<this.maxRows; i++)
 			for (var j=0; j<this.nOptions; j++)
 				this.options[i][j]=null;
+	
+		this.on("change:addedSinceLastView", function(model){
+			mainView.changeBadge(model.get('addedSinceLastView'));
+		});
 	},
 
 	setFromServer: function(data) {

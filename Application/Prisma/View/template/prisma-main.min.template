@@ -57,7 +57,12 @@
 				<ul class="nav nav-tabs" id="main-tabs-nav">
 					<% _.each(tabs, function(tab, tabName) { %>
 						<li id="<%= tab.li %>">
-							<a href="<%= tab.href %>"><%= mainStr.get(tabName+'TabLabel') %></a>
+							<a href="<%= tab.href %>">
+								<%= mainStr.get(tabName+'TabLabel') %>
+								<% if (tabName=="selected") { %>
+									<span class="badge hidden" id="selected-badge"></span>
+								<% } %>
+							</a>
 						</li>
 					<% }); %>
 				</ul>

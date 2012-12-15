@@ -63,6 +63,18 @@ var MainView = Backbone.View.extend({
 		$('#'+this.tabs[tab].div).addClass('active');
 	
 		this.tabs[tab].view.resize();
+
+		if (tab=='selected')
+			selectedModel.set('addedSinceLastView',0);
+	},
+
+	changeBadge: function(qtd) {
+		if (!qtd) 
+			$('#selected-badge').addClass('hidden');
+		else {
+			$('#selected-badge').html(qtd);
+			$('#selected-badge').removeClass('hidden');
+		}
 	},
 
 	renderSubviews: function() {
