@@ -124,6 +124,9 @@ class Common
 	{
 		switch(strtoupper($str))
 		{
+			CASE 'DOM':
+				return 1;
+
 			CASE 'SEG': 
 				return 2;
 
@@ -144,11 +147,8 @@ class Common
 			CASE 'SÁB':
 				return 7;
 
-			CASE 'DOM':
-				return 1;
-
 		}
-		return 0;
+		return 7;
 	}
 
 	/* http://rubsphp.blogspot.com.br/2012/08/convertendo-iso88591-para-utf8-de-forma-segura.html */
