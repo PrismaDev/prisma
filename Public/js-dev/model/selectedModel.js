@@ -3,7 +3,10 @@ var SelectedModel = Backbone.Model.extend({
 	viewEl: '#main-selected-div tbody',
 	maxRows: 12,
 	nOptions: 3,
-	addedSinceLastView: 0,
+
+	defaults: {
+		addedSinceLastView: 0
+	},
 
 	initialize: function() {
 		this.options=new Array();

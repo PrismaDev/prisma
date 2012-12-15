@@ -36,6 +36,7 @@ var ClasseslistView = Backbone.View.extend({
 		else {
 			$(row).addClass('classChosen');
 			selectedModel.addClass(subjectCode,classId);
+		
 			selectedModel.set('addedSinceLastView',
 				selectedModel.get('addedSinceLastView')+1);
 		}
