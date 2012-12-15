@@ -119,8 +119,21 @@ var SelectedModel = Backbone.Model.extend({
 					});
 
 					selectedView.render();
-
 					selectedController.runSimulation();
+					
+					var sel=false;
+					for (var i=0; i<this.maxRows; i++) {
+						for (var j=0; j<this.nOptions; j++)
+							if (this.options[i][j] && this.options[i][j].subjectCode==subjectCode) {
+								sel=true;
+								break;
+							}
+
+						if (sel) break;
+					}
+
+					if (!sel)
+						faltacursarView.markAsSelected(subjectCode, false);
 					return true;
 				}
 		return false;
@@ -151,8 +164,8 @@ var SelectedModel = Backbone.Model.extend({
 		});
 
 		selectedView.render();
-
 		selectedController.runSimulation();
+		faltacursarView.markAsSelected(subjectCode, true);
 		return true;
 
 	},

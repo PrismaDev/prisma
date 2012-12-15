@@ -66,7 +66,8 @@ var SubjectTableStringsModel = Backbone.Model.extend({
 		'ementaHeaderLabel': 'Ementa',
 		'ementaLinkLabel': 'Ver ementa',
 		'ementaBaseLink': 'http://www.puc-rio.br/ferramentas/ementas/ementa.aspx?cd=',
-		'ongoingStr': 'Cursando'
+		'ongoingStr': 'Cursando',
+		'chosenSubjectStr': 'Selecionada'
 	}
 });
 

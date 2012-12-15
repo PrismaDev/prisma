@@ -32,8 +32,6 @@ var ClasseslistView = Backbone.View.extend({
 			if (selectedModel.get('addedSinceLastView')>0)
 				selectedModel.set('addedSinceLastView',
 					selectedModel.get('addedSinceLastView')-1);
-			
-			faltacursarView.markAsSelected(subjectCode, false);
 		}
 		else {
 			$(row).addClass('classChosen');
@@ -41,8 +39,6 @@ var ClasseslistView = Backbone.View.extend({
 		
 			selectedModel.set('addedSinceLastView',
 				selectedModel.get('addedSinceLastView')+1);
-			
-			faltacursarView.markAsSelected(subjectCode, true);
 		}
 	},
 

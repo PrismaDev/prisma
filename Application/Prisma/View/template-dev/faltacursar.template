@@ -20,12 +20,15 @@
 					">
 					<td><%= (subject.optativa? '<img src="img/Setinha Mini copy.PNG" />': '') %></td>
 					<td><%= subject.code %></td>
-					<td><%= subject.name %>
+					<td class="name"><%= subject.name %>
 						<% if (subject.status=="EA") { %>
 							<span class="label label-warning">
 								<%= subjectTableStr.get('ongoingStr') %>
 							</span>
 						<% } %>
+						<span class="label label-success selected-label hidden">
+							<%= subjectTableStr.get('chosenSubjectStr') %>
+						</span>
 					</td>
 					<td><%= subject.term %></td>
 					<td><%= subject.credits %></td>

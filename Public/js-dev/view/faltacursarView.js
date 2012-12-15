@@ -63,25 +63,11 @@ var FaltacursarView = Backbone.View.extend({
 	},
 
 	markAsSelected: function(subjectCode, isSelected) {
-		console.log($('#'+subjectCode));
-		if (isSelected) 
-			$('#'+subjectCode).addClass('classChosen');
-		else {
-			var sel=false;
-			var selected = selectedModel.getData();
-
-			for (var i=0; i<selectedModel.maxRows; i++) {
-				for (var j=0; j<selectedModel.nOptions; j++)
-					if (selected[i][j])
-						if (selected[i][j].subjectCode==subjectCode) {
-							sel=true;
-							break;
-						}
-				if (sel) break;
-			}
-
-			if (!sel) $('#'+subjectCode).removeClass('classChosen');
-		}
+		if (!isSelected) 
+			$('#'+subjectCode+' .name .selected-label').addClass('hidden');
+		else
+			$('#'+subjectCode+' .name .selected-label').removeClass('hidden');
+		
 	},
 
 	clickOnRow: function(e) {
