@@ -1,9 +1,20 @@
 <script type="text/underscore-template" id="login-template">
+	<% if (error=='accessDenied') { %>
+		<div class="row-fluid">
+			<div class="span4 offset4">
+				<div class="alert alert-error centered">
+					<%= loginStr.get('accessDeniedErrorMsg') %>
+				</div>
+			</div>
+		</div>
+	<% } %>
+
 	<div class="row-fluid">
 		<div class="span4 offset4" id="logo-div">
 			<h1><%= layoutStr.get('projectNameStr') %></h1>
 		</div>
 	</div>
+
 	<div id="login-container">
 		<div class="row-fluid">
 			<div class="span4 offset4 content">
@@ -11,7 +22,7 @@
 			</div>
 		</div>	
 
-		<div class="row-fluid hidden" id="login-form-container">
+		<div class="row-fluid <%= error=='invalidLogin'? '' : 'hidden' %>" id="login-form-container">
 			<div class="span4 offset4 content" id="login-form">
 				<form name="loginForm" method="post" action="/login">
 					<input type="hidden" name="tipo" value="Aluno" />
@@ -19,6 +30,11 @@
 						<div class="help-block"><%= loginStr.get('loginHelpText') %></div>
 					</div>
 					<div class="row-fluid">
+						<% if (error=='invalidLogin') { %>
+							<div class="alert alert-error">
+								<%= loginStr.get('invalidLoginErrorMsg') %>
+							</div>
+						<% } %>
 						<div class="span2 offset2">
 							<label for="matricula"><%= loginStr.get('matriculaLabel') %></label><input type="text" name="matricula" /><br />
 							<label for="senha"><%= loginStr.get('passwordLabel') %></label><input type="password" name="senha" /><br />

@@ -12,7 +12,12 @@ loginRouter.on('route:other', function() {
 });
 
 loginRouter.on('route:login', function() {
-	loginView.render();
+	var arr = document.URL.split('?');
+	console.log(arr);
+
+	if (arr.length>1)
+		loginView.render(arr[1]);
+	else loginView.render();
 });
 
 //if (history.pushState) { 

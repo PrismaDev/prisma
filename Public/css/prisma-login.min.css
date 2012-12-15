@@ -8,6 +8,9 @@
 .hidden {
   display: none;
 }
+.centered {
+  text-align: center;
+}
 .clearfix {
   *zoom: 1;
 }
@@ -107,4 +110,7 @@ body {
 }
 #login-form span.help-block {
   margin-bottom: 0;
+}
+#login-form div.alert {
+  margin-right: 3%;
 }

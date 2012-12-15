@@ -5,6 +5,9 @@
 .hidden {
   display: none;
 }
+.centered {
+  text-align: center;
+}
 .clearfix {
   *zoom: 1;
 }

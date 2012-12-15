@@ -15,7 +15,9 @@ var LoginStringsModel = Backbone.Model.extend({
 			objetivo facilitar o preenchimento da primeira fase da\
 			matrícula',
 		'openLoginButtonLabel': 'Fazer login',
-		'tutorialButtonLabel': 'Tutorial - em breve!'
+		'tutorialButtonLabel': 'Tutorial - em breve!',
+		'invalidLoginErrorMsg': 'Login e/ou senha inválidos!',
+		'accessDeniedErrorMsg': 'Você precisa se logar para acessar essa página'
 	}
 });
 
