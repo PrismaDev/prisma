@@ -62,21 +62,25 @@ var FaltacursarView = Backbone.View.extend({
 		}
 	},
 
-	markAsSelected: function(subjectId, isSelected) {
+	markAsSelected: function(subjectCode, isSelected) {
+		console.log($('#'+subjectCode));
 		if (isSelected) 
-			$(subjectId).addClass('tableChosen');
+			$('#'+subjectCode).addClass('classChosen');
 		else {
 			var sel=false;
+			var selected = selectedModel.getData();
+
 			for (var i=0; i<selectedModel.maxRows; i++) {
 				for (var j=0; j<selectedModel.nOptions; j++)
-					if (selectedModel.getData()[i][j].subjectId==subjectId) {
-						sel=true;
-						break;
-					}
+					if (selected[i][j])
+						if (selected[i][j].subjectCode==subjectCode) {
+							sel=true;
+							break;
+						}
 				if (sel) break;
 			}
 
-			if (!sel) $(subjectId).removeClass('tableChosen');
+			if (!sel) $('#'+subjectCode).removeClass('classChosen');
 		}
 	},
 
@@ -176,6 +180,15 @@ var FaltacursarView = Backbone.View.extend({
 		$('#faltacursar-subject-table_wrapper').addClass('whole');
 	},		
 
+	markSavedSelected: function() {
+		var selected = selectedModel.getData();
+
+		for (var i=0; i<selectedModel.maxRows; i++)
+			for (var j=0; j<selectedModel.nOptions; j++)
+				if (selected[i][j])
+					this.markAsSelected(selected[i][j].subjectCode, true);
+	},
+
 	render: function() {
 
 		var subjects = faltacursarModel.getSubjects().sort
@@ -197,6 +210,7 @@ var FaltacursarView = Backbone.View.extend({
 
 		this.subjectDatatable.fnAdjustColumnSizing(false);
 		this.calculateTableScroll();
+		this.markSavedSelected();
 	}
 });
 

@@ -37,8 +37,6 @@ var SelectedModel = Backbone.Model.extend({
 				'classCode': subjectList.get(subjectCode).get('Turmas').get(classId).get('CodigoTurma'),
 				'classId': classId
 			};
-
-			faltacursarView.markAsSelected(subjectCode, true);
 		});
 	},
 
