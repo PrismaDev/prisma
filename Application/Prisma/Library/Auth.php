@@ -13,13 +13,11 @@ class Auth
 
 	public static function accessControl($type, $termCheck = true)
 	{
-		session_start();
-
 		if(self::getSessionType() && self::getSessionType() == $type && self::isLogged()) 
 		{
 			if($termCheck && $type == 'Aluno' && !Usuario::wasTermAccepted(self::getSessionLogin()))
 			{
-				self::accessDenied();
+				Router::redirectRoute('/term');
 				return false;
 			}
 
@@ -51,8 +49,6 @@ class Auth
 
 	public static function login($login, $passwd, $type)
 	{
-		session_start();
-
 		if($hash = self::checkAccount($login, $passwd, $type))
 		{
 			self::setSession($hash, $login, $type);
