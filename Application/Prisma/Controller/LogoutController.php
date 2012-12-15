@@ -15,6 +15,7 @@ Class LogoutController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
+		session_start();
 		Auth::logout();
 		Router::redirectRoute('/');
 	}
