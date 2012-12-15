@@ -102,12 +102,12 @@
 				<input type="text" name="NomeProfessor" />
 			</div>		
 
-			<div class="fieldContainer">
+	<!--		<div class="fieldContainer">
 				<input type="checkbox" name="toggleBlockedDisabled" value="hide" />
 				<label for="toggleBlockedDisabled">
 					<%= str.get('toggleBlockedDisabledLabel') %>
 				</label>
-			</div>
+			</div> -->
 	
 			<div id="hiddenFilters" class="hidden">
 				<div class="fieldContainer">
