@@ -171,17 +171,6 @@ class MicroHorario
 
 		for($i = 0; $i < $horLen; ++$i)
 		{
-			if($horarios[$i]['Unidade'] != 'BARRA' && $horarios[$i]['Unidade'] != 'GAVEA')
-			{
-				print_r($row);
-				echo '<br>';
-				var_dump($horarios);
-				echo '<br>';
-				if(empty($horarios[$i]['Unidade'])) echo 'empty<br>';
-				else  echo 'not empty<br>';
-				echo '<br>';
-			}
-
 			$unidadeID = Unidade::persist($horarios[$i]['Unidade']);
 
 			$horarioParams = null;
