@@ -1,5 +1,5 @@
 <script type="text/underscore-template" id="login-template">
-	<% if (error!='invalidLogin') { %>
+	<% if (error && error!='invalidLogin') { %>
 		<div class="row-fluid">
 			<div class="span6 offset3">
 				<div class="alert alert-error centered">
