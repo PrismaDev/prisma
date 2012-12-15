@@ -171,6 +171,12 @@
 		<%= str.get('noQueryStr') %>
 	</div>
 </script>
+
+<script type="text/underscore-template" id="microhorario-end-of-data-template">
+	<div class="alert">
+		<%= str.get('endOfDataMsg') %>
+	</div>	
+</script>
 <script type="text/underscore-template" id="timetable-template">
 	<table class="table table-bordered">
 		<thead>

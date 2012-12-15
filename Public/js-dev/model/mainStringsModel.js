@@ -27,7 +27,8 @@ var MicrohorarioStringsModel = Backbone.Model.extend({
 		'distanceHoursLabel': 'Com horas à distância',
 		'resetButtonLabel': 'Limpar campos',
 		'submitButtonLabel': 'Buscar',
-		'waitingImgURL': '/img/ajax-loader.gif' 
+		'waitingImgURL': '/img/ajax-loader.gif',
+		'endOfDataMsg': 'Os resultados para essa busca terminaram'
 	}
 });
 var microhorarioStringsModel = new MicrohorarioStringsModel();
