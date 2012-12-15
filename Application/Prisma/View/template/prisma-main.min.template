@@ -116,6 +116,7 @@
 				<div class="fieldContainer">
 					<label for="DiaSemana"><%= str.get('dayLabel') %></label>
 					<select name="DiaSemana">
+						<option value=""></option>
 						<% _.each(timetableStr.get('daysLabel'), function(day, index) { %>
 							<option value="<%= index+2%>"><%= day %></option>
 						<% }); %>
