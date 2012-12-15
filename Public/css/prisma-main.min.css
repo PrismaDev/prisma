@@ -7,6 +7,7 @@
 }
 .centered {
   text-align: center;
+  margin: auto;
 }
 .clearfix {
   *zoom: 1;

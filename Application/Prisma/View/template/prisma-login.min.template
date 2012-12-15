@@ -1,9 +1,11 @@
 <script type="text/underscore-template" id="login-template">
-	<% if (error=='accessDenied') { %>
+	<% if (error!='invalidLogin') { %>
 		<div class="row-fluid">
-			<div class="span4 offset4">
+			<div class="span6 offset3">
 				<div class="alert alert-error centered">
-					<%= loginStr.get('accessDeniedErrorMsg') %>
+					<%= error=='accessDenied'? loginStr.get('accessDeniedErrorMsg') : '' %>
+					<%= error=='pageDoesNotExist'? loginStr.get('pageDoesNotExistErrorMsg') : '' %>
+					<%= error=='unexpectedError'? loginStr.get('unexpectedErrorMsg') : '' %>
 				</div>
 			</div>
 		</div>

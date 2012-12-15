@@ -17,7 +17,10 @@ var LoginStringsModel = Backbone.Model.extend({
 		'openLoginButtonLabel': 'Fazer login',
 		'tutorialButtonLabel': 'Tutorial - em breve!',
 		'invalidLoginErrorMsg': 'Login e/ou senha inválidos!',
-		'accessDeniedErrorMsg': 'Você precisa se logar para acessar essa página'
+		'accessDeniedErrorMsg': 'Você precisa se logar para acessar essa página',
+		'pageDoesNotExistErrorMsg': 'A página que você está acessando não existe no nosso sistema',
+		'unexpectedErrorMsg': 'O sistema se comportou de forma inesperada - fique tranquilo,\
+			recebemos o erro e assim que possível ele será corrigido'
 	}
 });
 
