@@ -1,0 +1,114 @@
+1/ Apenas alunos regularmente matriculados na PUC-Rio podem utilizar 
+este sistema. A autenticação é a mesma do PUConline.
+
+2/ O uso do PrISMA por parte de alunos da PUC-Rio é opcional. Alunos 
+podem efetivar sua  1a fase de matrícula diretamente pelo PUConline, sem 
+auxílio do PrISMA.
+
+3/ O sistema PrISMA auxilia na montagem de 3 opções de matrícula do 
+aluno da PUC-Rio, usando as informações do histórico, contemplando o 
+"Falta Cursar", disciplinas que o aluno está cursando no atual período e 
+também as disciplinas já concluídas com sucesso.
+
+4/ Importantíssimo: o PrISMA não realiza a matrícula em si! Após usar o 
+sistema, o aluno precisa obrigatoriamente utilizar o PUConline e entrar 
+com as opções propostas após utilizar o PrISMA. Não há como importar as 
+escolhas definidas após utilização do PrISMA diretamente para o 
+PUConline, trata-se de uma ação a ser realizada manualmente por cada aluno.
+
+5/ O uso do sistema PrISMA não garante nem aumenta as chances do aluno 
+da PUC-Rio conseguir matrícula em uma ou mais das disciplinas oferecidas 
+para o próximo semestre. Também não há como garantir que o resultado 
+final do PrISMA de cada aluno corresponda à melhor solução possível para 
+grade de horários do próximo semestre.
+
+6/ Na versão  atual, o PrISMA verifica pré-requisitos básicos e permite 
+orientar o aluno para matrículas em disciplinas que ele PODE CURSAR. 
+Assim, o aluno perceberá que para algumas disciplinas não é permitida a 
+escolha para alguma opção - caso não tenha pré-requisitos, por exemplo - 
+ou então há  um aviso de atenção para disciplinas sendo cursadas, pois 
+uma vez o aluno aprovado não poderá solicitar na matrícula, ou ainda, 
+pode ser alguma disciplina pré-requisito de outra.
+
+7/ O PrISMA não garante que você está apto a cursar todas as turmas
+escolhidas. Isso ocorre pois as turmas podem ser destinadas a certos cursos 
+e esse tipo de checagem não está sendo feita nessa versão.
+
+------------------ FAQ ------------------------------------
+
+1/ Não consigo logar no sistema.
+
+Verifique se suas credenciais do PUC Online estão corretas. Caso positivo,
+verifique se seu navegador está configurado para aceitar COOKIES.
+
+
+2/ O que significa cada no na tabela de falta-cursar?
+
+Vermelho: disciplina presa por algum pré-requisito;
+Amarelo: disciplina que você está cursando ou que está presa por algum
+pré-requisito que você está cursando;
+Branco: você está "apto" a cursar. Sugerimos verificar ementa no site da PUC
+para comprovar aptidão.
+Azul: disciplina selecionada. Suas turmas estão sendo exibidas;
+
+
+3/ Como adiciono turma?
+
+Basta clicar na turma em questão.
+
+
+4/ Como removo turma?
+
+Clique nela novamente. :-)
+Ou então a visualize na aba de selecionadas e clique no botão "x".
+
+
+5/ Como sei que a turma foi inserida?
+
+É apresentada uma notificação na aba de selecionadas.
+
+
+6/ Como adiciono as turmas do micro-horario?
+
+Basta clicar na turma em questão.
+
+
+7/ O que fazer na tela de selecionada?
+
+Você pode fazer o que quiser, basicamente. Tanto trocar as turmas de posição
+movendo-as para um lugar vazio, quanto trocando-as de lugar com alguma outra.
+Assim como também é possível trocar as linhas de ordem.
+
+
+8/ Mas por que isso é importante?
+
+Porque o PUC Online funciona assim. Ao fazer o processamento das disciplinas,
+as disciplinas mais prioritárias serão aquelas que estão nas primeiras linhas
+e primeiras opções. Desta maneira, você pode trocar a prioridade de todas as
+turmas escolhidas simplesmente arrastando elas para onde você quiser.
+
+
+9/ Ok, mas e daí?
+
+Daí que você pode usar a magica funcionalidade dos radio buttons, apresentados
+logo do lado esquerdo de cada lugar que pode receber uma turma. Esses radio
+buttons representam a turma que foi possível de pegar na simulação.
+
+
+10/ Simulação? Como funciona?
+
+Tem por objetivo simular o que pode acontecer com a sua solicitação de
+matrícula no PUC Online.
+Tendo conhecimento da priorização das primeiras linhas e primeiras opções, a
+simulação tenta sempre pegar as turmas nesse sentido do processamento. Isto é,
+você pode simular as opções que serão pegas em cada linha. Automaticamente
+será realizada uma cascata nas linhas menos prioritárias de forma a mostrar o
+que realmente aconteceria caso aquela opção fosse pega.
+
+
+11/ Legal. Montei minha grade, e agora?
+
+Infelizmente sua grade está salva em nosso sistema, mas não no PUC Online.
+Você deve entrar com os dados que foram gerados aqui no sistema de requisição
+de matrícula acadêmica, que fica localizado dentro do PUC Online.
+
