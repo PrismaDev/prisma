@@ -64,7 +64,7 @@ class Auth
 
 		$expire 	= time()+$config['expire']; //expires within 3 days
 		$path 		= '/';
-		$serverName 	= $_SERVER['SERVER_NAME'];
+		$serverName 	= '';//$_SERVER['SERVER_NAME'];
 		$secure 	= $config['secure'];
 
 		setcookie('session', $hash, $expire, $path, $serverName, $secure);
@@ -200,7 +200,7 @@ class Auth
 		$config = include(__DIR__.'/'.self::$configPath);
 
 		$path 		= '/';
-		$serverName 	= $_SERVER['SERVER_NAME'];
+		$serverName 	= '';//$_SERVER['SERVER_NAME'];
 		$secure 	= $config['secure'];
 
 		setcookie('session', '', time()-3600, $path, $serverName, $secure);

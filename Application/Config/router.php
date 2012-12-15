@@ -127,7 +127,14 @@ return array(
 							'controller' => 'Prisma\Controller\Resource\DisciplinaController',
 						),
 					),
-
+					'log' => array
+					(
+						'action' => array
+						(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\LogController',
+						),
+					),
 				),
 			),
 			'error' => array

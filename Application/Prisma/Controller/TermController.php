@@ -19,7 +19,8 @@ Class TermController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return ViewLoader::load('Prisma', 'general.phtml', array('section' => 'term'));
+		$data = json_encode(Usuario::getAlunoById($_COOKIE['login']));
+		return ViewLoader::load('Prisma', 'general.phtml', array('section' => 'term', 'DATA_VIEW' => $data));
 	}
 	
 	public function performPost($url, $arguments, $accept) 
