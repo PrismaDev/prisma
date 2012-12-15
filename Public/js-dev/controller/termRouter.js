@@ -1,12 +1,17 @@
 var TermRouter = Backbone.Router.extend({
 	routes: {
 		'': 'term'
+	},
+
+	loadPage: function() {
+		layoutStringsModel.set('userName',DATA_VIEW.NomeAluno);
+		termView.render();
 	}
 });
 
 var termRouter = new TermRouter();
 termRouter.on('route:term', function() {
-	termView.render();
+	this.loadPage();
 });
 
 //if (history.pushState) { 
