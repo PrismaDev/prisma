@@ -42,7 +42,7 @@ Verifique se suas credenciais do PUC Online estão corretas. Caso positivo,
 verifique se seu navegador está configurado para aceitar COOKIES.
 
 
-2/ O que significa cada no na tabela de falta-cursar?
+2/ O que significa cada cor na tabela de falta-cursar?
 
 Vermelho: disciplina presa por algum pré-requisito;
 Amarelo: disciplina que você está cursando ou que está presa por algum
@@ -112,3 +112,12 @@ Infelizmente sua grade está salva em nosso sistema, mas não no PUC Online.
 Você deve entrar com os dados que foram gerados aqui no sistema de requisição
 de matrícula acadêmica, que fica localizado dentro do PUC Online.
 
+
+12/ O sistema apresenta erros / não funciona no meu navegador.
+
+Infelizmente o sistema foi desenvolvido tirando proveito de recursos não
+suportados por browsers muito antigos. Recomendo a utilização da versão
+mais recente do seu browser favorito.
+Obs: o site pode estar não completamente funcional no Internet Explorer.
+Recomendamos o uso de algum outro navegador popular disponível atualmente.
+Aqueles que recomendamos são: Google Chrome, Mozilla Firefox, Opera.
