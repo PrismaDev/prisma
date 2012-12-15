@@ -6,6 +6,13 @@
 			id="closeFiltersButton" />
 	</div>
 	<div id="microhorario-filter">
+	<!--		<div class="fieldContainer">
+				<input type="checkbox" name="toggleBlockedDisabled" value="hide" />
+				<label for="toggleBlockedDisabled">
+					<%= str.get('toggleBlockedDisabledLabel') %>
+				</label>
+			</div> -->
+	
 		<form id="microhorario-form">
 			<div class="fieldContainer">
 				<label for="CodigoDisciplina"><%= str.get('subjectCodeLabel') %></label>
@@ -21,13 +28,7 @@
 				<input type="text" name="NomeProfessor" />
 			</div>		
 
-	<!--		<div class="fieldContainer">
-				<input type="checkbox" name="toggleBlockedDisabled" value="hide" />
-				<label for="toggleBlockedDisabled">
-					<%= str.get('toggleBlockedDisabledLabel') %>
-				</label>
-			</div> -->
-	
+
 			<div id="hiddenFilters" class="hidden">
 				<div class="fieldContainer">
 					<label for="Creditos"><%= str.get('nCreditsLabel') %></label>
