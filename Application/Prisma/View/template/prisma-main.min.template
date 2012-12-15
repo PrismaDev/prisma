@@ -182,7 +182,7 @@
 		<thead>
 			<th></th>
 			<% _.each(timetableStr.get('daysLabel'), function(day) { %>
-				<th><%= day %>
+				<th><%= day %></th>
 			<% }); %>
 		</thead>
 		<tbody>
