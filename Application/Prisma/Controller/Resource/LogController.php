@@ -24,8 +24,8 @@ class LogController extends RestController
 
 		$ip = $_SERVER['REMOTE_ADDR'];
 		$uri = $_SERVER['REQUEST_URI'];
-		$hash = $_COOKIE['session'];
-		$user = $_COOKIE['login'];
+		$hash = Auth::getSessionHash();
+		$user = Auth::getSessionLogin();
 		$browser = $_SERVER['HTTP_USER_AGENT'];
 
 		LogPrisma::errorLog($ip, $uri, $hash, $user, $browser, $arguments['error']);

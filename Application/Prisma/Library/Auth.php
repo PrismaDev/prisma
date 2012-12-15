@@ -13,9 +13,11 @@ class Auth
 
 	public static function accessControl($type, $termCheck = true)
 	{
-		if(isset($_COOKIE['type']) && $_COOKIE['type'] == $type && self::isLogged()) 
+		session_start();
+
+		if(self::getSessionType() && self::getSessionType() == $type && self::isLogged()) 
 		{
-			if($termCheck && $type == 'Aluno' && !Usuario::wasTermAccepted($_COOKIE['login']))
+			if($termCheck && $type == 'Aluno' && !Usuario::wasTermAccepted(self::getSessionLogin()))
 			{
 				self::accessDenied();
 				return false;
@@ -33,8 +35,8 @@ class Auth
 	{
 		$ip = $_SERVER['REMOTE_ADDR'];
 		$uri = $_SERVER['REQUEST_METHOD'].':'.$_SERVER['REQUEST_URI'];
-		$hash = $_COOKIE['session'];
-		$user = $_COOKIE['login'];
+		$hash = self::getSessionHash();
+		$user = self::getSessionLogin();
 		$browser = $_SERVER['HTTP_USER_AGENT'];
 
 		LogPrisma::pathLog($ip, $uri, $hash, $user, $browser);
@@ -42,34 +44,47 @@ class Auth
 
 	public static function isLogged()
 	{
-		if(!isset($_COOKIE['session'])) return false;
+		if(!self::getSessionHash()) return false;
 
-		return self::checkHash($_COOKIE['session']);
+		return self::checkHash(self::getSessionHash());
 	}
 
 	public static function login($login, $passwd, $type)
 	{
+		session_start();
+
 		if($hash = self::checkAccount($login, $passwd, $type))
 		{
-			self::setSessionCookies($hash, $login, $type);
+			self::setSession($hash, $login, $type);
 
 			return true;
 		}
 		return false;
 	}
 
-	protected static function setSessionCookies($hash, $login, $type)
+	protected static function setSession($hash, $login, $type)
 	{
-		$config = include(__DIR__.'/'.self::$configPath);
+		$_SESSION['auth']['session'] = $hash;
+		$_SESSION['auth']['login'] = $login;
+		$_SESSION['auth']['type'] = $type;
+	}
 
-		$expire 	= time()+$config['expire']; //expires within 3 days
-		$path 		= '/';
-		$serverName 	= '';//$_SERVER['SERVER_NAME'];
-		$secure 	= $config['secure'];
+	public static function getSessionHash()
+	{
+		if(!isset($_SESSION['auth']['session'])) return false;
+		return $_SESSION['auth']['session'];
+	}
 
-		setcookie('session', $hash, $expire, $path, $serverName, $secure);
-		setcookie('login', $login, $expire, $path, $serverName, $secure);
-		setcookie('type', $type, $expire, $path, $serverName, $secure);
+	public static function getSessionLogin()
+	{
+		if(!isset($_SESSION['auth']['login'])) return false;
+		return $_SESSION['auth']['login'];
+	}
+
+	public static function getSessionType()
+	{
+		if(!isset($_SESSION['auth']['type'])) return false;
+		return $_SESSION['auth']['type'];
 	}
 
 	protected static function checkAccount($login, $passwd, $type)
@@ -197,15 +212,11 @@ class Auth
 
 	public static function logout()
 	{
-		$config = include(__DIR__.'/'.self::$configPath);
-
-		$path 		= '/';
-		$serverName 	= '';//$_SERVER['SERVER_NAME'];
-		$secure 	= $config['secure'];
-
-		setcookie('session', '', time()-3600, $path, $serverName, $secure);
-		setcookie('login', '', time()-3600, $path, $serverName, $secure);
-		setcookie('type', '', time()-3600, $path, $serverName, $secure);
+		session_unset();
+		session_destroy();
+		unset($_SESSION);
+		$_SESSION = array();
 	}
+
 }
 

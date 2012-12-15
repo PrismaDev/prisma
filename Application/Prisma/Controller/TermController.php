@@ -19,13 +19,13 @@ Class TermController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		$data = json_encode(Usuario::getAlunoById($_COOKIE['login']));
+		$data = json_encode(Usuario::getAlunoById(Auth::getSessionLogin()));
 		return ViewLoader::load('Prisma', 'general.phtml', array('section' => 'term', 'DATA_VIEW' => $data));
 	}
 	
 	public function performPost($url, $arguments, $accept) 
 	{
-		Usuario::acceptTerm($_COOKIE['login'], $arguments['acceptedTerm']);
+		Usuario::acceptTerm(Auth::getSessionLogin(), $arguments['acceptedTerm']);
 
 		Router::redirectRoute('/main');
 	}

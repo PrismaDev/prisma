@@ -22,7 +22,7 @@ Class MainController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		$login = $_COOKIE['login'];
+		$login = Auth::getSessionLogin();
 
 		$aluno = Usuario::getAlunoById($login);
 		$disciplinas = Disciplina::getFaltaCursar($login);

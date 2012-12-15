@@ -18,7 +18,7 @@ class MicroHorarioController extends RestController
 	public function performGet($url, $arguments, $accept) 
 	{
 		Auth::accessControl('Aluno');
-		$login = $_COOKIE['login'];
+		$login = Auth::getSessionLogin();
 
 		$microhorario = MicroHorario::getByFilter($login, $arguments);
 

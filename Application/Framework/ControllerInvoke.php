@@ -4,6 +4,7 @@ namespace Framework;
 
 use Framework\Router;
 use Prisma\Model\LogPrisma;
+use Prisma\Library\Auth;
 
 class ControllerInvoke
 {
@@ -18,8 +19,8 @@ class ControllerInvoke
 		{
 			$ip = $_SERVER['REMOTE_ADDR'];
 			$uri = $_SERVER['REQUEST_METHOD'].':'.$_SERVER['REQUEST_URI'];
-			$hash = $_COOKIE['session'];
-			$user = $_COOKIE['login'];
+			$hash = Auth::getSessionHash();
+			$user = Auth::getSessionLogin();
 			$browser = $_SERVER['HTTP_USER_AGENT'];
 
 			LogPrisma::errorLog($ip, $uri, $hash, $user, $browser, $e->getMessage());

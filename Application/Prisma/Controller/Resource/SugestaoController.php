@@ -19,7 +19,7 @@ class SugestaoController extends RestController
 
 		if(!isset($arguments['comentario'])) return 'error';
 
-		if(Sugestao::persist($_COOKIE['login'], $arguments['comentario']))
+		if(Sugestao::persist(Auth::getSessionLogin(), $arguments['comentario']))
 		{
 			return 'ok';
 		}

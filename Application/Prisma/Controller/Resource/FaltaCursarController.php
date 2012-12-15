@@ -21,7 +21,7 @@ class FaltaCursarController extends RestController
 	{
 		Auth::accessControl('Aluno');
 
-		$login = $_COOKIE['login'];
+		$login = Auth::getSessionLogin();
 
 		$disciplinas = Disciplina::getFaltaCursar($login);
 		$optativas = Optativa::getByUserDepend($login);

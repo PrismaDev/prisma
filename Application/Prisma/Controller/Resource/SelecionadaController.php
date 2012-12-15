@@ -20,7 +20,7 @@ class SelecionadaController extends RestController
 /*
 	public function performGet($url, $arguments, $accept) 
 	{
-		$login = $_COOKIE['login'];
+		$login = Auth::getSessionLogin();
 
 		$selecionadas = Selecionada::getAll($login);
 
@@ -49,7 +49,7 @@ class SelecionadaController extends RestController
 
 	public function performPost($url, $arguments, $accept) 
 	{
-		$login = $_COOKIE['login'];
+		$login = Auth::getSessionLogin();
 
 		$rows = json_decode(str_replace('\\"','"',$arguments['json']));
 		$len = count($rows);
@@ -67,7 +67,7 @@ class SelecionadaController extends RestController
 
 	public function performDelete($url, $arguments, $accept) 
 	{
-		$login = $_COOKIE['login'];
+		$login = Auth::getSessionLogin();
 
 		$rows = json_decode(str_replace('\\"','"',$arguments['json']));
 		$len = count($rows);
