@@ -121,7 +121,8 @@ function SelectedController() {
 				string: '<span>'+subjectList.get(accepted[idx].subjectCode).get('NomeDisciplina')+'</span><br />'+
 					accepted[idx].subjectCode+' - '+accepted[idx].classObj.get('CodigoTurma'),
 				horarios: accepted[idx].classObj.get('Horarios').models,
-				cssClass: accepted[idx].cssClass
+				cssClass: accepted[idx].cssClass,
+				subjectCode: accepted[idx].subjectCode
 			});
 		}
 

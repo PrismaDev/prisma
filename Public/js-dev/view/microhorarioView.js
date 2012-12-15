@@ -51,14 +51,16 @@ var MicrohorarioView = Backbone.View.extend ({
 		microhorarioClasseslistView.resize();
 	},
 
-	searchFor: function(day, initTime) {
-		console.log(day);
-		console.log(initTime);
+	searchFor: function(day, initTime, subjectCode) {
+		console.log(day+' '+initTime+' '+subjectCode);
 
-		if (initTime)
-			$('input[name="HoraInicial"]').attr('value',initTime);
-		if (day)
-			$('select[name="DiaSemana"]').find('option[value="'+day+'"]').attr('selected',true);
+		if (day==null) day='';
+		if (initTime==null) initTime='';
+		if (subjectCode==null) subjectCode='';
+	
+		$('input[name="HoraInicial"]').attr('value',initTime);
+		$('select[name="DiaSemana"]').find('option[value="'+day+'"]').attr('selected',true);
+		$('input[name="CodigoDisciplina"]').attr('value',subjectCode);
 		
 		mainView.setActiveTab('microhorario');
 		this.openFilters();

@@ -3,16 +3,16 @@ var TimetableView = Backbone.View.extend({
 	startH: 7,
 	endH: 23,
 	ndays: 6,
+	ttmat: '',
 
 	initialize: function() {
 		this.template = _.template($('#timetable-template').html());
 	},
 
 	bindCell: function(el) {
-		console.log($(el).data());
 		$(el).click(function() {
 			microhorarioView.searchFor($(el).data('day'),
-				$(el).data('initTime'));
+				$(el).data('initTime'), $(el).data('subjectCode'));
 		});
 	},
 
@@ -23,8 +23,27 @@ var TimetableView = Backbone.View.extend({
 			$(th).data({'day': (index==0? null: (index-1)+2), 'initTime': null});
 		});
 
+		var tds = this.$el.find('td');
+		var cnt=0;		
+
+		for (var hour=this.startH; hour<this.endH; hour++) {
+			$(tds[cnt++]).data({'day': null, 'initTime': hour,
+						'subjectCode': null});			
+
+			for (var day=2; day<this.ndays+2; day++)
+				if (this.ttmat[hour][day].span!=0) {	
+					if (this.ttmat[hour][day].subjectCode!=null)
+						$(tds[cnt++]).data({'subjectCode': this.ttmat[hour][day].subjectCode,
+									'day': null, 'initTime': null});
+					else
+						$(tds[cnt++]).data({'day': day, 'initTime': hour,
+									'subjectCode': null});	
+				}
+		}
+
 		var cells = this.$el.find('td, th');
 		var me=this;
+		
 
 		_.each(cells, function(cell) {
 			me.bindCell(cell);
@@ -41,7 +60,8 @@ var TimetableView = Backbone.View.extend({
 				timetableMatrix[hour][day] = {
 					'string':'',
 					'span': 1,
-					'customClass': null
+					'customClass': null,
+					'subjectCode': null
 				}
 		}
 
@@ -55,6 +75,7 @@ var TimetableView = Backbone.View.extend({
 				timetableMatrix[s][d].span=Number(e)-Number(s);
 				timetableMatrix[s][d].customClass='ttclass'+
 					classesArray[i].cssClass;
+				timetableMatrix[s][d].subjectCode=classesArray[i].subjectCode;
 
 				for (var k=s+1; k<e; k++)
 					timetableMatrix[k][d].span=0;
@@ -67,7 +88,7 @@ var TimetableView = Backbone.View.extend({
 		if (classesArray == undefined)
 			classesArray=[];
 
-		var ttmat = this.processArray(classesArray);		
+		this.ttmat = this.processArray(classesArray);		
 		var tbody = document.createElement('tbody');
 
 		for (var hour=this.startH; hour<this.endH; hour++) {
@@ -76,26 +97,24 @@ var TimetableView = Backbone.View.extend({
 			
 			$(tdH).addClass('text-top');
 			$(tdH).html(hour+':00');			
-			$(tdH).data({'day': null, 'initTime': hour});
 
 			$(tr).append(tdH);
 
 			for (var day=2; day<this.ndays+2; day++) {
-				if (ttmat[hour][day].span==0)
+				if (this.ttmat[hour][day].span==0)
 					continue;
 
 				var td = document.createElement('td');
 				var div = document.createElement('div');
 
-				div.innerHTML = ttmat[hour][day].string;
+				div.innerHTML = this.ttmat[hour][day].string;
 				
-				if (ttmat[hour][day].customClass)
-					$(td).addClass(ttmat[hour][day].customClass);
+				if (this.ttmat[hour][day].customClass)
+					$(td).addClass(this.ttmat[hour][day].customClass);
 			
-				td.rowSpan=ttmat[hour][day].span;
+				td.rowSpan=this.ttmat[hour][day].span;
 
 				td.appendChild(div);
-				$(td).data({'day': day, 'initTime': hour});
 				tr.appendChild(td);
 			}
 			$(tbody).append(tr);
