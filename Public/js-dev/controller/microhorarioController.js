@@ -3,20 +3,28 @@ function MicrohorarioController() {
 	var url = 'api/microhorario';
 	var defaultQtd=10;
 	var formquerystring;
+	
+	this.end=false;
 	this.nextPage=0;
 
+	var me=this;
+	
 	var completeQueryStr = function() {
-		return formquerystring+'&Pagina='+this.nextPage+'&Quantidade='+
+		console.log(me.nextPage);
+		return formquerystring+'&Pagina='+me.nextPage+'&Quantidade='+
 			defaultQtd;
 	}
 
 	this.fetchData = function(newSearch) {
-		var me=this;
-
+		if (me.end) 
+			return microhorarioClasseslistView.addNextPage(me.end);
+		
 		if (newSearch) {
 			formquerystring = $(formEl).serialize();
-			nextPage=0;
+			me.nextPage=0; me.end=false;
+			console.log(me.nextPage);
 		}
+		
 		console.log(completeQueryStr());
 		
 		$.ajax({
@@ -28,7 +36,10 @@ function MicrohorarioController() {
 			success: function(data) {
 				if (newSearch)
 					me.buildTable(data);
+				else
+					me.addRows(data);
 				me.nextPage++;
+				console.log(me.nextPage);
 			}
 		});
 	}
@@ -64,6 +75,14 @@ function MicrohorarioController() {
 	this.buildTable = function(data) {
 		var array = formatData(data);	
 		microhorarioView.changeState(microhorarioView.queryState,array);
+	}
+
+	this.addRows = function(data) {
+		var array = formatData(data);
+		
+		if (array.length==0)	
+			me.end=true;
+		microhorarioClasseslistView.addNextPage(me.end,array);
 	}
 }
 

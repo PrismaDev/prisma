@@ -176,12 +176,10 @@ var FaltacursarView = Backbone.View.extend({
 	},
 
 	render: function() {
-
 		var subjects = faltacursarModel.getSubjects().sort
 		(function(a,b){
 			if(a.term != b.term)
 				return a.term - b.term;
-			
 			return a.code - b.code;
 		});
 

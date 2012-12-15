@@ -5,9 +5,9 @@ var ClasseslistView = Backbone.View.extend({
 	subjectInfo: '',
 
 	//Cached
-	classesDatatable: '',
+	classesDatatable: null,
 	classesTableHead: '',
-	lassesTableBody: '',
+	classesTableBody: '',
 
 	events: {
 		'click .dataTables_scrollBody tr': 'clickOnClass'
@@ -69,7 +69,8 @@ var ClasseslistView = Backbone.View.extend({
 	},
 
 	resize: function() {
-		this.classesDatatable.fnDraw(false);
+		if (this.classesDatatable)
+			this.classesDatatable.fnDraw(false);
 	},
 
 	calculateTableScroll: function() {},
@@ -79,7 +80,7 @@ var ClasseslistView = Backbone.View.extend({
 		this.templateRow = _.template($('#classeslist-row-template').html());
 	},
 
-	initJS: function() {		
+	initJS: function() {
 		var me = this;
 
 		this.classesDatatable = this.$el.find('table').dataTable({			
@@ -117,13 +118,53 @@ var ClasseslistView = Backbone.View.extend({
 		this.cache();
 		
 		this.addRowsToTable(classesArray);
-		this.calculateTableScroll();
 		this.markChosenRows();
+		this.calculateTableScroll();
 	}
 });
 
 var MicrohorarioClasseslistView = ClasseslistView.extend({
 	subjectInfo: true,
+	waitingData: false,
+	waitingTemplate: '',
+
+	initialize: function() {
+		this.templateTable = _.template($('#classeslist-template').html());
+		this.templateRow = _.template($('#classeslist-row-template').html());
+		this.waitingTemplate = _.template($('#microhorario-waiting-template').html());
+	},
+
+	addNextPage: function(end, data) {
+		$(this.classesTableBody).find('div').remove();
+		
+		if (end) console.log('end of data');
+		else this.addRowsToTable(data);	
+
+		this.waitingData=false;
+	},
+
+	bindEndOfScroll: function() {
+		var me=this;
+
+		this.$el.find('.dataTables_scrollBody').scroll(function() {
+			if (!$(this).scrollTop())
+				return;
+			if($(this).scrollTop() + $(this).innerHeight()
+					== $(this)[0].scrollHeight) {
+
+				if (me.waitingData) return;
+			
+				me.waitingData=true;
+				var div = document.createElement('div');
+				$(div).html(me.waitingTemplate({
+					str: microhorarioStringsModel 
+				}));
+				
+				$(me.classesTableBody).append(div);
+				microhorarioController.fetchData(false);
+			}
+		});
+	},
 
 	calculateTableScroll: function() {
 		var h=0;
@@ -137,6 +178,8 @@ var MicrohorarioClasseslistView = ClasseslistView.extend({
 		$(this.el).height(totH);
 		var headH = $(this.classesTableHead).outerHeight();
 		$(this.classesTableBody).height(totH-headH);
+
+		this.bindEndOfScroll();
 	}
 });
 var microhorarioClasseslistView = new MicrohorarioClasseslistView({sDom: 't'});

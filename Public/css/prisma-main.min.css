@@ -157,6 +157,10 @@ div.fieldContainer {
 #microhorario-filter:after {
   clear: both;
 }
+#microhorario-results .dataTables_scrollBody div {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
 #main-selected-div table {
   width: 98%;
   margin: auto;
