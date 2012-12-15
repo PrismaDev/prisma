@@ -32,7 +32,7 @@ class Auth
 	private static function makeLog()
 	{
 		$ip = $_SERVER['REMOTE_ADDR'];
-		$uri = $_SERVER['REQUEST_URI'];
+		$uri = $_SERVER['REQUEST_METHOD'].':'.$_SERVER['REQUEST_URI'];
 		$hash = $_COOKIE['session'];
 		$user = $_COOKIE['login'];
 		$browser = $_SERVER['HTTP_USER_AGENT'];
