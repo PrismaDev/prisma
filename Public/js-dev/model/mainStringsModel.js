@@ -69,7 +69,8 @@ var SubjectTableStringsModel = Backbone.Model.extend({
 		'ementaLinkLabel': 'Ver ementa',
 		'ementaBaseLink': 'http://www.puc-rio.br/ferramentas/ementas/ementa.aspx?cd=',
 		'ongoingStr': 'Cursando',
-		'chosenSubjectStr': 'Selecionada'
+		'chosenSubjectStr': 'Selecionada',
+		'noResultsStr': 'Não há resultados para essa busca'
 	}
 });
 
@@ -87,7 +88,8 @@ var ClassesTableStringsModel = SubjectTableStringsModel.extend({
 			'Qui',
 			'Sex',
 			'Sab'
-		]
+		],
+		'emptyTableStr': 'Não há turmas a serem exibidas'
 	}
 });
 //Based on http://stackoverflow.com/questions/6549149/extending-the-defaults-of-a-model-superclass-in-backbone-js

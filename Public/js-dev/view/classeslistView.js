@@ -89,6 +89,9 @@ var ClasseslistView = Backbone.View.extend({
 			'bScrollCollapse': true,
 			'sScrollY': '100px',
 			'bSort': false,
+			'oLanguage': {
+				'sEmptyTable': classesTableStringsModel.get('emptyTableStr')
+			},
 			'fnDrawCallback': function(oSettings) {
 				me.calculateTableScroll();
 			}
