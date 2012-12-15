@@ -1,5 +1,6 @@
 var ClasseslistView = Backbone.View.extend({
-	template: '',
+	templateTable: '',
+	templateRow: '',
 	el: '',
 	subjectInfo: '',
 
@@ -74,7 +75,8 @@ var ClasseslistView = Backbone.View.extend({
 	calculateTableScroll: function() {},
 
 	initialize: function() {
-		this.template = _.template($('#classeslist-template').html());
+		this.templateTable = _.template($('#classeslist-template').html());
+		this.templateRow = _.template($('#classeslist-row-template').html());
 	},
 
 	initJS: function() {		
@@ -92,16 +94,29 @@ var ClasseslistView = Backbone.View.extend({
 		});
 	},
 
+	addRowsToTable: function(classesArray) {
+		for(idx in classesArray) {
+			var newTr = this.templateRow({
+					classO: classesArray[idx],
+					classesTableStr: classesTableStringsModel,
+					subjectInfo: this.subjectInfo
+				});
+			this.classesDatatable.fnAddTr($(newTr)[0]);
+		}
+		
+		this.classesDatatable.fnAdjustColumnSizing();
+	},
+
 	render: function(classesArray) {
-		this.$el.html(this.template({
-			classes: classesArray,
+		this.$el.html(this.templateTable({
 			classesTableStr: classesTableStringsModel,
-			subjectTableStr: subjectTableStringsModel,
 			subjectInfo: this.subjectInfo
 		}));	
 
 		this.initJS();
 		this.cache();
+		
+		this.addRowsToTable(classesArray);
 		this.calculateTableScroll();
 		this.markChosenRows();
 	}
