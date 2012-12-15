@@ -9,8 +9,6 @@ var MicrohorarioView = Backbone.View.extend ({
 	queryState: 'query',
 	waitingState: 'waiting',
 
-	waitingImgURL: '/img/ajax-loader.gif',
-		
 	events: {
 		"click #moreFiltersButton": "moreFilters",
 		"click #lessFiltersButton": "lessFilters",
@@ -55,7 +53,7 @@ var MicrohorarioView = Backbone.View.extend ({
 
 	query: function() {
 		this.changeState(this.waitingState);
-		microhorarioController.fetchData();
+		microhorarioController.fetchData(true);
 		return false;		
 	},
 
@@ -84,7 +82,7 @@ var MicrohorarioView = Backbone.View.extend ({
 			}));
 		else 
 			this.$resultsDiv.html(this.waitingTemplate({
-				waitingImgURL: this.waitingImgURL
+				str: microhorarioStringsModel
 			}));
 	},
 

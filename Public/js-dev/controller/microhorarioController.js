@@ -1,24 +1,39 @@
 function MicrohorarioController() {
 	var formEl = '#microhorario-form';
 	var url = 'api/microhorario';
+	var defaultQtd=10;
+	var formquerystring;
+	this.nextPage=0;
 
-	this.fetchData = function() {
+	var completeQueryStr = function() {
+		return formquerystring+'&Pagina='+this.nextPage+'&Quantidade='+
+			defaultQtd;
+	}
+
+	this.fetchData = function(newSearch) {
 		var me=this;
-		console.log($(formEl).serialize());
 
+		if (newSearch) {
+			formquerystring = $(formEl).serialize();
+			nextPage=0;
+		}
+		console.log(completeQueryStr());
+		
 		$.ajax({
 			url: url,
 			type: 'GET',
-			data: $(formEl).serialize(),
+			data: completeQueryStr(),
 			dataType: 'json',
 
 			success: function(data) {
-				me.handleData(data);
+				if (newSearch)
+					me.buildTable(data);
+				me.nextPage++;
 			}
 		});
 	}
-
-	this.handleData = function(data) {
+	
+	var formatData = function(data) {
 		subjectList.add(data[serverDictionary.get('Dependencia')]);
 		var array = new Array();		
 
@@ -43,6 +58,11 @@ function MicrohorarioController() {
 			array.push(object);
 		});
 
+		return array;
+	}
+
+	this.buildTable = function(data) {
+		var array = formatData(data);	
 		microhorarioView.changeState(microhorarioView.queryState,array);
 	}
 }

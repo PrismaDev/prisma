@@ -26,7 +26,8 @@ var MicrohorarioStringsModel = Backbone.Model.extend({
 		'noFixedScheduleLabel': 'Sem horário fixo',
 		'distanceHoursLabel': 'Com horas à distância',
 		'resetButtonLabel': 'Limpar campos',
-		'submitButtonLabel': 'Buscar'
+		'submitButtonLabel': 'Buscar',
+		'waitingImgURL': '/img/ajax-loader.gif' 
 	}
 });
 var microhorarioStringsModel = new MicrohorarioStringsModel();

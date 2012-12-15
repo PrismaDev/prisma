@@ -82,7 +82,7 @@
 </script>
 
 <script type="text/underscore-template" id="microhorario-waiting-template">
-	<img src="<%= waitingImgURL %>" class="waitingImg" />
+	<img src="<%= str.get('waitingImgURL') %>" class="waitingImg" />
 </script>
 
 <script type="text/underscore-template" id="microhorario-noquery-template">

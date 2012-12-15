@@ -14,40 +14,41 @@
 			<% } %>
 		</thead>
 		<tbody>
-			<% _.each(classes, function(classO) { %>
-				<tr class="
-						<%= classO.status=="CP"? 'subjectDisabled ' : '' %> 
-						<%= classO.status=="EA"? 'subjectWarning ' : '' %>
-						<%= classO.able==0? 'subjectBlocked ': '' %>
-						<%= classO.able==1? 'subjectWarning ': '' %>	
-					">
-					<input type="hidden" name="subjectCode" value="<%= classO.subjectCode %>" />
-					<input type="hidden" name="classId" value="<%= classO.classId %>" />
-					<% if (subjectInfo) { %>
-						<td><%= classO.subjectCode %></td>
-						<td><%= classO.subjectName %>
-							<% if (classO.status=="EA") { %>
-								<span class="label label-warning">
-									<%= subjectTableStr.get('ongoingStr') %>
-								</span>
-							<% } %>
-						</td>
-					<% } %>
-					<td><%= classO.professorName %></td>
-					<td><%= classO.schedule %></td>
-					<td><%= classO.code %></td>	
-				
-					<% if (subjectInfo) { %>
-						<td>
-							<button type="button"
-								class="btn btn-link btn-small ementaButton"
-								onclick="window.open('<%=classesTableStr.get('ementaBaseLink')+classO.subjectCode%>');">
-							<%= classesTableStr.get('ementaLinkLabel') %>
-						</a>
-					</td>
-					<% } %>
-				</tr>
-			<% }); %>
 		</tbody>
 	</table>
+</script>
+
+<script type="text/underscore" id="classeslist-row-template">
+	<tr class="
+			<%= classO.status=="CP"? 'subjectDisabled ' : '' %> 
+			<%= classO.status=="EA"? 'subjectWarning ' : '' %>
+			<%= classO.able==0? 'subjectBlocked ': '' %>
+			<%= classO.able==1? 'subjectWarning ': '' %>	
+		">
+		<input type="hidden" name="subjectCode" value="<%= classO.subjectCode %>" />
+		<input type="hidden" name="classId" value="<%= classO.classId %>" />
+		<% if (subjectInfo) { %>
+			<td><%= classO.subjectCode %></td>
+			<td><%= classO.subjectName %>
+				<% if (classO.status=="EA") { %>
+					<span class="label label-warning">
+						<%= subjectTableStr.get('ongoingStr') %>
+					</span>
+				<% } %>
+			</td>
+		<% } %>
+		<td><%= classO.professorName %></td>
+		<td><%= classO.schedule %></td>
+		<td><%= classO.code %></td>	
+				
+		<% if (subjectInfo) { %>
+			<td>
+				<button type="button"
+					class="btn btn-link btn-small ementaButton"
+					onclick="window.open('<%=classesTableStr.get('ementaBaseLink')+classO.subjectCode%>');">
+						<%= classesTableStr.get('ementaLinkLabel') %>
+				</button>
+			</td>
+		<% } %>
+	</tr>
 </script>
