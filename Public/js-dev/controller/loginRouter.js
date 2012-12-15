@@ -13,10 +13,9 @@ loginRouter.on('route:other', function() {
 
 loginRouter.on('route:login', function() {
 	var arr = document.URL.split('?');
-	console.log(arr);
-
+	
 	if (arr.length>1)
-		loginView.render(arr[1]);
+		loginView.render(arr[1].split('#')[0]);
 	else loginView.render();
 });
 
