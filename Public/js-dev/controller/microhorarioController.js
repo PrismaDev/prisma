@@ -10,20 +10,17 @@ function MicrohorarioController() {
 	var me=this;
 	
 	var completeQueryStr = function() {
-		console.log(me.nextPage);
 		return formquerystring+'&Pagina='+me.nextPage+'&Quantidade='+
 			defaultQtd;
 	}
 
 	this.fetchData = function(newSearch) {
-		if (me.end) 
-			return microhorarioClasseslistView.addNextPage(me.end);
-		
 		if (newSearch) {
 			formquerystring = $(formEl).serialize();
 			me.nextPage=0; me.end=false;
-			console.log(me.nextPage);
 		}
+		if (me.end) 
+			return microhorarioClasseslistView.addNextPage(me.end);
 		
 		console.log(completeQueryStr());
 		
@@ -39,7 +36,6 @@ function MicrohorarioController() {
 				else
 					me.addRows(data);
 				me.nextPage++;
-				console.log(me.nextPage);
 			}
 		});
 	}
