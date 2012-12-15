@@ -13,11 +13,16 @@ use Prisma\Model\Unidade;
 
 class MicroHorario
 {
-	public static function getByFilter($filters = array())
+	public static function getByFilter($login, $filters = array())
 	{
+		$filters['Aluno'] = $login;
+
 		$dbh = Database::getConnection();
 
-		$sql = 'SELECT "CodigoDisciplina", "PK_Turma" FROM "MicroHorario" WHERE "PeriodoAno" = '.Common::getPeriodoAno();
+		$sql = 'SELECT "CodigoDisciplina", "PK_Turma" FROM "MicroHorario" mh
+				LEFT JOIN "AlunoDisciplina" ad
+					on mh."CodigoDisciplina" = ad."FK_Disciplina" and "FK_Aluno" = :Aluno and ad."FK_Status" <> \'AP\'
+				WHERE "PeriodoAno" = '.Common::getPeriodoAno();
 
 		$filtersAvail = array(
 			array('CodigoDisciplina', 0),
@@ -54,7 +59,8 @@ class MicroHorario
 			}
 		}
 
-		$sql .= ' GROUP BY "CodigoDisciplina", "PK_Turma"';
+		$sql .= ' GROUP BY ad."Periodo", "CodigoDisciplina", "PK_Turma"
+				ORDER BY ad."Periodo", "CodigoDisciplina", "PK_Turma"';
 
 		if(!isset($filters['Quantidade'])) 
 			$filters['Quantidade'] = 5;
