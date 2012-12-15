@@ -1,3 +1,4 @@
+
 1/ Apenas alunos regularmente matriculados na PUC-Rio podem utilizar 
 este sistema. A autenticação é a mesma do PUConline.
 
@@ -34,7 +35,8 @@ pode ser alguma disciplina pré-requisito de outra.
 escolhidas. Isso ocorre pois as turmas podem ser destinadas a certos cursos 
 e esse tipo de checagem não está sendo feita nessa versão.
 
------------------- FAQ ------------------------------------
+
+----------------------------- FAQ ------------------------------------
 
 1/ Não consigo logar no sistema.
 

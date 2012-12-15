@@ -18,8 +18,9 @@ class MicroHorarioController extends RestController
 	public function performGet($url, $arguments, $accept) 
 	{
 		Auth::accessControl('Aluno');
+		$login = $_COOKIE['login'];
 
-		$microhorario = MicroHorario::getByFilter($arguments);
+		$microhorario = MicroHorario::getByFilter($login, $arguments);
 
 		$discHash = array();
 		foreach($microhorario as $tuple)
@@ -27,7 +28,7 @@ class MicroHorarioController extends RestController
 			$discHash[$tuple['CodigoDisciplina']] = 1;
 		}
 
-		$depend = Disciplina::getByUserDiscSetDepend($_COOKIE['login'], $discHash);
+		$depend = Disciplina::getByUserDiscSetDepend($login, $discHash);
 
 		$data = Common::namesMinimizer
 		(

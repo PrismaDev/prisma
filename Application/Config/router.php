@@ -147,5 +147,5 @@ return array(
 			),
 		),
 	),
-	'errorRoute' => '/error'
+	'errorRoute' => '/login?pageDoesNotExist'
 );

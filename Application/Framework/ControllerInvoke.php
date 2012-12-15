@@ -24,8 +24,8 @@ class ControllerInvoke
 
 			LogPrisma::errorLog($ip, $uri, $hash, $user, $browser, $e->getMessage());
 
-			Router::redirectRoute('/error');
-			return false;
+			Router::redirectRoute('/login?unexpectedError');
+			return true;
 		}
 		
 		return true;
