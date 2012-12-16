@@ -14,6 +14,10 @@ var MainRouter = Backbone.Router.extend({
 		faltacursarModel.set(DATA_VIEW.Data[serverDictionary.get('FaltaCursar')]);
 		selectedModel.setFromServer(DATA_VIEW.Data[serverDictionary.get('Selecionadas')]);
 
+		layoutView.contentView=mainView;
+		layoutView.loggedIn=true;
+		layoutView.render();
+
 		mainView.render();
 		selectedController.runSimulation();
 	}

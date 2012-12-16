@@ -16,6 +16,7 @@ $(PROD)/prisma-login.min.template: login.template \
 	cat > $@ $^
 
 $(PROD)/prisma-term.min.template: term.template \
+				suggestions.template \
 				layout.template
 	cat > $@ $^
 

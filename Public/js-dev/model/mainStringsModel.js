@@ -98,13 +98,3 @@ _.extend(ClassesTableStringsModel.prototype.defaults,
 		SubjectTableStringsModel.prototype.defaults);
 
 var classesTableStringsModel = new ClassesTableStringsModel();
-
-var SuggestionsStringsModel = Backbone.Model.extend({
-	defaults: {
-		'dialogTitle': 'Sugestões/Bugs/Comentários...',
-		'submitButtonLabel': 'Enviar comentário',
-		'resetButtonLabel': 'Limpar campo'
-	}
-});
-
-var suggestionsStringsModel = new SuggestionsStringsModel();

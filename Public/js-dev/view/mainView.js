@@ -1,5 +1,5 @@
 var MainView = Backbone.View.extend({
-	el: 'body',
+	el: '',
 	template: '',
 	rendered: false,
 	

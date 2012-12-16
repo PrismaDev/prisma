@@ -23,6 +23,9 @@ DEP_LOGIN = $(MDL)/loginStringsModel.js \
 
 DEP_TERM = $(MDL)/layoutStringsModel.js \
 	$(MDL)/termStringsModel.js \
+	$(MDL)/loggedInDialogsStringsModel.js\
+	$(VIEW)/dialogView.js \
+	$(VIEW)/loggedInDialogs.js\
 	$(VIEW)/layoutView.js \
 	$(VIEW)/termView.js \
 	$(CTRL)/termRouter.js
@@ -30,19 +33,21 @@ DEP_TERM = $(MDL)/layoutStringsModel.js \
 DEP_MAIN = $(MDL)/lib.js \
 	$(MDL)/serverDictionary.js \
 	$(MDL)/layoutStringsModel.js \
+	$(MDL)/loggedInDialogsStringsModel.js\
+	$(MDL)/mainStringsModel.js \
 	$(MDL)/dataModels.js \
 	$(MDL)/getterModels.js\
-	$(MDL)/mainStringsModel.js \
 	$(MDL)/selectedModel.js \
 	$(VIEW)/lib.js \
+	$(VIEW)/dialogView.js \
 	$(VIEW)/layoutView.js\
+	$(VIEW)/loggedInDialogs.js\
 	$(VIEW)/timetableView.js \
 	$(VIEW)/faltacursarView.js \
 	$(VIEW)/microhorarioView.js \
 	$(VIEW)/selectedView.js \
 	$(VIEW)/mainView.js \
 	$(VIEW)/classeslistView.js \
-	$(VIEW)/dialogView.js \
 	$(CTRL)/microhorarioController.js \
 	$(CTRL)/selectedController.js \
 	$(CTRL)/mainRouter.js
