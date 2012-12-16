@@ -70,6 +70,10 @@ var TimetableView = Backbone.View.extend({
 				var d=classesArray[i].horarios[j].get('DiaSemana');
 				var s=classesArray[i].horarios[j].get('HoraInicial');
 				var e=classesArray[i].horarios[j].get('HoraFinal');
+			
+				console.log(d+' '+s+' '+e);
+				if (!d)
+					continue;
 
 				timetableMatrix[s][d].string=classesArray[i].string;
 				timetableMatrix[s][d].span=Number(e)-Number(s);

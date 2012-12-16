@@ -7,10 +7,14 @@ function SelectedController() {
 		for(var time1Idx in times1)
 		{
 			var time1 = times1[time1Idx];
+			if (!time1.get('DiaSemana'))
+				continue;
 
 			for(var time2Idx in times2)
 			{
 				var time2 = times2[time2Idx];
+				if (!time2.get('DiaSemana'))
+					continue;
 
 				if(time1.get('DiaSemana') == time2.get('DiaSemana'))
 				{
