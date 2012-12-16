@@ -83,8 +83,8 @@ var MicrohorarioView = Backbone.View.extend ({
 	},
 
 	setFiltersState: function() {
-		console.log($('#hiddenFilters').find('input:checked, input[value!=""]'));
-		if ($('#hiddenFilters').find('input:checked, input[value!=""]').length!=0)
+		if ($('#hiddenFilters').find('input:checked, input[type="text"][value!=""],\
+				option[value!=""]:selected').length!=0)
 			this.moreFilters();
 		else
 			this.lessFilters();
