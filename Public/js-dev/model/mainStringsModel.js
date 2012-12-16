@@ -89,7 +89,8 @@ var ClassesTableStringsModel = SubjectTableStringsModel.extend({
 			'Sex',
 			'Sab'
 		],
-		'emptyTableStr': 'Não há turmas a serem exibidas'
+		'emptyTableStr': 'Não há turmas a serem exibidas',
+		'SHF': 'Sem horário fixo'
 	}
 });
 //Based on http://stackoverflow.com/questions/6549149/extending-the-defaults-of-a-model-superclass-in-backbone-js

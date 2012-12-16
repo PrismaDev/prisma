@@ -1,6 +1,15 @@
 var HorariosModel = Backbone.Model.extend({
 	get: function(attribute) {
 		return overriddenGet(this,attribute);
+	},
+
+	printHorario: function() {
+		var daysAbbr=classesTableStringsModel.get('daysAbbr');	
+		if (this.get('DiaSemana'))
+			return daysAbbr[this.get('DiaSemana')-2]+' '
+				+this.get('HoraInicial')+'-'+this.get('HoraFinal')+
+				' ('+this.get('Unidade')+');';
+		return classesTableStringsModel.get('SHF')+' ('+this.get('Unidade')+');';
 	}
 });
 
@@ -21,12 +30,11 @@ var ClassModel = Backbone.Model.extend({
 
 	printSchedule: function() {
 		var div = document.createElement('div');
-		var daysAbbr=classesTableStringsModel.get('daysAbbr');
 		
 		_.each(this.get('Horarios').models, function(horario) {
 			var span=document.createElement('span');
-			span.innerHTML=daysAbbr[horario.get('DiaSemana')-2]+' '
-				+horario.get('HoraInicial')+'-'+horario.get('HoraFinal');
+			span.innerHTML=horario.printHorario();
+
 			div.appendChild(span);
 			div.appendChild(document.createElement('br'));
 		});
