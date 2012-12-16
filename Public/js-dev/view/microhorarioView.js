@@ -52,7 +52,7 @@ var MicrohorarioView = Backbone.View.extend ({
 	},
 
 	searchFor: function(day, initTime, subjectCode) {
-		console.log(day+' '+initTime+' '+subjectCode);
+		this.clear();
 
 		if (day==null) day='';
 		if (initTime==null) initTime='';
@@ -74,6 +74,11 @@ var MicrohorarioView = Backbone.View.extend ({
 	},
 
 	clear: function() {
+		$('input[type="text"]').attr('value','');
+		$('select[name="DiaSemana"]').find('option').attr('selected',false);
+		$('select[name="DiaSemana"]').find('option[value=""]').attr('selected',true);
+		$('input[type="checked"]').attr('checked',false);
+
 		this.changeState(this.noQueryState);
 	},
 
