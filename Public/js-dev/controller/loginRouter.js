@@ -2,6 +2,14 @@ var LoginRouter = Backbone.Router.extend({
 	routes: {
 		'': 'login',
 		'*span': 'other'
+	},
+
+	loadPage: function(error) {
+		layoutView.setView(loginView);
+		layoutView.loggedIn=false;
+		layoutView.render();		
+	
+		loginView.render(error);
 	}
 });
 
@@ -13,10 +21,11 @@ loginRouter.on('route:other', function() {
 
 loginRouter.on('route:login', function() {
 	var arr = document.URL.split('?');
-	
+	var error=false;	
+
 	if (arr.length>1)
-		loginView.render(arr[1].split('#')[0]);
-	else loginView.render();
+		error = arr[1].split('#')[0];
+	this.loadPage(error);
 });
 
 //if (history.pushState) { 

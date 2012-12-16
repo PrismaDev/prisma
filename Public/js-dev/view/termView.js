@@ -1,7 +1,6 @@
 var TermView = Backbone.View.extend({
-	el: 'body',
-	layoutTemplate: '',
-	termTemplate: '',
+	el: '',
+	template: '',
 
 	events: {
 		'click input[type="submit"]': 'checkAcceptance',
@@ -22,17 +21,11 @@ var TermView = Backbone.View.extend({
 	},
 
 	initialize: function() {
-		this.layoutTemplate = _.template($("#layout-template").html());
-		this.termTemplate = _.template($("#term-template").html());
+		this.template = _.template($("#term-template").html());
 	},
 
 	render: function() {
-		this.$el.html(this.layoutTemplate({
-			layoutStr: layoutStringsModel,
-			loggedIn: true
-		}));
-
-		$('#content-div').html(this.termTemplate({
+		this.$el.html(this.template({
 			termStr: termStringsModel
 		}));
 	}

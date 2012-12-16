@@ -1,15 +1,9 @@
 var LoginView = Backbone.View.extend({
-	el: 'body',
-	layoutTemplate: '',
-	loginTemplate: '',
+	el: '',
+	template: '',
 
 	events: {
-		'click ul div.dropdown-menu': 'preventClose',
 		'click #open-login-button': 'openLogin' 
-	},
-
-	preventClose: function(e) {
-		e.stopPropagation();
 	},
 
 	openLogin: function() {
@@ -18,32 +12,19 @@ var LoginView = Backbone.View.extend({
 	},
 
 	initialize: function() {
-		this.layoutTemplate = _.template($('#layout-template').html());
-		this.loginTemplate = _.template($('#login-template').html());
+		this.template = _.template($('#login-template').html());
 	},
 
-	initJS: function() {
-		$('.dropdown-toggle').dropdown();
-	},
-	
 	render: function(error) {
 		if (error==undefined)
 			error=false;
 		console.log(error);
 
-		this.$el.html(this.layoutTemplate({
-			loginStr: loginStringsModel,
-			layoutStr: layoutStringsModel,
-			loggedIn: false
-		}));
-
-		$('#content-div').html(this.loginTemplate({
+		this.$el.html(this.template({
 			loginStr: loginStringsModel,
 			layoutStr: layoutStringsModel,
 			error: error
 		}));
-		
-		this.initJS();
 	}
 });
 

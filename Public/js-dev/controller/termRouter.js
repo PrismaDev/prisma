@@ -5,6 +5,11 @@ var TermRouter = Backbone.Router.extend({
 
 	loadPage: function() {
 		layoutStringsModel.set('userName',DATA_VIEW.NomeAluno);
+	
+		layoutView.setView(termView);
+		layoutView.loggedIn=true;
+		layoutView.render();		
+
 		termView.render();
 	}
 });

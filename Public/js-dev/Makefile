@@ -17,11 +17,13 @@ PAGES = $(PROD)/prisma-login.min.js \
 ## Dependancies ##
 DEP_LOGIN = $(MDL)/loginStringsModel.js \
 	$(MDL)/layoutStringsModel.js \
+	$(VIEW)/layoutView.js \
 	$(VIEW)/loginView.js \
 	$(CTRL)/loginRouter.js
 
 DEP_TERM = $(MDL)/layoutStringsModel.js \
 	$(MDL)/termStringsModel.js \
+	$(VIEW)/layoutView.js \
 	$(VIEW)/termView.js \
 	$(CTRL)/termRouter.js
 
@@ -33,13 +35,14 @@ DEP_MAIN = $(MDL)/lib.js \
 	$(MDL)/mainStringsModel.js \
 	$(MDL)/selectedModel.js \
 	$(VIEW)/lib.js \
+	$(VIEW)/layoutView.js\
 	$(VIEW)/timetableView.js \
 	$(VIEW)/faltacursarView.js \
 	$(VIEW)/microhorarioView.js \
 	$(VIEW)/selectedView.js \
 	$(VIEW)/mainView.js \
 	$(VIEW)/classeslistView.js \
-	$(VIEW)/suggestionsView.js \
+	$(VIEW)/dialogView.js \
 	$(CTRL)/microhorarioController.js \
 	$(CTRL)/selectedController.js \
 	$(CTRL)/mainRouter.js

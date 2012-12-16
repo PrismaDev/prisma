@@ -1,8 +1,8 @@
 var MainView = Backbone.View.extend({
 	el: 'body',
-	mainTemplate: '',
-	layoutTemplate: '',
+	template: '',
 	rendered: false,
+	
 	tabs: {'faltacursar': {
 			'li': 'main-faltacursar-li',
 			'div': 'main-faltacursar-div',
@@ -23,7 +23,6 @@ var MainView = Backbone.View.extend({
 		}},
 
 	defaultTab: 'faltacursar',		
-	suggestionsUrl: '/api/sugestao',
 
 	//Cached variables
 	timetableDiv: '',
@@ -31,39 +30,14 @@ var MainView = Backbone.View.extend({
 	tabsNav: '',
 
 	initialize: function() {
-		this.mainTemplate = _.template($('#main-template').html());
-		this.layoutTemplate = _.template($('#layout-template').html());
+		this.template = _.template($('#main-template').html());
 		var me = this;
 	
 		$(window).resize(function() {
 			me.equalMainDivsHeight();
 		});
 	},
-
-	events: {
-		'click #open-suggestions-link': 'openSuggestionDialog',
-		'submit #suggestions-form': 'sendSuggestion'
-	},
-
-	openSuggestionDialog: function() {
-		suggestionsView.render();
-		$('#dialogDiv').modal('show');
-	},
-
-	sendSuggestion: function() {
-		$.ajax({
-			url: this.suggestionsUrl,
-			type: 'POST',
-			data: $('#suggestions-form').serialize(),
-
-			success: function() {
-				$('#dialogDiv').modal('hide');
-			}
-		});
-
-		return false;	
-	},
-
+	
 	cache: function() {
 		this.timetableDiv = document.getElementById('main-timetable-div');
 		this.sidebarDiv = document.getElementById('main-sidebar-div');
@@ -102,10 +76,6 @@ var MainView = Backbone.View.extend({
 		}
 	},
 
-	setDialogElement: function() {
-		suggestionsView.setElement('#dialogDiv');
-	},
-
 	renderSubviews: function() {
 		timetableView.setElement('#main-timetable-div');
 		timetableView.render();
@@ -121,17 +91,12 @@ var MainView = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.$el.html(this.layoutTemplate({
-			layoutStr: layoutStringsModel,
-			loggedIn: true
-		}));
-		$('#content-div').html(this.mainTemplate({
+		this.$el.html(this.template({
 			tabs: this.tabs,
 			mainStr: mainStringsModel
 		}));
 		
 		this.renderSubviews();
-		this.setDialogElement();
 		this.rendered=true;
 
 		this.cache();
