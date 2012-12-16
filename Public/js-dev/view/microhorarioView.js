@@ -82,6 +82,14 @@ var MicrohorarioView = Backbone.View.extend ({
 		this.changeState(this.noQueryState);
 	},
 
+	setFiltersState: function() {
+		console.log($('#hiddenFilters').find('input:checked, input[value!=""]'));
+		if ($('#hiddenFilters').find('input:checked, input[value!=""]').length!=0)
+			this.moreFilters();
+		else
+			this.lessFilters();
+	},
+
 	initialize: function() {
 		this.template = _.template($('#microhorario-template').html());
 		this.waitingTemplate = _.template($('#microhorario-waiting-template').html());
@@ -92,7 +100,7 @@ var MicrohorarioView = Backbone.View.extend ({
 		if (typeof data == undefined) data=[];
 
 		if (qState==this.queryState) {
-			this.lessFilters();
+			this.setFiltersState();
 			microhorarioClasseslistView.render(data);
 			return;			
 		}
