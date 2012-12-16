@@ -7,6 +7,13 @@
 			<div class="navbar navbar-inverse">
 				<div class="navbar-inner">
 					<span class="brand"><%= layoutStr.get('projectNameStr') %></span>
+					<ul class="nav">
+						<li><a id="open-faq"><%= layoutStr.get('FAQStr') %></a><li>
+						<li><a id="open-tutorial"><%= layoutStr.get('tutorialStr') %></a><li>
+						<% if (loggedIn) { %>
+							<li><a id="open-suggestions-link"><%= layoutStr.get('commentsStr') %></a></li>	
+						<% } %>
+					</ul>
 					<% if (!loggedIn) { %>
 						<ul class="nav pull-right">
 							<li class="dropdown">
@@ -39,7 +46,6 @@
 									<b class="caret"></b>
 								</a>
 								<ul class="dropdown-menu">
-									<li><a id="open-suggestions-link"><%= layoutStr.get('commentsStr') %></a></li>	
 									<li><a href="/logout"><%= layoutStr.get('logoutStr') %></a></li>	
 								</ul>
 							</li>

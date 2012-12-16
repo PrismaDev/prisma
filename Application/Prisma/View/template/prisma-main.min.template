@@ -1,3 +1,93 @@
+<script type="text/underscore-template" id="layout-template">
+	<div id="dialogDiv" class="modal hide fade">
+	</div>
+
+	<div id="wrap-div">
+		<div class="container-fluid">
+			<div class="navbar navbar-inverse">
+				<div class="navbar-inner">
+					<span class="brand"><%= layoutStr.get('projectNameStr') %></span>
+					<ul class="nav">
+						<li><a id="open-faq"><%= layoutStr.get('FAQStr') %></a><li>
+						<li><a id="open-tutorial"><%= layoutStr.get('tutorialStr') %></a><li>
+						<% if (loggedIn) { %>
+							<li><a id="open-suggestions-link"><%= layoutStr.get('commentsStr') %></a></li>	
+						<% } %>
+					</ul>
+					<% if (!loggedIn) { %>
+						<ul class="nav pull-right">
+							<li class="dropdown">
+  								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+									<%= layoutStr.get('loginStr') %>
+									<b class="caret"></b>
+								</a>
+								<div class="dropdown-menu">
+									<form name="loginForm" method="post" action="/login">
+										<input type="hidden" name="tipo" value="Aluno" />
+										<div>
+											<label for="username"><%= loginStr.get('matriculaLabel') %></label>
+											<input type="text" name="matricula" />
+											<label for="password"><%= loginStr.get('passwordLabel') %></label>
+											<input type="password" name="senha" />
+										</div>
+										<div>
+											<input class="btn pull-right" type="submit" value="<%= loginStr.get('submitButtonLabel') %>" />
+											<span class="help-block"><%= loginStr.get('forgotPasswordText') %></span>
+										</div>
+									</form>
+								</div>
+							</li>
+						</ul>
+					<% } else { %>
+						<ul class="nav pull-right">
+							<li class="dropdown">
+  								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+									<%= layoutStr.get('hiStr') %>, <%= layoutStr.get('userName') %>
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="/logout"><%= layoutStr.get('logoutStr') %></a></li>	
+								</ul>
+							</li>
+						</ul>
+					<% } %>
+				</div>
+			</div>
+			<div class="row-fluid" id="content-div"></div>
+		</div>	
+		<div id="push-div"></div>
+	</div>
+	<div id="footer-div" class="container-fluid">
+		<div class="row-fluid">
+			<p><%= layoutStr.get('footerText') %></p>
+		</div>
+	</div>
+</script>
+
+<script type="text/underscore-template" id="suggestions-template">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3><%= faqStr.get('dialogTitle') %></h3>
+	</div>
+	<div class="modal-body">
+		<textarea name="comentario" class="input-block-level"></textarea>
+	</div>
+</script>
+<script type="text/underscore-template" id="suggestions-template">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3><%= suggestionsStr.get('dialogTitle') %></h3>
+	</div>
+	<form id="suggestions-form" action="/api/sugestao" method="post">
+		<div class="modal-body">
+			<textarea name="comentario" class="input-block-level"></textarea>
+		</div>
+		<div class="modal-footer">
+			<input type="reset" class="btn btn-danger" value="<%= suggestionsStr.get('resetButtonLabel') %>">
+			<input type="submit" class="btn btn-primary" value="<%= suggestionsStr.get('submitButtonLabel') %>">
+		</div>
+	</form>
+</script>
 <script type="text/underscore" id="classeslist-template">
 	<table class="table table-bordered table-condensed">
 		<thead>
@@ -78,21 +168,6 @@
 			<div id="main-timetable-div" class="foreground">
 			</div>
 	</div>
-</script>
-<script type="text/underscore-template" id="suggestions-template">
-	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		<h3><%= suggestionsStr.get('dialogTitle') %></h3>
-	</div>
-	<form id="suggestions-form" action="/api/sugestao" method="post">
-		<div class="modal-body">
-			<textarea name="comentario" class="input-block-level"></textarea>
-		</div>
-		<div class="modal-footer">
-			<input type="reset" class="btn btn-danger" value="<%= suggestionsStr.get('resetButtonLabel') %>">
-			<input type="submit" class="btn btn-primary" value="<%= suggestionsStr.get('submitButtonLabel') %>">
-		</div>
-	</form>
 </script>
 <script type="text/underscore-template" id="microhorario-template">
 	<div id="microhorario-togglefilter">
@@ -328,63 +403,3 @@
 
 
 </script>
-<script type="text/underscore-template" id="layout-template">
-	<div id="dialogDiv" class="modal hide fade">
-	</div>
-
-	<div id="wrap-div">
-		<div class="container-fluid">
-			<div class="navbar navbar-inverse">
-				<div class="navbar-inner">
-					<span class="brand"><%= layoutStr.get('projectNameStr') %></span>
-					<% if (!loggedIn) { %>
-						<ul class="nav pull-right">
-							<li class="dropdown">
-  								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-									<%= layoutStr.get('loginStr') %>
-									<b class="caret"></b>
-								</a>
-								<div class="dropdown-menu">
-									<form name="loginForm" method="post" action="/login">
-										<input type="hidden" name="tipo" value="Aluno" />
-										<div>
-											<label for="username"><%= loginStr.get('matriculaLabel') %></label>
-											<input type="text" name="matricula" />
-											<label for="password"><%= loginStr.get('passwordLabel') %></label>
-											<input type="password" name="senha" />
-										</div>
-										<div>
-											<input class="btn pull-right" type="submit" value="<%= loginStr.get('submitButtonLabel') %>" />
-											<span class="help-block"><%= loginStr.get('forgotPasswordText') %></span>
-										</div>
-									</form>
-								</div>
-							</li>
-						</ul>
-					<% } else { %>
-						<ul class="nav pull-right">
-							<li class="dropdown">
-  								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-									<%= layoutStr.get('hiStr') %>, <%= layoutStr.get('userName') %>
-									<b class="caret"></b>
-								</a>
-								<ul class="dropdown-menu">
-									<li><a id="open-suggestions-link"><%= layoutStr.get('commentsStr') %></a></li>	
-									<li><a href="/logout"><%= layoutStr.get('logoutStr') %></a></li>	
-								</ul>
-							</li>
-						</ul>
-					<% } %>
-				</div>
-			</div>
-			<div class="row-fluid" id="content-div"></div>
-		</div>	
-		<div id="push-div"></div>
-	</div>
-	<div id="footer-div" class="container-fluid">
-		<div class="row-fluid">
-			<p><%= layoutStr.get('footerText') %></p>
-		</div>
-	</div>
-</script>
-

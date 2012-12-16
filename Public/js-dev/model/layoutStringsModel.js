@@ -4,6 +4,8 @@ var LayoutStringsModel = Backbone.Model.extend({
 		'loginStr': 'Login',
 		'logoutStr': 'Logout',
 		'commentsStr': 'Sugestões',
+		'FAQStr': 'FAQ',
+		'tutorialStr': 'Vídeo tutorial',
 		'projectNameStr': 'PrISMA',
 		'userName': 'Bobteco da Silva',
 		'footerText': 'Esse projeto é uma colaboração dos alunos\

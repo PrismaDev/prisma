@@ -15,33 +15,33 @@ PAGES = $(PROD)/prisma-login.min.js \
 	$(PROD)/prisma-main.min.js
 
 ## Dependancies ##
-DEP_LOGIN = $(MDL)/loginStringsModel.js \
-	$(MDL)/layoutStringsModel.js \
+DEP_ALL = $(MDL)/layoutStringsModel.js \
 	$(VIEW)/layoutView.js \
+	$(VIEW)/dialogView.js
+
+DEP_ISLOGGED = $(MDL)/loggedInDialogsStringsModel.js\
+	$(VIEW)/loggedInDialogs.js
+
+DEP_LOGIN = $(DEP_ALL) \
+	$(MDL)/loginStringsModel.js \
 	$(VIEW)/loginView.js \
 	$(CTRL)/loginRouter.js
 
-DEP_TERM = $(MDL)/layoutStringsModel.js \
+DEP_TERM = $(DEP_ALL) \
+	$(DEP_ISLOGGED) \
 	$(MDL)/termStringsModel.js \
-	$(MDL)/loggedInDialogsStringsModel.js\
-	$(VIEW)/dialogView.js \
-	$(VIEW)/loggedInDialogs.js\
-	$(VIEW)/layoutView.js \
 	$(VIEW)/termView.js \
 	$(CTRL)/termRouter.js
 
-DEP_MAIN = $(MDL)/lib.js \
+DEP_MAIN = $(DEP_ALL) \
+	$(DEP_ISLOGGED) \
+	$(MDL)/lib.js \
 	$(MDL)/serverDictionary.js \
-	$(MDL)/layoutStringsModel.js \
-	$(MDL)/loggedInDialogsStringsModel.js\
 	$(MDL)/mainStringsModel.js \
 	$(MDL)/dataModels.js \
 	$(MDL)/getterModels.js\
 	$(MDL)/selectedModel.js \
 	$(VIEW)/lib.js \
-	$(VIEW)/dialogView.js \
-	$(VIEW)/layoutView.js\
-	$(VIEW)/loggedInDialogs.js\
 	$(VIEW)/timetableView.js \
 	$(VIEW)/faltacursarView.js \
 	$(VIEW)/microhorarioView.js \
