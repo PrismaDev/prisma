@@ -5,7 +5,7 @@ TARGETS = $(PROD)/prisma-login.min.template \
 	$(PROD)/prisma-main.min.template
 
 DEP_ALL = layout.template \
-	faq.template
+	dialog.template
 
 DEP_ISLOGGED = suggestions.template
 

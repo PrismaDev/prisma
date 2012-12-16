@@ -26,3 +26,26 @@ var FAQView = DialogView.extend({
 });
 
 var faqView = new FAQView();
+
+var TutorialView = DialogView.extend({
+	args: {
+		layoutStr: layoutStringsModel
+	},
+	templateId: '#tutorial-template',
+
+	initJS: function() {
+		//From github.com/twitter/bootstrap/issues/675/
+
+		var me=this;
+		this.$el.modal().css({
+			'margin-left': function() {
+				return -($(this).width()/2);
+			}
+		}).addClass('tutorial').on('hidden', function() {
+			me.$el.empty();
+			me.$el.removeClass('tutorial');
+		});
+	}
+});
+
+var tutorialView = new TutorialView();

@@ -75,6 +75,9 @@ tr.subjectSelected {
 .faqItem hr {
   margin: 1%;
 }
+.tutorial {
+  width: auto;
+}
 body {
   min-width: 1024px;
 }

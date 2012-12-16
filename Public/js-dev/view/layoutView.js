@@ -8,6 +8,7 @@ LayoutView = Backbone.View.extend({
 	events: {
 		'click #open-suggestions-link': 'openSuggestionDialog',
 		'click #open-faq-link': 'openFAQDialog',
+		'click #open-tutorial-link': 'openTutorialDialog',
 		'click ul div.dropdown-menu': 'preventClose'
 	},
 
@@ -18,6 +19,11 @@ LayoutView = Backbone.View.extend({
 
 	openFAQDialog: function() {
 		faqView.render();
+		$(this.dialogDiv).modal('show');
+	},
+
+	openTutorialDialog: function() {
+		tutorialView.render();
 		$(this.dialogDiv).modal('show');
 	},
 
@@ -43,6 +49,7 @@ LayoutView = Backbone.View.extend({
 		}
 		
 		faqView.setElement(this.dialogDiv);
+		tutorialView.setElement(this.dialogDiv);
 	},
 	
 	render: function() {

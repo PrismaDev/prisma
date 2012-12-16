@@ -9,7 +9,7 @@
 					<span class="brand"><%= layoutStr.get('projectNameStr') %></span>
 					<ul class="nav">
 						<li><a id="open-faq-link"><%= layoutStr.get('FAQStr') %></a><li>
-					<!---	<li><a id="open-tutorial-link"><%= layoutStr.get('tutorialStr') %></a><li> --->
+						<li><a id="open-tutorial-link"><%= layoutStr.get('tutorialStr') %></a><li>
 						<% if (loggedIn) { %>
 							<li><a id="open-suggestions-link"><%= layoutStr.get('commentsStr') %></a></li>	
 						<% } %>
@@ -83,6 +83,17 @@
 				</div>
 			</div>
 		<% }); %>
+	</div>
+</script>
+
+<script type="text/underscore-template" id="tutorial-template">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		<h3><%= layoutStr.get('tutorialStr') %></h3>
+	</div>
+	<div class="modal-boda tutorialDiv">
+		<iframe class="centered" width="640" height="390" src="http://www.youtube.com/embed/<%= layoutStr.get('codTutorialYoutube') %>" frameborder="0">
+		</iframe>
 	</div>
 </script>
 <script type="text/underscore-template" id="suggestions-template">

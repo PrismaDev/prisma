@@ -10,7 +10,7 @@ TARGETS = $(PROD)/prisma-main.min.css\
 DEP_ALL = nav.less \
 	layout.less \
 	basics.less\
-	faq.less\
+	dialog.less\
 	variables.less
 
 DEP_LOGIN = $(DEP_ALL) \
