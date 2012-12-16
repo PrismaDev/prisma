@@ -21,6 +21,7 @@ $(PROD)/prisma-term.min.template: term.template \
 
 $(PROD)/prisma-main.min.template: classeslist.template \
 				main.template \
+				suggestions.template \
 				microhorario.template \
 				timetable.template \
 				selected.template \

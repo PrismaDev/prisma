@@ -23,6 +23,7 @@ var MainView = Backbone.View.extend({
 		}},
 
 	defaultTab: 'faltacursar',		
+	suggestionsUrl: '/api/sugestao',
 
 	//Cached variables
 	timetableDiv: '',
@@ -37,6 +38,30 @@ var MainView = Backbone.View.extend({
 		$(window).resize(function() {
 			me.equalMainDivsHeight();
 		});
+	},
+
+	events: {
+		'click #open-suggestions-link': 'openSuggestionDialog',
+		'submit #suggestions-form': 'sendSuggestion'
+	},
+
+	openSuggestionDialog: function() {
+		suggestionsView.render();
+		$('#dialogDiv').modal('show');
+	},
+
+	sendSuggestion: function() {
+		$.ajax({
+			url: this.suggestionsUrl,
+			type: 'POST',
+			data: $('#suggestions-form').serialize(),
+
+			success: function() {
+				console.log('Achievement unlocked!');
+			}
+		});
+
+		return false;	
 	},
 
 	cache: function() {
@@ -77,6 +102,10 @@ var MainView = Backbone.View.extend({
 		}
 	},
 
+	setDialogElement: function() {
+		suggestionsView.setElement('#dialogDiv');
+	},
+
 	renderSubviews: function() {
 		timetableView.setElement('#main-timetable-div');
 		timetableView.render();
@@ -102,6 +131,7 @@ var MainView = Backbone.View.extend({
 		}));
 		
 		this.renderSubviews();
+		this.setDialogElement();
 		this.rendered=true;
 
 		this.cache();

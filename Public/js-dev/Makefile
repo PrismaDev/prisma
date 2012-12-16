@@ -27,7 +27,6 @@ DEP_TERM = $(MDL)/layoutStringsModel.js \
 
 DEP_MAIN = $(MDL)/lib.js \
 	$(MDL)/serverDictionary.js \
-	$(MDL)/microhorarioModel.js \
 	$(MDL)/layoutStringsModel.js \
 	$(MDL)/dataModels.js \
 	$(MDL)/getterModels.js\
@@ -40,6 +39,7 @@ DEP_MAIN = $(MDL)/lib.js \
 	$(VIEW)/selectedView.js \
 	$(VIEW)/mainView.js \
 	$(VIEW)/classeslistView.js \
+	$(VIEW)/suggestionsView.js \
 	$(CTRL)/microhorarioController.js \
 	$(CTRL)/selectedController.js \
 	$(CTRL)/mainRouter.js

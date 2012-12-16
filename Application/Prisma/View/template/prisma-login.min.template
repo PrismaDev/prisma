@@ -70,6 +70,9 @@
 
 
 <script type="text/underscore-template" id="layout-template">
+	<div id="dialogDiv" class="modal hide fade">
+	</div>
+
 	<div id="wrap-div">
 		<div class="container-fluid">
 			<div class="navbar navbar-inverse">
@@ -107,6 +110,7 @@
 									<b class="caret"></b>
 								</a>
 								<ul class="dropdown-menu">
+									<li><a id="open-suggestions-link"><%= layoutStr.get('commentsStr') %></a></li>	
 									<li><a href="/logout"><%= layoutStr.get('logoutStr') %></a></li>	
 								</ul>
 							</li>

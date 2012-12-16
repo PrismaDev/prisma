@@ -1,6 +1,6 @@
 function MicrohorarioController() {
 	var formEl = '#microhorario-form';
-	var url = 'api/microhorario';
+	var url = '/api/microhorario';
 	var defaultQtd=10;
 	var formquerystring;
 	
