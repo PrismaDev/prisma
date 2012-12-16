@@ -64,6 +64,8 @@ class MicroHorario
 
 		if(!isset($filters['Quantidade'])) 
 			$filters['Quantidade'] = 5;
+		else if($filters['Quantidade'] > 20)
+			$filters['Quantidade'] = 20;
 		$sql .= ' LIMIT :Quantidade';
 
 		if(isset($filters['Pagina']))
