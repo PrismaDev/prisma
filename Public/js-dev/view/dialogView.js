@@ -20,7 +20,9 @@ var DialogView = Backbone.View.extend({
 
 var FAQView = DialogView.extend({
 	args: {
-		layoutStr: layoutStringsModel
+		faqStr: faqStringsModel
 	},
 	templateId: '#faq-template'
 });
+
+var faqView = new FAQView();

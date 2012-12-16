@@ -8,8 +8,8 @@
 				<div class="navbar-inner">
 					<span class="brand"><%= layoutStr.get('projectNameStr') %></span>
 					<ul class="nav">
-						<li><a id="open-faq"><%= layoutStr.get('FAQStr') %></a><li>
-						<li><a id="open-tutorial"><%= layoutStr.get('tutorialStr') %></a><li>
+						<li><a id="open-faq-link"><%= layoutStr.get('FAQStr') %></a><li>
+						<li><a id="open-tutorial-link"><%= layoutStr.get('tutorialStr') %></a><li>
 						<% if (loggedIn) { %>
 							<li><a id="open-suggestions-link"><%= layoutStr.get('commentsStr') %></a></li>	
 						<% } %>
@@ -64,13 +64,25 @@
 	</div>
 </script>
 
-<script type="text/underscore-template" id="suggestions-template">
+<script type="text/underscore-template" id="faq-template">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		<h3><%= faqStr.get('dialogTitle') %></h3>
 	</div>
-	<div class="modal-body">
-		<textarea name="comentario" class="input-block-level"></textarea>
+	<div class="modal-body faqDiv">
+		<% _.each(faqStr.get('questionList'), function(item) { %>
+			<div class="faqItem">
+				<div class="question">
+					<span><%= faqStr.get('questionStr') %></span>
+					<%= item.question %>
+				</div>
+				<hr>
+				<div class="answer">
+					<span><%= faqStr.get('answerStr') %></span>
+					<%= item.answer %>
+				</div>
+			</div>
+		<% }); %>
 	</div>
 </script>
 <script type="text/underscore-template" id="login-template">

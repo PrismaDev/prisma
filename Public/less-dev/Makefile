@@ -7,32 +7,36 @@ TARGETS = $(PROD)/prisma-main.min.css\
 	$(PROD)/prisma-login.min.css\
 	$(PROD)/prisma-term.min.css
 
+DEP_ALL = nav.less \
+	layout.less \
+	basics.less\
+	faq.less\
+	variables.less
+
+DEP_LOGIN = $(DEP_ALL) \
+		login.less
+
+DEP_TERM = $(DEP_ALL) \
+		term.less
+
+DEP_MAIN = $(DEP_ALL) \
+		main.less\
+		tables.less\
+		datatablesAdds.less\
+		faltacursar.less\
+		microhorario.less\
+		timetable.less\
+		selected.less
+
 all: $(TARGETS)
 clean:
 	rm $(TARGETS)
 
-$(PROD)/prisma-main.min.css: main.less\
-				basics.less\
-				tables.less\
-				layout.less\
-				datatablesAdds.less\
-				faltacursar.less\
-				microhorario.less\
-				timetable.less\
-				selected.less\
-				nav.less
+$(PROD)/prisma-main.min.css: $(DEP_MAIN)
 	$(CC) $(CFLAGS) main.less > $@
 
-$(PROD)/prisma-login.min.css: login.less\
-				layout.less\
-				nav.less\
-				basics.less\
-				variables.less
+$(PROD)/prisma-login.min.css: $(DEP_LOGIN)
 	$(CC) $(CFLAGS) login.less > $@
 
-$(PROD)/prisma-term.min.css: term.less\
-				variables.less\
-				basics.less\
-				layout.less\
-				nav.less
+$(PROD)/prisma-term.min.css: $(DEP_TERM)
 	$(CC) $(CFLAGS) term.less > $@

@@ -16,6 +16,7 @@ PAGES = $(PROD)/prisma-login.min.js \
 
 ## Dependancies ##
 DEP_ALL = $(MDL)/layoutStringsModel.js \
+	$(MDL)/faqStringsModel.js \
 	$(VIEW)/layoutView.js \
 	$(VIEW)/dialogView.js
 
