@@ -49,6 +49,8 @@ class MicroHorario
 				}
 				else
 				{
+					$filters[$filterAvail[0]] = str_replace(' ', '%', $filters[$filterAvail[0]]);
+
 					$sql .= ' AND "'.$filterAvail[0].'" ILIKE :'.$filterAvail[0];
 					$filters[$filterAvail[0]] = '%'.$filters[$filterAvail[0]].'%';
 				}
