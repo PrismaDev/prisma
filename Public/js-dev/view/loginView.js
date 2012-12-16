@@ -3,7 +3,12 @@ var LoginView = Backbone.View.extend({
 	template: '',
 
 	events: {
-		'click #open-login-button': 'openLogin' 
+		'click #open-login-button': 'openLogin',
+		'click #open-tutorial-button': 'openTutorial'
+	},
+
+	openTutorial: function() {
+		layoutView.openTutorialDialog();
 	},
 
 	openLogin: function() {

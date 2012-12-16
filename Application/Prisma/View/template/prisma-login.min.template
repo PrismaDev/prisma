@@ -150,7 +150,7 @@
 
 		<div class="row-fluid">
 			<div class="span4 offset4">
-				<button type="button" class="btn btn-primary btn-block disabled">
+				<button id="open-tutorial-button" type="button" class="btn btn-primary btn-block">
 					<%= loginStr.get('tutorialButtonLabel')%>
 				</button>
 			</div>
