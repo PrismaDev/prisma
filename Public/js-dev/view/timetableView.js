@@ -50,6 +50,13 @@ var TimetableView = Backbone.View.extend({
 		})
 	},
 
+	formatString: function(timeIdx, classModel, subjectCode) {
+		var unit=classModel.get('Horarios').models[timeIdx].get('Unidade');
+		return subjectCode+' - '+classModel.get('CodigoTurma')+'<br/>'+
+		'<span>'+subjectList.get(subjectCode).get('NomeDisciplina')+'</span><br/>'+
+		'<span>('+unit+')</span>';
+	},
+
 	processArray: function(classesArray) {
 		var timetableMatrix = new Array();
 
@@ -65,17 +72,21 @@ var TimetableView = Backbone.View.extend({
 				}
 		}
 
-		for (var i=0; i<classesArray.length; i++)
-			for (var j=0; j<classesArray[i].horarios.length; j++) {
-				var d=classesArray[i].horarios[j].get('DiaSemana');
-				var s=classesArray[i].horarios[j].get('HoraInicial');
-				var e=classesArray[i].horarios[j].get('HoraFinal');
+		for (var i=0; i<classesArray.length; i++) {
+			var classModel=subjectList.getClass(classesArray[i].subjectCode,
+					classesArray[i].classId);
+			var h=classModel.get('Horarios').models;		
+
+			for (var j=0; j<h.length; j++) {
+				var d=h[j].get('DiaSemana');
+				var s=h[j].get('HoraInicial');
+				var e=h[j].get('HoraFinal');
 			
-				console.log(d+' '+s+' '+e);
 				if (!d)
 					continue;
 
-				timetableMatrix[s][d].string=classesArray[i].string;
+				timetableMatrix[s][d].string=this.formatString(j,classModel,
+					classesArray[i].subjectCode);
 				timetableMatrix[s][d].span=Number(e)-Number(s);
 				timetableMatrix[s][d].customClass='ttclass'+
 					classesArray[i].cssClass;
@@ -84,6 +95,7 @@ var TimetableView = Backbone.View.extend({
 				for (var k=s+1; k<e; k++)
 					timetableMatrix[k][d].span=0;
 			}
+		}
 
 		return timetableMatrix;
 	},

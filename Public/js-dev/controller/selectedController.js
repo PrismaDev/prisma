@@ -1,5 +1,8 @@
 function SelectedController() {
 	var collidesTime = function(class1Model, class2Model) {
+		console.log(class1Model);
+		console.log(class2Model);
+
 		var times1 = class1Model.get('Horarios').models;
 		var times2 = class2Model.get('Horarios').models;
 
@@ -78,13 +81,16 @@ function SelectedController() {
 					var subjectCode = $(option).find('input[type="hidden"][name="subjectCode"]').attr('value');
 					var classModel = subjectList.get(subjectCode).get('Turmas').get(classId);
 					var subjectCreditos = subjectList.get(subjectCode).get('Creditos');
-
+					console.log(classModel);
+					
 					var gud = true;
 					for(var classIdx in accepted)
 					{
-						var times = classModel.get('Horarios');
-						
-						if(subjectCode == accepted[classIdx].subjectCode || collidesTime(classModel, accepted[classIdx].classObj))
+						var times = classModel.get('Horarios');					
+						var accClassModel = subjectList.getClass(accepted[classIdx].subjectCode, 
+											accepted[classIdx].classId);	
+
+						if(subjectCode == accepted[classIdx].subjectCode || collidesTime(classModel, accClassModel))
 						{
 							gud = false;
 							break;
@@ -103,7 +109,7 @@ function SelectedController() {
 						creditos += subjectCreditos;
 
 						accepted.push({
-							classObj: classModel,
+							classId: classId,
 							subjectCode: subjectCode,
 							cssClass: cssClass
 						});
@@ -117,21 +123,8 @@ function SelectedController() {
 			rowCount++;
 		});
 
-		var timetable = new Array();
-
-		for(var idx in accepted)
-		{
-			timetable.push({
-				string: '<span>'+subjectList.get(accepted[idx].subjectCode).get('NomeDisciplina')+'</span><br />'+
-					accepted[idx].subjectCode+' - '+accepted[idx].classObj.get('CodigoTurma'),
-				horarios: accepted[idx].classObj.get('Horarios').models,
-				cssClass: accepted[idx].cssClass,
-				subjectCode: accepted[idx].subjectCode
-			});
-		}
-
 		console.log('Quantidade de creditos: '+creditos);
-		timetableView.render(timetable);
+		timetableView.render(accepted);
 	}
 
 	var getValues = function(td) {
