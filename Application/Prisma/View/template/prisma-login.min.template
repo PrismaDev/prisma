@@ -9,7 +9,7 @@
 					<span class="brand"><%= layoutStr.get('projectNameStr') %></span>
 					<ul class="nav">
 						<li><a id="open-faq-link"><%= layoutStr.get('FAQStr') %></a><li>
-						<li><a id="open-tutorial-link"><%= layoutStr.get('tutorialStr') %></a><li>
+					<!---	<li><a id="open-tutorial-link"><%= layoutStr.get('tutorialStr') %></a><li> --->
 						<% if (loggedIn) { %>
 							<li><a id="open-suggestions-link"><%= layoutStr.get('commentsStr') %></a></li>	
 						<% } %>
