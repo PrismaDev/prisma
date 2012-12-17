@@ -14,7 +14,7 @@
 							<li><a id="open-suggestions-link"><%= layoutStr.get('commentsStr') %></a></li>	
 						<% } %>
 						<li class="fb-like">
-							<fb:like send="true" width="450" show_faces="true" />
+						<fb:like href="http://prisma.inf.puc-rio.br" send="true" width="450" show_faces="false" font="arial" colorscheme="dark"></fb:like>
 						</li>
 					</ul>
 					<% if (!loggedIn) { %>
