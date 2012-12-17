@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 	<head>
 		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet" />
 		<?php
@@ -9,7 +9,12 @@
 
 		<title>Prisma V2</title>
 		<meta charset="utf-8" />
-
+		<meta property="og:title" content="PrISMA" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="http://prisma.inf.puc-rio.br" />
+		<meta property="og:image" content="" />
+		<meta property="og:site_name" content="PrISMA" />
+		<meta property="fb:admins" content="100001586200753" />
 
 		</head>
 	<body>
@@ -17,6 +22,24 @@
 			$templatefile = "template/prisma-".$data["section"].".min.template";
 			require($templatefile);
 		?>
+	<div id="fb-root"></div>
+		<script>
+			window.fbAsyncInit = function() {
+    				FB.init({
+					status     : false,
+					cookie     : true, // set sessions cookies to allow your server to access the session?
+					xfbml      : true  // parse XFBML tags on this page?
+				});
+			};
+
+			(function(d, debug){
+				var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+				if (d.getElementById(id)) {return;}
+				js = d.createElement('script'); js.id = id; js.async = true;
+				js.src = "//connect.facebook.net/en_US/all" + (debug ? "/debug" : "") + ".js";
+				ref.parentNode.insertBefore(js, ref);
+			}(document, /*debug*/ true));
+		</script>	
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 		<?php
 			if(isset($data['DATA_VIEW'])):

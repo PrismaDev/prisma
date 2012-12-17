@@ -13,6 +13,9 @@
 						<% if (loggedIn) { %>
 							<li><a id="open-suggestions-link"><%= layoutStr.get('commentsStr') %></a></li>	
 						<% } %>
+						<li class="fb-like">
+							<fb:like send="true" width="450" show_faces="true" />
+						</li>
 					</ul>
 					<% if (!loggedIn) { %>
 						<ul class="nav pull-right">
