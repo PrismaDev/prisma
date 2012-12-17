@@ -12,13 +12,13 @@
 						<li><a id="open-tutorial-link"><%= layoutStr.get('tutorialStr') %></a><li>
 						<% if (loggedIn) { %>
 							<li><a id="open-suggestions-link"><%= layoutStr.get('commentsStr') %></a></li>	
-						<% } %>
+						<% } %>	
 						<li class="fb-like">
-						<fb:like href="http://prisma.inf.puc-rio.br" send="true" width="450" show_faces="false" font="arial" colorscheme="dark"></fb:like>
+							<fb:like href="http://prisma.inf.puc-rio.br" send="true" width="450" show_faces="false" font="arial" colorscheme="dark"></fb:like>
 						</li>
 					</ul>
+					<ul class="nav pull-right">
 					<% if (!loggedIn) { %>
-						<ul class="nav pull-right">
 							<li class="dropdown">
   								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 									<%= layoutStr.get('loginStr') %>
@@ -40,9 +40,7 @@
 									</form>
 								</div>
 							</li>
-						</ul>
 					<% } else { %>
-						<ul class="nav pull-right">
 							<li class="dropdown">
   								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
 									<%= layoutStr.get('hiStr') %>, <%= layoutStr.get('userName') %>
@@ -52,8 +50,8 @@
 									<li><a href="/logout"><%= layoutStr.get('logoutStr') %></a></li>	
 								</ul>
 							</li>
-						</ul>
 					<% } %>
+					</ul>
 				</div>
 			</div>
 			<div class="row-fluid" id="content-div"></div>
