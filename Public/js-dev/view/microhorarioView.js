@@ -119,6 +119,20 @@ var MicrohorarioView = Backbone.View.extend ({
 		microhorarioClasseslistView.resize();
 	},
 
+	bindValidators: function() {
+		$('input[name="Creditos"]').change(function(ev) {
+			microhorarioValidator.intMask(ev.target,3);
+		});
+
+		$('input[name="HoraInicial"]').change(function(ev) {
+			microhorarioValidator.hourMask(ev.target);
+		});
+
+		$('input[name="HoraFinal"]').change(function(ev) {
+			microhorarioValidator.hourMask(ev.target);
+		});
+	},
+
 	render: function() {
 		this.$el.html(this.template({
 			str: microhorarioStringsModel,
@@ -127,7 +141,8 @@ var MicrohorarioView = Backbone.View.extend ({
 		
 		this.$resultsDiv = $('#microhorario-results');
 		microhorarioClasseslistView.setElement(this.$resultsDiv);
-		
+	
+		this.bindValidators();	
 		this.changeState(this.noQueryState);		
 	}
 });

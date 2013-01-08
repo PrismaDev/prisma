@@ -83,3 +83,41 @@ function MicrohorarioController() {
 }
 
 var microhorarioController = new MicrohorarioController();
+
+function MicrohorarioValidator() {
+	var me=this;
+
+	this.getInt = function(value, length) {
+		var nVal = "";
+
+		for (var i=0; i<value.length; i++)
+			if (!isNaN(value[i])) {
+				nVal+=value[i];
+
+				if (length>0 && nVal.length==length)
+					break;
+			}
+
+		return nVal;
+	}
+
+	this.intMask = function(inputObj, length) {
+		inputObj.value = me.getInt(inputObj.value, length);
+	}
+
+	this.hourMask = function(inputObj) {
+		var val=inputObj.value;
+		var colon=-1;
+
+		for (var i=0; i<val.length; i++)
+			if (val[i]==':') {
+				colon=i;
+				break;
+			}
+		
+		if (colon>=0) val=val.substr(0,colon);
+		inputObj.value = me.getInt(val, 2);
+	}
+}
+
+var microhorarioValidator = new MicrohorarioValidator();
