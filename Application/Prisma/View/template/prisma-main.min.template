@@ -222,14 +222,7 @@
 				<label for="NomeProfessor"><%= str.get('professorNameLabel') %></label>
 				<input type="text" name="NomeProfessor" />
 			</div>		
-
-
-			<div id="hiddenFilters" class="hidden">
-				<div class="fieldContainer">
-					<label for="Creditos"><%= str.get('nCreditsLabel') %></label>
-					<input type="text" name="Creditos" />
-				</div>
-				<div class="fieldContainer">
+			<div class="fieldContainer">
 					<label for="DiaSemana"><%= str.get('dayLabel') %></label>
 					<select name="DiaSemana">
 						<option value=""></option>
@@ -237,24 +230,29 @@
 							<option value="<%= index+2%>"><%= day %></option>
 						<% }); %>
 					</select>
+			</div>
+
+			<div id="hiddenFilters" class="hidden">
+				<div class="fieldContainer">
+					<label for="Creditos"><%= str.get('nCreditsLabel') %></label>
+					<input type="text" class="input-small" name="Creditos" />
 				</div>
+
 				<div class="fieldContainer">
 					<label for="HoraInicial"><%= str.get('timeBeginLabel') %></label>
-					<input type="text" name="HoraInicial" />
+					<input type="text" class="input-small" name="HoraInicial" />
 				</div>
 				<div class="fieldContainer">
 					<label for="HoraFinal"><%= str.get('timeEndLabel') %></label>
-					<input type="text" name="HoraFinal" />
+					<input type="text" class="input-small" name="HoraFinal" />
 				</div>
-				<div class="fieldContainer">
-					<input type="checkbox" name="SHF" value="1" />
-					<label for="SHF">
+				<div class="checkboxesDiv">
+					<label class="checkbox inline" for="SHF">
+						<input type="checkbox" name="SHF" value="1" />
 						<%= str.get('noFixedScheduleLabel') %>
 					</label>
-				</div>
-				<div class="fieldContainer">
-					<input type="checkbox" name="HorasDistancia" value="1" />
-					<label for="HorasDistancia">
+					<label class="checkbox inline" for="HorasDistancia">
+						<input type="checkbox" name="HorasDistancia" value="1" />
 						<%= str.get('distanceHoursLabel') %>
 					</label>
 				</div>

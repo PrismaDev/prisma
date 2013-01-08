@@ -155,7 +155,8 @@ div.whole {
 div.buttonContainer,
 #microhorario-filter,
 #microhorario-results,
-#main-footer-div {
+div#hiddenFilters,
+div.checkboxesDiv {
   clear: both;
 }
 #microhorario-results .dataTables_filter {
@@ -164,6 +165,9 @@ div.buttonContainer,
 div.fieldContainer {
   float: left;
   padding-right: 2%;
+}
+div.checkboxesDiv .checkbox.inline + .checkbox.inline {
+  margin-left: 4%;
 }
 #microhorario-togglefilter,
 #microhorario-filter {
