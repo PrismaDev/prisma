@@ -29,7 +29,7 @@
 										<input type="hidden" name="tipo" value="Aluno" />
 										<div>
 											<label for="username"><%= loginStr.get('matriculaLabel') %></label>
-											<input type="text" name="matricula" />
+											<input type="text" maxlength="<%= loginStr.get('matriculaMaxLength') %>" name="matricula" />
 											<label for="password"><%= loginStr.get('passwordLabel') %></label>
 											<input type="password" name="senha" />
 										</div>

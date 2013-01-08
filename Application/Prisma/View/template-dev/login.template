@@ -38,7 +38,8 @@
 							</div>
 						<% } %>
 						<div class="span2 offset2">
-							<label for="matricula"><%= loginStr.get('matriculaLabel') %></label><input type="text" name="matricula" /><br />
+							<label for="matricula"><%= loginStr.get('matriculaLabel') %></label>
+							<input type="text" maxlength="<%= loginStr.get('matriculaMaxLength') %>" name="matricula" /><br />
 							<label for="senha"><%= loginStr.get('passwordLabel') %></label><input type="password" name="senha" /><br />
 						</div>
 					</div>

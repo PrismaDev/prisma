@@ -1,6 +1,7 @@
 var LoginStringsModel = Backbone.Model.extend({
 	defaults: {
 		'matriculaLabel': 'Matrícula',
+		'matriculaMaxLength': '7',
 		'passwordLabel': 'Senha',
 		'submitButtonLabel': 'Login',
 		'loginHelpText': 'Para logar, use sua matrícula sem o\
