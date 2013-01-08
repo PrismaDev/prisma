@@ -40,7 +40,8 @@
 						<div class="span2 offset2">
 							<label for="matricula"><%= loginStr.get('matriculaLabel') %></label>
 							<input type="text" maxlength="<%= loginStr.get('matriculaMaxLength') %>" name="matricula" /><br />
-							<label for="senha"><%= loginStr.get('passwordLabel') %></label><input type="password" name="senha" /><br />
+							<label for="senha"><%= loginStr.get('passwordLabel') %></label>
+							<input type="password" maxlength="<%= loginStr.get('passwordMaxLength') %>" name="senha" /><br />
 						</div>
 					</div>
 					<div class="row-fluid">

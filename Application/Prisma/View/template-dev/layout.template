@@ -31,7 +31,7 @@
 											<label for="username"><%= loginStr.get('matriculaLabel') %></label>
 											<input type="text" maxlength="<%= loginStr.get('matriculaMaxLength') %>" name="matricula" />
 											<label for="password"><%= loginStr.get('passwordLabel') %></label>
-											<input type="password" name="senha" />
+											<input type="password" maxlength="<%= loginStr.get('passwordMaxLength') %>" name="senha" />
 										</div>
 										<div>
 											<input class="btn pull-right" type="submit" value="<%= loginStr.get('submitButtonLabel') %>" />
