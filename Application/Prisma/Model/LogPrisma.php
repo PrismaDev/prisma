@@ -32,6 +32,7 @@ class LogPrisma
 		}
 		else
 		{	
+			echo $notes.'<br>';
 			print_r($dbh->errorInfo());
 			exit;
 		}
