@@ -64,7 +64,8 @@ var FaltacursarModel = Backbone.Model.extend({
 				'term': opt[serverDictionary.get('PeriodoAno')],
 				'credits': subjectModel.get('Creditos'),		
 				'able': subjectModel.get('Apto'),
-				'status': subjectModel.get('Situacao')
+				'status': subjectModel.get('Situacao'),
+				'ingroup': true
 			};
 
 			array.push(object);

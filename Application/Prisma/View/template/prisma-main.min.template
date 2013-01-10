@@ -376,6 +376,7 @@
 			<%= subject.status=="EA"? 'subjectWarning' : '' %>
 			<%= subject.status=="CP"? 'subjectDisabled': '' %>		
 			<%= subject.optativa? 'optativa ': '' %>
+			<%= subject.ingroup? 'ingroup ': '' %>
 	">
 		<td class="imgCell"><%= (subject.optativa? '<img src="img/Setinha Mini copy.PNG" width="20" height="20" />': '') %></td>
 		<td><%= subject.code %></td>

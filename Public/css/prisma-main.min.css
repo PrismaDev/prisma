@@ -139,6 +139,13 @@ body {
 #main-faltacursar-div div {
   overflow: auto;
 }
+tr.ingroup td.imgCell {
+  border: none;
+  background-color: white;
+}
+tr.extraBorder td.imgCell {
+  border-top: 1px solid #dddddd;
+}
 div.half {
   height: 50%;
 }
@@ -628,19 +635,22 @@ div.checkboxesDiv .checkbox.inline + .checkbox.inline {
 }
 #main-sidebar-div {
   width: 45%;
+  border-bottom: solid 1px #dddddd;
   float: left;
 }
 #main-timetable-div {
-  width: 55%;
+  width: 54%;
   float: left;
 }
 #main-faltacursar-div,
 #main-microhorario-div,
 #main-selected-div {
-  width: 99%;
+  width: 97%;
   height: 100%;
+  border-left: solid 1px #dddddd;
   overflow: auto;
   padding-right: 1%;
+  padding-left: 1%;
   padding-top: 0;
 }
 #main-tabs-nav {

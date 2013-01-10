@@ -65,6 +65,7 @@ var FaltacursarView = Backbone.View.extend({
 			nRows.reverse();		
 
 			this.addRowsToTable(nRows,rowIdx);
+			$(row).next().addClass('extraBorder');
 		}
 		
 		this.calculateScrollTop(row);
@@ -80,7 +81,6 @@ var FaltacursarView = Backbone.View.extend({
 
 	clickOnRow: function(e) {
 		var row=$(e.target).parents('tr');
-		console.log(row);
 
 		if ($(row).hasClass('optativa'))
 			return this.handleOptativa(row);
