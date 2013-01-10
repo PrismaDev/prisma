@@ -42,23 +42,20 @@ var FaltacursarView = Backbone.View.extend({
 	handleOptativa: function(row) {
 		var codOpt = $(row).attr('id');
 		var nRows = faltacursarModel.getSubjectsOptativa(codOpt);		
+		var rowIdx = this.subjectDatatable.fnGetPosition($(row)[0]);
 
 		if ($(row).hasClass('openOptativa')) {
 			$(row).removeClass('openOptativa');
-			$($(row).attr('id')+' ~ tr').slice(0,nRows.length).remove();
+			
+			for (var i=0; i<nRows.length; i++) 
+				this.subjectDatatable.fnDeleteRow(rowIdx+1,null,false);
+			this.subjectDatatable.fnDraw();
 		}
 		else {
 			$(row).addClass('openOptativa');
-			var arr=new Array();
-			this.addRowsToTable(nRows);	
-		
-			var formattedRows = this.subjectTable.find('tr').slice(-nRows.length);
-			
-			_.each(formattedRows, function(tmpRow) {
-				$(tmpRow).remove();
-			});
+			nRows.reverse();		
 
-			$(formattedRows).insertAfter(row);	
+			this.addRowsToTable(nRows,rowIdx);
 		}
 	},
 
@@ -178,15 +175,19 @@ var FaltacursarView = Backbone.View.extend({
 					this.markAsSelected(selected[i][j].subjectCode, true);
 	},
 
-	addRowsToTable: function(subjectArray) {
+	addRowsToTable: function(subjectArray, prevRow) {
 		for(idx in subjectArray) {
 			var newTr = this.templateRow({
 					subject: subjectArray[idx],
 					subjectTableStr: subjectTableStringsModel,
 				});
-			this.subjectDatatable.fnAddTr($(newTr)[0],false);
+
+			if (prevRow==undefined)
+				this.subjectDatatable.fnAddTr($(newTr)[0],false);
+			else
+				this.subjectDatatable.fnAddTrAfter($(newTr)[0],prevRow,false);
 		}
-		
+
 		this.subjectDatatable.fnAdjustColumnSizing(true);
 	},
 
