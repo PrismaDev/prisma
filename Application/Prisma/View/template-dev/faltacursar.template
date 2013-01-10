@@ -9,37 +9,6 @@
 			<th><%= subjectTableStr.get('ementaHeaderLabel') %></th>
 		</thead>
 		<tbody>
-			<% _.each(subjects, function(subject) { %>
-				<tr id="<%= subject.code %>" 
-					class="
-						<%= subject.able==0? 'subjectBlocked' : '' %>
-						<%= subject.able==1? 'subjectWarning' : '' %>
-						<%= subject.status=="EA"? 'subjectWarning' : '' %>
-						<%= subject.status=="CP"? 'subjectDisabled': '' %>		
-						<%= subject.optativa? 'optativa ': '' %>
-					">
-					<td><%= (subject.optativa? '<img src="img/Setinha Mini copy.PNG" />': '') %></td>
-					<td><%= subject.code %></td>
-					<td class="name"><%= subject.name %>
-						<% if (subject.status=="EA") { %>
-							<span class="label label-warning">
-								<%= subjectTableStr.get('ongoingStr') %>
-							</span>
-						<% } %>
-						<span class="label label-success selected-label hidden">
-							<%= subjectTableStr.get('chosenSubjectStr') %>
-						</span>
-					</td>
-					<td><%= subject.term %></td>
-					<td><%= subject.credits %></td>
-					<td>
-						<a href="<%= subjectTableStr.get('ementaBaseLink')+subject.code %>"
-								class="btn btn-link btn-small ementaButton" target="_blank">
-							<%= subjectTableStr.get('ementaLinkLabel') %>
-						</a>
-					</td>
-				</tr>
-			<% }); %>
 		</tbody>
 	</table>
 	<div id="faltacursar-classes-div" class="hidden">
@@ -48,27 +17,32 @@
 
 <script type="text/underscore-template" id="faltacursar-row-template">
 	<tr id="<%= subject.code %>" 
-					class="
-						<%= subject.able==0? 'subjectBlocked' : '' %>
-						<%= subject.able==1? 'subjectWarning' : '' %>
-						<%= subject.status=="EA"? 'subjectWarning' : '' %>
-						<%= subject.status=="CP"? 'subjectDisabled': '' %>		
-						<%= subject.optativa? 'optativa ': '' %>
-					">
-					<td><%= (subject.optativa? '<img src="img/Setinha Mini copy.PNG" />': '') %></td>
-					<td><%= subject.code %></td>
-					<td><%= subject.name %>
-						<%= subject.status=="EA"? '<span class="label label-warning">'+subjectTableStr.get('ongoingStr')+'</span>': '' %>
-					</td>
-					<td><%= subject.term %></td>
-					<td><%= subject.credits %></td>
-					<td>
-						<a href="<%= subjectTableStr.get('ementaBaseLink')+subject.code %>"
-								class="btn btn-link btn-small ementaButton" target="_blank">
-							<%= subjectTableStr.get('ementaLinkLabel') %>
-						</a>
-					</td>
-				</tr>
-
-
+		class="
+			<%= subject.able==0? 'subjectBlocked' : '' %>
+			<%= subject.able==1? 'subjectWarning' : '' %>
+			<%= subject.status=="EA"? 'subjectWarning' : '' %>
+			<%= subject.status=="CP"? 'subjectDisabled': '' %>		
+			<%= subject.optativa? 'optativa ': '' %>
+	">
+		<td><%= (subject.optativa? '<img src="img/Setinha Mini copy.PNG" width="20" height="20" />': '') %></td>
+		<td><%= subject.code %></td>
+		<td class="name"><%= subject.name %>
+			<% if (subject.status=="EA") { %>
+				<span class="label label-warning">
+					<%= subjectTableStr.get('ongoingStr') %>
+				</span>
+			<% } %>
+			<span class="label label-success selected-label hidden">
+				<%= subjectTableStr.get('chosenSubjectStr') %>
+			</span>
+		</td>
+		<td><%= subject.term %></td>
+		<td><%= subject.credits %></td>
+		<td>
+			<a href="<%= subjectTableStr.get('ementaBaseLink')+subject.code %>"
+					class="btn btn-link btn-small ementaButton" target="_blank">
+				<%= subjectTableStr.get('ementaLinkLabel') %>
+			</a>
+		</td>
+	</tr>
 </script>

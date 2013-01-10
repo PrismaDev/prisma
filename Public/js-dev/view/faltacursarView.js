@@ -14,7 +14,7 @@ var FaltacursarView = Backbone.View.extend({
 
 	initialize: function() {
 		this.template = _.template($('#faltacursar-template').html());
-//		this.templateRow = _.template($('#faltacursar-template-row').html());
+		this.templateRow = _.template($('#faltacursar-row-template').html());
 
 		var me=this;
 		$(window).resize(function() {
@@ -50,15 +50,15 @@ var FaltacursarView = Backbone.View.extend({
 		else {
 			$(row).addClass('openOptativa');
 			var arr=new Array();
-			console.log(nRows);	
+			this.addRowsToTable(nRows);	
 		
-/*			_.each(nRows, function(r) {
+			var formattedRows = this.subjectTable.find('tr').slice(-nRows.length);
+			
+			_.each(formattedRows, function(tmpRow) {
+				$(tmpRow).remove();
+			});
 
-				console.log(r);
-				arr.push(templateRow({subject: r}));
-			});*/
-
-	//		$(row).insertAfter(arr);
+			$(formattedRows).insertAfter(row);	
 		}
 	},
 
@@ -74,7 +74,7 @@ var FaltacursarView = Backbone.View.extend({
 		var row=$(e.target).parent('tr');
 
 		if ($(row).hasClass('optativa'))
-			return handleOptativa(row);
+			return this.handleOptativa(row);
 
 		if ($(row.find('td').first()).hasClass('dataTables_empty'))
 			return;
@@ -178,8 +178,20 @@ var FaltacursarView = Backbone.View.extend({
 					this.markAsSelected(selected[i][j].subjectCode, true);
 	},
 
+	addRowsToTable: function(subjectArray) {
+		for(idx in subjectArray) {
+			var newTr = this.templateRow({
+					subject: subjectArray[idx],
+					subjectTableStr: subjectTableStringsModel,
+				});
+			this.subjectDatatable.fnAddTr($(newTr)[0],false);
+		}
+		
+		this.subjectDatatable.fnAdjustColumnSizing(true);
+	},
+
 	render: function() {
-		var subjects = faltacursarModel.getSubjects().sort
+		var subjects = faltacursarModel.getTableRows().sort
 		(function(a,b){
 			if(a.term != b.term)
 				return a.term - b.term;
@@ -187,12 +199,12 @@ var FaltacursarView = Backbone.View.extend({
 		});
 
 		this.$el.html(this.template({
-			subjects: subjects,
 			subjectTableStr: subjectTableStringsModel
 		}));
 		this.initJS();
-
 		this.cache();
+		
+		this.addRowsToTable(subjects);
 		faltacursarClasseslistView.setElement('#faltacursar-classes-div');
 
 		this.subjectDatatable.fnAdjustColumnSizing(false);

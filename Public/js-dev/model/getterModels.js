@@ -3,7 +3,7 @@ var FaltacursarModel = Backbone.Model.extend({
 		return overriddenGet(this, attributes);
 	},
 
-	getSubjects: function() {
+	getTableRows: function() {
 		var array=new Array();
 		
 		_.each(this.get('Disciplinas'), function(disciplina) {
@@ -44,40 +44,56 @@ var FaltacursarModel = Backbone.Model.extend({
 
 	getSubjectsOptativa: function(codOpt) {
 		var array=new Array();
-		var object={
-			'code': '123',
-			'name':	'343',
-			'term': '222222222222222222222222222222222222222222222222',
-			'credits': '23',
-			'able': '2',
-			'status': '2'
-		};
+		var opt, optArr = this.get('Optativas');
 
-		array.push(object);
+		for (var i=0; i<optArr.length; i++)
+			if (optArr[i][serverDictionary.get('CodigoOptativa')]==codOpt) {
+				opt=optArr[i];
+				break;
+			}
+	
+		_.each(opt[serverDictionary.get('Disciplinas')], function(subject) {
+			var subjectModel = subjectList.get(subject[
+				serverDictionary.get('CodigoDisciplina')
+			]);
+			var id = subject[serverDictionary.get('CodigoDisciplina')];
+
+			var object={
+				'code': subjectModel.get('CodigoDisciplina'),
+				'name': subjectModel.get('NomeDisciplina'),
+				'term': opt[serverDictionary.get('PeriodoAno')],
+				'credits': subjectModel.get('Creditos'),		
+				'able': subjectModel.get('Apto'),
+				'status': subjectModel.get('Situacao')
+			};
+
+			array.push(object);
+		});
+
 		return array;
 	},
 
 	getSubjectClasses: function(subjectId) {
-			   var subjectModel = subjectList.get(subjectId);
-			   var classList = subjectModel.get('Turmas');
-			   var array=new Array();
+		var subjectModel = subjectList.get(subjectId);
+		var classList = subjectModel.get('Turmas');
+		var array=new Array();
 
-			   _.each(classList.models, function(classO) {
-					   var object={
-					   'professorName': classO.get('NomeProfessor'),
-					   'code': classO.get('CodigoTurma'),
-					   'schedule': classO.printSchedule(),
-					   'subjectCode': subjectModel.get('CodigoDisciplina'),
-					   'classId': classO.get('PK_Turma'),
-					   'status': subjectModel.get('Situacao'),
-					   'able': subjectModel.get('Apto')
-					   };
+		_.each(classList.models, function(classO) {
+			var object={
+				'professorName': classO.get('NomeProfessor'),
+				'code': classO.get('CodigoTurma'),
+				'schedule': classO.printSchedule(),
+				'subjectCode': subjectModel.get('CodigoDisciplina'),
+				'classId': classO.get('PK_Turma'),
+				'status': subjectModel.get('Situacao'),
+				'able': subjectModel.get('Apto')
+			};
 
-					   array.push(object);
-					   });
+			array.push(object);
+		});
 
-			   return array;
-		   }
+		return array;
+	}
 });
 
 var faltacursarModel = new FaltacursarModel();
