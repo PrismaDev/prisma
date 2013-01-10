@@ -10,17 +10,19 @@
 
 //Variables
 @defaultSidebarWidth: 45%;
-@tabsPaddingRight: 1%;
+@tabsPaddingSides: 1%;
 @tabsPaddingTop: 0;
 
 
 #main-sidebar-div {
 	width: @defaultSidebarWidth;
+	border-bottom: solid 1px @borderGrey;	
+
 	float: left;
 }
 
 #main-timetable-div {
-	width: 100%-@defaultSidebarWidth;
+	width: 99%-@defaultSidebarWidth;
 	float: left;
 }
 
@@ -28,12 +30,15 @@
 	#main-microhorario-div,
 	#main-selected-div {
 
-	width: 100%-@tabsPaddingRight;
+	width: 99%-2*@tabsPaddingSides;
 	height: 100%-@tabsPaddingTop;
+	
+	border-left: solid 1px @borderGrey;
 
 	overflow: auto;
 
-	padding-right: @tabsPaddingRight;
+	padding-right: @tabsPaddingSides;
+	padding-left: @tabsPaddingSides;
 	padding-top: @tabsPaddingTop;
 }
 

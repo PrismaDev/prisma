@@ -3,6 +3,11 @@ var FaltacursarView = Backbone.View.extend({
 	templateRow: '',
 	subjectDatatableView: '',
 
+	//Optativas images
+	closedImg: 'Setinha Mini copy.PNG',
+	openImg: 'Setinha Mini.PNG',
+	defaultImgPath: 'img/',
+
 	//Cached variables
 	subjectTableWrapper: '',
 	classesDiv: '',
@@ -14,7 +19,7 @@ var FaltacursarView = Backbone.View.extend({
 
 	initialize: function() {
 		this.template = _.template($('#faltacursar-template').html());
-//		this.templateRow = _.template($('#faltacursar-template-row').html());
+		this.templateRow = _.template($('#faltacursar-row-template').html());
 
 		var me=this;
 		$(window).resize(function() {
@@ -42,24 +47,28 @@ var FaltacursarView = Backbone.View.extend({
 	handleOptativa: function(row) {
 		var codOpt = $(row).attr('id');
 		var nRows = faltacursarModel.getSubjectsOptativa(codOpt);		
+		var rowIdx = this.subjectDatatable.fnGetPosition($(row)[0]);
 
 		if ($(row).hasClass('openOptativa')) {
 			$(row).removeClass('openOptativa');
-			$($(row).attr('id')+' ~ tr').slice(0,nRows.length).remove();
+			$(row).find('td.imgCell img').attr('src',this.defaultImgPath+
+				this.closedImg);			
+
+			for (var i=0; i<nRows.length; i++) 
+				this.subjectDatatable.fnDeleteRow(rowIdx+1,null,false);
+			this.subjectDatatable.fnDraw();
 		}
 		else {
 			$(row).addClass('openOptativa');
-			var arr=new Array();
-			console.log(nRows);	
-		
-/*			_.each(nRows, function(r) {
+			$(row).find('td.imgCell img').attr('src',this.defaultImgPath+
+				this.openImg);			
+			nRows.reverse();		
 
-				console.log(r);
-				arr.push(templateRow({subject: r}));
-			});*/
-
-	//		$(row).insertAfter(arr);
+			this.addRowsToTable(nRows,rowIdx);
+			$(row).next().addClass('extraBorder');
 		}
+		
+		this.calculateScrollTop(row);
 	},
 
 	markAsSelected: function(subjectCode, isSelected) {
@@ -71,10 +80,10 @@ var FaltacursarView = Backbone.View.extend({
 	},
 
 	clickOnRow: function(e) {
-		var row=$(e.target).parent('tr');
+		var row=$(e.target).parents('tr');
 
 		if ($(row).hasClass('optativa'))
-			return handleOptativa(row);
+			return this.handleOptativa(row);
 
 		if ($(row.find('td').first()).hasClass('dataTables_empty'))
 			return;
@@ -178,8 +187,24 @@ var FaltacursarView = Backbone.View.extend({
 					this.markAsSelected(selected[i][j].subjectCode, true);
 	},
 
+	addRowsToTable: function(subjectArray, prevRow) {
+		for(idx in subjectArray) {
+			var newTr = this.templateRow({
+					subject: subjectArray[idx],
+					subjectTableStr: subjectTableStringsModel,
+				});
+
+			if (prevRow==undefined)
+				this.subjectDatatable.fnAddTr($(newTr)[0],false);
+			else
+				this.subjectDatatable.fnAddTrAfter($(newTr)[0],prevRow,false);
+		}
+
+		this.subjectDatatable.fnAdjustColumnSizing(true);
+	},
+
 	render: function() {
-		var subjects = faltacursarModel.getSubjects().sort
+		var subjects = faltacursarModel.getTableRows().sort
 		(function(a,b){
 			if(a.term != b.term)
 				return a.term - b.term;
@@ -187,12 +212,12 @@ var FaltacursarView = Backbone.View.extend({
 		});
 
 		this.$el.html(this.template({
-			subjects: subjects,
 			subjectTableStr: subjectTableStringsModel
 		}));
 		this.initJS();
-
 		this.cache();
+		
+		this.addRowsToTable(subjects);
 		faltacursarClasseslistView.setElement('#faltacursar-classes-div');
 
 		this.subjectDatatable.fnAdjustColumnSizing(false);

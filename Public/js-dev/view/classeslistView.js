@@ -105,10 +105,10 @@ var ClasseslistView = Backbone.View.extend({
 					classesTableStr: classesTableStringsModel,
 					subjectInfo: this.subjectInfo
 				});
-			this.classesDatatable.fnAddTr($(newTr)[0]);
+			this.classesDatatable.fnAddTr($(newTr)[0],false);
 		}
 		
-		this.classesDatatable.fnAdjustColumnSizing();
+		this.classesDatatable.fnAdjustColumnSizing(true);
 	},
 
 	render: function(classesArray) {

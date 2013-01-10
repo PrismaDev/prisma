@@ -45,10 +45,11 @@ var MainView = Backbone.View.extend({
 	},
 
 	equalMainDivsHeight: function() {
-		var h = $(this.timetableDiv).height();
-		$(this.sidebarDiv).height(h);
+		var h = $(this.timetableDiv).height()-1;
+		$(this.sidebarDiv).height(h); //-1 is to
+			//compensate the border-bottom
 
-		var innerH = h-$(this.tabsNav).height();
+		var innerH = h-$(this.tabsNav).outerHeight(true);
 		faltacursarView.$el.height(innerH);
 		microhorarioView.$el.height(innerH);
 		selectedView.$el.height(innerH);
