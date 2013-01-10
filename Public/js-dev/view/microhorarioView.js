@@ -62,7 +62,7 @@ var MicrohorarioView = Backbone.View.extend ({
 		$('select[name="DiaSemana"]').find('option[value="'+day+'"]').attr('selected',true);
 		$('input[name="CodigoDisciplina"]').attr('value',subjectCode);
 		
-		mainView.setActiveTab('microhorario');
+		mainRouter.navigate('microhorario', {trigger: true});
 		this.openFilters();
 		this.query();
 	},
