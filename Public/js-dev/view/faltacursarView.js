@@ -66,6 +66,7 @@ var FaltacursarView = Backbone.View.extend({
 
 			this.addRowsToTable(nRows,rowIdx);
 			$(row).next().addClass('extraBorder');
+			this.markSavedSelected();
 		}
 		
 		this.calculateScrollTop(row);
