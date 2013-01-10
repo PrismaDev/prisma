@@ -3,6 +3,11 @@ var FaltacursarView = Backbone.View.extend({
 	templateRow: '',
 	subjectDatatableView: '',
 
+	//Optativas images
+	closedImg: 'Setinha Mini copy.PNG',
+	openImg: 'Setinha Mini.PNG',
+	defaultImgPath: 'img/',
+
 	//Cached variables
 	subjectTableWrapper: '',
 	classesDiv: '',
@@ -46,13 +51,17 @@ var FaltacursarView = Backbone.View.extend({
 
 		if ($(row).hasClass('openOptativa')) {
 			$(row).removeClass('openOptativa');
-			
+			$(row).find('td.imgCell img').attr('src',this.defaultImgPath+
+				this.closedImg);			
+
 			for (var i=0; i<nRows.length; i++) 
 				this.subjectDatatable.fnDeleteRow(rowIdx+1,null,false);
 			this.subjectDatatable.fnDraw();
 		}
 		else {
 			$(row).addClass('openOptativa');
+			$(row).find('td.imgCell img').attr('src',this.defaultImgPath+
+				this.openImg);			
 			nRows.reverse();		
 
 			this.addRowsToTable(nRows,rowIdx);
