@@ -8,6 +8,7 @@ use Prisma\Library\Common;
 use Prisma\Model\Disciplina;
 use Prisma\Model\Professor;
 use Prisma\Model\Turma;
+use Prisma\Model\TurmaDestino;
 use Prisma\Model\TurmaHorario;
 use Prisma\Model\Unidade;
 
@@ -166,13 +167,20 @@ class MicroHorario
 			'FK_Disciplina'		=> $discID,
 			'Codigo'		=> $row[4],
 			'PeriodoAno'		=> Common::getPeriodoAno(),
-			'Vagas'			=> $row[6],
-			'Destino'		=> $row[5],
 			'HorasDistancia'	=> $row[9],
 			'SHF'			=> $row[10],
 			'FK_Professor'		=> $profID,
 		);
 		$turmaID = Turma::persist($turmaParams);
+
+		/* --------------------------------------------- */
+
+		$destinoParams = array(
+			'FK_Turma'	=> $turmaID,
+			'Destino'	=> $row[5],
+			'Vagas'		=> $row[6],
+		);
+		TurmaDestino::persist($destinoParams);
 
 		/* --------------------------------------------- */
 

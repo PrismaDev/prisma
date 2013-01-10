@@ -1,3 +1,67 @@
+
+BEGIN;
+
+CREATE TABLE "TurmaDestino"
+(
+  "FK_Turma" bigint NOT NULL,
+  "Destino" character varying(3) NOT NULL,
+  "Vagas" integer NOT NULL DEFAULT 0,
+  CONSTRAINT "PK_TurmaDestino" PRIMARY KEY ("FK_Turma", "Destino", "Vagas"),
+  CONSTRAINT "FK_TurmaDestino_Turma" FOREIGN KEY ("FK_Turma")
+      REFERENCES "Turma" ("PK_Turma") MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE
+)
+WITH (
+  OIDS=FALSE
+);
+
+CREATE OR REPLACE RULE "TurmaDestinoDuplicado" AS
+    ON INSERT TO "TurmaDestino"
+   WHERE (EXISTS ( SELECT 1
+           FROM "TurmaDestino"
+          WHERE "TurmaDestino"."FK_Turma" = new."FK_Turma" AND "TurmaDestino"."Destino"::text = new."Destino"::text)) DO INSTEAD  UPDATE "TurmaDestino" SET "Vagas" = new."Vagas"
+  WHERE "TurmaDestino"."FK_Turma" = new."FK_Turma" AND "TurmaDestino"."Destino"::text = new."Destino"::text;
+
+DROP VIEW "LogOcupacaoTurma";
+CREATE OR REPLACE VIEW "LogOcupacaoTurma" AS 
+ SELECT t."FK_Disciplina" AS "CodigoDisciplina", t."Codigo" AS "CodigoTurma", t."PeriodoAno", ats."Opcao", count(DISTINCT ats."FK_Aluno") AS "QuantidadeAluno", td."Destino", td."Vagas", trunc(count(DISTINCT ats."FK_Aluno")::numeric / td."Vagas"::numeric * 100::numeric, 2) AS "Porcentagem"
+    FROM "AlunoTurmaSelecionada" ats
+       JOIN "Turma" t ON t."PK_Turma" = ats."FK_Turma"
+          JOIN "TurmaDestino" td ON t."PK_Turma" = td."FK_Turma"
+	    GROUP BY ats."FK_Turma", t."FK_Disciplina", t."Codigo", t."PeriodoAno", ats."Opcao", td."Destino", td."Vagas"
+	      ORDER BY ats."FK_Turma", t."FK_Disciplina", t."Codigo", t."PeriodoAno", ats."Opcao", count(DISTINCT ats."FK_Aluno"), td."Destino", td."Vagas", trunc(count(DISTINCT ats."FK_Aluno")::numeric / td."Vagas"::numeric * 100::numeric, 2);
+
+CREATE OR REPLACE VIEW "MicroHorario" AS 
+ SELECT d."PK_Codigo" AS "CodigoDisciplina", d."Nome" AS "NomeDisciplina", d."Creditos", t."PK_Turma", t."Codigo" AS "CodigoTurma", t."PeriodoAno", td."Vagas", td."Destino", t."HorasDistancia", t."SHF", p."Nome" AS "NomeProfessor", th."DiaSemana", th."HoraInicial", th."HoraFinal"
+   FROM "Disciplina" d
+   JOIN "Turma" t ON t."FK_Disciplina"::text = d."PK_Codigo"::text AND t."Deletada" = false
+   JOIN "Professor" p ON t."FK_Professor" = p."PK_Professor"
+   JOIN "TurmaHorario" th ON th."FK_Turma" = t."PK_Turma"
+   JOIN "TurmaDestino" td ON td."FK_Turma" = t."PK_Turma";
+
+DROP VIEW "TurmaProfessor";
+CREATE OR REPLACE VIEW "TurmaProfessor" AS 
+ SELECT t."PK_Turma", t."Codigo" AS "CodigoTurma", t."FK_Disciplina" AS "CodigoDisciplina", t."PeriodoAno", t."HorasDistancia", t."SHF", p."Nome" AS "NomeProfessor"
+   FROM "Turma" t
+   JOIN "Professor" p ON t."FK_Professor" = p."PK_Professor"
+  WHERE t."Deletada" = false;
+
+CREATE OR REPLACE RULE "TurmaDuplicada" AS
+    ON INSERT TO "Turma"
+   WHERE (EXISTS ( SELECT 1
+           FROM "Turma" t
+          WHERE t."FK_Disciplina"::text = new."FK_Disciplina"::text AND t."Codigo"::text = new."Codigo"::text AND t."PeriodoAno" = new."PeriodoAno")) 
+          DO INSTEAD  
+          UPDATE "Turma" t SET "HorasDistancia" = new."HorasDistancia", "SHF" = new."SHF", "FK_Professor" = new."FK_Professor", "Deletada" = false
+  WHERE t."FK_Disciplina"::text = new."FK_Disciplina"::text AND t."Codigo"::text = new."Codigo"::text AND t."PeriodoAno" = new."PeriodoAno";
+
+ALTER TABLE "Turma" DROP COLUMN "Vagas";
+ALTER TABLE "Turma" DROP COLUMN "Destino";
+
+COMMIT;
+
+---------------------------------------------------------------------------------
+
 BEGIN;
 
 CREATE SEQUENCE seq_unidade;
@@ -109,3 +173,4 @@ OWNER TO prisma;
 
 
 COMMIT;
+

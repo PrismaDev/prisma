@@ -4,6 +4,7 @@ namespace Prisma\Model;
 
 use Framework\Database;
 use Prisma\Library\Common;
+use Prisma\Model\TurmaDestino;
 use Prisma\Model\TurmaHorario;
 
 class Turma
@@ -15,6 +16,7 @@ class Turma
 
 		for($i = 0; $i < $turmasSize; ++$i)
 		{
+			$turmas[$i]['Destinos'] = TurmaDestino::getByTurma($turmas[$i]['PK_Turma']);
 			$turmas[$i]['Horarios'] = TurmaHorario::getByTurma($turmas[$i]['PK_Turma']);
 		}
 
@@ -25,8 +27,8 @@ class Turma
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('SELECT "PK_Turma", "CodigoTurma", "PeriodoAno", "Vagas", 
-						"Destino", "HorasDistancia", "SHF", "NomeProfessor"
+		$sth = $dbh->prepare('SELECT "PK_Turma", "CodigoTurma", "PeriodoAno",  
+						"HorasDistancia", "SHF", "NomeProfessor"
 					FROM "TurmaProfessor" WHERE "CodigoDisciplina" = ? AND "PeriodoAno" = ?;');
 		$sth->execute(array($discID, Common::getPeriodoAno()));
 
@@ -53,6 +55,15 @@ class Turma
 			$turmas[$idx]['Horarios'][] = $horario;
 		}
 
+		$destinos = TurmaDestino::getByTurmaSet($myTurmaHash);
+		foreach($destinos as $destino)
+		{
+			$idx = $myTurmaHash[$destino['FK_Turma']];
+			unset($destino['FK_Turma']);
+
+			$turmas[$idx]['Destinos'][] = $destino;
+		}
+
 		return $turmas;
 	}
 
@@ -60,8 +71,8 @@ class Turma
 	{
 		$dbh = Database::getConnection();	
 
-		$sql = 'SELECT "PK_Turma", "CodigoDisciplina", "CodigoTurma", "PeriodoAno", "Vagas", 
-				"Destino", "HorasDistancia", "SHF", "NomeProfessor"
+		$sql = 'SELECT "PK_Turma", "CodigoDisciplina", "CodigoTurma", "PeriodoAno", 
+				"HorasDistancia", "SHF", "NomeProfessor"
 			FROM "TurmaProfessor" WHERE "PeriodoAno" = ? AND "CodigoDisciplina" IN (';		
 
 		$comma = false;
@@ -88,8 +99,8 @@ class Turma
 	{
 		$dbh = Database::getConnection();	
 
-		$sth = $dbh->prepare('INSERT INTO "Turma"("FK_Disciplina", "Codigo", "PeriodoAno", "Vagas", "Destino", "HorasDistancia", "SHF", "FK_Professor")
-						VALUES (:FK_Disciplina, :Codigo, :PeriodoAno, :Vagas, :Destino, :HorasDistancia, :SHF, :FK_Professor);');
+		$sth = $dbh->prepare('INSERT INTO "Turma"("FK_Disciplina", "Codigo", "PeriodoAno", "HorasDistancia", "SHF", "FK_Professor")
+						VALUES (:FK_Disciplina, :Codigo, :PeriodoAno, :HorasDistancia, :SHF, :FK_Professor);');
 
 		if(!$sth->execute($data))
 		{
