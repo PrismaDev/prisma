@@ -53,9 +53,21 @@ var FaltacursarView = Backbone.View.extend({
 			$(row).removeClass('openOptativa');
 			$(row).find('td.imgCell img').attr('src',this.defaultImgPath+
 				this.closedImg);			
-
-			for (var i=0; i<nRows.length; i++) 
+			var tmpRow=$(row);
+		
+			for (var i=0; i<nRows.length; i++) { 
+				if ($(tmpRow).next().hasClass('subjectSelected')) {
+					this.closeClassesDiv();
+					console.log('closed');
+				}
 				this.subjectDatatable.fnDeleteRow(rowIdx+1,null,false);
+
+				//to speed things up, Im not redrawing the table each time,
+				//so I need to iterate with tmpRow to go through the entire
+				//list of rows, since the html isnt being rewritten
+
+				tmpRow=$(tmpRow).next();
+			}
 			this.subjectDatatable.fnDraw();
 		}
 		else {
@@ -80,6 +92,13 @@ var FaltacursarView = Backbone.View.extend({
 		
 	},
 
+	closeClassesDiv: function() {
+		$(this.subjectTableWrapper).addClass('whole')
+						.removeClass('half');
+		this.calculateTableScroll();		
+		$(this.classesDiv).addClass('hidden');
+	},
+
 	clickOnRow: function(e) {
 		var row=$(e.target).parents('tr');
 
@@ -91,11 +110,7 @@ var FaltacursarView = Backbone.View.extend({
 
 		if ($(row).hasClass('subjectSelected')) {
 			$(row).removeClass('subjectSelected');
-        		
-			$(this.subjectTableWrapper).addClass('whole')
-						.removeClass('half');
-			this.calculateTableScroll();		
-			$(this.classesDiv).addClass('hidden');
+        		this.closeClassesDiv();	
 		}
 		else {
 			$(this.subjectTable).find('tr.subjectSelected')
