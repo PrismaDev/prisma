@@ -150,7 +150,10 @@ var MicrohorarioClasseslistView = ClasseslistView.extend({
 			}));
 			this.endOfDataMsg=true;
 		}
-		else this.addRowsToTable(data);	
+		else {
+			this.addRowsToTable(data);	
+			this.markChosenRows();
+		}
 
 		this.waitingData=false;
 	},
