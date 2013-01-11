@@ -59,6 +59,15 @@ var TimetableStringsModel = Backbone.Model.extend({
 
 var timetableStringsModel = new TimetableStringsModel();
 
+var FaltacursarStringsModel = Backbone.Model.extend({
+	defaults: {
+		'closeClassesDivLabel': 'Fechar turmas',
+		'searchLabel': 'Buscar:'
+	}
+});
+
+var faltacursarStringsModel = new FaltacursarStringsModel();
+
 var SubjectTableStringsModel = Backbone.Model.extend({
 	defaults: {
 		'subjectCodeLabel': 'Código da disciplina',

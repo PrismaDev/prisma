@@ -365,6 +365,13 @@
 		</tbody>
 	</table>
 	<div id="faltacursar-classes-div" class="hidden">
+		<div id="faltacursar-classes-table-div">
+		</div>
+		<div id="close-classes-div">
+			<button id="close-classes-button" class="btn btn-link btn-small">
+				<%= faltacursarStr.get('closeClassesDivLabel') %>
+			</button>
+		</div>
 	</div>
 </script>
 

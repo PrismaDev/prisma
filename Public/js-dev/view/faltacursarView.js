@@ -41,7 +41,8 @@ var FaltacursarView = Backbone.View.extend({
 
 	events: {
 		"click #faltacursar-subject-table tr": 'clickOnRow',
-		"click #faltacursar-subject-table .ementaButton": 'clickOnEmenta'
+		"click #faltacursar-subject-table .ementaButton": 'clickOnEmenta',
+		"click #close-classes-button" : 'clickOnCloseClasses'
 	},
 
 	handleOptativa: function(row) {
@@ -56,10 +57,8 @@ var FaltacursarView = Backbone.View.extend({
 			var tmpRow=$(row);
 		
 			for (var i=0; i<nRows.length; i++) { 
-				if ($(tmpRow).next().hasClass('subjectSelected')) {
+				if ($(tmpRow).next().hasClass('subjectSelected'))
 					this.closeClassesDiv();
-					console.log('closed');
-				}
 				this.subjectDatatable.fnDeleteRow(rowIdx+1,null,false);
 
 				//to speed things up, Im not redrawing the table each time,
@@ -82,6 +81,11 @@ var FaltacursarView = Backbone.View.extend({
 		}
 		
 		this.calculateScrollTop(row);
+	},
+
+	clickOnCloseClasses: function() {
+		$('tr.subjectSelected').removeClass('subjectSelected');
+		this.closeClassesDiv();
 	},
 
 	markAsSelected: function(subjectCode, isSelected) {
@@ -184,7 +188,8 @@ var FaltacursarView = Backbone.View.extend({
 			'sScrollY': '200px',
 			'bSort': false,
 			'oLanguage': {
-				'sZeroRecords': subjectTableStringsModel.get('noResultsStr')
+				'sZeroRecords': subjectTableStringsModel.get('noResultsStr'),
+				'sSearch': faltacursarStringsModel.get('searchLabel')
 			},
 			'fnDrawCallback': function(oSettings) {
 				me.calculateTableScroll()
@@ -228,13 +233,14 @@ var FaltacursarView = Backbone.View.extend({
 		});
 
 		this.$el.html(this.template({
-			subjectTableStr: subjectTableStringsModel
+			subjectTableStr: subjectTableStringsModel,
+			faltacursarStr: faltacursarStringsModel
 		}));
 		this.initJS();
 		this.cache();
 		
 		this.addRowsToTable(subjects);
-		faltacursarClasseslistView.setElement('#faltacursar-classes-div');
+		faltacursarClasseslistView.setElement('#faltacursar-classes-table-div');
 
 		this.subjectDatatable.fnAdjustColumnSizing(false);
 		this.calculateTableScroll();

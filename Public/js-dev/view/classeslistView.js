@@ -90,7 +90,8 @@ var ClasseslistView = Backbone.View.extend({
 			'sScrollY': '100px',
 			'bSort': false,
 			'oLanguage': {
-				'sEmptyTable': classesTableStringsModel.get('emptyTableStr')
+				'sEmptyTable': classesTableStringsModel.get('emptyTableStr'),
+				'sSearch': faltacursarStringsModel.get('searchLabel')
 			},
 			'fnDrawCallback': function(oSettings) {
 				me.calculateTableScroll();
