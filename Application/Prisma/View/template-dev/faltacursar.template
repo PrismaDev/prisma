@@ -15,6 +15,7 @@
 		<div id="faltacursar-classes-table-div">
 		</div>
 		<div id="close-classes-div">
+			<hr>
 			<button id="close-classes-button" class="btn btn-link btn-small">
 				<%= faltacursarStr.get('closeClassesDivLabel') %>
 			</button>

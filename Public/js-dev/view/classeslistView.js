@@ -87,7 +87,7 @@ var ClasseslistView = Backbone.View.extend({
 			'sDom': this.options.sDom,
 			'bPaginate': false,
 			'bScrollCollapse': true,
-			'sScrollY': '100px',
+			'sScrollY': '20000px', //equals inf 
 			'bSort': false,
 			'oLanguage': {
 				'sEmptyTable': classesTableStringsModel.get('emptyTableStr'),
@@ -200,13 +200,18 @@ var FaltacursarClasseslistView = ClasseslistView.extend({
 	subjectInfo: false,
 
 	calculateTableScroll: function() {
-		var h = this.$el.height();
+		var h = this.$el.parent().height();
+		var closeButtonH = this.$el.parent().find('#close-classes-div')
+				.outerHeight(true);
 		var headerH= this.$el.find('.dataTables_filter').outerHeight(true)+
 			$(this.classesTableHead).outerHeight(true);
 		var diff = $(this.classesTableBody).outerHeight(true)-
 			$(this.classesTableBody).height();
 
-		$(this.classesTableBody).height(h-headerH-diff);
+		var calcH=h-headerH-closeButtonH-diff;
+
+		if (calcH<$(this.classesTableBody).height())
+			$(this.classesTableBody).height(calcH);
 	},
 });
 var faltacursarClasseslistView = new FaltacursarClasseslistView({sDom: 'ft'});

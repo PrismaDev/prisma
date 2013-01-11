@@ -84,7 +84,7 @@ var FaltacursarView = Backbone.View.extend({
 	},
 
 	clickOnCloseClasses: function() {
-		$('tr.subjectSelected').removeClass('subjectSelected');
+		$(this.subjectTable).find('tr.subjectSelected').removeClass('subjectSelected');
 		this.closeClassesDiv();
 	},
 
