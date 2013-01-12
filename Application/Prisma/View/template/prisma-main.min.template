@@ -330,17 +330,23 @@
 	</li>
 </script>
 
-<script type="text/underscore-template" id="selected-table-template">
-	<table>
-		<thead>
-			<th colspan="2"><%= selectedStr.get('option1Label') %></th>
-			<th colspan="2"><%= selectedStr.get('option2Label') %></th>
-			<th colspan="2"><%= selectedStr.get('option3Label') %></th>
-			<th><%= selectedStr.get('noneLabel') %></th>
-		</thead>
-		<tbody class="selectedSortable">
-		</tbody>
-	</table>
+<script type="text/underscore-template" id="selected-template">
+	<div id="table-container">
+		<table>
+			<thead>
+				<th colspan="2"><%= selectedStr.get('option1Label') %></th>
+				<th colspan="2"><%= selectedStr.get('option2Label') %></th>
+				<th colspan="2"><%= selectedStr.get('option3Label') %></th>
+				<th><%= selectedStr.get('noneLabel') %></th>
+			</thead>
+			<tbody class="selectedSortable">
+			</tbody>
+		</table>
+	</div>
+	<div id="info-container">
+		<div id="qtdCredits">0 <%= selectedStr.get('qtdCreditsLabel')%></div>
+		<div id="qtdClasses">0 <%= selectedStr.get('qtdClassesLabel')%></div>
+	</div>
 </script>
 
 <script type="text/underscore-template" id="selected-draggable-template">

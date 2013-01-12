@@ -38,7 +38,9 @@ var SelectedStringsModel = Backbone.Model.extend({
 		'option1Label': '1ª opção',
 		'option2Label': '2ª opção',
 		'option3Label': '3ª opção',
-		'noneLabel': 'N/A'
+		'noneLabel': 'N/A',
+		'qtdCreditsLabel': ' crédito(s) na grade atual',
+		'qtdClassesLabel': ' turma(s) na grade atual'
 	}
 });
 

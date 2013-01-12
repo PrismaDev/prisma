@@ -1,11 +1,11 @@
 var SelectedView = Backbone.View.extend({
 	templateRow: '',
-	templateTable: '',
+	template: '',
 	templateDraggable: '',
 
 	initialize: function() {
 		this.templateRow = _.template($('#selected-row-template').html());
-		this.templateTable = _.template($('#selected-table-template').html());
+		this.template = _.template($('#selected-template').html());
 		this.templateDraggable = _.template($('#selected-draggable-template').html());
 	},
 
@@ -64,7 +64,7 @@ var SelectedView = Backbone.View.extend({
 	},
 
 	buildSelected: function(rowsArray) {
-		this.$el.html(this.templateTable({
+		this.$el.html(this.template({
 			selectedStr: selectedStringsModel
 		}));
 		var tbody = this.$el.find('tbody');

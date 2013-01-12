@@ -104,7 +104,7 @@ var FaltacursarView = Backbone.View.extend({
 
 			while (!$(headRow).hasClass('optativa'))
 				headRow = $(headRow).prev();
-			console.log(headRow);
+			
 			headRowLabel = $(headRow).find('.name .selected-label');
 			n = parseInt($(headRowLabel).html());
 		}
