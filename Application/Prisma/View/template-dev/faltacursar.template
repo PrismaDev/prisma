@@ -41,9 +41,17 @@
 					<%= subjectTableStr.get('ongoingStr') %>
 				</span>
 			<% } %>
-			<span class="label label-success selected-label hidden">
-				<%= subjectTableStr.get('chosenSubjectStr') %>
-			</span>
+			
+			<% if (subject.optativa) { %>
+				<span class="label label-success selected-label hidden">
+					0 <%= subjectTableStr.get('nOptativasChosenStr') %>
+				</span>
+
+			<% } else { %>
+				<span class="label label-success selected-label hidden">
+					<%= subjectTableStr.get('chosenSubjectStr') %>
+				</span>
+			<% } %>
 		</td>
 		<td><%= subject.term %></td>
 		<td><%= subject.credits %></td>

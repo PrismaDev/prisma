@@ -89,11 +89,34 @@ var FaltacursarView = Backbone.View.extend({
 	},
 
 	markAsSelected: function(subjectCode, isSelected) {
-		if (!isSelected) 
-			$('#'+subjectCode+' .name .selected-label').addClass('hidden');
-		else
-			$('#'+subjectCode+' .name .selected-label').removeClass('hidden');
-		
+		var row = $('#'+subjectCode);
+		var headRow = null, n, headRowLabel;
+
+		if ($(row).hasClass('ingroup')) {
+			headRow = $(row).prev();
+
+			while (!$(headRow).hasClass('optativa'))
+				headRow = $(headRow).prev();
+			console.log(headRow);
+			headRowLabel = $(headRow).find('.name .selected-label');
+			n = parseInt($(headRowLabel).html());
+		}
+
+		if (!isSelected) {
+			$(row).find('.name .selected-label').addClass('hidden');
+			if (headRow) n--;
+		}
+		else {
+			$(row).find('.name .selected-label').removeClass('hidden');
+			if (headRow) n++;
+		}
+
+		if (headRow) {
+			$(headRowLabel).html(n+' '+subjectTableStringsModel.get('nOptativasChosen'));
+			
+			if (n) $(headRowLabel).removeClass('hidden');
+			else $(headRowLabel).addClass('hidden');
+		}
 	},
 
 	closeClassesDiv: function() {

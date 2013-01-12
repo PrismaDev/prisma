@@ -79,7 +79,8 @@ var SubjectTableStringsModel = Backbone.Model.extend({
 		'ementaBaseLink': 'http://www.puc-rio.br/ferramentas/ementas/ementa.aspx?cd=',
 		'ongoingStr': 'Cursando',
 		'chosenSubjectStr': 'Selecionada',
-		'noResultsStr': 'Não há resultados para essa busca'
+		'noResultsStr': 'Não há resultados para essa busca',
+		'nOptativasChosen': 'selecionada(s) desse grupo'
 	}
 });
 
