@@ -119,7 +119,7 @@ function SelectedController() {
 			rowCount++;
 		});
 
-		console.log('Quantidade de creditos: '+creditos);
+		selectedView.changeInfo(creditos,accepted.length);
 		timetableView.render(accepted);
 	}
 

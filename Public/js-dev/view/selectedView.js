@@ -9,6 +9,13 @@ var SelectedView = Backbone.View.extend({
 		this.templateDraggable = _.template($('#selected-draggable-template').html());
 	},
 
+	changeInfo: function(nCredits, nClasses) {
+		var infoC = $('#info-container');
+
+		infoC.find('#qtdCredits').html(nCredits+' '+selectedStringsModel.get('qtdCreditsLabel'));
+		infoC.find('#qtdClasses').html(nClasses+' '+selectedStringsModel.get('qtdClassesLabel'));
+	},
+
 	events: {
 		'click button.close': 'deleteClass',
 		'change input[type="radio"]': 'radioChange'
