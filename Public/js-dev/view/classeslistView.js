@@ -14,7 +14,7 @@ var ClasseslistView = Backbone.View.extend({
 	},
 
 	clickOnClass: function(e) {
-		var row = $(e.target).parent('tr');
+		var row = $(e.target).parents('tr');
 		
 //		if ($(row).hasClass('subjectBlocked'))
 //			return;
@@ -139,6 +139,15 @@ var MicrohorarioClasseslistView = ClasseslistView.extend({
 		this.templateRow = _.template($('#classeslist-row-template').html());
 		this.waitingTemplate = _.template($('#microhorario-waiting-template').html());
 		this.alertTemplate = _.template($('#microhorario-end-of-data-template').html());
+	},
+
+	events: {
+		'click .dataTables_scrollBody tr': 'clickOnClass',
+		'click .dataTables_scrollBody tr .ementaButton': 'clickOnEmenta'
+	},
+
+	clickOnEmenta: function(e) {
+		e.stopPropagation();
 	},
 
 	addNextPage: function(end, data) {
