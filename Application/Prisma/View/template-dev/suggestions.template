@@ -9,7 +9,7 @@
 		</div>
 		<div class="modal-footer">
 			<input type="reset" class="btn btn-danger" value="<%= suggestionsStr.get('resetButtonLabel') %>">
-			<input type="submit" class="btn btn-primary" value="<%= suggestionsStr.get('submitButtonLabel') %>">
+			<input type="submit" class="btn btn-primary disabled" value="<%= suggestionsStr.get('submitButtonLabel') %>">
 		</div>
 	</form>
 </script>
