@@ -185,6 +185,18 @@ var FaltacursarView = Backbone.View.extend({
 	
 	},
 
+	initHelpers: function() {
+		helpersList.get('ableSubjectRow').set('selector',
+			'#faltacursar-subject-table tr:not(.optativa,.subjectWarning,.subjectBlocked)');
+		helpersList.get('optativaRow').set('selector',
+			'#faltacursar-subject-table tr.optativa');
+	},
+
+	bindHelpers: function() {
+		helperView.create('ableSubjectRow');
+		helperView.create('optativaRow');
+	},
+
 	initJS: function() {
 		var me = this;
 
@@ -203,7 +215,8 @@ var FaltacursarView = Backbone.View.extend({
 			}
 		});
 		
-		$('#faltacursar-subject-table_wrapper').addClass('whole');
+		$('#faltacursar-subject-table_wrapper').addClass('whole');	
+		this.initHelpers();
 	},		
 
 	addRowsToTable: function(subjectArray, prevRow) {
@@ -220,6 +233,7 @@ var FaltacursarView = Backbone.View.extend({
 		}
 
 		this.subjectDatatable.fnAdjustColumnSizing(true);
+		this.bindHelpers();
 	},
 
 	render: function() {

@@ -112,3 +112,22 @@ _.extend(ClassesTableStringsModel.prototype.defaults,
 		SubjectTableStringsModel.prototype.defaults);
 
 var classesTableStringsModel = new ClassesTableStringsModel();
+
+var MainHelpersStringsModel = Backbone.Model.extend({
+	defaults: {
+		'tooltipButtonLabel': 'OK!',
+		'ableSubjectRowText': 'Clique na linha de uma disciplina para\
+			abrir suas turmas',
+		'blockedSubjectRowText': 'Você pode visualizar as turmas dessa disciplina, \
+			mas o sistema nos diz que você não tem os pré-requisitos necessários \
+			para cursá-la. Temporariamente, adicionar uma turma dessa disciplina está \
+			habilitado devido a bugs; clique para visualizar as turmas',
+		'warningSubjectRowText': 'Uma disciplina em amarelo significa que você ou está \
+			cursando nesse período (marcadas com "Cursando") ou necessita ser aprovado em alguma(s) disciplina(s) \
+			que você está cursando. Clique para visualizar as turmas',
+		'optativaRowText': 'Clique nessa optativa para abrir suas disciplinas; clique novamente para \
+			fechá-las'
+	}
+});
+
+var mainHelpersStringsModel = new MainHelpersStringsModel();

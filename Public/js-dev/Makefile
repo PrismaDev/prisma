@@ -44,11 +44,13 @@ DEP_MAIN = $(DEP_ALL) \
 	$(MDL)/optativaModel.js \
 	$(MDL)/faltacursarModel.js\
 	$(MDL)/selectedModel.js \
+	$(MDL)/mainHelperModel.js \
 	$(VIEW)/lib.js \
 	$(VIEW)/timetableView.js \
 	$(VIEW)/faltacursarView.js \
 	$(VIEW)/microhorarioView.js \
 	$(VIEW)/selectedView.js \
+	$(VIEW)/helperView.js \
 	$(VIEW)/mainView.js \
 	$(VIEW)/classeslistView.js \
 	$(CTRL)/microhorarioController.js \
