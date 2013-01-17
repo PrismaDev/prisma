@@ -13,7 +13,12 @@ SubjectModel = Backbone.Model.extend({
 
 	formatData: function(ingroup) {
 		return {
-
+			'code': this.get('CodigoDisciplina'),
+			'name': this.get('NomeDisciplina'),
+			'credits': this.get('Creditos'),		
+			'able': this.get('Apto'),
+			'status': this.get('Situacao'),
+			'ingroup': ingroup
 		};
 	}
 });

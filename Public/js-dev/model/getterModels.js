@@ -56,19 +56,9 @@ var FaltacursarModel = Backbone.Model.extend({
 			var subjectModel = subjectList.get(subject[
 				serverDictionary.get('CodigoDisciplina')
 			]);
-			var id = subject[serverDictionary.get('CodigoDisciplina')];
-
-			var object={
-				'code': subjectModel.get('CodigoDisciplina'),
-				'name': subjectModel.get('NomeDisciplina'),
-				'term': opt[serverDictionary.get('PeriodoAno')],
-				'credits': subjectModel.get('Creditos'),		
-				'able': subjectModel.get('Apto'),
-				'status': subjectModel.get('Situacao'),
-				'ingroup': true
-			};
-
-			array.push(object);
+		
+			array.push($.extend({}, subjectModel.formatData(true), 
+				{'term': opt[serverDictionary.get('PeriodoAno')]}));
 		});
 
 		return array;
