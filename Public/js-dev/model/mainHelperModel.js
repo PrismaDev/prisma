@@ -24,7 +24,15 @@ var HelperModel = Backbone.Model.extend({
 });
 
 var HelpersList = Backbone.Collection.extend({
-	model: HelperModel
+	model: HelperModel,
+
+	deactivateFromServer: function(arr)
+	{
+		for(var i in arr)
+		{
+			this.get(arr[i][serverDictionary.get('CodAviso')]).set('active', false);
+		}
+	}
 });
 
 var helpersList = new HelpersList();
