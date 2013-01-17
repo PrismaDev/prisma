@@ -40,6 +40,7 @@ helpersList.add({id: 'selectedSubjectRow', text: mainHelpersStringsModel.get('se
 helpersList.add({id: 'ableClassRow', text: mainHelpersStringsModel.get('ableClassRowText')});
 helpersList.add({id: 'chosenClassRow', text: mainHelpersStringsModel.get('chosenClassRowText')});
 helpersList.add({id: 'warningClassRow', text: mainHelpersStringsModel.get('warningClassRowText')});
+helpersList.add({id: 'blockedClassRow', text: mainHelpersStringsModel.get('blockedClassRowText')});
 helpersList.add({id: 'disabledClassRow', text: mainHelpersStringsModel.get('disabledClassRowText')});
 
 //Timetable helpers

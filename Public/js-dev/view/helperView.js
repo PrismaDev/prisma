@@ -12,7 +12,8 @@ var HelperView = Backbone.Model.extend({
 
 	create: function(tooltipId, targetEl) {
 		var tooltipModel = helpersList.get(tooltipId);
-		
+		var me=this;		
+
 		if (!tooltipModel.get('active'))
 			return;
 
