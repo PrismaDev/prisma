@@ -80,18 +80,7 @@ var FaltacursarModel = Backbone.Model.extend({
 		var array=new Array();
 
 		_.each(classList.models, function(classO) {
-			var object={
-				'professorName': classO.get('NomeProfessor'),
-				'code': classO.get('CodigoTurma'),
-				'schedule': classO.printSchedule(),
-				'block': classO.printBlocks(),
-				'subjectCode': subjectModel.get('CodigoDisciplina'),
-				'classId': classO.get('PK_Turma'),
-				'status': subjectModel.get('Situacao'),
-				'able': subjectModel.get('Apto')
-			};
-
-			array.push(object);
+			array.push(classO.formatData());
 		});
 
 		return array;
