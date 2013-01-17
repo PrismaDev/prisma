@@ -30,7 +30,7 @@ var HelpersList = Backbone.Collection.extend({
 	{
 		for(var i in arr)
 		{
-			this.get(arr[i][serverDictionary.get('CodAviso')]).set('active', false);
+//			this.get(arr[i][serverDictionary.get('CodAviso')]).set('active', false);
 		}
 	}
 });
@@ -58,4 +58,5 @@ helpersList.add({id: 'emptyCell', text: mainHelpersStringsModel.get('emptyCellTe
 helpersList.add({id: 'classCell', text: mainHelpersStringsModel.get('classCellText')});
 
 //Selected helpers
-
+helpersList.add({id: 'selectedRow', text: mainHelpersStringsModel.get('selectedRowText')});
+helpersList.add({id: 'selectedClass', text: mainHelpersStringsModel.get('selectedClassText')});

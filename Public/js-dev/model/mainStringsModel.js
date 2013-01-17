@@ -142,7 +142,10 @@ var MainHelpersStringsModel = Backbone.Model.extend({
 		'timeCellText': 'Clique numa célula de um horário para buscar todas as turmas naquele horário',
 		'emptyCellText': 'Clique numa célula vazia para buscar todas as turmas naquele dia e horário',
 		'classCellText': 'Clique numa turma para buscar todas as turmas da disciplina',
-		'dayCellText': 'Clique numa célula com um dia para buscar todas as turmas daquele dia'
+		'dayCellText': 'Clique numa célula com um dia para buscar todas as turmas daquele dia',
+		'selectedRowText': 'Arraste as linhas para reordená-las',
+		'selectedClassText': 'Arraste as turmas para qualquer um dos espaços. Se já tiver uma turma \
+			naquele espaço, as duas serão trocadas de lugar'
 	}
 });
 
