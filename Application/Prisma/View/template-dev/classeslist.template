@@ -25,6 +25,7 @@
 			<%= classO.status=="EA"? 'subjectWarning ' : '' %>
 			<%= classO.able==0? 'subjectBlocked ': '' %>
 			<%= classO.able==1? 'subjectWarning ': '' %>	
+			<%= classO.chosen? 'classChosen': '' %>
 		">
 		<input type="hidden" name="subjectCode" value="<%= classO.subjectCode %>" />
 		<input type="hidden" name="classId" value="<%= classO.classId %>" />

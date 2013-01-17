@@ -99,7 +99,9 @@ var ClassModel = Backbone.Model.extend({
 			'subjectCode': this.get('CodigoDisciplina'),
 			'classId': this.get('PK_Turma'),
 			'status': this.get('Situacao'),
-			'able': this.get('Apto')
+			'able': this.get('Apto'),
+			'chosen': selectedModel.isSelected(this.get('CodigoDisciplina'),
+					this.get('PK_Turma'))
 		};
 	}
 });

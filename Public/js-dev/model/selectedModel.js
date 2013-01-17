@@ -23,20 +23,18 @@ var SelectedModel = Backbone.Model.extend({
 		});
 	},
 
-	isSelected: function(subjectCode) {
-		var sel=false;
-		
-		for (var i=0; i<this.maxRows; i++) {
+	isSelected: function(subjectCode, classId) {
+		for (var i=0; i<this.maxRows; i++)
 			for (var j=0; j<this.nOptions; j++)
 				if (this.options[i][j] && this.options[i][j].subjectCode==subjectCode) {
-					sel=true;
-					break;
+					if (!classId) return true;
+					else {
+						if (classId==this.options[i][j].classId)
+							return true;
+					}
 				}
 
-				if (sel) break;
-			}
-
-		return sel;
+		return false;
 	},
 
 	setFromServer: function(data) {

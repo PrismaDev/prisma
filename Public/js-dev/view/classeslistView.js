@@ -55,14 +55,6 @@ var ClasseslistView = Backbone.View.extend({
 		});
 	},
 
-	markChosenRows: function() {
-		var ch = selectedModel.getData();
-
-		for (var i=0; i<selectedModel.maxRows; i++)
-			for (var j=0; j<selectedModel.nOptions; j++)
-				if (ch[i][j]) this.changeRow(ch[i][j].subjectCode, ch[i][j].classId, true);
-	},
-
 	cache: function() {
 		this.classesTableHead = this.$('.dataTables_scrollHead');
 		this.classesTableBody = this.$('.dataTables_scrollBody');
@@ -122,7 +114,6 @@ var ClasseslistView = Backbone.View.extend({
 		this.cache();
 		
 		this.addRowsToTable(classesArray);
-		this.markChosenRows();
 		this.calculateTableScroll();
 	}
 });
@@ -162,7 +153,6 @@ var MicrohorarioClasseslistView = ClasseslistView.extend({
 		else {
 			var tableScrollTop = $(this.classesTableBody).scrollTop();
 			this.addRowsToTable(data);	
-			this.markChosenRows();
 			$(this.classesTableBody).scrollTop(tableScrollTop);
 		}
 
