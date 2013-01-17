@@ -108,26 +108,12 @@ ClassList = Backbone.Collection.extend({
 	model: ClassModel,
 
 	add: function(models, options) {
-		var me=this;
-		var array=new Array();
-
-		_.each(models, function(model) {
-			if (typeof model == me.model)
-				array.push(model);
-			else {
-				var idName = serverDictionary.get('PK_Turma');
-				var nModel;
-
-				if (options.subject)
-					nModel= new ClassModel($.extend({}, {id: model[idName], 
-						subject: options.subject}, model));
-				else
-					nModel= new ClassModel($.extend({}, {id: model[idName]}, model));
-					
-				array.push(nModel);
-			}
-		});
-
-		return Backbone.Collection.prototype.add.call(this,array,options);
+		if (!options.subject) {
+			console.log('Must provide subject for class');
+			return;
+		}
+		
+		var add = {subject: options.subject};
+		return overriddenAdd(this, models, options, 'PK_Turma', add);
 	}
 });
