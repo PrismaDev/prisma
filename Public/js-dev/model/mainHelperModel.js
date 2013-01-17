@@ -44,6 +44,10 @@ helpersList.add({id: 'blockedClassRow', text: mainHelpersStringsModel.get('block
 helpersList.add({id: 'disabledClassRow', text: mainHelpersStringsModel.get('disabledClassRowText')});
 
 //Timetable helpers
+helpersList.add({id: 'timeCell', text: mainHelpersStringsModel.get('timeCellText')});
+helpersList.add({id: 'dayCell', text: mainHelpersStringsModel.get('dayCellText')});
+helpersList.add({id: 'emptyCell', text: mainHelpersStringsModel.get('emptyCellText')});
+helpersList.add({id: 'classCell', text: mainHelpersStringsModel.get('classCellText')});
 
 //Selected helpers
 

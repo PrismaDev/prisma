@@ -7,6 +7,7 @@ var TimetableView = Backbone.View.extend({
 
 	initialize: function() {
 		this.template = _.template($('#timetable-template').html());
+		this.initHelpers();
 	},
 
 	bindCell: function(el) {
@@ -111,19 +112,25 @@ var TimetableView = Backbone.View.extend({
 			var tdH = document.createElement('td');
 			
 			$(tdH).addClass('text-top');
+			$(tdH).addClass('timeCell');
 			$(tdH).html(hour+':00');			
 
 			$(tr).append(tdH);
 
 			for (var day=2; day<this.ndays+2; day++) {
 				if (this.ttmat[hour][day].span==0)
-					continue;
-
+					continue;				
+	
 				var td = document.createElement('td');
 				var div = document.createElement('div');
 
 				div.innerHTML = this.ttmat[hour][day].string;
-				
+
+				if (this.ttmat[hour][day].string=='')
+					$(td).addClass('emptyCell');
+				else
+					$(td).addClass('classCell');
+
 				if (this.ttmat[hour][day].customClass)
 					$(td).addClass(this.ttmat[hour][day].customClass);
 			
@@ -138,6 +145,20 @@ var TimetableView = Backbone.View.extend({
 		return $(tbody).html();
 	},
 
+	initHelpers: function() {
+		helpersList.get('emptyCell').set('selector','#main-timetable-div td.emptyCell');		
+		helpersList.get('dayCell').set('selector','#main-timetable-div th.dayCell');		
+		helpersList.get('classCell').set('selector','#main-timetable-div td.classCell');		
+		helpersList.get('timeCell').set('selector','#main-timetable-div td.timeCell');		
+	},
+
+	bindHelpers: function() {
+		helperView.create('emptyCell');
+		helperView.create('dayCell');
+		helperView.create('timeCell');
+		helperView.create('classCell');
+	},
+
 	render: function(classesArray) {
 		this.$el.html(this.template({
 			timetableStr: timetableStringsModel
@@ -145,6 +166,8 @@ var TimetableView = Backbone.View.extend({
 	
 		this.$el.find('tbody').html(this.buildTableBody(classesArray));
 		this.bindCallbacks();
+
+		this.bindHelpers();
 		mainView.equalMainDivsHeight();
 	}
 });

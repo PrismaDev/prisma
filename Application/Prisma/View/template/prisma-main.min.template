@@ -300,7 +300,7 @@
 		<thead>
 			<th></th>
 			<% _.each(timetableStr.get('daysLabel'), function(day) { %>
-				<th><%= day %></th>
+				<th class="dayCell"><%= day %></th>
 			<% }); %>
 		</thead>
 		<tbody>

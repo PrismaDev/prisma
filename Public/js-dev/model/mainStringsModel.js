@@ -138,7 +138,11 @@ var MainHelpersStringsModel = Backbone.Model.extend({
 			matéria que está sendo cursada para que o pedido seja aprovado',
 		'disabledClassRowText': 'Turmas em cinza são de disciplinas que você já cursou',
 		'blockedClassRowText': 'Turmas marcadas com vermelho são as que você não tem os pré-requisitos \
-			para cursar. Temporariamente, devido a bugs, clique na turma para adicioná-la'
+			para cursar. Temporariamente, devido a bugs, clique na turma para adicioná-la',
+		'timeCellText': 'Clique numa célula de um horário para buscar todas as turmas naquele horário',
+		'emptyCellText': 'Clique numa célula vazia para buscar todas as turmas naquele dia e horário',
+		'classCellText': 'Clique numa turma para buscar todas as turmas da disciplina',
+		'dayCellText': 'Clique numa célula com um dia para buscar todas as turmas daquele dia'
 	}
 });
 
