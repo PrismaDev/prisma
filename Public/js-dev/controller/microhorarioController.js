@@ -56,6 +56,7 @@ function MicrohorarioController() {
 				'subjectName': subjectModel.get('NomeDisciplina'),
 				'professorName' : classModel.get('NomeProfessor'),
 				'schedule': classModel.printSchedule(),
+				'block': classModel.printBlocks(),
 				'code': classModel.get('CodigoTurma'),
 				'classId': classModel.get('PK_Turma'),
 				'status': subjectModel.get('Situacao'),

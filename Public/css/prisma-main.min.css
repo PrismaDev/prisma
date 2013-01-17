@@ -650,12 +650,12 @@ div.checkboxesDiv .checkbox.inline + .checkbox.inline {
   text-align: center;
 }
 #main-sidebar-div {
-  width: 45%;
+  width: 49%;
   border-bottom: solid 1px #dddddd;
   float: left;
 }
 #main-timetable-div {
-  width: 54%;
+  width: 50%;
   float: left;
 }
 #main-faltacursar-div,
