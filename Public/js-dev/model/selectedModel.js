@@ -114,6 +114,11 @@ var SelectedModel = Backbone.Model.extend({
 		faltacursarClasseslistView.changeRow(subjectCode, classId, selected);
 		faltacursarView.markAsSelected(subjectCode, this.isSelected(subjectCode));
 
+		var opt = faltacursarModel.get('Optativas').models;
+		for (idx in opt) 
+			faltacursarView.changeOptativaLabel(opt[idx].get('CodigoOptativa'),
+				opt[idx].countChosen());
+
 		selectedView.render();
 		selectedController.runSimulation();	
 	},

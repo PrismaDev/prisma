@@ -87,16 +87,16 @@ var FaltacursarView = Backbone.View.extend({
 		this.closeClassesDiv();
 	},
 
-	changeOptativaLabel: function(optLabel, addToN) {
-		var n = parseInt($(optLabel).html());
-		$(optLabel).html(n+addToN+' '+subjectTableStringsModel.get('nOptativasChosen'));			
+	changeOptativaLabel: function(codOpt, n) {
+		var optLabel = $('#'+codOpt).find('.selected-label');
+		$(optLabel).html(n+' '+subjectTableStringsModel.get('nOptativasChosenStr'));	
 
-		if (n+addToN) $(optLabel).removeClass('hidden');
+		if (n) $(optLabel).removeClass('hidden');
 		else $(optLabel).addClass('hidden');
 	},
 
-	markAsSelected: function(subjectCode, isSelected, row) {
-		if (!row) row = $('#'+subjectCode);
+	markAsSelected: function(subjectCode, isSelected) {
+		row = $('#'+subjectCode);
 
 		if (!isSelected)
 			$(row).find('.name .selected-label').addClass('hidden');

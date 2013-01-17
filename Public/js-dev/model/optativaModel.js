@@ -3,20 +3,6 @@ var OptativaModel = Backbone.Model.extend({
 		return overriddenGet(this, attribute);
 	},
 	
-	belongToOptativa: function(subject) {
-		if (typeof subject == SubjectModel)
-			subject = subject.get('CodigoDisciplina');
-
-		var disc = this.get('Disciplinas');
-		
-		for (idx in disc) {
-			if (disc[idx] == subject)
-				return true;
-		}
-
-		return false;
-	},
-
 	countChosen: function() {
 		var count=0, d=this.get('Disciplinas');
 		var dRef=serverDictionary.get('CodigoDisciplina');
@@ -26,7 +12,6 @@ var OptativaModel = Backbone.Model.extend({
 				count++;
 		}
 
-		console.log(count);
 		return count;
 	},
 
