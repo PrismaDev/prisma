@@ -39,7 +39,8 @@ DEP_MAIN = $(DEP_ALL) \
 	$(MDL)/lib.js \
 	$(MDL)/serverDictionary.js \
 	$(MDL)/mainStringsModel.js \
-	$(MDL)/dataModels.js \
+	$(MDL)/classModel.js \
+	$(MDL)/subjectModel.js \
 	$(MDL)/getterModels.js\
 	$(MDL)/selectedModel.js \
 	$(VIEW)/lib.js \

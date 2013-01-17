@@ -39,8 +39,8 @@ SubjectList = Backbone.Collection.extend({
 		return Backbone.Collection.prototype.add.call(this,array,options);
 	},
 
-	getClass: function(subjectCode, classId) {
-		return this.get(subjectCode).get('Turmas').get(classId);
+	getClass: function(classId) {
+		return classMap[classId];
 	}
 })
 

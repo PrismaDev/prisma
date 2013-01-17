@@ -73,8 +73,7 @@ var TimetableView = Backbone.View.extend({
 		}
 
 		for (var i=0; i<classesArray.length; i++) {
-			var classModel=subjectList.getClass(classesArray[i].subjectCode,
-					classesArray[i].classId);
+			var classModel=subjectList.getClass(classesArray[i].classId);
 			var h=classModel.get('Horarios').models;		
 
 			for (var j=0; j<h.length; j++) {

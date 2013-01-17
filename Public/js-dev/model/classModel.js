@@ -32,6 +32,8 @@ var BlocksList = Backbone.Collection.extend({
 	model: BlockModel
 });
 
+var classMap = {};
+
 var ClassModel = Backbone.Model.extend({
 	initialize: function() {
 		var horariosArray = this.get('Horarios');
@@ -41,6 +43,8 @@ var ClassModel = Backbone.Model.extend({
 		var blocksArray = this.get('Destinos');
 		var blocksList = new BlocksList(blocksArray);
 		this.set(serverDictionary.get('Destino')+'s',blocksList);
+
+		classMap[this.get('PK_Turma')]=this;
 	},
 
 	get: function(attribute) {
@@ -86,6 +90,8 @@ var ClassModel = Backbone.Model.extend({
 
 	formatData: function() {
 		return {
+			'subjectCode': this.get('CodigoDisciplina'),
+			'subjectName': this.get('NomeDisciplina'),
 			'professorName': this.get('NomeProfessor'),
 			'code': this.get('CodigoTurma'),
 			'schedule': this.printSchedule(),

@@ -83,8 +83,7 @@ function SelectedController() {
 					for(var classIdx in accepted)
 					{
 						var times = classModel.get('Horarios');					
-						var accClassModel = subjectList.getClass(accepted[classIdx].subjectCode, 
-											accepted[classIdx].classId);	
+						var accClassModel = subjectList.getClass(accepted[classIdx].classId);	
 
 						if(subjectCode == accepted[classIdx].subjectCode || collidesTime(classModel, accClassModel))
 						{
