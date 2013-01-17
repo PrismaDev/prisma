@@ -77,7 +77,6 @@ var FaltacursarView = Backbone.View.extend({
 
 			this.addRowsToTable(nRows,rowIdx);
 			$(row).next().addClass('extraBorder');
-			this.markSavedSelected(true);
 		}
 		
 		this.calculateScrollTop(row);
@@ -88,38 +87,21 @@ var FaltacursarView = Backbone.View.extend({
 		this.closeClassesDiv();
 	},
 
-	changeOptativaLabel: function(optLabel, newN) {
-		$(optLabel).html(newN+' '+subjectTableStringsModel.get('nOptativasChosen'));
-			
-		if (newN) $(optLabel).removeClass('hidden');
+	changeOptativaLabel: function(optLabel, addToN) {
+		var n = parseInt($(optLabel).html());
+		$(optLabel).html(n+addToN+' '+subjectTableStringsModel.get('nOptativasChosen'));			
+
+		if (n+addToN) $(optLabel).removeClass('hidden');
 		else $(optLabel).addClass('hidden');
 	},
 
-	markAsSelected: function(subjectCode, isSelected, openingOpt) {
-		var row = $('#'+subjectCode);
-		var headRow = null, n, headRowLabel;
+	markAsSelected: function(subjectCode, isSelected, row) {
+		if (!row) row = $('#'+subjectCode);
 
-		if ($(row).hasClass('ingroup') && !openingOpt) {
-			headRow = $(row).prev();
-
-			while (!$(headRow).hasClass('optativa'))
-				headRow = $(headRow).prev();
-			
-			headRowLabel = $(headRow).find('.name .selected-label');
-			n = parseInt($(headRowLabel).html());
-		}
-
-		if (!isSelected) {
+		if (!isSelected)
 			$(row).find('.name .selected-label').addClass('hidden');
-			if (headRow) n--;
-		}
-		else {
+		else 
 			$(row).find('.name .selected-label').removeClass('hidden');
-			if (headRow) n++;
-		}
-
-		if (headRow && !openingOpt)
-			this.changeOptativaLabel(headRowLabel, n);
 	},
 
 	closeClassesDiv: function() {
@@ -167,7 +149,6 @@ var FaltacursarView = Backbone.View.extend({
 				classModel	
 			);
 			faltacursarClasseslistView.resize();
-			this.calculateScrollTop(row);
 		}
 	},
 
@@ -225,43 +206,6 @@ var FaltacursarView = Backbone.View.extend({
 		$('#faltacursar-subject-table_wrapper').addClass('whole');
 	},		
 
-	belongToOptativa: function(optObj, subjectCode) {
-		var subjectsInOpt = optObj[serverDictionary.get('Disciplinas')];
-
-		for (var i=0; i<subjectsInOpt.length; i++) {
-			if (subjectsInOpt[i][serverDictionary.get('CodigoDisciplina')]==
-					subjectCode)
-				return true;
-		}
-
-		return false;
-	},
-
-	markSavedSelected: function(openingOpt) {
-		var selected = selectedModel.getData();
-		var opts = faltacursarModel.get('Optativas').models;	
-
-		for (var i=0; i<selectedModel.maxRows; i++)
-			for (var j=0; j<selectedModel.nOptions; j++)
-				if (selected[i][j]) {
-					this.markAsSelected(selected[i][j].subjectCode, true, openingOpt);
-					
-					if (openingOpt)
-						continue;
-					
-				//	for (var k=0; k<opts.length; k++)
-				//		if (this.belongToOptativa(opts[k],
-				//				selected[i][j].subjectCode)) {
-							
-				//			var optCode = opts[k][serverDictionary.get('CodigoOptativa')];
-				//			var headRowLabel = $('#'+optCode+' .name .selected-label');
-				//			var n = parseInt($(headRowLabel).html());
-
-				//			this.changeOptativaLabel(headRowLabel, ++n);
-				//		}
-				}
-	},
-
 	addRowsToTable: function(subjectArray, prevRow) {
 		for(idx in subjectArray) {
 			var newTr = this.templateRow({
@@ -298,7 +242,6 @@ var FaltacursarView = Backbone.View.extend({
 
 		this.subjectDatatable.fnAdjustColumnSizing(false);
 		this.calculateTableScroll();
-		//this.markSavedSelected();
 	}
 });
 

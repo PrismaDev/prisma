@@ -82,7 +82,7 @@ var SubjectTableStringsModel = Backbone.Model.extend({
 		'ongoingStr': 'Cursando',
 		'chosenSubjectStr': 'Selecionada',
 		'noResultsStr': 'Não há resultados para essa busca',
-		'nOptativasChosen': 'selecionada(s) desse grupo'
+		'nOptativasChosenStr': 'selecionada(s) desse grupo'
 	}
 });
 

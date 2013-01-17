@@ -153,7 +153,7 @@ function SelectedController() {
 			i++;
 		});
 
-		selectedModel.setAll(state);
+		selectedModel.postAll(state);
 	}
 
 	this.swapPlaces = function(tdA, tdB) {

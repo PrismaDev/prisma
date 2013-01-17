@@ -9,7 +9,7 @@ var SelectedModel = Backbone.Model.extend({
 	},
 
 	initialize: function() {
-		this.options=new Array();
+		this.options = new Array();
 
 		for (var i=0; i<this.maxRows; i++)
 			this.options[i]=new Array();
@@ -23,9 +23,24 @@ var SelectedModel = Backbone.Model.extend({
 		});
 	},
 
+	isSelected: function(subjectCode) {
+		var sel=false;
+		
+		for (var i=0; i<this.maxRows; i++) {
+			for (var j=0; j<this.nOptions; j++)
+				if (this.options[i][j] && this.options[i][j].subjectCode==subjectCode) {
+					sel=true;
+					break;
+				}
+
+				if (sel) break;
+			}
+
+		return sel;
+	},
+
 	setFromServer: function(data) {
 		var me=this;
-		var arr = new Array();
 
 		_.each(data, function(row) {
 			var subjectCode = row[serverDictionary.get('CodigoDisciplina')];
@@ -38,15 +53,10 @@ var SelectedModel = Backbone.Model.extend({
 				'classCode': subjectList.getClass(classId).get('CodigoTurma'),
 				'classId': classId
 			};
-
-			if (arr.indexOf(subjectCode)==-1) {
-				arr.push(subjectCode);
-				faltacursarView.markAsSelected(subjectCode, true, false);
-			}
 		});
 	},
 
-	setAll: function(data) {
+	postAll: function(data) {
 		for (var i=0; i<this.maxRows; i++)
 			for (var j=0; j<this.nOptions; j++)
 				this.options[i][j]=data[i][j];
@@ -101,6 +111,15 @@ var SelectedModel = Backbone.Model.extend({
 		return this.options;
 	},
 
+	changeViews: function(subjectCode, classId, selected) {
+		microhorarioClasseslistView.changeRow(subjectCode, classId, selected);
+		faltacursarClasseslistView.changeRow(subjectCode, classId, selected);
+		faltacursarView.markAsSelected(subjectCode, this.isSelected(subjectCode));
+
+		selectedView.render();
+		selectedController.runSimulation();	
+	},
+
 	removeClass: function(subjectCode, classId) {
 		for (var i=0; i<this.maxRows; i++)
 			for (var j=0; j<this.nOptions; j++)
@@ -109,12 +128,8 @@ var SelectedModel = Backbone.Model.extend({
 					this.options[i][j].classId==classId) {
 					
 					this.options[i][j]=null;
-					var classModel = subjectList.get(subjectCode)
-							.get('Turmas').get(classId);
+					var classModel = subjectList.getClass(classId);
 					
-					microhorarioClasseslistView.changeRow(subjectCode, classId, false);
-					faltacursarClasseslistView.changeRow(subjectCode, classId, false);
-
 					$.ajax({
 						type: 'DELETE',
 						url: '/api/selecionada',
@@ -124,41 +139,21 @@ var SelectedModel = Backbone.Model.extend({
 						}
 					});
 
-					selectedView.render();
-					selectedController.runSimulation();
-					
-					var sel=false;
-					for (var i=0; i<this.maxRows; i++) {
-						for (var j=0; j<this.nOptions; j++)
-							if (this.options[i][j] && this.options[i][j].subjectCode==subjectCode) {
-								sel=true;
-								break;
-							}
-
-						if (sel) break;
-					}
-
-					if (!sel)
-						faltacursarView.markAsSelected(subjectCode, false);
+					this.changeViews(subjectCode, classId, false);
 					return true;
 				}
 		return false;
 	},
 
-	addClassModel: function(subjectCode, classId, rowNumber, Option)
+	addClassToPosition: function(subjectCode, classId, rowNumber, Option)
 	{
-		var classModel = subjectList.get(subjectCode)
-				.get('Turmas').get(classId);
-		console.log(classModel);
+		var classModel = subjectList.getClass(classId);
 		
 		this.options[rowNumber][Option]={
 			'subjectCode': subjectCode,
 			'classCode': classModel.get('CodigoTurma'),
 			'classId': classId
 		}
-
-		microhorarioClasseslistView.changeRow(subjectCode, classId, true);
-		faltacursarClasseslistView.changeRow(subjectCode, classId, true);
 
 		$.ajax({
 			type: 'POST',
@@ -169,9 +164,7 @@ var SelectedModel = Backbone.Model.extend({
 			}
 		});
 
-		selectedView.render();
-		selectedController.runSimulation();
-		faltacursarView.markAsSelected(subjectCode, true);
+		this.changeViews(subjectCode, classId, true);
 		return true;
 
 	},
@@ -185,7 +178,7 @@ var SelectedModel = Backbone.Model.extend({
 				if (this.options[i][j]!=null && this.options[i][j].subjectCode==subjectCode && 
 					j != (this.nOptions-1) && this.options[i][j+1]==null)
 				{
-					this.addClassModel(subjectCode, classId, i, j+1);
+					this.addClassToPosition(subjectCode, classId, i, j+1);
 					return true;
 				}
 			}
@@ -194,7 +187,7 @@ var SelectedModel = Backbone.Model.extend({
 		// seeking for empty row
 		for (var i=0; i<this.maxRows; i++)
 			if (this.options[i][0]==null) {
-				this.addClassModel(subjectCode, classId, i, 0);
+				this.addClassToPosition(subjectCode, classId, i, 0);
 				return true;
 			}
 
@@ -202,12 +195,12 @@ var SelectedModel = Backbone.Model.extend({
 		for (var i=0; i<this.maxRows; i++)
 			for (var j=0; j<this.nOptions; j++)
 				if (this.options[i][j]==null) {
-					this.addClassModel(subjectCode, classId, i, j);
+					this.addClassToPosition(subjectCode, classId, i, j);
 					return true;
 				}
 
 		return false;
-	},
+	}
 });
 
 var selectedModel = new SelectedModel();

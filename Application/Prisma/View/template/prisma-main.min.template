@@ -410,7 +410,7 @@
 				</span>
 
 			<% } else { %>
-				<span class="label label-success selected-label hidden">
+				<span class="label label-success selected-label <%= subject.chosen? '': 'hidden' %>">
 					<%= subjectTableStr.get('chosenSubjectStr') %>
 				</span>
 			<% } %>

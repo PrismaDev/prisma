@@ -18,7 +18,8 @@ SubjectModel = Backbone.Model.extend({
 			'credits': this.get('Creditos'),		
 			'able': this.get('Apto'),
 			'status': this.get('Situacao'),
-			'ingroup': ingroup
+			'ingroup': ingroup,
+			'chosen': selectedModel.isSelected(this.get('CodigoDisciplina'))
 		};
 	}
 });
