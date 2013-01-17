@@ -41,6 +41,7 @@ DEP_MAIN = $(DEP_ALL) \
 	$(MDL)/mainStringsModel.js \
 	$(MDL)/classModel.js \
 	$(MDL)/subjectModel.js \
+	$(MDL)/optativaModel.js \
 	$(MDL)/getterModels.js\
 	$(MDL)/selectedModel.js \
 	$(VIEW)/lib.js \

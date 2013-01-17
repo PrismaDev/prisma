@@ -27,21 +27,8 @@ SubjectList = Backbone.Collection.extend({
 	model: SubjectModel,
 
 	add: function(models, options) {
-		var me=this;
-		var array=new Array();
-
-		_.each(models, function(model) {
-			if (typeof model == me.model)
-				array.push(model);
-			else {
-				var idName = serverDictionary.get('CodigoDisciplina');
-				var nModel = new SubjectModel($.extend({},
-					{id: model[idName]},model));
-				array.push(nModel);
-			}
-		});
-
-		return Backbone.Collection.prototype.add.call(this,array,options);
+		return overriddenAdd(this, models, options,
+			'CodigoDisciplina');
 	},
 
 	getClass: function(classId) {
