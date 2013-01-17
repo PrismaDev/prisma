@@ -123,7 +123,7 @@ var MainHelpersStringsModel = Backbone.Model.extend({
 			para cursá-la. Temporariamente, adicionar uma turma dessa disciplina está \
 			habilitado devido a bugs; clique para visualizar as turmas',
 		'warningSubjectRowText': 'Uma disciplina em amarelo significa que você ou está \
-			cursando nesse período (marcadas com "Cursando") ou necessita ser aprovado em alguma(s) disciplina(s) \
+			cursando-a nesse período (aquelas marcadas com "Cursando") ou necessita ser aprovado em alguma(s) disciplina(s) \
 			que você está cursando. Clique para visualizar as turmas',
 		'optativaRowText': 'Clique nessa optativa para abrir suas disciplinas; clique novamente para \
 			fechá-las'

@@ -190,11 +190,17 @@ var FaltacursarView = Backbone.View.extend({
 			'#faltacursar-subject-table tr:not(.optativa,.subjectWarning,.subjectBlocked)');
 		helpersList.get('optativaRow').set('selector',
 			'#faltacursar-subject-table tr.optativa');
+		helpersList.get('blockedSubjectRow').set('selector',
+			'#faltacursar-subject-table tr.subjectBlocked');
+		helpersList.get('warningSubjectRow').set('selector',
+			'#faltacursar-subject-table tr.subjectWarning');
 	},
 
 	bindHelpers: function() {
 		helperView.create('ableSubjectRow');
 		helperView.create('optativaRow');
+		helperView.create('warningSubjectRow');
+		helperView.create('blockedSubjectRow');
 	},
 
 	initJS: function() {
