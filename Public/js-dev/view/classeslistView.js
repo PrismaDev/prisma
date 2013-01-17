@@ -160,8 +160,10 @@ var MicrohorarioClasseslistView = ClasseslistView.extend({
 			this.endOfDataMsg=true;
 		}
 		else {
+			var tableScrollTop = $(this.classesTableBody).scrollTop();
 			this.addRowsToTable(data);	
 			this.markChosenRows();
+			$(this.classesTableBody).scrollTop(tableScrollTop);
 		}
 
 		this.waitingData=false;
