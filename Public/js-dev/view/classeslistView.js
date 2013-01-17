@@ -72,6 +72,20 @@ var ClasseslistView = Backbone.View.extend({
 		this.templateRow = _.template($('#classeslist-row-template').html());
 	},
 
+	initHelpers: function() {
+		helpersList.get('ableClassRow').set('selector',
+			'.dataTables_scrollBody tr:not(.subjectDisabled, .classChosen, \
+			.subjectBlocked, .subjectWarning)');
+		helpersList.get('chosenClassRow').set('selector',
+			'.dataTables_scrollBody tr.classChosen');
+		helpersList.get('warningClassRow').set('selector',
+			'.dataTables_scrollBody tr.subjectWarning:not(.classChosen)');
+		helpersList.get('blockedClassRow').set('selector',
+			'.dataTables_scrollBody tr.subjectBlocked:not(.classChosen)');
+		helpersList.get('disabledClassRow').set('selector',
+			'.dataTables_scrollBody tr.subjectDisabled');
+	},
+
 	initJS: function() {
 		var me = this;
 
@@ -89,6 +103,15 @@ var ClasseslistView = Backbone.View.extend({
 				me.calculateTableScroll();
 			}
 		});
+		this.initHelpers();
+	},
+
+	bindHelpers: function() {
+		helperView.create('ableClassRow');
+		helperView.create('chosenClassRow');
+		helperView.create('warningClassRow');
+		helperView.create('blockedClassRow');
+		helperView.create('disabledClassRow');
 	},
 
 	addRowsToTable: function(classesArray) {
@@ -102,6 +125,7 @@ var ClasseslistView = Backbone.View.extend({
 		}
 		
 		this.classesDatatable.fnAdjustColumnSizing(true);
+		this.bindHelpers();
 	},
 
 	render: function(classesArray) {
