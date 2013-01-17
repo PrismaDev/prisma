@@ -118,8 +118,8 @@ function SelectedController() {
 			rowCount++;
 		});
 
-		selectedView.changeInfo(creditos,accepted.length);
 		timetableView.render(accepted);
+		selectedView.changeInfo(creditos,accepted.length);
 	}
 
 	var getValues = function(td) {

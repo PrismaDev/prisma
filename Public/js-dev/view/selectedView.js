@@ -30,7 +30,9 @@ var SelectedView = Backbone.View.extend({
 		selectedController.runSimulation(trIdx);
 	},
 
-	resize: function() {},
+	resize: function() {
+		this.calculateHeightDivs();
+	},
 
 	equalDroppables: function() {
 		var $tr = this.$el.find('tbody tr').first();
@@ -81,6 +83,14 @@ var SelectedView = Backbone.View.extend({
 	
 		for (var i=rowsArray.length; i<selectedModel.maxRows; i++)
 			$(tbody).append(this.buildRow(i,[]));
+	},
+
+	calculateHeightDivs: function() {
+		console.log($('#info-container').height());
+		console.log($('#main-selected-div').height());
+		$('#table-container').height(
+			$('#main-selected-div').height()-$('#info-container').outerHeight(true));
+		console.log($('#table-container').height());
 	},
 
 	render: function() {

@@ -201,23 +201,18 @@ div.checkboxesDiv .checkbox.inline + .checkbox.inline {
   margin-top: 2%;
   margin-bottom: 2%;
 }
-#main-selected-div {
-  position: relative;
-}
 #main-selected-div #info-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   background-color: white;
   text-align: right;
+  width: 98%;
   padding-right: 2%;
   padding-bottom: 2%;
 }
+#main-selected-div #table-container {
+  overflow: auto;
+}
 #main-selected-div table {
-  width: 98%;
   margin: auto;
-  margin-top: 2%;
   border-collapse: separate;
   border-spacing: 0px 15px;
 }
