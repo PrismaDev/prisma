@@ -7,7 +7,7 @@ BEGIN;
 
 CREATE TABLE "AvisoDesabilitado"
 (
-  "CodAviso" character varying(20) NOT NULL,
+  "CodAviso" character varying(50) NOT NULL,
   "FK_Aluno" character varying(20) NOT NULL,
   CONSTRAINT "PK_AvisoDesabilitado" PRIMARY KEY ("CodAviso", "FK_Aluno"),
   CONSTRAINT "FK_AvisoDesabilitado_Aluno" FOREIGN KEY ("FK_Aluno")
