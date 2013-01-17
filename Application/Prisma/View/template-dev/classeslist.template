@@ -11,6 +11,7 @@
 			<th><%= classesTableStr.get('blockLabel') %></th>	
 	
 			<% if (subjectInfo) { %>
+				<th><%= classesTableStr.get('creditsLabel') %></th>
 				<th><%= classesTableStr.get('ementaHeaderLabel') %></th>
 			<% } %>
 		</thead>
@@ -45,6 +46,7 @@
 		<td><%= classO.block %></td>
 				
 		<% if (subjectInfo) { %>
+			<td><%= classO.credits %></td>
 			<td>
 				<button type="button"
 					class="btn btn-link btn-small ementaButton"

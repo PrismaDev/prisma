@@ -97,6 +97,7 @@ var ClassModel = Backbone.Model.extend({
 			'schedule': this.printSchedule(),
 			'block': this.printBlocks(),
 			'subjectCode': this.get('CodigoDisciplina'),
+			'credits': this.get('Creditos'),
 			'classId': this.get('PK_Turma'),
 			'status': this.get('Situacao'),
 			'able': this.get('Apto'),

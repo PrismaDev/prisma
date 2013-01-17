@@ -12,6 +12,9 @@ var HelperView = Backbone.Model.extend({
 
 	create: function(tooltipId, targetEl) {
 		var tooltipModel = helpersList.get(tooltipId);
+		
+		if (!tooltipModel.get('active'))
+			return;
 
 		$(tooltipModel.get('selector')).tooltip({
 			'html': true,
