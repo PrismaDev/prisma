@@ -127,6 +127,14 @@ return array(
 							'controller' => 'Prisma\Controller\Resource\DisciplinaController',
 						),
 					),
+					'aviso' => array
+					(
+						'action' => array
+						(
+							'type' => 'controller',
+							'controller' => 'Prisma\Controller\Resource\AvisoController',
+						),
+					),
 					'log' => array
 					(
 						'action' => array

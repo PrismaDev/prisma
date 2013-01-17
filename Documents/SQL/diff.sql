@@ -1,6 +1,51 @@
 
 BEGIN;
 
+-- Table: "AvisoDesabilitado"
+
+-- DROP TABLE "AvisoDesabilitado";
+
+CREATE TABLE "AvisoDesabilitado"
+(
+  "CodAviso" character varying(20) NOT NULL,
+  "FK_Aluno" character varying(20) NOT NULL,
+  CONSTRAINT "PK_AvisoDesabilitado" PRIMARY KEY ("CodAviso", "FK_Aluno"),
+  CONSTRAINT "FK_AvisoDesabilitado_Aluno" FOREIGN KEY ("FK_Aluno")
+      REFERENCES "Aluno" ("FK_Matricula") MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE "AvisoDesabilitado"
+  OWNER TO prisma;
+
+-- Rule: "AdicionarAvisoDesabilitado" ON "AvisoDesabilitado"
+
+-- DROP RULE "AdicionarAvisoDesabilitado" ON "AvisoDesabilitado";
+
+CREATE OR REPLACE RULE "AdicionarAvisoDesabilitado" AS
+    ON INSERT TO "AvisoDesabilitado"
+   WHERE (EXISTS ( SELECT 1
+           FROM "AvisoDesabilitado" ad
+          WHERE ad."CodAviso"::text = new."CodAviso"::text AND ad."FK_Aluno"::text = new."FK_Aluno"::text)) DO INSTEAD NOTHING;
+
+-- Rule: "DeletarAvisoDesabilitado" ON "AvisoDesabilitado"
+
+-- DROP RULE "DeletarAvisoDesabilitado" ON "AvisoDesabilitado";
+
+CREATE OR REPLACE RULE "DeletarAvisoDesabilitado" AS
+    ON DELETE TO "AvisoDesabilitado"
+   WHERE NOT (EXISTS ( SELECT 1
+           FROM "AvisoDesabilitado" ad
+          WHERE ad."CodAviso"::text = old."CodAviso"::text AND ad."FK_Aluno"::text = old."FK_Aluno"::text)) DO INSTEAD NOTHING;
+
+COMMIT;
+
+---------------------------------------------------------------------------------
+
+BEGIN;
+
 CREATE TABLE "TurmaDestino"
 (
   "FK_Turma" bigint NOT NULL,

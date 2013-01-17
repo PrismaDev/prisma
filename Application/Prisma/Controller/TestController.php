@@ -15,6 +15,7 @@ use Prisma\Model\TurmaHorario;
 use Prisma\Model\Usuario;
 use Prisma\Model\Sugestao;
 use Prisma\Model\Unidade;
+use Prisma\Model\AvisoDesabilitado;
 
 Class TestController extends RestController
 {
