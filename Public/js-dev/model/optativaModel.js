@@ -17,6 +17,19 @@ var OptativaModel = Backbone.Model.extend({
 		return false;
 	},
 
+	countChosen: function() {
+		var count=0, d=this.get('Disciplinas');
+		var dRef=serverDictionary.get('CodigoDisciplina');
+
+		for (idx in d) {
+			if (selectedModel.isSelected(d[idx][dRef]))
+				count++;
+		}
+
+		console.log(count);
+		return count;
+	},
+
 	formatData: function() {
 		return {
 			'code': this.get('CodigoOptativa'),
@@ -25,7 +38,8 @@ var OptativaModel = Backbone.Model.extend({
 			'credits': '-',
 			'able': 2,
 			'status': this.getStatus(),
-			'optativa': true
+			'optativa': true,
+			'nSubjectsChosen': this.countChosen()
 		};
 	},
 

@@ -43,8 +43,8 @@
 			<% } %>
 			
 			<% if (subject.optativa) { %>
-				<span class="label label-success selected-label hidden">
-					0 <%= subjectTableStr.get('nOptativasChosenStr') %>
+				<span class="label label-success selected-label <%= subject.nSubjectsChosen? '': 'hidden'%>">
+					<%= subject.nSubjectsChosen %> <%= subjectTableStr.get('nOptativasChosenStr') %>
 				</span>
 
 			<% } else { %>
