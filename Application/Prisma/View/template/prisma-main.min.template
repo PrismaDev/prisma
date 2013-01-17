@@ -122,7 +122,8 @@
 			<th><%= classesTableStr.get('professorNameLabel') %></th>
 			<th><%= classesTableStr.get('scheduleLabel') %></th>
 			<th><%= classesTableStr.get('classCodeLabel') %></th>
-		
+			<th><%= classesTableStr.get('blockLabel') %></th>	
+	
 			<% if (subjectInfo) { %>
 				<th><%= classesTableStr.get('ementaHeaderLabel') %></th>
 			<% } %>
@@ -153,7 +154,8 @@
 		<% } %>
 		<td><%= classO.professorName %></td>
 		<td><%= classO.schedule %></td>
-		<td><%= classO.code %></td>	
+		<td><%= classO.code %></td>
+		<td><%= classO.block %></td>
 				
 		<% if (subjectInfo) { %>
 			<td>
