@@ -13,6 +13,7 @@ var MainRouter = Backbone.Router.extend({
 		subjectList.add(DATA_VIEW.Data[serverDictionary.get('Dependencia')]);
 		faltacursarModel.set(DATA_VIEW.Data[serverDictionary.get('FaltaCursar')]);
 		selectedModel.setFromServer(DATA_VIEW.Data[serverDictionary.get('Selecionadas')]);
+		helpersList.deactivateFromServer(DATA_VIEW.Data[serverDictionary.get('Avisos')]);
 
 		layoutView.contentView=mainView;
 		layoutView.loggedIn=true;
