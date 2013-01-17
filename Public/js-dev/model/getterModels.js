@@ -3,6 +3,15 @@ var FaltacursarModel = Backbone.Model.extend({
 		return overriddenGet(this, attributes);
 	},
 
+	set: function(attributes) {
+		var discId = serverDictionary.get('Disciplinas');
+		Backbone.Model.prototype.set.call(this,discId,attributes[discId]);	
+	
+		var optId = serverDictionary.get('Optativas');
+		var optativasList = new OptativasList(attributes[optId]);
+		Backbone.Model.prototype.set.call(this,optId,optativasList);
+	},
+
 	getTableRows: function() {
 		var array=new Array();
 		
@@ -16,18 +25,8 @@ var FaltacursarModel = Backbone.Model.extend({
 		});
 
 		
-		_.each(this.get('Optativas'), function(optativa) {
-			var object={
-				'code': optativa[serverDictionary.get('CodigoOptativa')],
-				'name': optativa[serverDictionary.get('NomeOptativa')],
-				'term': optativa[serverDictionary.get('PeriodoAno')],
-				'credits': '-',
-				'able': 2,
-				'status': 'NC',
-				'optativa': true
-			};
-
-			array.push(object);	
+		_.each(this.get('Optativas').models, function(optativa) {	
+			array.push(optativa.formatData());	
 		});
 
 		return array;

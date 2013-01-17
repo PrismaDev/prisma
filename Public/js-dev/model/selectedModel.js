@@ -25,6 +25,7 @@ var SelectedModel = Backbone.Model.extend({
 
 	setFromServer: function(data) {
 		var me=this;
+		var arr = new Array();
 
 		_.each(data, function(row) {
 			var subjectCode = row[serverDictionary.get('CodigoDisciplina')];
@@ -34,9 +35,14 @@ var SelectedModel = Backbone.Model.extend({
 
 			me.options[i][j] = {
 				'subjectCode': subjectCode,
-				'classCode': subjectList.get(subjectCode).get('Turmas').get(classId).get('CodigoTurma'),
+				'classCode': subjectList.getClass(classId).get('CodigoTurma'),
 				'classId': classId
 			};
+
+			if (arr.indexOf(subjectCode)==-1) {
+				arr.push(subjectCode);
+				faltacursarView.markAsSelected(subjectCode, true, false);
+			}
 		});
 	},
 

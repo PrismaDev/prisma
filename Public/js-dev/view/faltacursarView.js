@@ -239,7 +239,7 @@ var FaltacursarView = Backbone.View.extend({
 
 	markSavedSelected: function(openingOpt) {
 		var selected = selectedModel.getData();
-		var opts = faltacursarModel.get('Optativas');	
+		var opts = faltacursarModel.get('Optativas').models;	
 
 		for (var i=0; i<selectedModel.maxRows; i++)
 			for (var j=0; j<selectedModel.nOptions; j++)
@@ -249,16 +249,16 @@ var FaltacursarView = Backbone.View.extend({
 					if (openingOpt)
 						continue;
 					
-					for (var k=0; k<opts.length; k++)
-						if (this.belongToOptativa(opts[k],
-								selected[i][j].subjectCode)) {
+				//	for (var k=0; k<opts.length; k++)
+				//		if (this.belongToOptativa(opts[k],
+				//				selected[i][j].subjectCode)) {
 							
-							var optCode = opts[k][serverDictionary.get('CodigoOptativa')];
-							var headRowLabel = $('#'+optCode+' .name .selected-label');
-							var n = parseInt($(headRowLabel).html());
+				//			var optCode = opts[k][serverDictionary.get('CodigoOptativa')];
+				//			var headRowLabel = $('#'+optCode+' .name .selected-label');
+				//			var n = parseInt($(headRowLabel).html());
 
-							this.changeOptativaLabel(headRowLabel, ++n);
-						}
+				//			this.changeOptativaLabel(headRowLabel, ++n);
+				//		}
 				}
 	},
 
@@ -298,7 +298,7 @@ var FaltacursarView = Backbone.View.extend({
 
 		this.subjectDatatable.fnAdjustColumnSizing(false);
 		this.calculateTableScroll();
-		this.markSavedSelected();
+		//this.markSavedSelected();
 	}
 });
 
