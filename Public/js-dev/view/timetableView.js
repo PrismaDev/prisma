@@ -145,6 +145,7 @@ var TimetableView = Backbone.View.extend({
 	
 		this.$el.find('tbody').html(this.buildTableBody(classesArray));
 		this.bindCallbacks();
+		mainView.equalMainDivsHeight();
 	}
 });
 

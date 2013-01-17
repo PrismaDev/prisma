@@ -101,7 +101,6 @@ var MainView = Backbone.View.extend({
 		this.rendered=true;
 
 		this.cache();
-		this.equalMainDivsHeight();
 	}
 });
 
