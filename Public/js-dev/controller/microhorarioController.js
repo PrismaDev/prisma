@@ -22,8 +22,6 @@ function MicrohorarioController() {
 		if (me.end) 
 			return microhorarioClasseslistView.addNextPage(me.end);
 		
-		console.log(completeQueryStr());
-		
 		$.ajax({
 			url: url,
 			type: 'GET',

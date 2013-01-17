@@ -49,7 +49,11 @@ var ClassModel = Backbone.Model.extend({
 			return Backbone.Model.prototype.get.call(this,chAttr);
 		}
 
-		return overriddenGet(this,attribute);
+		var res=overriddenGet(this,attribute);
+
+		if (!res) res=overriddenGet(Backbone.Model.prototype.get.call(this, 'subject'),
+			attribute);
+		return res;
 	},
 
 	printSchedule: function() {
@@ -78,6 +82,10 @@ var ClassModel = Backbone.Model.extend({
 		});
 
 		return div.innerHTML;
+	},
+
+	formatClassData: function(subjectInfo) {
+		
 	}
 });
 
@@ -93,8 +101,14 @@ ClassList = Backbone.Collection.extend({
 				array.push(model);
 			else {
 				var idName = serverDictionary.get('PK_Turma');
-				var nModel = new ClassModel($.extend({},
-					{id: model[idName]},model));
+				var nModel;
+
+				if (options.subject)
+					nModel= new ClassModel($.extend({}, {id: model[idName], 
+						subject: options.subject}, model));
+				else
+					nModel= new ClassModel($.extend({}, {id: model[idName]}, model));
+					
 				array.push(nModel);
 			}
 		});
@@ -106,7 +120,9 @@ ClassList = Backbone.Collection.extend({
 SubjectModel = Backbone.Model.extend({
 	initialize: function() {
 		var classesArray = this.get('Turmas');
-		var classesList = new ClassList(classesArray);
+		var classesList = new ClassList();
+		classesList.add(classesArray,{subject: this});
+
 		this.set(serverDictionary.get('Turmas'),classesList);	
 	},
 
