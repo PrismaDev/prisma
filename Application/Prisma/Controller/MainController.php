@@ -10,6 +10,7 @@ use Prisma\Model\Disciplina;
 use Prisma\Model\Optativa;
 use Prisma\Model\Selecionada;
 use Prisma\Model\Usuario;
+use Prisma\Model\AvisoDesabilitado;
 
 Class MainController extends RestController
 {
@@ -28,6 +29,7 @@ Class MainController extends RestController
 		$disciplinas = Disciplina::getFaltaCursar($login);
 		$optativas = Optativa::getByUserDepend($login);
 		$selecionadas = Selecionada::getAll($login);
+		$avisos = AvisoDesabilitado::getAllByUser($login);
 		$dicionario = Common::getNamesDictionary();
 
 		$discHash = array();
@@ -61,7 +63,8 @@ Class MainController extends RestController
 						'Optativas' => $optativas,
 					),
 					'Selecionadas' => $selecionadas,
-					'Dependencia' => $depend
+					'Dependencia' => $depend,
+					'Avisos' => $avisos,
 				)
 			)
 		);

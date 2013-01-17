@@ -104,7 +104,9 @@ class Common
 			'HoraInicial'		=> 'P',
 			'HoraFinal'		=> 'A',
 			'Curso'			=> 'S',
-			'Unidade'		=> 'D'
+			'Unidade'		=> 'D',
+			'Avisos'		=> 'E',
+			'CodAviso'		=> 'F',
 		);
 	}
 
