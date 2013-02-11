@@ -1,5 +1,6 @@
 var HelperView = Backbone.Model.extend({
 	el: 'body',
+	curr: null,
 
 	formatTooltip: function(tooltipId) {
 		var tooltipModel = helpersList.get(tooltipId);
@@ -13,6 +14,11 @@ var HelperView = Backbone.Model.extend({
 	create: function(tooltipId, targetEl) {
 		var tooltipModel = helpersList.get(tooltipId);
 		var me=this;		
+
+		if (this.curr) {
+			$(this.curr).tooltip('destroy');
+			this.curr=tooltipModel.get('selector');
+		}
 
 		if (!tooltipModel.get('active'))
 			return;
