@@ -28,7 +28,8 @@ var HelperView = Backbone.Model.extend({
 			'html': true,
 			'title': this.formatTooltip(tooltipId),
 			'delay': {show: '100', hide: '700'},
-			'placement': 'bottom'
+			'placement': 'bottom',
+			'container': 'body'
 		});
 
 		$('#'+tooltipId+'tooltip').live('click', function() {

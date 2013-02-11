@@ -115,7 +115,7 @@ var classesTableStringsModel = new ClassesTableStringsModel();
 
 var MainHelpersStringsModel = Backbone.Model.extend({
 	defaults: {
-		'tooltipButtonLabel': 'OK!',
+		'tooltipButtonLabel': 'Desativar',
 		'ableSubjectRowText': 'Clique na linha de uma disciplina para\
 			abrir suas turmas',
 		'blockedSubjectRowText': 'Você pode visualizar as turmas dessa disciplina, \
