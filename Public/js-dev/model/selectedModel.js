@@ -46,8 +46,6 @@ var SelectedModel = Backbone.Model.extend({
 			var i = row[serverDictionary.get('NoLinha')];
 			var j = row[serverDictionary.get('Opcao')];
 
-			console.log(classId);
-
 			me.options[i][j] = {
 				'subjectCode': subjectCode,
 				'classCode': subjectList.getClass(classId).get('CodigoTurma'),

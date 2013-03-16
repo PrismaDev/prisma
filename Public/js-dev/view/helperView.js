@@ -27,7 +27,7 @@ var HelperView = Backbone.Model.extend({
 		$(tooltipModel.get('selector')).tooltip({
 			'html': true,
 			'title': this.formatTooltip(tooltipId),
-			'delay': {show: '500', hide: '700'},
+			'delay': {show: '800', hide: '800'},
 			'placement': 'bottom',
 			'container': 'body'
 		});
