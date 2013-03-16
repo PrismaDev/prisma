@@ -13,7 +13,7 @@ class Common
 		{
 			return ($ano+1).'1';
 		}
-		else if ($mes < 3)
+		else if ($mes < 5)
 		{
 			return $ano.'1';
 		}
@@ -65,6 +65,51 @@ class Common
 
 	public static function getNamesDictionary()
 	{
+	/*
+		return array(
+			'Strings'		=> 'Strings'		,
+			'Matricula'		=> 'Matricula'		,
+			'NomeAluno'		=> 'NomeAluno'		,
+			'Usuario'		=> 'Usuario'		,
+			'CoeficienteRendimento'	=> 'CoeficienteRendimento'	,
+			'UltimoAcesso'		=> 'UltimoAcesso'		,
+			'Dependencia'		=> 'Dependencia'		,
+			'Dependencia'		=> 'Dependencia'		,
+			'FaltaCursar'		=> 'FaltaCursar'		,
+			'Selecionadas'		=> 'Selecionadas'		,
+			'MicroHorario' 		=> 'MicroHorario' 		,
+			'Disciplinas'		=> 'Disciplinas'		,
+			'Turmas'		=> 'Turmas'		,
+			'Optativas'		=> 'Optativas'		,
+			'Horarios'		=> 'Horarios'		,
+			'CodigoDisciplina' 	=> 'CodigoDisciplina' 	,
+			'CodigoTurma' 		=> 'CodigoTurma' 		,
+			'CodigoOptativa'	=> 'CodigoOptativa'	,
+			'PK_Turma'		=> 'PK_Turma'		,
+			'FK_Turma'		=> 'FK_Turma'		,
+			'NomeDisciplina' 	=> 'NomeDisciplina' 	,
+			'NomeProfessor' 	=> 'NomeProfessor' 	,
+			'NomeOptativa'		=> 'NomeOptativa'		,
+			'Creditos'		=> 'Creditos'		,
+			'Situacao'		=> 'Situacao'		,
+			'Apto'			=> 'Apto'			,
+			'Vagas'			=> 'Vagas'			,
+			'Destino'		=> 'Destino'		,
+			'HorasDistancia'	=> 'HorasDistancia'	,
+			'SHF'			=> 'SHF'			,
+			'PeriodoAno'		=> 'PeriodoAno'		,
+			'Tentativas'		=> 'Tentativas'		,
+			'Opcao'			=> 'Opcao'			,
+			'NoLinha'		=> 'NoLinha'		,
+			'DiaSemana'		=> 'DiaSemana'		,
+			'HoraInicial'		=> 'HoraInicial'		,
+			'HoraFinal'		=> 'HoraFinal'		,
+			'Curso'			=> 'Curso'			,
+			'Unidade'		=> 'Unidade'		,
+			'Avisos'		=> 'Avisos'		,
+			'CodAviso'		=> 'CodAviso'		,
+		);
+		*/
 		return array(
 			'Strings'		=> 'w',
 			'Matricula'		=> 'e',
