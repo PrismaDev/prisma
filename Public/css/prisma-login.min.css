@@ -37,6 +37,13 @@
 .dropdown-menu li > a {
   color: #999999;
 }
+.modal.fade {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -ms-transition: none;
+  -o-transition: none;
+  transition: none;
+}
 .faqDiv {
   background-color: #f5f5f5;
 }
