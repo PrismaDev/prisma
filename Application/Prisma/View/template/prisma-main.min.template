@@ -63,6 +63,8 @@
 			<p><%= layoutStr.get('footerText') %></p>
 		</div>
 	</div>
+	<div class="hidden" id="fb-root">
+	</div>
 </script>
 
 <script type="text/underscore-template" id="faq-template">
