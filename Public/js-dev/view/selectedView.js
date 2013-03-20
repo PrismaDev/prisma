@@ -97,8 +97,6 @@ var SelectedView = Backbone.View.extend({
 	},
 
 	calculateHeightDivs: function() {
-		console.log($('#info-container').height());
-		console.log($('#main-selected-div').height());
 		$('#table-container').height(
 			$('#main-selected-div').height()-$('#info-container').outerHeight(true));
 	},
