@@ -32,6 +32,7 @@ var TutorialView = DialogView.extend({
 		layoutStr: layoutStringsModel
 	},
 	templateId: '#tutorial-template',
+	player: null,
 
 	initJS: function() {
 		//From github.com/twitter/bootstrap/issues/675/
@@ -44,6 +45,12 @@ var TutorialView = DialogView.extend({
 		}).addClass('tutorial').on('hidden', function() {
 			me.$el.empty();
 			me.$el.removeClass('tutorial');
+		});
+
+		this.player = new YT.Player('yt-player', {
+			height: '390',
+			width: '640',
+			videoId: layoutStringsModel.get('codTutorialYoutube')
 		});
 	}
 });

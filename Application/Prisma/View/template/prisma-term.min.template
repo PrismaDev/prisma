@@ -94,9 +94,7 @@
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 		<h3><%= layoutStr.get('tutorialStr') %></h3>
 	</div>
-	<div class="modal-body tutorialDiv">
-		<iframe class="centered" width="640" height="390" src="http://www.youtube.com/embed/<%= layoutStr.get('codTutorialYoutube') %>" frameborder="0">
-		</iframe>
+	<div class="modal-body tutorialDiv" id="yt-player">
 	</div>
 </script>
 <script type="text/underscore-template" id="suggestions-template">
