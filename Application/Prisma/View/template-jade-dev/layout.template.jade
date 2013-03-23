@@ -1,0 +1,31 @@
+script#layout-template(type="text/underscore")
+	div#dialog-div.modal.hide.fade
+	div#wrap-div
+		div.container-fluid
+			div.navbar.navbar-inverse
+				div.navbar-inner
+					span.brand.
+						<%= layoutStr.get('projectNameStr') %>
+					ul.nav
+						li
+							a#open-faq-link.
+								<%= layoutStr.get('FAQStr') %>
+						li	
+							a#open-tutorial-link.
+								<%= layoutStr.get('tutorialStr') %>
+						| <% if (loggedIn) { %>
+						li
+							a#open-suggestions-link.
+								<%= layoutStr('commentsStr') %>
+						| <% } %>
+						li.fb-like.
+							<fb:like href="http://prisma.inf.puc-rio.br" send="true" width="450"
+							show_faces="false" font="arial" colorscheme="dark"></fb:like>
+					
+					include includes/topdropdown
+		div#content-div.row-fluid
+	div#footerdiv.container-fluid
+		div.row-fluid
+			p.
+				<%= layoutStr.get('footerText') %>
+	div#fb-root

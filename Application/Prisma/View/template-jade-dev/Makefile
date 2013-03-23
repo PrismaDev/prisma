@@ -1,4 +1,5 @@
 PROD = ../template
+CC = jade
 
 TARGETS = $(PROD)/prisma-login.min.template \
 	$(PROD)/prisma-term.min.template \
@@ -27,11 +28,16 @@ DEP_MAIN = $(DEP_ALL) \
 
 .PHONY: all clean
 
-all: $(TARGETS)
+all: $(TARGETS) | cleartmp
 clean: 
 	rm $(TARGETS)
-	
+
+cleartmp:
+	rm tmp
+
 $(PROD)/prisma-login.min.template: $(DEP_LOGIN)
+	##$(CC) < $^ --path $^ > tmp
+	#cat > $@ tmp
 	cat > $@ $^
 
 $(PROD)/prisma-term.min.template: $(DEP_TERM)

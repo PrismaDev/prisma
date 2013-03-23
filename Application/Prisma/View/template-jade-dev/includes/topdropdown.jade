@@ -1,0 +1,8 @@
+ul.nav.pull-right
+	li.dropdown
+		a.dropdown
+			| <% if (!loggedIn) %><%= layoutStr.get('loginStr') %>
+			| <% else %><%= layoutStr.get('hiStr') %>, <%= layoutStr.get('userName') %>
+		b.caret
+	div.dropdown-menu.
+		Hi there!
