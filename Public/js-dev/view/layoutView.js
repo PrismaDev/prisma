@@ -3,7 +3,7 @@ LayoutView = Backbone.View.extend({
 	template: '',
 	contentView: null,
 	loggedIn: false,
-	dialogDiv: '#dialogDiv',
+	dialogDiv: '#dialog-div',
 
 	events: {
 		'click #open-suggestions-link': 'openSuggestionDialog',
