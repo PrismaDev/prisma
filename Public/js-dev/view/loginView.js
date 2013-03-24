@@ -23,7 +23,6 @@ var LoginView = Backbone.View.extend({
 	render: function(error) {
 		if (error==undefined)
 			error=false;
-		console.log(error);
 
 		this.$el.html(this.template({
 			loginStr: loginStringsModel,

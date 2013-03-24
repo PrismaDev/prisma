@@ -1,0 +1,23 @@
+mixin login-form(help, error, addClasses)
+	- var classes = {true: 'span2 offset2', false: ''};
+	form(name="login-form", method="post", action="/login")
+		input(type="hidden", name="tipo", value="Aluno")
+		if (help)
+			div.row-fluid
+				div.help-block <%= loginStr.get('loginHelpText') %>
+		div.row-fluid
+			if (error)
+				| <% if (error=='invalidLogin') { %>
+				div.alert.alert-error.
+					<%= loginStr.get('invalidLoginErrorMsg') %>
+				| <% } %>
+			
+			div(class=classes[addClasses])
+				label(for="matricula") <%= loginStr.get('matriculaLabel') %>
+				| <input type="text" maxlength="<%=loginStr.get('matriculaMaxLength') %>" name="matricula" /><br />
+				label(for="senha") <%= loginStr.get('passwordLabel') %>
+				| <input type="password" maxlength="<%= loginStr.get('passwordMaxLength') %>" name="senha" /><br />
+		div.row-fluid
+			| <input class="btn pull-right" type="submit" value="<%=loginStr.get('submitButtonLabel') %>" />
+			span.help-block <%= loginStr.get('forgotPasswordText') %>
+

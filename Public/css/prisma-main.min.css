@@ -67,10 +67,10 @@ tr.subjectSelected {
   -o-transition: none;
   transition: none;
 }
-.faqDiv {
+.faq-div {
   background-color: #f5f5f5;
 }
-.faqItem {
+.faq-item {
   margin-bottom: 1%;
   padding: 1%;
   background-color: white;
@@ -79,10 +79,11 @@ tr.subjectSelected {
   -moz-border-radius: 6px;
   border-radius: 6px;
 }
-.faqItem span {
+.faq-item span {
   font-weight: bold;
+  margin-right: 1%;
 }
-.faqItem hr {
+.faq-item hr {
   margin: 1%;
 }
 .tutorial {

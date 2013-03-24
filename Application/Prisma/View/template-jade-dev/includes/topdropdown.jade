@@ -1,3 +1,5 @@
+include login-mixins
+
 ul.nav.pull-right
 	li.dropdown
 		a.dropdown-toggle(href="#",data-toggle="dropdown")
@@ -12,14 +14,5 @@ ul.nav.pull-right
 			li: a(href="/logout") <%= layoutStr.get('logoutStr') %>
 		| <% } else { %>
 		div.dropdown-menu
-			form(name="login-form", method="post", action="/login")
-				input(type="hidden", name="tipo", value="Aluno")
-				div
-					label(for="matricula") <%= loginStr.get('matriculaLabel') %>
-					| <input type="text" maxlength="<%= loginStr.get('matriculaMaxLength') %>" name="matricula" />
-					label(for="senha") <%= loginStr.get('passwordLabel') %>
-					| <input type="password" maxlength="<%= loginStr.get('passwordMaxLength') %>" name="senha" />
-				div
-					| <input class="btn pull-right" type="submit" value="<%= loginStr.get('submitButtonLabel')%>" />
-					span.help-block <%= loginStr.get('forgotPasswordText') %>
+			mixin login-form(false, false, false)
 		| <% } %>

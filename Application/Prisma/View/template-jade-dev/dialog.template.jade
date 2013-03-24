@@ -1,0 +1,22 @@
+mixin modal-header(title)
+	div.modal-header
+		button.close(type="button", data-dismiss="modal",aria-hidden="true")
+			&times;
+		h3!= title
+
+script#faq-template(type="text/underscore-template")
+	mixin modal-header('<%= faqStr.get("dialogTitle") %>')
+	div.modal-body.faq-div
+		| <% _.each(faqStr.get('questionList'), function(item) { %>
+		div.faq-item
+			div.question
+				span <%= faqStr.get('questionStr') %>
+				<%= item.question %>
+			hr
+			div.answer
+				span <%= faqStr.get('answerStr') %>
+				<%= item.answer %>
+		| <% }); %>
+script#tutorial-template(type="text/underscore-template")
+	mixin modal-header('<%= layoutStr.get("tutorialStr") %>')
+	div#yt-player.modal-body.tutorial-div

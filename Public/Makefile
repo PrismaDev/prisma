@@ -1,9 +1,8 @@
 JSDIR = js-dev
-TEMPLATEDIR = template-dev
 LESSDIR = less-dev
 
 # Phony targets #
-.PHONY: all js template css index clean
+.PHONY: all js css clean
 
 all: js css
 

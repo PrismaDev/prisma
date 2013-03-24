@@ -1,3 +1,5 @@
+include includes/login-mixins
+
 script#login-template(type="text/underscore-template")
 	| <% if (error && error!='invalidLogin') { %>
 	div.row-fluid
@@ -14,4 +16,32 @@ script#login-template(type="text/underscore-template")
 
 	div#login-container
 		div.row-fluid
-			div.span4.offset4.content <%= loginStr.get('infoText') %>	
+			div.span4.offset4.content <%= loginStr.get('infoText') %>
+
+		| <% if (error=='invalidLogin') { %>
+		div#login-form-container.row-fluid
+			div#login-form.span4.offset4.content
+				mixin login-form(true, true, true)
+		| <% } else { %>
+		div#login-form-container.row-fluid.hidden
+			div#login-form.span4.offset4.content
+				mixin login-form(true, true, true)
+		| <% } %>
+
+		
+		| <% if (error=='invalidLogin') { %>
+		div#open-login-button-container.row-fluid.hidden
+			div.span4.offset4
+				button#open-login-button.btn.btn-success.btn-block(type="button").
+					<%= loginStr.get('openLoginButtonLabel') %>
+		| <% } else { %>
+		div#open-login-button-container.row-fluid
+			div.span4.offset4
+				button#open-login-button.btn.btn-success.btn-block(type="button").
+					<%= loginStr.get('openLoginButtonLabel') %>
+		| <% } %>
+
+		div.row-fluid
+			div.span4.offset4
+				button#open-tutorial-button.btn.btn-primary.btn-block(type="button").
+					<%= loginStr.get('tutorialButtonLabel') %>
