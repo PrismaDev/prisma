@@ -4,10 +4,10 @@ script#login-template(type="text/underscore-template")
 	| <% if (error && error!='invalidLogin') { %>
 	div.row-fluid
 		div.span6.offset3
-			div.alert.alert-error.centered
-				| <%= error=='accessDenied'? loginStr.get('accessDeniedErrorMsg') : '' %>
-				| <%= error=='pageDoesNotExist'? loginStr.get('pageDoesNotExistErrorMsg') : '' %>
-				| <%= error=='unexpectedError'? loginStr.get('unexpectedErrorMsg') : '' %>
+			div.alert.alert-error.centered.
+				<%= error=='accessDenied'? loginStr.get('accessDeniedErrorMsg') : '' %>
+				<%= error=='pageDoesNotExist'? loginStr.get('pageDoesNotExistErrorMsg') : '' %>
+				<%= error=='unexpectedError'? loginStr.get('unexpectedErrorMsg') : '' %>
 	| <% } %>
 	
 	div.row-fluid
@@ -18,17 +18,18 @@ script#login-template(type="text/underscore-template")
 		div.row-fluid
 			div.span4.offset4.content <%= loginStr.get('infoText') %>
 
+		- var addClasses='span2 offset2'
+
 		| <% if (error=='invalidLogin') { %>
 		div#login-form-container.row-fluid
 			div#login-form.span4.offset4.content
-				mixin login-form(true, true, true)
+				mixin login-form(true, true, addClasses)
 		| <% } else { %>
 		div#login-form-container.row-fluid.hidden
 			div#login-form.span4.offset4.content
-				mixin login-form(true, true, true)
+				mixin login-form(true, true, addClasses)
 		| <% } %>
 
-		
 		| <% if (error=='invalidLogin') { %>
 		div#open-login-button-container.row-fluid.hidden
 			div.span4.offset4

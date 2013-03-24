@@ -14,5 +14,5 @@ ul.nav.pull-right
 			li: a(href="/logout") <%= layoutStr.get('logoutStr') %>
 		| <% } else { %>
 		div.dropdown-menu
-			mixin login-form(false, false, false)
+			mixin login-form(false, false, '')
 		| <% } %>

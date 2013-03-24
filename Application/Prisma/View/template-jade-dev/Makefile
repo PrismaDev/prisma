@@ -33,16 +33,15 @@ DEP_MAIN = $(DEP_ALL) \
 
 .PHONY: all clean precomp debug setdbg
 
-all: precomp | $(TARGETS)
+all: $(TARGETS)
 clean: 
 	rm $(TARGETS) $(DEP_LOGIN)
 debug: | setdbg all
 setdbg:
 	$(eval JADEOPTS=$(DBG))
 
-precomp: login.template.jade includes/login-mixins.jade includes/topdropdown.jade \
-		dialog.template.jade
-	@echo pre comp is empty
+suggestions.template: suggestions.template.jade | $(INCS)/dialog-mixins.jade
+	$(CC) $(JADEOPTS) < $^ --path $^ > $@
 
 layout.template: layout.template.jade | $(INCS)/login-mixins.jade $(INCS)/topdropdown.jade
 	$(CC) $(JADEOPTS) < $^ --path $^ > $@
@@ -50,7 +49,7 @@ layout.template: layout.template.jade | $(INCS)/login-mixins.jade $(INCS)/topdro
 login.template: login.template.jade | $(INCS)/login-mixins.jade
 	$(CC) $(JADEOPTS) < $^ --path $^ > $@
 
-dialog.template: dialog.template.jade
+dialog.template: dialog.template.jade | $(INCS)/dialog-mixins.jade
 	$(CC) $(JADEOPTS) < $^ --path $^ > $@
 
 $(PROD)/prisma-login.min.template: $(DEP_LOGIN)
