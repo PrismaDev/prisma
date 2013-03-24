@@ -40,6 +40,9 @@ debug: | setdbg all
 setdbg:
 	$(eval JADEOPTS=$(DBG))
 
+term.template: term.template.jade
+	$(CC) $(JADEOPTS) < $^ --path $^ > $@
+
 suggestions.template: suggestions.template.jade | $(INCS)/dialog-mixins.jade
 	$(CC) $(JADEOPTS) < $^ --path $^ > $@
 

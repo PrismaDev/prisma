@@ -106,14 +106,20 @@ body {
 #content-div textarea {
   margin-bottom: 1%;
 }
-div.pull-left {
+#term-container input[type="checkbox"] {
+  margin-right: 1%;
+}
+#term-container input[type="submit"] {
+  margin-left: 0.5%;
+}
+#term-container div.pull-left {
   padding: 0;
 }
-div.pull-left input,
-div.pull-left label {
+#term-container div.pull-left input,
+#term-container div.pull-left label {
   display: inline;
 }
-div.pull-left input {
+#term-container div.pull-left input {
   position: relative;
   top: -3px;
 }
