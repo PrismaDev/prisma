@@ -1,8 +1,25 @@
 ul.nav.pull-right
 	li.dropdown
-		a.dropdown
-			| <% if (!loggedIn) %><%= layoutStr.get('loginStr') %>
-			| <% else %><%= layoutStr.get('hiStr') %>, <%= layoutStr.get('userName') %>
-		b.caret
-	div.dropdown-menu.
-		Hi there!
+		a.dropdown-toggle(href="#",data-toggle="dropdown")
+			| <% if (loggedIn) { %>
+			span <%= layoutStr.get('hiStr'), layoutStr.get('userName') %>
+			| <% } else { %>
+			span <%= layoutStr.get('loginStr') %>
+			| <% } %>
+			b.caret
+		| <% if (loggedIn) { %>	
+		ul.dropdown-menu
+			li: a(href="/logout") <%= layoutStr.get('logoutStr') %>
+		| <% } else { %>
+		div.dropdown-menu
+			form(name="login-form", method="post", action="/login")
+				input(type="hidden", name="tipo", value="Aluno")
+				div
+					label(for="matricula") <%= loginStr.get('matriculaLabel') %>
+					| <input type="text" maxlength="<%= loginStr.get('matriculaMaxLength') %>" name="matricula" />
+					label(for="senha") <%= loginStr.get('passwordLabel') %>
+					| <input type="password" maxlength="<%= loginStr.get('passwordMaxLength') %>" name="senha" />
+				div
+					| <input class="btn pull-right" type="submit" value="<%= loginStr.get('submitButtonLabel')%>" />
+					span.help-block <%= loginStr.get('forgotPasswordText') %>
+		| <% } %>

@@ -28,12 +28,15 @@ DEP_MAIN = $(DEP_ALL) \
 
 .PHONY: all clean
 
-all: $(TARGETS) | cleartmp
+all: precomp | $(TARGETS) cleartmp
 clean: 
 	rm $(TARGETS)
 
 cleartmp:
 	rm tmp
+
+precomp: layout.template.jade includes/topdropdown.jade
+	$(CC) < layout.template.jade --path layout.template.jade > layout.template
 
 $(PROD)/prisma-login.min.template: $(DEP_LOGIN)
 	##$(CC) < $^ --path $^ > tmp

@@ -16,15 +16,15 @@ script#layout-template(type="text/underscore")
 						| <% if (loggedIn) { %>
 						li
 							a#open-suggestions-link.
-								<%= layoutStr('commentsStr') %>
+								<%= layoutStr.get('commentsStr') %>
 						| <% } %>
 						li.fb-like.
 							<fb:like href="http://prisma.inf.puc-rio.br" send="true" width="450"
-							show_faces="false" font="arial" colorscheme="dark"></fb:like>
-					
+							show_faces="false" font="arial" colorscheme="dark"></fb:like>		
 					include includes/topdropdown
-		div#content-div.row-fluid
-	div#footerdiv.container-fluid
+			div#content-div.row-fluid
+		div#push-div
+	div#footer-div.container-fluid
 		div.row-fluid
 			p.
 				<%= layoutStr.get('footerText') %>
