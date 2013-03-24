@@ -1,0 +1,18 @@
+script#term-template(type="text/underscore-template")
+	div.row-fluid
+		div.span10.offset1
+			textarea.input-block-level(rows="20", readonly="readonly").
+				<%= termStr.get('termText') %>
+
+	form(name="term-form", method="post", action="/term")
+		div.row-fluid
+			div#term-container.span10.offset1
+				div.pull-left.span5
+					input(type="checkbox", name="acceptedTerm")
+					label(for="acceptedTerm").
+						<%= termStr.get('acceptCheckboxLabel') %>
+				
+				input.pull-right.btn.btn-primary.disabled(type="submit", value!="<%= termStr.get('acceptButtonLabel') %>")
+				button.pull-right.btn.btn-danger(type="button")
+					a(href="/logout").
+						<%= termStr.get('cancelButtonLabel') %>

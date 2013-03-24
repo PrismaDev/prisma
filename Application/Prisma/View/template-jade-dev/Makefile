@@ -35,7 +35,7 @@ DEP_MAIN = $(DEP_ALL) \
 
 all: $(TARGETS)
 clean: 
-	rm $(TARGETS) $(DEP_LOGIN)
+	rm $(TARGETS) $(DEP_LOGIN) $(DEP_TERM)
 debug: | setdbg all
 setdbg:
 	$(eval JADEOPTS=$(DBG))
