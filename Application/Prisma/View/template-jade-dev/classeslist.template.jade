@@ -1,0 +1,44 @@
+script#classeslist-template(type="text/underscore-template")
+	table.table.table-bordered.table-condensed
+		thead
+			| <% if (subjectInfo) { %>
+			th <%=classesTableStr.get('subjectCodeLabel') %>
+			th <%=classesTableStr.get('subjectNameLabel') %>
+			| <% } %>
+			th <%=classesTableStr.get('professorNameLabel') %>
+			th <%=classesTableStr.get('scheduleLabel') %>
+			th <%=classesTableStr.get('classCodeLabel') %>
+			th <%=classesTableStr.get('blockLabel') %>
+
+			| <% if (subjectInfo) { %>
+			th <%=classesTableStr.get('creditsLabel') %>
+			th <%=classesTableStr.get('ementaHeaderLabel') %>
+			<% } %>
+		tbody
+script#classeslist-row-template(type="text/underscore-template")
+	| <% var addClasses= (classO.status=="CP"? 'subjectDisabled ' : '')+
+	| (classO.status=="EA"? 'subjectWarning ' : '')+(classO.able==0? 'subjectBlocked ': '')+
+	| (classO.able==1? 'subjectWarning ': '')+(classO.chosen? 'classChosen': '') %>
+	tr(class!='<%= addClasses %>')
+		input(type="hidden", name="subjectCode", value!="<%= classO.subjectCode %>")
+		input(type="hidden", name="classId", value!="<%= classO.classId %>")
+
+		| <% if (subjectInfo) { %>
+		td <%= classO.subjectCode %>
+		td
+			| <%= classO.subjectName %>
+			| <% if (classO.status=='EA') { %>
+			span.label.label-warning <%= classesTableStr.get('ongoingStr') %>
+			| <% } %>
+		<% } %>
+		td <%= classO.professorName %>
+		td <%= classO.schedule %>
+		td <%= classO.code %>
+		td <%= classO.block %>
+
+		<% if (subjectInfo) { %>
+		td <%= classO.credits %>
+		td
+			button.btn.btn-link.btn-small.ementa-button(type="button",
+				data-subject!="<%= classO.subjectCode %>")
+		<% } %>

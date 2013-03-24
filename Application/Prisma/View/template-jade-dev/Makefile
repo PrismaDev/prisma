@@ -40,6 +40,9 @@ debug: | setdbg all
 setdbg:
 	$(eval JADEOPTS=$(DBG))
 
+classeslist.template: classeslist.template.jade
+	$(CC) $(JADEOPTS) < $^ --path $^ > $@
+
 term.template: term.template.jade
 	$(CC) $(JADEOPTS) < $^ --path $^ > $@
 
