@@ -37,6 +37,7 @@ LayoutView = Backbone.View.extend({
 
 	initJS: function() {
 		$('.dropdown-toggle').dropdown();
+		fbApiController.loadApi();
 	},
 
 	setView: function(view) {

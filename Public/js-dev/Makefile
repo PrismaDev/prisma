@@ -18,7 +18,8 @@ PAGES = $(PROD)/prisma-login.min.js \
 DEP_ALL = $(MDL)/layoutStringsModel.js \
 	$(MDL)/faqStringsModel.js \
 	$(VIEW)/layoutView.js \
-	$(VIEW)/dialogView.js
+	$(VIEW)/dialogView.js \
+	$(CTRL)/fbApiController.js
 
 DEP_ISLOGGED = $(MDL)/loggedInDialogsStringsModel.js\
 	$(VIEW)/loggedInDialogs.js

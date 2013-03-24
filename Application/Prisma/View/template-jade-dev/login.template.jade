@@ -1,0 +1,17 @@
+script#login-template(type="text/underscore-template")
+	| <% if (error && error!='invalidLogin') { %>
+	div.row-fluid
+		div.span6.offset3
+			div.alert.alert-error.centered
+				| <%= error=='accessDenied'? loginStr.get('accessDeniedErrorMsg') : '' %>
+				| <%= error=='pageDoesNotExist'? loginStr.get('pageDoesNotExistErrorMsg') : '' %>
+				| <%= error=='unexpectedError'? loginStr.get('unexpectedErrorMsg') : '' %>
+	| <% } %>
+	
+	div.row-fluid
+		div#logo-div.span4.offset4
+			h1 <%= layoutStr.get('projectNameStr') %>
+
+	div#login-container
+		div.row-fluid
+			div.span4.offset4.content <%= loginStr.get('infoText') %>	

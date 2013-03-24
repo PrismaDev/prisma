@@ -35,8 +35,8 @@ clean:
 cleartmp:
 	rm tmp
 
-precomp: layout.template.jade includes/topdropdown.jade
-	$(CC) < layout.template.jade --path layout.template.jade > layout.template
+precomp: login.template.jade
+	$(CC) < login.template.jade --path login.template.jade > login.template
 
 $(PROD)/prisma-login.min.template: $(DEP_LOGIN)
 	##$(CC) < $^ --path $^ > tmp
