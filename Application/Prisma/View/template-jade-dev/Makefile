@@ -40,6 +40,9 @@ debug: | setdbg all
 setdbg:
 	$(eval JADEOPTS=$(DBG))
 
+faltacursar.template: faltacursar.template.jade
+	$(CC) $(JADEOPTS) < $^ --path $^ > $@
+
 classeslist.template: classeslist.template.jade
 	$(CC) $(JADEOPTS) < $^ --path $^ > $@
 
