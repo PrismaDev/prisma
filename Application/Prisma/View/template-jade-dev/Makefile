@@ -8,7 +8,8 @@ INCS = includes
 
 NORMCOMP = main.template faltacursar.template \
 	classeslist.template term.template \
-	microhorario.template selected.template
+	microhorario.template selected.template \
+	timetable.template
 
 TARGETS = $(PROD)/prisma-login.min.template \
 	$(PROD)/prisma-term.min.template \
@@ -38,8 +39,9 @@ DEP_MAIN = $(DEP_ALL) \
 .PHONY: all clean debug setdbg
 
 all: $(TARGETS)
+	rm *.template
 clean: 
-	rm $(TARGETS) $(DEP_LOGIN) $(DEP_TERM)
+	rm $(TARGETS)
 debug: | setdbg all
 setdbg:
 	$(eval JADEOPTS=$(DBG))
