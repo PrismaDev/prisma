@@ -1,0 +1,8 @@
+script#timetable-template(type="text/underscore-template")
+	table.table.table-bordered
+		thead
+			th
+			| <% _.each(timetableStr.get('daysLabel'), function(day) { %>
+			th.dayCell <%= day %>
+			| <% }); %>
+		tbody
