@@ -1,7 +1,9 @@
 PROD = ../css
 
 CC = lessc
-CFLAGS = --yui-compressor --strict-imports 
+REL = --x --yui-compressor --strict-imports  
+DBG = --strict-imports
+CFLAGS = $(REL)
 
 TARGETS = $(PROD)/prisma-main.min.css\
 	$(PROD)/prisma-login.min.css\
@@ -28,9 +30,14 @@ DEP_MAIN = $(DEP_ALL) \
 		timetable.less\
 		selected.less
 
+.PHONY: all clean setdbg debug
+
 all: $(TARGETS)
 clean:
 	rm $(TARGETS)
+debug: | setdbg all
+setdbg:
+	$(eval CFLAGS=$(DBG))
 
 $(PROD)/prisma-main.min.css: $(DEP_MAIN)
 	$(CC) $(CFLAGS) main.less > $@

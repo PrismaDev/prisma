@@ -7,7 +7,9 @@ LIB = lib
 
 ## Compiler definition ##
 CC = java -jar /usr/bin/closure-compiler.jar
-CFLAGS =  --compilation_level SIMPLE_OPTIMIZATIONS
+REL =  --compilation_level SIMPLE_OPTIMIZATIONS
+DBG = 
+CFLAGS = $(REL)
 
 ## Target definition ##
 PAGES = $(PROD)/prisma-login.min.js \
@@ -59,21 +61,24 @@ DEP_MAIN = $(DEP_ALL) \
 	$(CTRL)/mainRouter.js
 
 ## Phony targets ##
+.PHONY: all clean debug setdbg
+
+## Rules ##
 all: $(PAGES)
 clean:
 	rm $(PAGES)
+debug: | setdbg all
+setdbg:
+	$(eval CFLAGS=$(DBG))
 
 $(PROD)/prisma-login.min.js: $(DEP_LOGIN)
 	cat > $@ $^
-	##$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
-	#rm .swp.js
+	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
 
 $(PROD)/prisma-term.min.js: $(DEP_TERM)
 	cat > $@ $^
-	#$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
-	#rm .swp.js
+	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
 
 $(PROD)/prisma-main.min.js: $(DEP_MAIN)
 	cat > $@ $^
-	#$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
-	#rm .swp.js
+	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@

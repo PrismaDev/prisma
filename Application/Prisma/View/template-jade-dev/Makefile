@@ -2,7 +2,7 @@ CC = jade
 DBG = --pretty
 REL = --no-debug
 
-JADEOPTS = $(REL)
+CFLAGS = $(REL)
 PROD = ../template
 INCS = includes
 
@@ -44,22 +44,22 @@ clean:
 	rm $(TARGETS)
 debug: | setdbg all
 setdbg:
-	$(eval JADEOPTS=$(DBG))
+	$(eval CFLAGS=$(DBG))
 
 $(NORMCOMP): %.template: %.template.jade
-	$(CC) $(JADEOPTS) < $< --path $< > $@
+	$(CC) $(CFLAGS) < $< --path $< > $@
 
 suggestions.template: suggestions.template.jade | $(INCS)/dialog-mixins.jade
-	$(CC) $(JADEOPTS) < $^ --path $^ > $@
+	$(CC) $(CFLAGS) < $^ --path $^ > $@
 
 layout.template: layout.template.jade | $(INCS)/login-mixins.jade $(INCS)/topdropdown.jade
-	$(CC) $(JADEOPTS) < $^ --path $^ > $@
+	$(CC) $(CFLAGS) < $^ --path $^ > $@
 
 login.template: login.template.jade | $(INCS)/login-mixins.jade
-	$(CC) $(JADEOPTS) < $^ --path $^ > $@
+	$(CC) $(CFLAGS) < $^ --path $^ > $@
 
 dialog.template: dialog.template.jade | $(INCS)/dialog-mixins.jade
-	$(CC) $(JADEOPTS) < $^ --path $^ > $@
+	$(CC) $(CFLAGS) < $^ --path $^ > $@
 
 $(PROD)/prisma-login.min.template: $(DEP_LOGIN)
 	cat > $@ $^

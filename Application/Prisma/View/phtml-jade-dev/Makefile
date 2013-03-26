@@ -1,7 +1,7 @@
 CC = jade
 REL = --no-debug
 DBG = --pretty
-JADEOPTS = $(REL)
+CFLAGS = $(REL)
 
 JADE = $(wildcard *.jade)
 PHTML = $(JADE:.jade=.phtml)
@@ -15,7 +15,7 @@ clean:
 
 debug: | setdbg all
 setdbg:
-	$(eval JADEOPTS=$(DBG))
+	$(eval CFLAGS=$(DBG))
 	
 %.phtml: %.jade
-	$(CC) $(JADEOPTS) < $< --path $< > $(DST)/$@
+	$(CC) $(CFLAGS) < $< --path $< > $(DST)/$@

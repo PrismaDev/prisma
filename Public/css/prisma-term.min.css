@@ -1,124 +1,26 @@
-.hidden {
-  display: none;
-}
-.centered {
-  text-align: center;
-  margin: auto;
-}
-.clearfix {
-  *zoom: 1;
-}
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.clearfix:after {
-  clear: both;
-}
-.fb-like {
-  padding-top: 1%;
-}
-.dropdown-menu {
-  padding: 10px;
-  background-color: black;
-}
-.dropdown-menu .help-block {
-  font-size: small;
-}
-.dropdown-menu li > a {
-  color: #999999;
-}
-.modal.fade {
-  -webkit-transition: none;
-  -moz-transition: none;
-  -ms-transition: none;
-  -o-transition: none;
-  transition: none;
-}
-.faq-div {
-  background-color: #f5f5f5;
-}
-.faq-item {
-  margin-bottom: 1%;
-  padding: 1%;
-  background-color: white;
-  border: solid 1px #eeeeee;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-}
-.faq-item span {
-  font-weight: bold;
-  margin-right: 1%;
-}
-.faq-item hr {
-  margin: 1%;
-}
-.tutorial {
-  width: auto;
-}
-body {
-  min-width: 1024px;
-}
-html,
-body {
-  height: 100%;
-  background-color: #f5f5f5;
-}
-#content-div {
-  margin-bottom: 2%;
-}
-#content-div div.foreground {
-  background-color: white;
-}
-#wrap-div {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -50px;
-}
-#push-div {
-  height: 50px;
-}
-#footer-div {
-  height: 50px;
-}
-#footer-div .row-fluid {
-  height: 100%;
-  font-size: 80%;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  background-color: grey;
-}
-#footer-div .row-fluid a {
-  color: black;
-}
-#footer-div .row-fluid p {
-  margin: 10px;
-}
-#content-div textarea {
-  margin-bottom: 1%;
-}
-#term-container input[type="checkbox"] {
-  margin-right: 1%;
-}
-#term-container input[type="submit"] {
-  margin-left: 0.5%;
-}
-#term-container div.pull-left {
-  padding: 0;
-}
-#term-container div.pull-left input,
-#term-container div.pull-left label {
-  display: inline;
-}
-#term-container div.pull-left input {
-  position: relative;
-  top: -3px;
-}
-button a {
-  color: white;
-}
+.hidden{display:none;}
+.centered{text-align:center;margin:auto;}
+.clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
+.clearfix:after{clear:both;}
+.fb-like{padding-top:1%;}
+.dropdown-menu{padding:10px;background-color:black;}.dropdown-menu .help-block{font-size:small;}
+.dropdown-menu li>a{color:#999999;}
+.modal.fade{-webkit-transition:none;-moz-transition:none;-ms-transition:none;-o-transition:none;transition:none;}
+.faq-div{background-color:#f5f5f5;}
+.faq-item{margin-bottom:1%;padding:1%;background-color:white;border:solid 1px #eeeeee;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;}.faq-item span{font-weight:bold;margin-right:1%;}
+.faq-item hr{margin:1%;}
+.tutorial{width:auto;}
+body{min-width:1024px;}
+html,body{height:100%;background-color:#f5f5f5;}
+#content-div{margin-bottom:2%;}#content-div div.foreground{background-color:white;}
+#wrap-div{min-height:100%;height:auto !important;height:100%;margin:0 auto -50px;}
+#push-div{height:50px;}
+#footer-div{height:50px;}
+#footer-div .row-fluid{height:100%;font-size:80%;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;background-color:grey;}#footer-div .row-fluid a{color:black;}
+#footer-div .row-fluid p{margin:10px;}
+#content-div textarea{margin-bottom:1%;}
+#term-container input[type="checkbox"]{margin-right:1%;}
+#term-container input[type="submit"]{margin-left:0.5%;}
+#term-container div.pull-left{padding:0;}#term-container div.pull-left input,#term-container div.pull-left label{display:inline;}
+#term-container div.pull-left input{position:relative;top:-3px;}
+button a{color:white;}
