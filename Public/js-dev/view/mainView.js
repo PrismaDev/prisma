@@ -88,7 +88,7 @@ var MainView = Backbone.View.extend({
 		microhorarioView.render();
 
 		selectedView.setElement('#main-selected-div');
-		selectedView.render();		
+		selectedView.render();
 	},
 
 	render: function() {

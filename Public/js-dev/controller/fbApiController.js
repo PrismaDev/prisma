@@ -17,7 +17,8 @@ function FbApiController() {
     		FB.init({
 			status     : false,
 			cookie     : true, // set sessions cookies to allow your server to access the session?
-			xfbml      : true  // parse XFBML tags on this page?
+			xfbml      : true,  // parse XFBML tags on this page?
+			channelUrl : '//prisma.inf.puc-rio.br/channel.php'
 		});
 	};
 }
