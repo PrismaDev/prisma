@@ -1,0 +1,32 @@
+script#selected-row-template(type="text/underscore-template")
+	tr(class!='row<%= index %>')
+		- for (var i=0; i<3; i++) {
+		td.radio
+			input(type="radio", name!="item<%= index %>", value="#{i+1}")
+		td.class-droppable.
+			<%= template[#{i}]? template[#{i}]: '' %>
+		- }
+		td.radio
+			input(type="radio", name!="item<%= index %>", value="none")
+
+script#selected-template(type="text/underscore-template")
+	div#table-container
+		table
+			thead
+				- for (var i=0; i<3; i++) {
+				th(colspan="2") <%= selectedStr.get('option#{i+1}Label') %>
+				- }
+				th <%= selectedStr.get('noneLabel') %>
+			tbody.selected-sortable
+
+	div#info-container
+		hr
+		div#qtd-credits 0 <%= selectedStr.get('qtdCreditsLabel') %>
+		div#qtd-classes 0 <%= selectedStr.get('qtdClassesLabel') %>
+
+script#selected-draggable-template(type="text/underscore-template")
+	div.class-draggable
+		input(type="hidden",name="subjectCode",value!="<%= subjectCode %>")
+		input(type="hidden",name="classCode",value!="<%= classId %>")
+		button.close(type="button") x
+		| <%= subjectCode %> - <%= classCode %>

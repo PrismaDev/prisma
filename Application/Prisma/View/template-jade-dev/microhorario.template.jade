@@ -1,0 +1,51 @@
+mixin form-text-field(fieldName, fieldLabel, addClasses)
+	div.field-container
+		label(for=fieldName)!= fieldLabel
+		input(type="text", name=fieldName, class=addClasses)
+
+mixin checkbox-field(fieldName, fieldLabel)
+	label.checkbox.inline(for=fieldName)
+		input(type="checkbox", name=fieldName, value="1")
+		!= fieldLabel
+	
+script#microhorario-template(type="text/underscore-template")
+	div#microhorario-togglefilter
+		input#open-filters-button.btn.btn-link.hidden.pull-right(type="button", value!="<%= str.get('openFiltersStr') %>")	
+		input#close-filters-button.btn.btn-link.pull-right(type="button", value!="<%= str.get('closeFiltersStr') %>")
+	div#microhorario-filter
+		form#microhorario-form
+			mixin form-text-field('CodigoDisciplina', '<%= str.get("subjectCodeLabel") %>', '')
+			mixin form-text-field('NomeDisciplina', '<%= str.get("subjectNameLabel") %>', '')
+			mixin form-text-field('NomeProfessor', '<%= str.get("professorNameLabel") %>', '')
+			div.field-container
+				label(for="DiaSemana") <%= str.get('dayLabel') %>
+				select(name="DiaSemana")
+					option(value='')
+					<% _.each(timetableStr.get('daysLabel'), function(day, index) { %>
+					option(value!='<%= index+2 %>') <%= day %>
+					<% }); %>
+
+			div#hidden-filters.hidden
+				mixin form-text-field('Creditos', '<%= str.get("nCreditsLabel") %>', 'input-small')
+				mixin form-text-field('HoraInicial', '<%= str.get("timeBeginLabel") %>', 'input-small')
+				mixin form-text-field('HoraFinal', '<%= str.get("timeEndLabel") %>', 'input-small')
+
+				div.checkboxes-div
+					mixin checkbox-field('SHF', '<%= str.get("noFixedScheduleLabel") %>')
+					mixin checkbox-field('HorasDistancia', '<%= str.get("distanceHoursLabel") %>')
+			
+			div.button-container
+				input#less-filters-button.btn.btn-link.hidden(type="button", value!="<%= str.get('lessFiltersStr') %>")
+				input#more-filters-button.btn.btn-link(type="button", value!="<%= str.get('moreFiltersStr') %>")
+				input#submit-query.btn.btn-primary.pull-right(type="submit", value!="<%= str.get('submitButtonLabel') %>")
+				input#reset-query.btn.btn-danger.pull-right(type="reset", value!="<%= str.get('resetButtonLabel') %>")
+	div#microhorario-results
+
+script#microhorario-waiting-template(type="text/underscore-template")
+	img.waiting-img(src!="<%= str.get('waitingImgURL') %>")
+
+script#microhorario-noquery-template(type="text/underscore-template")
+	div.alert.alert-info <%= str.get('noQueryStr') %>
+
+script#microhorario-end-of-data-template(type="text/underscore-template")
+	div.alert <%= str.get('endOfDataMsg') %>

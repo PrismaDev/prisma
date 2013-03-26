@@ -1,0 +1,18 @@
+script#main-template(type="text/underscore-template")
+	div#container-div
+		div#main-sidebar-div
+			ul#main-tabs-nav.nav.nav-tabs
+				| <% _.each(tabs, function(tab, tabName) { %>
+				li(id!="<%= tab.li %>")
+					a(href!="<%= tab.href %>")
+						| <%= mainStr.get(tabName+'TabLabel') %>
+
+						| <% if (tabName=='selected') { %>
+						span#selected-badge.badge.hidden
+						| <% } %>
+				| <% }); %>
+			div#main-tab-panes.tab-content.foreground
+				| <% _.each(tabs, function(tab) { %>
+				div.tab-pane(id!='<%= tab.div %>')
+				| <% }); %>
+		div#main-timetable-div.foreground

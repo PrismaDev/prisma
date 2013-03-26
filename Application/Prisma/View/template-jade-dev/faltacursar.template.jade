@@ -1,0 +1,50 @@
+script#faltacursar-template(type="text/underscore-template")
+	table#faltacursar-subject-table.table.table-bordered.table-condensed
+		thead
+			th
+			th <%= subjectTableStr.get('subjectCodeLabel') %>
+			th <%= subjectTableStr.get('subjectNameLabel') %>
+			th <%= subjectTableStr.get('termLabel') %>
+			th <%= subjectTableStr.get('creditsLabel') %>
+			th <%= subjectTableStr.get('ementaHeaderLabel') %>
+		tbody
+	div#faltacursar-classes-div.hidden
+		div#faltacursar-classes-table-div
+		div#close-classes-div
+			hr
+			button#close-classes-button.btn.btn-link.btn-small
+				<%= faltacursarStr.get('closeClassesDivLabel') %>
+
+script#faltacursar-row-template(type="text/underscore-template")
+	| <% var addClasses = (subject.able==0? 'subjectBlocked' : '')+
+	| (subject.able==1? 'subjectWarning' : '')+(subject.status=="EA"? 'subjectWarning' : '')+
+	| (subject.status=="CP"? 'subjectDisabled': '')+(subject.optativa? 'optativa ': '')+
+	| (subject.ingroup? 'ingroup ': ''); %>
+	tr(id!="<%= subject.code %>", class!="<%= addClasses %>")
+		td.imgCell
+			| <% if (subject.optativa) { %>
+			img(src="img/Setinha Mini copy.PNG", width="16", height="16")
+			| <% } %> 
+		td <%= subject.code %>
+		td.name
+			| <%= subject.name %>
+			| <% if (subject.status=='EA') { %>
+			span.label.label-warning.
+				<%= subjectTableStr.get('ongoingStr') %>
+			| <% } %>
+			
+			| <% if (subject.optativa) {
+			| addClasses = subject.nSubjectsChosen? '': 'hidden'; %>
+			span.label.label-success.selected-label(class!="<%= addClasses %>").
+				<%= subject.nSubjectsChosen %> <%= subjectTableStr.get('nOptativasChosenStr') %>
+			| <% } else {
+			| addClasses = subject.chosen? '': 'hidden'; %>
+			span.label.label-success.selected-label(class!="<%= addClasses %>").
+				<%= subjectTableStr.get('chosenSubjectStr') %>
+			| <% } %>
+		td <%= subject.term %>
+		td <%= subject.credits %>
+		td
+			a.btn.btn-link.btn-small.ementa-button(href!="<%= subjectTableStr.get('ementaBaseLink')+subject.code %>",
+				target="_blank").
+				<%= subjectTableStr.get('ementaLinkLabel') %>
