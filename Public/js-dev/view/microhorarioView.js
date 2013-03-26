@@ -10,43 +10,43 @@ var MicrohorarioView = Backbone.View.extend ({
 	waitingState: 'waiting',
 
 	events: {
-		"click #moreFiltersButton": "moreFilters",
-		"click #lessFiltersButton": "lessFilters",
-		"click #openFiltersButton": "openFilters",
-		"click #closeFiltersButton": "closeFilters",
+		"click #more-filters-button": "moreFilters",
+		"click #less-filters-button": "lessFilters",
+		"click #open-filters-button": "openFilters",
+		"click #close-filters-button": "closeFilters",
 		"submit #microhorario-form": "query",
 		"reset #microhorario-form" : "clear"
 	},
 
 	//Event handlers
 	moreFilters: function() {
-		$('#hiddenFilters').removeClass('hidden');
-		$('#lessFiltersButton').removeClass('hidden');
-		$('#moreFiltersButton').addClass('hidden');
+		$('#hidden-filters').removeClass('hidden');
+		$('#less-filters-button').removeClass('hidden');
+		$('#more-filters-button').addClass('hidden');
 		
 		microhorarioClasseslistView.resize();
 	},
 	
 	lessFilters: function() {
-		$('#hiddenFilters').addClass('hidden');
-		$('#lessFiltersButton').addClass('hidden');
-		$('#moreFiltersButton').removeClass('hidden');
+		$('#hidden-filters').addClass('hidden');
+		$('#less-filters-button').addClass('hidden');
+		$('#more-filters-button').removeClass('hidden');
 		
 		microhorarioClasseslistView.resize();
 	},
 
 	openFilters: function() {
 		$('#microhorario-filter').removeClass('hidden');
-		$('#openFiltersButton').addClass('hidden');
-		$('#closeFiltersButton').removeClass('hidden');
+		$('#open-filters-button').addClass('hidden');
+		$('#close-filters-button').removeClass('hidden');
 
 		microhorarioClasseslistView.resize();
 	},
 
 	closeFilters: function() {
 		$('#microhorario-filter').addClass('hidden');
-		$('#openFiltersButton').removeClass('hidden');
-		$('#closeFiltersButton').addClass('hidden');
+		$('#open-filters-button').removeClass('hidden');
+		$('#close-filters-button').addClass('hidden');
 		
 		microhorarioClasseslistView.resize();
 	},

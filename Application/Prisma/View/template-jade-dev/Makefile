@@ -6,6 +6,10 @@ JADEOPTS = $(REL)
 PROD = ../template
 INCS = includes
 
+NORMCOMP = main.template faltacursar.template \
+	classeslist.template term.template \
+	microhorario.template
+
 TARGETS = $(PROD)/prisma-login.min.template \
 	$(PROD)/prisma-term.min.template \
 	$(PROD)/prisma-main.min.template
@@ -31,7 +35,7 @@ DEP_MAIN = $(DEP_ALL) \
 	selected.template \
 	faltacursar.template
 
-.PHONY: all clean precomp debug setdbg
+.PHONY: all clean debug setdbg
 
 all: $(TARGETS)
 clean: 
@@ -40,14 +44,8 @@ debug: | setdbg all
 setdbg:
 	$(eval JADEOPTS=$(DBG))
 
-faltacursar.template: faltacursar.template.jade
-	$(CC) $(JADEOPTS) < $^ --path $^ > $@
-
-classeslist.template: classeslist.template.jade
-	$(CC) $(JADEOPTS) < $^ --path $^ > $@
-
-term.template: term.template.jade
-	$(CC) $(JADEOPTS) < $^ --path $^ > $@
+$(NORMCOMP): %.template: %.template.jade
+	$(CC) $(JADEOPTS) < $< --path $< > $@
 
 suggestions.template: suggestions.template.jade | $(INCS)/dialog-mixins.jade
 	$(CC) $(JADEOPTS) < $^ --path $^ > $@

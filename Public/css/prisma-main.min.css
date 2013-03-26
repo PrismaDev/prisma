@@ -166,11 +166,11 @@ div.almostHalf {
 div.whole {
   height: 100%;
 }
-.waitingImg {
+.waiting-img {
   display: block;
   margin: auto;
 }
-div.buttonContainer,
+div.button-container,
 #microhorario-filter,
 #microhorario-results,
 div#hiddenFilters,
@@ -180,13 +180,11 @@ div.checkboxesDiv {
 #microhorario-results .dataTables_filter {
   display: none;
 }
-div.fieldContainer {
+div.field-container {
   float: left;
-}
-div.fieldContainer {
   margin-right: 4%;
 }
-div.checkboxesDiv .checkbox.inline + .checkbox.inline {
+div.checkboxes-div .checkbox.inline + .checkbox.inline {
   margin-left: 4%;
 }
 #microhorario-togglefilter,
