@@ -16,62 +16,7 @@ show_faces="false" font="arial" colorscheme="dark"></fb:like>		</li></ul><ul cla
 	</table>
 </script>
 
-<script type="text/underscore-template" id="selected-row-template">
-	<tr class="row<%= index %>">
-		<td class="radio">
-			<input type="radio" name="item<%= index %>" value="1"
-				checked="checked"/>
-		</td>
-		<td class="class-droppable">
-			<%= template[0]? template[0] : '' %>
-		</td>
-		<td class="radio">
-			<input type="radio" name="item<%= index %>" value="2"/>
-		</td>
-		<td class="class-droppable">
-			<%= template[1]? template[1] : '' %>
-		</td>
-		<td class="radio">
-			<input type="radio" name="item<%= index %>" value="3"/>
-		</td>
-		<td class="class-droppable">
-			<%= template[2]? template[2] : '' %>
-		</td>
-		<td class="radio">
-			<input type="radio" name="item<%= index %>" value="none"/>
-		</td>
-	</tr>
-</script>
-
-<script type="text/underscore-template" id="selected-template">
-	<div id="table-container">
-		<table>
-			<thead>
-				<th colspan="2"><%= selectedStr.get('option1Label') %></th>
-				<th colspan="2"><%= selectedStr.get('option2Label') %></th>
-				<th colspan="2"><%= selectedStr.get('option3Label') %></th>
-				<th><%= selectedStr.get('noneLabel') %></th>
-			</thead>
-			<tbody class="selected-sortable">
-			</tbody>
-		</table>
-	</div>
-	<div id="info-container">
-		<hr>
-		<div id="qtd-credits">0 <%= selectedStr.get('qtdCreditsLabel')%></div>
-		<div id="qtd-classes">0 <%= selectedStr.get('qtdClassesLabel')%></div>
-	</div>
-</script>
-
-<script type="text/underscore-template" id="selected-draggable-template">
-	<div class="class-draggable">
-		<input type="hidden" name="subjectCode" value="<%= subjectCode %>" />
-		<input type="hidden" name="classCode" value="<%= classId %>" />
-		<button type="button" class="close">×</button>
-		<%= subjectCode %> - <%= classCode %>
-	</div>
-</script>
-<script id="faltacursar-template" type="text/underscore-template"><table id="faltacursar-subject-table" class="table table-bordered table-condensed"><thead><th></th><th><%= subjectTableStr.get('subjectCodeLabel') %></th><th><%= subjectTableStr.get('subjectNameLabel') %></th><th><%= subjectTableStr.get('termLabel') %></th><th><%= subjectTableStr.get('creditsLabel') %></th><th><%= subjectTableStr.get('ementaHeaderLabel') %></th></thead><tbody></tbody></table><div id="faltacursar-classes-div" class="hidden"><div id="faltacursar-classes-table-div"></div><div id="close-classes-div"><hr/><button id="close-classes-button" class="btn btn-link btn-small"><%= faltacursarStr.get('closeClassesDivLabel') %></button></div></div></script><script id="faltacursar-row-template" type="text/underscore-template"><% var addClasses = (subject.able==0? 'subjectBlocked' : '')+
+<script id="selected-row-template" type="text/underscore-template"><tr class="row<%= index %>"><td class="radio"><input type="radio" name="item<%= index %>" value="1" checked="true"/></td><td class="class-droppable"><%= template[0]? template[0] : '' %></td><td class="radio"><input type="radio" name="item<%= index %>" value="2" checked="false"/></td><td class="class-droppable"><%= template[1]? template[1] : '' %></td><td class="radio"><input type="radio" name="item<%= index %>" value="3" checked="false"/></td><td class="class-droppable"><%= template[2]? template[2] : '' %></td><td class="radio"><input type="radio" name="item<%= index %>" value="none"/></td></tr></script><script id="selected-template" type="text/underscore-template"><div id="table-container"><table><thead><th colspan="2"><%= selectedStr.get('option1Label') %></th><th colspan="2"><%= selectedStr.get('option2Label') %></th><th colspan="2"><%= selectedStr.get('option3Label') %></th><th><%= selectedStr.get('noneLabel') %></th></thead><tbody class="selected-sortable"></tbody></table></div><div id="info-container"><hr/><div id="qtd-credits">0 <%= selectedStr.get('qtdCreditsLabel') %></div><div id="qtd-classes">0 <%= selectedStr.get('qtdClassesLabel') %></div></div></script><script id="selected-draggable-template" type="text/underscore-template"><div class="class-draggable"><input type="hidden" name="subjectCode" value="<%= subjectCode %>"/><input type="hidden" name="classCode" value="<%= classId %>"/><button type="button" class="close">x</button><span><%= subjectCode %> - <%= classCode %></span></div></script><script id="faltacursar-template" type="text/underscore-template"><table id="faltacursar-subject-table" class="table table-bordered table-condensed"><thead><th></th><th><%= subjectTableStr.get('subjectCodeLabel') %></th><th><%= subjectTableStr.get('subjectNameLabel') %></th><th><%= subjectTableStr.get('termLabel') %></th><th><%= subjectTableStr.get('creditsLabel') %></th><th><%= subjectTableStr.get('ementaHeaderLabel') %></th></thead><tbody></tbody></table><div id="faltacursar-classes-div" class="hidden"><div id="faltacursar-classes-table-div"></div><div id="close-classes-div"><hr/><button id="close-classes-button" class="btn btn-link btn-small"><%= faltacursarStr.get('closeClassesDivLabel') %></button></div></div></script><script id="faltacursar-row-template" type="text/underscore-template"><% var addClasses = (subject.able==0? 'subjectBlocked' : '')+
 (subject.able==1? 'subjectWarning' : '')+(subject.status=="EA"? 'subjectWarning' : '')+
 (subject.status=="CP"? 'subjectDisabled': '')+(subject.optativa? 'optativa ': '')+
 (subject.ingroup? 'ingroup ': ''); %><tr id="<%= subject.code %>" class="<%= addClasses %>"><td class="imgCell"><% if (subject.optativa) { %><img src="img/Setinha Mini copy.PNG" width="16" height="16"/><% } %> </td><td><%= subject.code %></td><td class="name"><%= subject.name %>

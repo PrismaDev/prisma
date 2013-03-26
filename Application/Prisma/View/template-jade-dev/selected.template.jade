@@ -2,9 +2,10 @@ script#selected-row-template(type="text/underscore-template")
 	tr(class!='row<%= index %>')
 		- for (var i=0; i<3; i++) {
 		td.radio
-			input(type="radio", name!="item<%= index %>", value="#{i+1}")
+			input(type="radio", name!="item<%= index %>", value="#{i+1}",
+			checked= (i==0? 'true' : 'false'))
 		td.class-droppable.
-			<%= template[#{i}]? template[#{i}]: '' %>
+			<%= template[#{i}]? template[#{i}] : '' %>
 		- }
 		td.radio
 			input(type="radio", name!="item<%= index %>", value="none")
@@ -29,4 +30,4 @@ script#selected-draggable-template(type="text/underscore-template")
 		input(type="hidden",name="subjectCode",value!="<%= subjectCode %>")
 		input(type="hidden",name="classCode",value!="<%= classId %>")
 		button.close(type="button") x
-		| <%= subjectCode %> - <%= classCode %>
+		span <%= subjectCode %> - <%= classCode %>

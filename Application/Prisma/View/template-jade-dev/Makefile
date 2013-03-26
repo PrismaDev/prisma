@@ -8,7 +8,7 @@ INCS = includes
 
 NORMCOMP = main.template faltacursar.template \
 	classeslist.template term.template \
-	microhorario.template
+	microhorario.template selected.template
 
 TARGETS = $(PROD)/prisma-login.min.template \
 	$(PROD)/prisma-term.min.template \
