@@ -61,24 +61,26 @@ DEP_MAIN = $(DEP_ALL) \
 	$(CTRL)/mainRouter.js
 
 ## Phony targets ##
-.PHONY: all clean debug setdbg
+.PHONY: all clean debug setdbg cleanswp
 
 ## Rules ##
-all: $(PAGES)
+all: $(PAGES) | cleanswp
 clean:
 	rm $(PAGES)
 debug: | setdbg all
 setdbg:
 	$(eval CFLAGS=$(DBG))
+cleanswp:
+	rm .swp.js
 
 $(PROD)/prisma-login.min.js: $(DEP_LOGIN)
-	cat > $@ $^
+	cat > .swp.js $^
 	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
 
 $(PROD)/prisma-term.min.js: $(DEP_TERM)
-	cat > $@ $^
+	cat > .swp.js $^
 	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
 
 $(PROD)/prisma-main.min.js: $(DEP_MAIN)
-	cat > $@ $^
+	cat > .swp.js $^
 	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@

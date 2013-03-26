@@ -230,7 +230,7 @@ var FaltacursarView = Backbone.View.extend({
 		for(idx in subjectArray) {
 			var newTr = this.templateRow({
 					subject: subjectArray[idx],
-					subjectTableStr: subjectTableStringsModel,
+					subjectTableStr: subjectTableStringsModel
 				});
 
 			if (prevRow==undefined)

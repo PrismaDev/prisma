@@ -29,7 +29,7 @@ var ServerDictionary = Backbone.Model.extend({
                         'DiaSemana'             : 'DiaSemana',
                         'HoraInicial'           : 'HoraInicial',
                         'HoraFinal'             : 'HoraFinal'
-	},
+	}
 });
 
 var serverDictionary = new ServerDictionary();

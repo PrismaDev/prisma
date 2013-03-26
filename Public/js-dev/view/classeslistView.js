@@ -240,6 +240,6 @@ var FaltacursarClasseslistView = ClasseslistView.extend({
 
 		if (calcH<$(this.classesTableBody).height())
 			$(this.classesTableBody).height(calcH);
-	},
+	}
 });
 var faltacursarClasseslistView = new FaltacursarClasseslistView({sDom: 'ft'});
