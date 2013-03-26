@@ -248,10 +248,10 @@ div.checkboxes-div .checkbox.inline + .checkbox.inline {
 #main-selected-div table thead th.radio input {
   margin: auto;
 }
-#main-selected-div table tr td.classDroppable,
-#main-selected-div table thead td.classDroppable,
-#main-selected-div table tr th.classDroppable,
-#main-selected-div table thead th.classDroppable {
+#main-selected-div table tr td.class-droppable,
+#main-selected-div table thead td.class-droppable,
+#main-selected-div table tr th.class-droppable,
+#main-selected-div table thead th.class-droppable {
   width: 31%;
   -moz-box-shadow: inset 2px 2px 4px #333333;
   -webkit-box-shadow: inset 2px 2px 4px #333333;

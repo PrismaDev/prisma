@@ -4,25 +4,25 @@
 			<input type="radio" name="item<%= index %>" value="1"
 				checked="checked"/>
 		</td>
-		<td class="classDroppable">
+		<td class="class-droppable">
 			<%= template[0]? template[0] : '' %>
 		</td>
 		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="2"/>
 		</td>
-		<td class="classDroppable">
+		<td class="class-droppable">
 			<%= template[1]? template[1] : '' %>
 		</td>
 		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="3"/>
 		</td>
-		<td class="classDroppable">
+		<td class="class-droppable">
 			<%= template[2]? template[2] : '' %>
 		</td>
 		<td class="radio">
 			<input type="radio" name="item<%= index %>" value="none"/>
 		</td>
-	</li>
+	</tr>
 </script>
 
 <script type="text/underscore-template" id="selected-template">
@@ -34,19 +34,19 @@
 				<th colspan="2"><%= selectedStr.get('option3Label') %></th>
 				<th><%= selectedStr.get('noneLabel') %></th>
 			</thead>
-			<tbody class="selectedSortable">
+			<tbody class="selected-sortable">
 			</tbody>
 		</table>
 	</div>
 	<div id="info-container">
 		<hr>
-		<div id="qtdCredits">0 <%= selectedStr.get('qtdCreditsLabel')%></div>
-		<div id="qtdClasses">0 <%= selectedStr.get('qtdClassesLabel')%></div>
+		<div id="qtd-credits">0 <%= selectedStr.get('qtdCreditsLabel')%></div>
+		<div id="qtd-classes">0 <%= selectedStr.get('qtdClassesLabel')%></div>
 	</div>
 </script>
 
 <script type="text/underscore-template" id="selected-draggable-template">
-	<div class="classDraggable">
+	<div class="class-draggable">
 		<input type="hidden" name="subjectCode" value="<%= subjectCode %>" />
 		<input type="hidden" name="classCode" value="<%= classId %>" />
 		<button type="button" class="close">×</button>
