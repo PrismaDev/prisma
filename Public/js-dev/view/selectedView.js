@@ -23,8 +23,8 @@ var SelectedView = Backbone.View.extend({
 	changeInfo: function(nCredits, nClasses) {
 		var infoC = $('#info-container');
 
-		infoC.find('#qtdCredits').html(nCredits+' '+selectedStringsModel.get('qtdCreditsLabel'));
-		infoC.find('#qtdClasses').html(nClasses+' '+selectedStringsModel.get('qtdClassesLabel'));
+		infoC.find('#qtd-credits').html(nCredits+' '+selectedStringsModel.get('qtdCreditsLabel'));
+		infoC.find('#qtd-classes').html(nClasses+' '+selectedStringsModel.get('qtdClassesLabel'));
 	},
 
 	events: {
@@ -50,7 +50,7 @@ var SelectedView = Backbone.View.extend({
 		var w = $tr.width();
 		var occupy=0;
 
-		var $tds = $tr.find('td.classDroppable').each(function(index) {
+		var $tds = $tr.find('td.class-droppable').each(function(index) {
 			occupy+=$(this).width();
 		});
 
@@ -109,7 +109,7 @@ var SelectedView = Backbone.View.extend({
 	sortableInit: function() {
 		var me=this;
 
-		this.$el.find('tbody.selectedSortable').sortable({
+		this.$el.find('tbody.selected-sortable').sortable({
 			//Based on http://stackoverflow.com/questions/1307705/jquery-ui-sortable-with-table-and-tr-width/1372954#1372954
 	
 			helper: function(e, tr) {
@@ -148,20 +148,20 @@ var SelectedView = Backbone.View.extend({
 	},
 
 	draggableInit: function() {
-		this.$el.find('div.classDraggable').draggable({
+		this.$el.find('div.class-draggable').draggable({
 			revert: 'invalid',
 			zIndex: 1000
 		});
 	},
 
 	droppableInit: function() {
-		var $drop = this.$el.find('td.classDroppable').droppable({
+		var $drop = this.$el.find('td.class-droppable').droppable({
 			drop: function(event, ui) {
 				selectedController.swapPlaces($(this), $(ui.draggable).parent());
 				
-				if ($(this).has('div.classDraggable')) {
+				if ($(this).has('div.class-draggable')) {
 					$(ui.draggable).parent().append(
-						$(this).find('div.classDraggable')
+						$(this).find('div.class-draggable')
 					);
 				}			
 
@@ -175,7 +175,7 @@ var SelectedView = Backbone.View.extend({
 
 				selectedController.runSimulation();
 			},
-			accept: '.classDraggable'
+			accept: '.class-draggable'
 		});
 	},	
 
