@@ -1,10 +1,6 @@
 /* 
 	LESS file for login page
 */
-.rightFloated {
-  float: right;
-  margin-right: 1%;
-}
 .hidden {
   display: none;
 }
