@@ -39,9 +39,8 @@ DEP_MAIN = $(DEP_ALL) \
 .PHONY: all clean debug setdbg
 
 all: $(TARGETS)
-	rm *.template
 clean: 
-	rm $(TARGETS)
+	rm $(TARGETS) *.template
 debug: | setdbg all
 setdbg:
 	$(eval CFLAGS=$(DBG))

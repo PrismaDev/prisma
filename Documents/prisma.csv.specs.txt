@@ -1,0 +1,53 @@
+
+1/ Aluno
+
+"MatriculaAluno";"NomeAluno";"CR";"CodigoCurso"
+
+- MatriculaAluno: matricula do aluno na PUC. Usamos como PK no nosso sistema.
+- NomeAluno: para efeito de cadastro do mesmo no nosso sistema.
+- CR: coeficiente de rendimento do aluno. Necessário para verificar pré-requisitos, entre outros.
+- CodigoCurso: referencia ao curso do aluno, conforme especificado no CSV curso.
+
+Obs: seria ideal termos esses dados antes da etapa de login.
+
+
+2/ faltacursar, cursando e cursado (inlui eletivas cursadas)
+
+"MatriculaAluno"; "CodigoDisciplina";"Periodo";"Tipo";"Situacao";"Tentativas"
+
+- MatriculaAluno: matricula do aluno na PUC. Usamos como PK no nosso sistema.
+- CodigoDisciplina: codigo da disciplina a que se refere a tupla. Formato: AAA0000
+- Periodo: caso falta cursar, periodo sugerido do aluno. Caso cursando/cursado, ano/periodo que o aluno cursou disciplina pela ultima vez.
+- Tipo: tipo de disciplina, conforme apresentado no historico e no faltacursar do aluno.
+- Situacao: recebe valores definidos abaixo. 
+-> 'CP', caso aprovado/cumpriu; 
+-> 'EA', caso aluno esteja cursando a disciplina ainda, sem resultado final; 
+-> 'NC', caso seja disciplina que o aluno não foi aprovado; 
+-> 'FC', caso seja falta-cursar
+- Tentativas: quantidade de vezes que o aluno tentou cursar tal disciplina. Caso falta-cursar, tentativas recebe zero. Caso cursando, tentativas recebe o valor 1. Caso contrario, tentativas recebe a quantidade de vezes que o aluno cursou tal disciplina. Obs: coluna pode ser descartada, caso necessário.
+
+
+3/ Grupo de optativas
+
+"CodigoOptativa"; "NomeOptativa"; "CodigoDisciplina"
+
+- CodigoOptativa: informa codigo da optativa no formato AAA0000
+- NomeOptativa: nome dado a optativa
+- CodigoDisciplina: codigo da disciplina que faz parte do grupo de optativas. No formato AAA0000.
+
+
+4/ Pre-requisitos
+
+"CodigoDisciplina";"CreditosMinimo";"PreReq1";"PreReq2";"PreReq3";"PreReq4"
+
+- CodigoDisciplina: codigo da disciplina que tem o pre-requisito
+- CreditosMinimo: quantidade de creditos minimo para tal linha de pre-requisito. Caso não tenha, recebe o valor zero.
+- PreReqX: pre-requisitos em si. É possível o caso de inexistencia de alguns ou mesmo todos.
+
+
+5/ Curso
+
+"CodigoCurso";"NomeCurso"
+
+- CodigoCurso: identificador unico do curso. Ex: CIF
+- NomeCurso: nome do curso. Ex: INFORMATICA
