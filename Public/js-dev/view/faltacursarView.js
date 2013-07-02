@@ -223,7 +223,7 @@ var FaltacursarView = Backbone.View.extend({
 		});
 		
 		$('#faltacursar-subject-table_wrapper').addClass('whole');	
-		this.initHelpers();
+//		this.initHelpers();
 	},		
 
 	addRowsToTable: function(subjectArray, prevRow) {

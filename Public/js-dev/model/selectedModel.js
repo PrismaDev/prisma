@@ -168,8 +168,6 @@ var SelectedModel = Backbone.Model.extend({
 		});
 
 		this.changeViews(subjectCode, classId, true);
-		return true;
-
 	},
 
 	addClass: function(subjectCode, classId) {

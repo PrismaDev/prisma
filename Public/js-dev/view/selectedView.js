@@ -8,7 +8,7 @@ var SelectedView = Backbone.View.extend({
 		this.template = _.template($('#selected-template').html());
 		this.templateDraggable = _.template($('#selected-draggable-template').html());
 	
-		this.initHelpers();
+//		this.initHelpers();
 	},	
 
 	initHelpers: function() {
@@ -188,7 +188,7 @@ var SelectedView = Backbone.View.extend({
 		this.sortableInit();
 		this.draggableInit();
 		this.droppableInit();
-		this.bindHelpers();
+//		this.bindHelpers();
 	}
 });
 
