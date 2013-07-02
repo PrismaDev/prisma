@@ -6,6 +6,9 @@ class Common
 {
 	public static function getPeriodoAno()
 	{
+		/* TODO */
+		return '20132';
+
 		$ano = date('Y');
 		$mes = date('n');
 
@@ -13,7 +16,7 @@ class Common
 		{
 			return ($ano+1).'1';
 		}
-		else if ($mes < 5)
+		else if ($mes < 7)
 		{
 			return $ano.'1';
 		}
