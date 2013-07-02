@@ -48,10 +48,8 @@ function SelectedController() {
 
 	this.runSimulation = function(rowIdx) {
 		var accepted= new Array();
-		console.log("oh hai!");
 
 		if(rowIdx == undefined || rowIdx < 0) rowIdx = 0;
-		console.log(rowIdx);
 
 		var rows = $('#main-selected-div tbody tr');
 		var rowCount = 0;
