@@ -240,7 +240,7 @@ var FaltacursarView = Backbone.View.extend({
 		}
 
 		this.subjectDatatable.fnAdjustColumnSizing(true);
-		this.bindHelpers();
+		//this.bindHelpers();
 	},
 
 	render: function() {

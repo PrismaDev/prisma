@@ -8,7 +8,7 @@ LIB = lib
 ## Compiler definition ##
 CC = java -jar /usr/bin/closure-compiler.jar
 REL =  --compilation_level SIMPLE_OPTIMIZATIONS
-DBG = 
+DBG = 0
 CFLAGS = $(REL)
 
 ## Target definition ##
@@ -69,19 +69,31 @@ clean:
 	rm $(PAGES)
 debug: | setdbg all
 setdbg:
-	$(eval CFLAGS=$(DBG))
+	$(eval DBG=1)
 
 $(PROD)/prisma-login.min.js: $(DEP_LOGIN)
 	cat > .swp.js $^
+ifeq ($(DBG),'0')
 	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
+else
+	cp .swp.js $@
+endif
 	rm .swp.js
 
 $(PROD)/prisma-term.min.js: $(DEP_TERM)
 	cat > .swp.js $^
+ifeq ($(DBG),'0')
 	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
+else
+	cp .swp.js $@
+endif
 	rm .swp.js
 
 $(PROD)/prisma-main.min.js: $(DEP_MAIN)
 	cat > .swp.js $^
+ifeq ($(DBG),'0')
 	$(CC) --js .swp.js $(CFLAGS) --js_output_file $@
+else
+	cp .swp.js $@
+endif
 	rm .swp.js
