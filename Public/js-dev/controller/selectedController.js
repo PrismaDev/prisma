@@ -142,7 +142,7 @@ function SelectedController() {
 		var i=0;
 
 		_.each(rows, function(row) {
-			var tds = $(row).find('.classDroppable');	
+			var tds = $(row).find('.class-droppable');	
 			var j=0;	
 
 			_.each(tds, function(td) {
@@ -158,13 +158,14 @@ function SelectedController() {
 
 	this.swapPlaces = function(tdA, tdB) {
 		var ai, bi, aj, bj;
+		
 
 		var rows = $('#main-selected-div tbody tr');
 		ai = $(rows).index($(tdA).parent());			
 		bi = $(rows).index($(tdB).parent());			
 
-		aj = $($(tdA).parent().children('.classDroppable')).index(tdA);
-		bj = $($(tdB).parent().children('.classDroppable')).index(tdB);
+		aj = $($(tdA).parent().children('.class-droppable')).index(tdA);
+		bj = $($(tdB).parent().children('.class-droppable')).index(tdB);
 
 		selectedModel.swapContent(ai,aj,bi,bj);
 	}	

@@ -91,9 +91,14 @@ var SelectedModel = Backbone.Model.extend({
 		this.options[ai][aj]=this.options[bi][bj];
 		this.options[bi][bj]=tmp;
 
+		console.log(ai+', '+aj+','+bi+', '+bj);
+		console.log(this.options);
+
 		var arr=new Array;
 		if (this.options[ai][aj]!=null) arr.push(this.formatForPost(ai,aj));
 		if (this.options[bi][bj]!=null) arr.push(this.formatForPost(bi,bj));
+
+		console.log(arr);
 
 		$.ajax({
 			type: 'POST',
