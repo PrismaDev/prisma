@@ -36,7 +36,7 @@ var HelpersList = Backbone.Collection.extend({
 });
 
 var helpersList = new HelpersList();
-
+/*
 //Subject Table Helpers
 helpersList.add({id: 'ableSubjectRow', text: mainHelpersStringsModel.get('ableSubjectRowText')}); 
 helpersList.add({id: 'blockedSubjectRow', text: mainHelpersStringsModel.get('blockedSubjectRowText')}); 
@@ -60,3 +60,4 @@ helpersList.add({id: 'classCell', text: mainHelpersStringsModel.get('classCellTe
 //Selected helpers
 helpersList.add({id: 'selectedRow', text: mainHelpersStringsModel.get('selectedRowText')});
 helpersList.add({id: 'selectedClass', text: mainHelpersStringsModel.get('selectedClassText')});
+*/

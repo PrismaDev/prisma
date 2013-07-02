@@ -103,7 +103,7 @@ var ClasseslistView = Backbone.View.extend({
 				me.calculateTableScroll();
 			}
 		});
-		this.initHelpers();
+//		this.initHelpers();
 	},
 
 	bindHelpers: function() {
@@ -125,7 +125,7 @@ var ClasseslistView = Backbone.View.extend({
 		}
 		
 		this.classesDatatable.fnAdjustColumnSizing(true);
-		this.bindHelpers();
+		//this.bindHelpers();
 	},
 
 	render: function(classesArray) {

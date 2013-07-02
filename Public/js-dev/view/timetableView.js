@@ -7,7 +7,7 @@ var TimetableView = Backbone.View.extend({
 
 	initialize: function() {
 		this.template = _.template($('#timetable-template').html());
-		this.initHelpers();
+//		this.initHelpers();
 	},
 
 	bindCell: function(el) {
@@ -167,7 +167,7 @@ var TimetableView = Backbone.View.extend({
 		this.$el.find('tbody').html(this.buildTableBody(classesArray));
 		this.bindCallbacks();
 
-		this.bindHelpers();
+//		this.bindHelpers();
 		mainView.equalMainDivsHeight();
 	}
 });

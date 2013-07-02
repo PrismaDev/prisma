@@ -56,7 +56,7 @@ function SelectedController() {
 		var creditos = 0;
 
 		_.each(rows, function(row){
-			if(rowCount > rowIdx)
+			if(rowCount >= rowIdx)
 			{
 				$(row).find('input[type="radio"]').first().attr('checked', true);
 			}
