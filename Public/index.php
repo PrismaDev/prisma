@@ -4,7 +4,7 @@ chdir(dirname(__DIR__).'/Application');
 require_once 'autoload.php';
 
 session_start();
-set_time_limit ( 300 );
+set_time_limit (1);
 
 error_reporting(E_ALL);
 //error_reporting(0);
