@@ -1,7 +1,7 @@
 var DialogView = Backbone.View.extend({
 	el: '',
 	template: '',	
-	args: '',
+	args: {},
 	templateId: '',
 	
 	initialize: function() {

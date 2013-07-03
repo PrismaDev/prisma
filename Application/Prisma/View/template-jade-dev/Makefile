@@ -18,7 +18,7 @@ TARGETS = $(PROD)/prisma-login.min.template \
 DEP_ALL = layout.template \
 	dialog.template
 
-DEP_ISLOGGED = suggestions.template
+DEP_ISLOGGED = loggedInDialogs.template
 
 DEP_LOGIN = $(DEP_ALL) \
 	login.template \
@@ -48,7 +48,7 @@ setdbg:
 $(NORMCOMP): %.template: %.template.jade
 	$(CC) $(CFLAGS) < $< --path $< > $@
 
-suggestions.template: suggestions.template.jade | $(INCS)/dialog-mixins.jade
+loggedInDialogs.template: loggedInDialogs.template.jade | $(INCS)/dialog-mixins.jade
 	$(CC) $(CFLAGS) < $^ --path $^ > $@
 
 layout.template: layout.template.jade | $(INCS)/login-mixins.jade $(INCS)/topdropdown.jade

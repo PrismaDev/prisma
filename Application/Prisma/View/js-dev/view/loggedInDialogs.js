@@ -40,3 +40,10 @@ var SuggestionsView = DialogView.extend({
 });
 
 var suggestionsView = new SuggestionsView();
+
+var UpdatesView = Backbone.View.extend({
+	templateId: '#updates-template',
+	args: {}
+});
+
+var updatesView = new UpdatesView();
