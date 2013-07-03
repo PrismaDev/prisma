@@ -29,6 +29,17 @@ var HelperView = Backbone.Model.extend({
 			},
 			'style': {
 				'classes': 'qtip-bootstrap qtip-blue'
+			},
+			'show': {
+				'solo': true
+			},
+			'hide': {
+				'delay': '800'
+			},
+			'events': {
+				'show': function(e,api) {
+					e.stopPropagation();
+				} 
 			}
 		});
 	}
