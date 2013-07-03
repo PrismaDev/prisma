@@ -41,11 +41,15 @@ var SuggestionsView = DialogView.extend({
 
 var suggestionsView = new SuggestionsView();
 
-var UpdatesView = Backbone.View.extend({
+var UpdatesView = DialogView.extend({
 	templateId: '#updates-template',
 	args: {
 		updatesStr: updatesStringsModel
-	}
+	},
+
+	initTwitter: function() {
+		twttr.widgets.load();
+	}	
 });
 
 var updatesView = new UpdatesView();

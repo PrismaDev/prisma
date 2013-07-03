@@ -10,7 +10,7 @@ var suggestionsStringsModel = new SuggestionsStringsModel();
 
 var UpdatesStringsModel = Backbone.Model.extend({
 	defaults: {
-		'dialogTitle': 'Últimas notícias do Prisma'
+		'dialogTitle': 'Últimos updates do PrISMA'
 	}
 });
 

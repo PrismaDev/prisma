@@ -10,6 +10,14 @@ script#suggestions-template(type="text/underscore-template")
 			input.btn.btn-primary.disabled(type="reset",value!="<%=suggestionsStr.get('submitButtonLabel') %>")
 
 script#updates-template(type="text/underscore-template")
-	mixin modal-header('<%= updatesStr.get("dialogTitle") %>')
-	a.twitter-timeline(href="https://twitter.com/prisma_dev", data-widget-id="352222657472770052")
-		Tweets by @prisma_dev
+	div.modal-header
+		button.close(type="button", data-dismiss="modal",aria-hidden="true")
+			&times;
+		h3#updates-title <%= updatesStr.get('dialogTitle') %>
+		a.twitter-follow-button(href="https://twitter.com/prisma_dev",data-show-count="false",data-lang="en",
+			data-show-screen-name="false") Follow @prisma_dev
+	div.modal-body
+		//- 350px because max-height for dialog in bootstrap is 400px
+		a.twitter-timeline(href="https://twitter.com/prisma_dev", data-widget-id="352222657472770052", height="350",
+			data-chrome="noheader")
+			Tweets by @prisma_dev

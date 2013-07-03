@@ -30,7 +30,7 @@ LayoutView = Backbone.View.extend({
 
 	openUpdatesDialog: function() {
 		updatesView.render();
-		console.log('hi');
+		updatesView.initTwitter();
 		$(this.dialogDiv).modal('show');
 	},
 
