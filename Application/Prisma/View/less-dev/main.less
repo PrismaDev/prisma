@@ -1,0 +1,51 @@
+@import "variables.less";
+@import "basics.less";
+@import "tables.less";
+
+@import "layout.less";
+@import "faltacursar.less";
+@import "microhorario.less";
+@import "selected.less";
+@import "timetable.less";
+
+//Variables
+@defaultSidebarWidth: 49%;
+@tabsPaddingSides: 1%;
+@tabsPaddingTop: 0;
+
+
+#main-sidebar-div {
+	width: @defaultSidebarWidth;
+	border-bottom: solid 1px @borderGrey;	
+
+	float: left;
+}
+
+#main-timetable-div {
+	width: 99%-@defaultSidebarWidth;
+	float: left;
+}
+
+#main-faltacursar-div, 
+	#main-microhorario-div,
+	#main-selected-div {
+
+	width: 99%-2*@tabsPaddingSides;
+	height: 100%-@tabsPaddingTop;
+	
+	border-left: solid 1px @borderGrey;
+
+	overflow: auto;
+	padding-right: @tabsPaddingSides;
+	padding-left: @tabsPaddingSides;
+	padding-top: @tabsPaddingTop;
+}
+
+#main-tabs-nav {
+	margin: 0;
+	background-color: @almostWhite;
+}
+
+hr {
+	margin: 0;
+}
