@@ -14,37 +14,40 @@ script#login-template(type="text/underscore-template")
 		div#logo-div.span4.offset4
 			h1 <%= layoutStr.get('projectNameStr') %>
 
-	div.row-fluid
-		div#login-container.span6
+	div#login-container.row-fluid
+		div.span6
 			div.row-fluid
-				div#info-text-container.span7.offset2.content <%= loginStr.get('infoText') %>
+				div#info-text-container.span10.offset1.content <%= loginStr.get('infoText') %>
 				- var addClasses='span2 offset2'
 
 			| <% if (error=='invalidLogin') { %>
 			div#login-form-container.row-fluid
-				div.span7.offset2.content
+				div.span8.offset2.content
 					mixin login-form(true, true, addClasses)
 			| <% } else { %>
 			div#login-form-container.hidden.row-fluid
-				div.span7.offset2.content
+				div.span8.offset2.content
 					mixin login-form(true, true, addClasses)
 			| <% } %>
 
 			| <% if (error=='invalidLogin') { %>
 			div#open-login-button-container.hidden.row-fluid
-				div.span7.offset2
+				div.span10.offset1
 					button#open-login-button.btn.btn-success.btn-block(type="button").
 						<%= loginStr.get('openLoginButtonLabel') %>
 			| <% } else { %>
 			div#open-login-button-container.row-fluid
-				div.span7.offset2
+				div.span10.offset1
 					button#open-login-button.btn.btn-success.btn-block(type="button").
 						<%= loginStr.get('openLoginButtonLabel') %>
 			| <% } %>
 
 			div.row-fluid
-				div.span7.offset2
+				div.span10.offset1
 					button#open-tutorial-button.btn.btn-primary.btn-block(type="button").
 						<%= loginStr.get('tutorialButtonLabel') %>
 		div.span6
-			h1 I'll soon be a twitter timeline!
+			div#updates-container.offset1.span10.content
+				a.twitter-timeline(href="https://twitter.com/prisma_dev", data-widget-id="352222657472770052",
+					data-chrome="transparent")
+					Tweets by @prisma_dev

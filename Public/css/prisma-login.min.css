@@ -21,7 +21,8 @@ html,body{height:100%;background-color:#f5f5f5;}
 body{background-image:url('../img/Prisma copy.JPG');background-position:center;background-repeat:no-repeat;background-size:100%;}
 #logo-div{margin-top:2%;margin-bottom:2%;text-align:center;}#logo-div h1{font-family:Helvetica,sans-serif;font-weight:lighter;font-size:500%;letter-spacing:-3px;}
 #open-login-button-container{margin-bottom:1%;}
-#login-container .content{background-color:#f5f5f5;border:solid #eeeeee 1px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;padding-left:1%;margin-top:1%;margin-bottom:1%;}#login-container .content#info-text-container{margin-bottom:10%;}
+#login-container .content{background-color:#f5f5f5;opacity:0.8 !important;border:solid #eeeeee 1px;-webkit-border-radius:6px;-moz-border-radius:6px;border-radius:6px;padding-left:1%;margin-top:1%;margin-bottom:1%;}#login-container .content#info-text-container{margin-bottom:10%;}
+#login-container #updates-container{text-align:center;}
 #login-form input[type="submit"]{margin-right:5%;}
 #login-form span.help-block{margin-bottom:0;}
 #login-form div.alert{margin-right:3%;}
