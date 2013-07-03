@@ -3,6 +3,8 @@ html(xmlns="http://www.w3.org/1999/xhtml",xmlns:fb="http://ogp.me/ns/fb#")
 	head
 		link(href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css",
 			rel="stylesheet",type="text/css")
+		link(href="//cdn.jsdelivr.net/qtip2/2.0.1/jquery.qtip.min.css",
+			rel="stylesheet",type="text/css")
 		| <?php
 		|	$lessfile = "/css/prisma-".$data["section"].".min.css";
 		|	echo '<link href="'.$lessfile.'" rel="stylesheet" type="text/css" />';
@@ -45,6 +47,7 @@ html(xmlns="http://www.w3.org/1999/xhtml",xmlns:fb="http://ogp.me/ns/fb#")
 
 		script(src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js")
 		script(src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.3.1/less.min.js")
+		script(src="//cdn.jsdelivr.net/qtip2/2.0.1/jquery.qtip.min.js")
 		script(src="//platform.twitter.com/widgets.js")
 
 		| <?php 

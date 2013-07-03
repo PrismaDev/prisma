@@ -15,24 +15,21 @@ var HelperView = Backbone.Model.extend({
 		var tooltipModel = helpersList.get(tooltipId);
 		var me=this;		
 
-		if (this.curr) {
-			$(this.curr).tooltip('destroy');
-			this.curr=tooltipModel.get('selector');
-		}
-
 		if (!tooltipModel.get('active'))
 			return;
 
-		$(tooltipModel.get('selector')).tooltip({
-			'html': true,
-			'title': this.formatTooltip(tooltipId),
-			'delay': {show: '800', hide: '800'},
-			'placement': 'bottom',
-			'container': 'body'
-		});
-
-		$('#'+tooltipId+'tooltip').live('click', function() {
-			helpersList.get(tooltipId).deactivate();
+		$(tooltipModel.get('selector')).qtip({
+			'content': {
+				'text': this.formatTooltip(tooltipId)
+			},
+			'position': {
+				'my': 'top center',
+				'at': 'bottom center',
+				'viewport': $(window)
+			},
+			'style': {
+				'classes': 'qtip-bootstrap qtip-blue'
+			}
 		});
 	}
 });

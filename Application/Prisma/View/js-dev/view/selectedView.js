@@ -8,7 +8,7 @@ var SelectedView = Backbone.View.extend({
 		this.template = _.template($('#selected-template').html());
 		this.templateDraggable = _.template($('#selected-draggable-template').html());
 	
-//		this.initHelpers();
+		this.initHelpers();
 	},	
 
 	initHelpers: function() {
@@ -16,7 +16,7 @@ var SelectedView = Backbone.View.extend({
 		helpersList.get('selectedClass').set('selector', '#main-selected-div td:has(div):not(.radio)');
 	
 		$(helpersList.get('selectedClass').get('selector')).live('mouseover',function(e) {
-			e.stopImmediatePropagation();
+			e.stopPropagation();
 		});
 	},
 
@@ -188,7 +188,7 @@ var SelectedView = Backbone.View.extend({
 		this.sortableInit();
 		this.draggableInit();
 		this.droppableInit();
-//		this.bindHelpers();
+		this.bindHelpers();
 	}
 });
 
