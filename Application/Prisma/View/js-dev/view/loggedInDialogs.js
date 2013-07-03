@@ -43,7 +43,9 @@ var suggestionsView = new SuggestionsView();
 
 var UpdatesView = Backbone.View.extend({
 	templateId: '#updates-template',
-	args: {}
+	args: {
+		updatesStr: updatesStringsModel
+	}
 });
 
 var updatesView = new UpdatesView();
