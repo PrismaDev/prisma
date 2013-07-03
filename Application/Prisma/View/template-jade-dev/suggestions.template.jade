@@ -8,3 +8,7 @@ script#suggestions-template(type="text/underscore-template")
 		div.modal-footer
 			input.btn.btn-danger(type="reset",value!="<%=suggestionsStr.get('resetButtonLabel') %>")
 			input.btn.btn-primary.disabled(type="reset",value!="<%=suggestionsStr.get('submitButtonLabel') %>")
+
+script#suggestions-template(type="text/underscore-template")
+	mixin modal-header('<%= suggestionsStr.get("dialogTitle") %>')
+	
