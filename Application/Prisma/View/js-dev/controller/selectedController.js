@@ -49,14 +49,14 @@ function SelectedController() {
 	this.runSimulation = function(rowIdx) {
 		var accepted= new Array();
 
-		if(rowIdx == undefined || rowIdx < 0) rowIdx = 0;
+		if(rowIdx == undefined || rowIdx < 0) rowIdx = -1;
 
 		var rows = $('#main-selected-div tbody tr');
 		var rowCount = 0;
 		var creditos = 0;
 
 		_.each(rows, function(row){
-			if(rowCount >= rowIdx)
+			if(rowCount > rowIdx)
 			{
 				$(row).find('input[type="radio"]').first().attr('checked', true);
 			}
