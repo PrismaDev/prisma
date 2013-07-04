@@ -48,6 +48,6 @@ script#login-template(type="text/underscore-template")
 						<%= loginStr.get('tutorialButtonLabel') %>
 		div.span6
 			div#updates-container.offset1.span10.content
-				a.twitter-timeline(href="https://twitter.com/prisma_dev", data-widget-id="352222657472770052",
-					data-chrome="transparent")
-					Tweets by @prisma_dev
+				a.twitter-timeline(href!="https://twitter.com/<%= layoutStr.get('twitterUrl') %>", data-widget-id!="<%= layoutStr.get('twitterId') %>",
+					data-chrome="transparent").
+					Tweets by @<%= layoutStr.get('twitter') %>

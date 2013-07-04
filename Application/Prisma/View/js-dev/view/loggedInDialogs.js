@@ -43,7 +43,8 @@ var suggestionsView = new SuggestionsView();
 var UpdatesView = DialogView.extend({
 	templateId: '#updates-template',
 	args: {
-		updatesStr: updatesStringsModel
+		updatesStr: updatesStringsModel,
+		layoutStr: layoutStringsModel
 	},
 
 	initTwitter: function() {

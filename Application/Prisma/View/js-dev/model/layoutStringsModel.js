@@ -14,7 +14,9 @@ var LayoutStringsModel = Backbone.Model.extend({
 			Julio Ribeiro, Luiza Silva, Gabriel Martinelli,\
 			André Marçal, Denis Neves, Glauber Borges e\
 			Maurício Fragale com o professor Sérgio Lifschitz. \
-			Contato: prisma@inf.puc-rio.br'
+			Contato: prisma@inf.puc-rio.br',
+		'twitter': 'PrISMAPUCRio',
+		'twitterId': '352202307385036800'
 	}
 });
 
