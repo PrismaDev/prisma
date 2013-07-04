@@ -39,6 +39,6 @@ script#classeslist-row-template(type="text/underscore-template")
 		<% if (subjectInfo) { %>
 		td <%= classO.credits %>
 		td
-			button.btn.btn-link.btn-small.ementa-button(type="button",
-				data-subject!="<%= classO.subjectCode %>")
+			a.btn.btn-link.btn-small.ementa-button(href!="<%= classesTableStr.get('ementaBaseLink')+classO.subjectCode %>", target="_blank").
+				<%= classesTableStr.get('ementaLinkLabel') %>
 		<% } %>

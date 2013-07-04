@@ -13,7 +13,6 @@ var SuggestionsView = DialogView.extend({
 
 	toggleButton: function(e) {
 		var el = e.target;
-		console.log(el);
 
 		if(el.value.trim() == '')
 			$('#suggestions-form input[type="submit"]').addClass('disabled');
@@ -31,7 +30,7 @@ var SuggestionsView = DialogView.extend({
 			data: $('#suggestions-form').serialize(),
 
 			success: function() {
-				$('#dialogDiv').modal('hide');
+				$('#dialog-div').modal('hide');
 			}
 		});
 
