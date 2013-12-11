@@ -1,4 +1,3 @@
-
 1/ Aluno (não incluir calouros)
 
 "MatriculaAluno";"NomeAluno";"CR";"CodigoCurso"
@@ -37,7 +36,7 @@ unicamente uma disciplinas
 - QuantidadeDeCreditos: quantidade de creditos 
 
 
-3/ Grupo de optativas
+4/ Grupo de optativas
 
 "CodigoOptativa"; "NomeOptativa"; "CodigoDisciplina"
 
@@ -46,7 +45,7 @@ unicamente uma disciplinas
 - CodigoDisciplina: codigo da disciplina que faz parte do grupo de optativas. No formato AAA0000.
 
 
-4/ Pre-requisitos
+5/ Pre-requisitos
 
 "CodigoDisciplina";"CreditosMinimo";"PreReq1";"PreReq2";"PreReq3";"PreReq4"
 
@@ -55,7 +54,7 @@ unicamente uma disciplinas
 - PreReqX: pre-requisitos em si. É possível o caso de inexistencia de alguns ou mesmo todos.
 
 
-5/ Curso
+6/ Curso
 
 "CodigoCurso";"NomeCurso"
 
