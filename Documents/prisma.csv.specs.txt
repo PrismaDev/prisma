@@ -1,5 +1,5 @@
 
-1/ Aluno
+1/ Aluno (não incluir calouros)
 
 "MatriculaAluno";"NomeAluno";"CR";"CodigoCurso"
 
@@ -11,7 +11,7 @@
 Obs: seria ideal termos esses dados antes da etapa de login.
 
 
-2/ faltacursar, cursando e cursado (inlui eletivas cursadas)
+2/ faltacursar, cursando e cursado (inluir eletivas cursadas)
 
 "MatriculaAluno"; "CodigoDisciplina";"Periodo";"Tipo";"Situacao";"Tentativas"
 
@@ -25,6 +25,16 @@ Obs: seria ideal termos esses dados antes da etapa de login.
 -> 'NC', caso seja disciplina que o aluno não foi aprovado; 
 -> 'FC', caso seja falta-cursar
 - Tentativas: quantidade de vezes que o aluno tentou cursar tal disciplina. Caso falta-cursar, tentativas recebe zero. Caso cursando, tentativas recebe o valor 1. Caso contrario, tentativas recebe a quantidade de vezes que o aluno cursou tal disciplina. Obs: coluna pode ser descartada, caso necessário.
+
+
+3/ Disciplinas (incluir aquelas não oferecidas no próximo período)
+
+"CodigoDisciplina"; "NomeDisciplina"; "QuantidadeDeCreditos"
+
+- CodigoDisciplina: codigo de 3 letras e 4 digitos usados para identificar
+unicamente uma disciplinas
+- NomeDisciplina: nome dado a disciplina
+- QuantidadeDeCreditos: quantidade de creditos 
 
 
 3/ Grupo de optativas
