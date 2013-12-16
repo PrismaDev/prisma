@@ -32,20 +32,20 @@ class RestController {
 		return $this->handleRawRequest($_SERVER, $_GET, $_POST); 
 	}
 
-	public function handleRawRequest($_SERVER, $_GET, $_POST) 
+	public function handleRawRequest($server, $get, $post) 
 	{
-		$url = $this->getFullUrl($_SERVER);
+		$url = $this->getFullUrl($server);
 
-		$method = $_SERVER['REQUEST_METHOD'];
+		$method = $server['REQUEST_METHOD'];
 		switch ($method) 
 		{
 			case 'GET':
 			case 'HEAD':
-				$arguments = $_GET;
+				$arguments = $get;
 				break;
 
 			case 'POST':
-				$arguments = $_POST;
+				$arguments = $post;
 				break;
 
 			case 'PUT':
@@ -54,20 +54,20 @@ class RestController {
 				break;
 		}
 
-		$accept = $_SERVER['HTTP_ACCEPT'];
+		$accept = $server['HTTP_ACCEPT'];
 		return $this->handleRequest($url, $method, $arguments, $accept);
 	}
 
-	protected function getFullUrl($_SERVER) 
+	protected function getFullUrl($server) 
 	{
-		$protocol = empty($_SERVER['HTTPS']) ? 'http' : 'https';
-		$location = $_SERVER['REQUEST_URI'];
+		$protocol = empty($server['HTTPS']) ? 'http' : 'https';
+		$location = $server['REQUEST_URI'];
 
-		if ($_SERVER['QUERY_STRING']) {
-			$location = substr($location, 0, strrpos($location, $_SERVER['QUERY_STRING']) - 1);
+		if ($server['QUERY_STRING']) {
+			$location = substr($location, 0, strrpos($location, $server['QUERY_STRING']) - 1);
 		}
 
-		return $protocol.'://'.$_SERVER['HTTP_HOST'].$location;
+		return $protocol.'://'.$server['HTTP_HOST'].$location;
 	}
 
 	public function handleRequest($url, $method, $arguments, $accept) 
