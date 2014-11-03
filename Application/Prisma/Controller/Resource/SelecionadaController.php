@@ -3,8 +3,8 @@
 namespace Prisma\Controller\Resource;
 
 use Framework\RestController;
-use Prisma\Library\Common;
-use Prisma\Library\Auth;
+use Library\Common;
+use Library\Auth;
 use Prisma\Model\Selecionada;
 use Prisma\Model\Disciplina;
 

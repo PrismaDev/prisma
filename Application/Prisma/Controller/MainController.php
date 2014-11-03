@@ -4,8 +4,8 @@ namespace Prisma\Controller;
 
 use Framework\RestController;
 use Framework\ViewLoader;
-use Prisma\Library\Auth;
-use Prisma\Library\Common;
+use Library\Auth;
+use Library\Common;
 use Prisma\Model\Disciplina;
 use Prisma\Model\Optativa;
 use Prisma\Model\Selecionada;

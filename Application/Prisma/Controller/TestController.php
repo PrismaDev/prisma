@@ -4,7 +4,7 @@ namespace Prisma\Controller;
 
 use Framework\Database;
 use Framework\RestController;
-use Prisma\Library\Common;
+use Library\Common;
 use Prisma\Model\MicroHorario;
 use Prisma\Model\FaltaCursar;
 use Prisma\Model\Disciplina;

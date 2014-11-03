@@ -1,6 +1,6 @@
 <?php
 
-namespace Prisma\Library;
+namespace Library;
 
 use Framework\Router;
 use Framework\Database;
@@ -9,7 +9,7 @@ use Prisma\Model\LogPrisma;
 
 class Auth
 {
-	protected static $configPath = '../../Config/auth.php';
+	protected static $configPath = '../Config/auth.php';
 
 	public static function accessControl($type, $termCheck = true)
 	{

@@ -4,7 +4,7 @@ namespace Prisma\Controller\Resource;
 
 use Framework\RestController;
 use Prisma\Model\Curso;
-use Prisma\Library\Auth;
+use Library\Auth;
 
 class CursoController extends RestController
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Prisma\Library;
+namespace Library;
 
 class Common
 {

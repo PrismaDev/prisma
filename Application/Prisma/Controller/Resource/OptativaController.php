@@ -4,7 +4,7 @@ namespace Prisma\Controller\Resource;
 
 use Framework\RestController;
 use Prisma\Model\Optativa;
-use Prisma\Library\Auth;
+use Library\Auth;
 
 class OptativaController extends RestController
 {

@@ -4,7 +4,7 @@ namespace Prisma\Controller;
 
 use Framework\RestController;
 use Framework\Router;
-use Prisma\Library\Auth;
+use Library\Auth;
 
 Class LogoutController extends RestController
 {

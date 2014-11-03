@@ -5,7 +5,7 @@ namespace Prisma\Controller;
 use Framework\RestController;
 use Framework\ViewLoader;
 use Framework\Router;
-use Prisma\Library\Auth;
+use Library\Auth;
 use Prisma\Model\Usuario;
 
 Class LoginController extends RestController

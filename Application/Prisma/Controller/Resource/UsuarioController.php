@@ -4,7 +4,7 @@ namespace Prisma\Controller\Resource;
 
 use Framework\RestController;
 use Prisma\Model\Usuario;
-use Prisma\Library\Auth;
+use Library\Auth;
 
 class UsuarioController extends RestController
 {

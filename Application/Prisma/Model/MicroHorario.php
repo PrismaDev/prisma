@@ -3,7 +3,7 @@
 namespace Prisma\Model;
 
 use Framework\Database;
-use Prisma\Library\Common;
+use Library\Common;
 
 use Prisma\Model\Disciplina;
 use Prisma\Model\Professor;

@@ -3,10 +3,10 @@
 namespace Prisma\Controller\Resource;
 
 use Framework\RestController;
-use Prisma\Library\Common;
+use Library\Auth;
+use Library\Common;
 use Prisma\Model\MicroHorario;
 use Prisma\Model\Disciplina;
-use Prisma\Library\Auth;
 
 class MicroHorarioController extends RestController
 {
