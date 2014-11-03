@@ -7,7 +7,7 @@ class Common
 	public static function getPeriodoAno()
 	{
 		/* TODO */
-		return '20132';
+		return '20141';
 
 		$ano = date('Y');
 		$mes = date('n');

@@ -23,7 +23,7 @@ class Curso
 		while($row = fgetcsv($file, 1000, ';'))
 		{ 
 			if(count($row) < 2) continue;
-			unset($row[count($row)-1]);
+//			unset($row[count($row)-1]);
 
 			if(!self::persistRow($row))
 			{
