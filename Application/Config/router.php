@@ -145,6 +145,14 @@ return array(
 					),
 				),
 			),
+			'stats' => array
+			(
+				'action' => array
+				(
+					'type' => 'controller',
+					'controller' => 'Statistics\Controller\MainController',
+				),
+			),
 			'error' => array
 			(
 				'action' => array
