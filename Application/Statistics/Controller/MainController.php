@@ -16,7 +16,7 @@ Class MainController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
-		return ViewLoader::load('Statistics', 'test.phtml', array());
+		return ViewLoader::load('Statistics', 'statistics.phtml', array());
 	}
 }
 
