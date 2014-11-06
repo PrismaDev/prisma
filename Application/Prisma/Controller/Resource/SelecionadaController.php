@@ -6,7 +6,7 @@ use Framework\RestController;
 use Library\Common;
 use Library\Auth;
 use Prisma\Model\Selecionada;
-use Prisma\Model\Disciplina;
+use Prisma\Model\Turma;
 
 class SelecionadaController extends RestController
 {
@@ -17,35 +17,25 @@ class SelecionadaController extends RestController
 		Auth::accessControl('Aluno');
 	}
 
-/*
+
 	public function performGet($url, $arguments, $accept) 
 	{
 		$login = Auth::getSessionLogin();
 
 		$selecionadas = Selecionada::getAll($login);
 
-		$discHash = array();
+		$data = "Disciplina;Turma;Opcao;Linha\n";
 		foreach($selecionadas as $selecionada)
 		{
-			$discHash[$selecionada['CodigoDisciplina']] = 1;
+			$data .= $selecionada["CodigoDisciplina"].";";
+			$data .= Turma::getCode($selecionada["FK_Turma"]).";";
+			$data .= ($selecionada["Opcao"]+1).";";
+			$data .= ($selecionada["NoLinha"]+1)."\n";
 		}
-		$depend = Disciplina::getByUserDiscSetDepend($login, $discHash);
 
-		$data = Common::namesMinimizer
-		(
-			json_encode
-			(
-				array
-				(
-					'Selecionadas' => $selecionadas,
-					'Dependencia' => $depend
-				)
-			)
-		);
-
+		header("Content-Disposition: attachment; filename=PrISMA-Horario_selecionado.CSV");
 		return $data;
 	}
-*/
 
 	public function performPost($url, $arguments, $accept) 
 	{

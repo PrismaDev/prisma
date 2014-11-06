@@ -22,7 +22,8 @@ script#selected-template(type="text/underscore-template")
 
 	div#info-container
 		hr
-		input#btnDownload.btn.btn-primary(type="submit", value!="<%= selectedStr.get('btnDownload') %>"))
+		a#btnDownload.btn.btn-primary(href="/api/selecionada").
+			<%= selectedStr.get('btnDownload') %>
 		div#qtd-credits 0 <%= selectedStr.get('qtdCreditsLabel') %>
 		div#qtd-classes 0 <%= selectedStr.get('qtdClassesLabel') %>
 

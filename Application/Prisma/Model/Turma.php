@@ -131,5 +131,23 @@ class Turma
 			throw new \Exception(__FILE__.'(Line '.__LINE__.'): Turma nao encontrada!');
 		}
 	}
+
+	public static function getCode($pkTurma)
+	{
+		$dbh = Database::getConnection();	
+
+		$sth = $dbh->prepare('SELECT "Codigo" FROM "Turma" WHERE "PK_Turma" = :PK_Turma;');	
+		$sth->execute(array('PK_Turma' => $pkTurma));
+
+		if($result = $sth->fetch())
+		{
+			return $result['Codigo'];
+		}
+		else
+		{
+			throw new \Exception(__FILE__.'(Line '.__LINE__.'): Turma nao encontrada!');
+		}
+	}
+
 }
 
