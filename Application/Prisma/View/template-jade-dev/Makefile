@@ -40,7 +40,7 @@ DEP_MAIN = $(DEP_ALL) \
 
 all: $(TARGETS)
 clean: 
-	rm $(TARGETS) *.template
+	rm -f $(TARGETS) *.template
 debug: | setdbg all
 setdbg:
 	$(eval CFLAGS=$(DBG))

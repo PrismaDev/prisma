@@ -11,7 +11,7 @@ DST = ..
 
 all: $(PHTML)
 clean:
-	rm $(DST)/*.phtml 
+	rm -f $(DST)/*.phtml 
 
 debug: | setdbg all
 setdbg:

@@ -1,7 +1,7 @@
 PROD = ../../../../Public/css
 
 CC = lessc
-REL = --x --yui-compressor --strict-imports  
+REL = --x --strict-imports  
 DBG = --strict-imports
 CFLAGS = $(REL)
 
@@ -34,7 +34,7 @@ DEP_MAIN = $(DEP_ALL) \
 
 all: $(TARGETS)
 clean:
-	rm $(TARGETS)
+	rm -f $(TARGETS)
 debug: | setdbg all
 setdbg:
 	$(eval CFLAGS=$(DBG))

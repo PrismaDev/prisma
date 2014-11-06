@@ -66,7 +66,7 @@ DEP_MAIN = $(DEP_ALL) \
 ## Rules ##
 all: $(PAGES)
 clean: 
-	rm $(PAGES)
+	rm -f $(PAGES)
 debug: | setdbg all
 setdbg: 
 	$(eval DBG=true)
