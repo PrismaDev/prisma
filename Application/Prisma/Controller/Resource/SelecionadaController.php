@@ -24,15 +24,31 @@ class SelecionadaController extends RestController
 
 		$selecionadas = Selecionada::getAll($login);
 
-		$data = "Disciplina;Turma;Opcao;Linha\n";
-		foreach($selecionadas as $selecionada)
+		$opcao = array();
+		foreach($selecionadas as $sel)
 		{
-			$data .= $selecionada["CodigoDisciplina"].";";
-			$data .= Turma::getCode($selecionada["FK_Turma"]).";";
-			$data .= ($selecionada["Opcao"]+1).";";
-			$data .= ($selecionada["NoLinha"]+1)."\n";
+			$content = $sel["CodigoDisciplina"]." - ".Turma::getCode($sel["FK_Turma"]);
+
+			if(!isset($opcao[$sel["NoLinha"]]))
+				$opcao[$sel["NoLinha"]] = array();
+
+			$opcao[$sel["NoLinha"]][$sel["Opcao"]] = $content;
 		}
 
+		$data .= "Opcao 1;Opcao 2;Opcao 3\n";
+		for($i = 0; $i < 12; $i++)
+		{
+			for($j = 0; $j < 3; $j++)
+			{
+				if(isset($opcao[$i][$j]))
+					$data .= $opcao[$i][$j];
+
+				if($j < 2)
+					$data .= ";";
+			}
+			$data .= "\n";
+		}
+		
 		header("Content-Disposition: attachment; filename=PrISMA-Horario_selecionado.CSV");
 		return $data;
 	}
