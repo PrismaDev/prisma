@@ -1,0 +1,32 @@
+#### quick tutorial ####
+
+sudo apt-get install php5 apache2 postgres php5-pgsql pgadmin3 npm
+
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+sudo npm install less -g
+sudo npm install jade@0.35.0 -g
+
+wget http://dl.google.com/closure-compiler/compiler-latest.zip
+unzip compiler-latest.zip
+sudo cp compiler.jar /usr/bin/closure-compiler.jar
+
+ssh-keygen
+git clone git@github.com:PrismaDev/prisma.git
+
+sudo -u postgres psql
+$ create user prisma with password 'prisma';
+$ create database prisma with owner prisma;
+$ \q
+
+sudo -u postgres psql -d prisma <prisma.sql
+
+sudo cp <prisma-root>/Documents/vhost.sample /etc/apache2/sites-enabled/001-prisma.conf
+sudo vim /etc/apache2/sites-enabled/001-prisma.conf # fix paths
+
+sudo vim /etc/hosts # add "127.0.0.1 prisma.localhost"
+
+sudo a2enmod rewrite
+sudo service apache2 restart
+
+# running at: https://prisma.localhost
+
