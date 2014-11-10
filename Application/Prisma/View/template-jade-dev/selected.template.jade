@@ -31,5 +31,7 @@ script#selected-draggable-template(type="text/underscore-template")
 	div.class-draggable
 		input(type="hidden",name="subjectCode",value!="<%= subjectCode %>")
 		input(type="hidden",name="classCode",value!="<%= classId %>")
+		input(type="hidden",name="vacancies",value!="<%= vacancies %>")
+		input(type="hidden",name="rank",value!="<%= rank %>")
 		button.close(type="button") x
 		span <%= subjectCode %> - <%= classCode %>

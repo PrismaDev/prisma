@@ -60,15 +60,18 @@ class SelecionadaController extends RestController
 		$rows = json_decode(str_replace('\\"','"',$arguments['json']));
 		$len = count($rows);
 
+		$data = array();
 		for($i = 0; $i < $len; ++$i)
 		{
 			if(!Selecionada::persist($login, $rows[$i]))
 			{
 				return 'error';
 			}
+
+			$data[$rows[$i]->FK_Turma] = Selecionada::getRankByUser($login, $rows[$i]->FK_Turma);
 		}
 
-		return 'ok';
+		return json_encode($data);
 	}
 
 	public function performDelete($url, $arguments, $accept) 

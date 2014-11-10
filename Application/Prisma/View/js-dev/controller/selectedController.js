@@ -76,6 +76,8 @@ function SelectedController() {
 				{
 					var classId = $(option).find('input[type="hidden"][name="classCode"]').attr('value');
 					var subjectCode = $(option).find('input[type="hidden"][name="subjectCode"]').attr('value');
+					var vacancies = $(option).find('input[type="hidden"][name="vacancies"]').attr('value');
+					var rank = $(option).find('input[type="hidden"][name="rank"]').attr('value');
 					var classModel = subjectList.get(subjectCode).get('Turmas').get(classId);
 					var subjectCreditos = subjectList.get(subjectCode).get('Creditos');
 					
@@ -106,7 +108,9 @@ function SelectedController() {
 						accepted.push({
 							classId: classId,
 							subjectCode: subjectCode,
-							cssClass: cssClass
+							cssClass: cssClass,
+							vacancies: vacancies,
+							rank: rank
 						});
 						break;
 					}

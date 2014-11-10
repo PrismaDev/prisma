@@ -45,11 +45,15 @@ var SelectedModel = Backbone.Model.extend({
 			var classId = row[serverDictionary.get('FK_Turma')];
 			var i = row[serverDictionary.get('NoLinha')];
 			var j = row[serverDictionary.get('Opcao')];
+			var vacancies = row[serverDictionary.get('Vagas')];
+			var rank = row[serverDictionary.get('QtdNaFrente')];
 
 			me.options[i][j] = {
 				'subjectCode': subjectCode,
 				'classCode': subjectList.getClass(classId).get('CodigoTurma'),
-				'classId': classId
+				'classId': classId,
+				'vacancies': vacancies,
+				'rank': rank
 			};
 		});
 	},
@@ -156,23 +160,28 @@ var SelectedModel = Backbone.Model.extend({
 	addClassToPosition: function(subjectCode, classId, rowNumber, Option)
 	{
 		var classModel = subjectList.getClass(classId);
+		var me = this;
 		
-		this.options[rowNumber][Option]={
-			'subjectCode': subjectCode,
-			'classCode': classModel.get('CodigoTurma'),
-			'classId': classId
-		}
-
 		$.ajax({
 			type: 'POST',
 			url: '/api/selecionada',
 			data: 'json='+JSON.stringify([{FK_Turma: classId, NoLinha: rowNumber, Opcao: Option}]),
 			success: function(msg){
 				console.log('POST // Disciplina: '+subjectCode+' // Turma: '+classId+' // Msg: '+msg);
+
+				var data = JSON.parse(msg);
+
+				me.options[rowNumber][Option]={
+					'subjectCode': subjectCode,
+					'classCode': classModel.get('CodigoTurma'),
+					'classId': classId,
+					'vacancies': data[classId].Vagas,
+					'rank': data[classId].Rank
+				}
+
+				me.changeViews(subjectCode, classId, true);
 			}
 		});
-
-		this.changeViews(subjectCode, classId, true);
 	},
 
 	addClass: function(subjectCode, classId) {

@@ -51,11 +51,14 @@ var TimetableView = Backbone.View.extend({
 		})
 	},
 
-	formatString: function(timeIdx, classModel, subjectCode) {
+	formatString: function(timeIdx, classModel, subjectCode, vacancies, rank) {
+		if(!vacancies) vacancies = -1;
+		if(!rank) rank = -1;
+
 		var unit=classModel.get('Horarios').models[timeIdx].get('Unidade');
 		return subjectCode+' - '+classModel.get('CodigoTurma')+'<br/>'+
 		'<span>'+subjectList.get(subjectCode).get('NomeDisciplina')+'</span><br/>'+
-		'<span>('+unit+')</span>';
+		'<span>('+unit+')</span> - <span>'+rank+'/'+vacancies+'</span>';
 	},
 
 	processArray: function(classesArray) {
@@ -86,7 +89,7 @@ var TimetableView = Backbone.View.extend({
 					continue;
 
 				timetableMatrix[s][d].string=this.formatString(j,classModel,
-					classesArray[i].subjectCode);
+					classesArray[i].subjectCode, classesArray[i].vacancies, classesArray[i].rank);
 				timetableMatrix[s][d].span=Number(e)-Number(s);
 				timetableMatrix[s][d].customClass='ttclass'+
 					classesArray[i].cssClass;

@@ -155,6 +155,7 @@ class Common
 			'Unidade'		=> 'D',
 			'Avisos'		=> 'E',
 			'CodAviso'		=> 'F',
+			'QtdNaFrente'	=> 'G',
 		);
 	}
 
