@@ -1,0 +1,35 @@
+// dot 2.36.0 on Linux 3.13.0-24-generic
+// SchemaSpy rev 590
+digraph "EstatisticaDemandaHorario" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Helvetica"
+    fontsize="11"
+  ];
+  node [
+    fontname="Helvetica"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "EstatisticaDemandaHorario" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">EstatisticaDemandaHorario</TD></TR>
+      <TR><TD PORT="Opcao" COLSPAN="3" ALIGN="LEFT">Opcao</TD></TR>
+      <TR><TD PORT="Unidade" COLSPAN="3" ALIGN="LEFT">Unidade</TD></TR>
+      <TR><TD PORT="DiaSemana" COLSPAN="3" ALIGN="LEFT">DiaSemana</TD></TR>
+      <TR><TD PORT="HoraInicial" COLSPAN="3" ALIGN="LEFT">HoraInicial</TD></TR>
+      <TR><TD PORT="HoraFinal" COLSPAN="3" ALIGN="LEFT">HoraFinal</TD></TR>
+      <TR><TD PORT="Demanda" COLSPAN="3" ALIGN="LEFT">Demanda</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">view</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/EstatisticaDemandaHorario.html"
+    tooltip="EstatisticaDemandaHorario"
+  ];
+}

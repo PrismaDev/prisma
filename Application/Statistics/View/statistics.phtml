@@ -3,6 +3,7 @@
 <head>
     <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css">
     <link href="//cdn.jsdelivr.net/qtip2/2.0.1/jquery.qtip.min.css" rel="stylesheet" type="text/css">
+    <link href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
     <link href="/css/prisma-main.min.css" rel="stylesheet" type="text/css">
     <meta charset="utf-8">
     <meta property="og:title" content="PrISMA">
@@ -38,25 +39,89 @@
             </div>
             <div id="content-div" class="row-fluid">
                 <div id="container-div">
-					<h1 class="centered">Estatísticas de Uso</h1><br/><hr/>
+					<h1 class="centered">Estatísticas de Uso</h1>
+					<br/><hr/>
+
 					<h3>#1 Total de usuarios:
 						<p><?php echo $data['qtdTotal'] ?></p>
 					</h3>
 					<br/><hr/>
-					<h3>#2 Acesso diário: </h3>
-					<p><?php echo $data['acessoDiario'] ?></p>
+
+					<h3>#2 Acesso diário:</h3>
+					<div id="acessoDiario"></div>
 					<br/><hr/>
-					<h3>#3 Uso por curso: </h3>
-					<p><?php echo $data['usoPorCurso'] ?></p>
+
+					<h3>#3 Uso por curso:</h3>
+					<div id="usoPorCurso"></div>
 					<br/><hr/>
-					<h3>#4 Demanda por turma: </h3>
-					<p><?php echo $data['turmaDemanda'] ?></p>
+					
+					<h3>#4 Demanda por turma:</h3>
+					<table id="turmaDemanda" class="display" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th>Disciplina</th>
+								<th>Turma</th>
+								<th>Vagas</th>
+								<th>Demanda</th>
+							</tr>
+						</thead>
+						<tbody>
+						<?php foreach($data['turmaDemanda'] as $turma) { ?>
+						   <tr>
+								<td><?php echo $turma['FK_Disciplina'] ?></td>
+								<td><?php echo $turma['Codigo'] ?></td>
+								<td><?php echo $turma['Vagas'] ?></td>
+								<td><?php echo $turma['Demanda'] ?></td>
+							</tr>
+						<?php } ?>
+						</tbody>
+					</table>
 					<br/><hr/>
-					<h3>#4 Demanda por horario: </h3>
-					<p><?php echo $data['horarioDemanda'] ?></p>
+
+					<h3>#4 Demanda por horario:</h3>
+					<table id="demandaHorario" class="display" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<td></td>
+								<td>Segunda</td>
+								<td>Terça</td>
+								<td>Quarta</td>
+								<td>Quinta</td>
+								<td>Sexta</td>
+								<td>Sábado</td>
+							</tr>
+						</thead>
+						<tbody>
+						<?php for($i = 7; $i <= 22; $i++) { ?>
+							<tr>
+								<td><?php echo $i.'h';?></td>
+							<?php for($j = 2; $j <= 7; $j++) { ?>
+								<td><?php echo $data["horarioDemanda"][$j][$i];?></td>
+							<?php } ?>
+							</tr>
+						<?php } ?>
+						</tbody>
+					</table>
 					<br/><hr/>
-					<h3>#4 Media de tentativas por disciplina: </h3>
-					<p><?php echo $data['disciplinaTentativaMedia'] ?></p>
+
+					<h3>#4 Media de tentativas por disciplina (datatables): </h3>
+					<table id="disciplinaTentativas" class="display" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th>Disciplina</th>
+								<th>Media de tentativas</th>
+							</tr>
+						</thead>
+						<tbody>
+						<?php foreach($data['disciplinaTentativaMedia'] as $disc) { ?>
+						   <tr>
+								<td><?php echo $disc['FK_Disciplina'] ?></td>
+								<td><?php echo $disc['MediaTentativas'] ?></td>
+							</tr>
+						<?php } ?>
+						</tbody>
+					</table>
+
 					<br/><hr/>
 				</div>
             </div>
@@ -71,9 +136,148 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
-	<script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+	<script src="//code.highcharts.com/highcharts.js"></script>
+	<script src="//code.highcharts.com/modules/exporting.js"></script>
 	<script>
+
 		$('.dropdown-toggle').dropdown();
+
+		/* ------------------------------------------------------------------- */
+
+		$('#turmaDemanda').DataTable();
+		$('#disciplinaTentativas').DataTable();
+		$('#demandaHorario').DataTable({
+			"paging":   false,
+			"ordering": false,
+			"info":     false
+		});
+
+		/* ------------------------------------------------------------------- */
+
+		var acessoDiarioData = <?php echo $data['acessoDiario'] ?>;
+		var acessoDiarioDate = acessoDiarioData[0].Data.split('-');
+
+		acessoDiarioDataTratada = [];
+		acessoDiarioData.forEach(
+			function(a)
+			{
+				acessoDiarioDataTratada.push(a.QuantidadeUsuario);
+			}
+		);
+
+		$('#acessoDiario').highcharts({
+			chart: {
+				zoomType: 'x'
+			},
+			title: {
+				text: 'Acesso Diário'
+			},
+			subtitle: {
+				text: document.ontouchstart === undefined ?
+						'Click and drag in the plot area to zoom in' :
+						'Pinch the chart to zoom in'
+			},
+			xAxis: {
+				type: 'datetime',
+				minRange: 14 * 24 * 3600000 // fourteen days
+			},
+			yAxis: {
+				title: {
+					text: 'Quantidade de acessos'
+				}
+			},
+			legend: {
+				enabled: false
+			},
+			plotOptions: {
+				area: {
+					fillColor: {
+						linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+						stops: [
+							[0, Highcharts.getOptions().colors[0]],
+							[1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+						]
+					},
+					marker: {
+						radius: 2
+					},
+					lineWidth: 1,
+					states: {
+						hover: {
+							lineWidth: 1
+						}
+					},
+					threshold: null
+				}
+			},
+
+			series: [{
+				type: 'area',
+				name: 'Acessos',
+				pointInterval: 24 * 3600 * 1000,
+				pointStart: Date.UTC(Number(acessoDiarioDate[0])-1,Number(acessoDiarioDate[1]),Number(acessoDiarioDate[2])),
+				data: acessoDiarioDataTratada
+			 }]
+		});
+
+		/* ------------------------------------------------------------------- */
+
+		var usoPorCursoData = <?php echo $data['usoPorCurso'] ?>;
+
+		var nomeCurso = [];
+		var acessou = [];
+		var naoAcessou = [];
+		usoPorCursoData.forEach(
+			function(a)
+			{
+				nomeCurso.push(a.NomeCurso);
+				acessou.push(a.Atual);
+				naoAcessou.push(a.Total - a.Atual);
+			}
+		);
+
+		$('#usoPorCurso').highcharts({
+				chart: {
+					type: 'column'
+				},
+				title: {
+					text: 'Quantidade de acessos por curso'
+				},
+				xAxis: {
+					categories: nomeCurso,
+					labels: {
+						rotation: -45,
+						style: {
+							fontSize: '13px',
+							fontFamily: 'Verdana, sans-serif'
+						}
+					}
+				},
+				yAxis: {
+					min: 0,
+					title: {
+						text: 'Total de acessos'
+					}
+				},
+				tooltip: {
+					pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}</b> ({point.percentage:.0f}%)<br/>',
+					shared: true
+				},
+				plotOptions: {
+					column: {
+						stacking: 'percent'
+					}
+				},
+				series: [{
+					name: 'Não acessou',
+					data: naoAcessou 
+				}, {
+					name: 'Acessou',
+					data: acessou
+				}]
+			});
+
 	</script>
 </body>
 

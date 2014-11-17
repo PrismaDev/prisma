@@ -79,7 +79,7 @@ class Query
 	{
 		$dbh = Database::getConnection();
 
-		$sth = $dbh->prepare('SELECT "FK_Disciplina", avg("Tentativas") as "MediaTentativas" FROM "AlunoDisciplina" GROUP BY "FK_Disciplina" ORDER BY "MediaTentativas" DESC;');
+		$sth = $dbh->prepare('SELECT "FK_Disciplina", avg("Tentativas") as "MediaTentativas" FROM "AlunoDisciplina" WHERE "Tentativas" > 0 GROUP BY "FK_Disciplina" ORDER BY "MediaTentativas" DESC;');
 		$sth->execute(array());
 
 		return $sth->fetchAll(\PDO::FETCH_ASSOC);

@@ -1,0 +1,33 @@
+// dot 2.36.0 on Linux 3.13.0-24-generic
+// SchemaSpy rev 590
+digraph "EstatisticaDemandaTurma" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Helvetica"
+    fontsize="11"
+  ];
+  node [
+    fontname="Helvetica"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "EstatisticaDemandaTurma" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">EstatisticaDemandaTurma</TD></TR>
+      <TR><TD PORT="FK_Disciplina" COLSPAN="3" ALIGN="LEFT">FK_Disciplina</TD></TR>
+      <TR><TD PORT="Codigo" COLSPAN="3" ALIGN="LEFT">Codigo</TD></TR>
+      <TR><TD PORT="Vagas" COLSPAN="3" ALIGN="LEFT">Vagas</TD></TR>
+      <TR><TD PORT="Demanda" COLSPAN="3" ALIGN="LEFT">Demanda</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">view</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/EstatisticaDemandaTurma.html"
+    tooltip="EstatisticaDemandaTurma"
+  ];
+}

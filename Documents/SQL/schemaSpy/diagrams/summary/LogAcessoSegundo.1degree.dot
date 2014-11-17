@@ -1,0 +1,36 @@
+// dot 2.36.0 on Linux 3.13.0-24-generic
+// SchemaSpy rev 590
+digraph "LogAcessoSegundo" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Helvetica"
+    fontsize="11"
+  ];
+  node [
+    fontname="Helvetica"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "LogAcessoSegundo" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">LogAcessoSegundo</TD></TR>
+      <TR><TD PORT="Ano" COLSPAN="3" ALIGN="LEFT">Ano</TD></TR>
+      <TR><TD PORT="Mes" COLSPAN="3" ALIGN="LEFT">Mes</TD></TR>
+      <TR><TD PORT="Dia" COLSPAN="3" ALIGN="LEFT">Dia</TD></TR>
+      <TR><TD PORT="Hora" COLSPAN="3" ALIGN="LEFT">Hora</TD></TR>
+      <TR><TD PORT="Minuto" COLSPAN="3" ALIGN="LEFT">Minuto</TD></TR>
+      <TR><TD PORT="Segundo" COLSPAN="3" ALIGN="LEFT">Segundo</TD></TR>
+      <TR><TD PORT="Quantidade" COLSPAN="3" ALIGN="LEFT">Quantidade</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">view</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/LogAcessoSegundo.html"
+    tooltip="LogAcessoSegundo"
+  ];
+}

@@ -1,0 +1,38 @@
+// dot 2.36.0 on Linux 3.13.0-24-generic
+// SchemaSpy rev 590
+digraph "LogErro" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Helvetica"
+    fontsize="11"
+  ];
+  node [
+    fontname="Helvetica"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "LogErro" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">LogErro</TD></TR>
+      <TR><TD PORT="PK_Log" COLSPAN="3" ALIGN="LEFT">PK_Log</TD></TR>
+      <TR><TD PORT="DataHora" COLSPAN="3" ALIGN="LEFT">DataHora</TD></TR>
+      <TR><TD PORT="IP" COLSPAN="3" ALIGN="LEFT">IP</TD></TR>
+      <TR><TD PORT="URI" COLSPAN="3" ALIGN="LEFT">URI</TD></TR>
+      <TR><TD PORT="HashSessao" COLSPAN="3" ALIGN="LEFT">HashSessao</TD></TR>
+      <TR><TD PORT="Erro" COLSPAN="3" ALIGN="LEFT">Erro</TD></TR>
+      <TR><TD PORT="Notas" COLSPAN="3" ALIGN="LEFT">Notas</TD></TR>
+      <TR><TD PORT="FK_Usuario" COLSPAN="3" ALIGN="LEFT">FK_Usuario</TD></TR>
+      <TR><TD PORT="Browser" COLSPAN="3" ALIGN="LEFT">Browser</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">view</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/LogErro.html"
+    tooltip="LogErro"
+  ];
+}

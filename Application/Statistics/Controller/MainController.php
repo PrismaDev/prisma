@@ -17,15 +17,23 @@ Class MainController extends RestController
 
 	public function performGet($url, $arguments, $accept) 
 	{
+		$horarioDemanda = Query::HorarioDemanda();
+		
+		$horario = array();
+		foreach($horarioDemanda as $demanda)
+		{
+			$horario[(int)$demanda["DiaSemana"]][(int)$demanda["HoraInicial"]] += (int)$demanda["Demanda"];
+		}
+
 		$data = array
 		(
-			'username' => 'Julio Test',
+			'username' => 'Statistics Account',
 			'qtdTotal' => Query::ContagemTotal(),
 			'acessoDiario' => json_encode(Query::AcessoDiario()),
 			'usoPorCurso' => json_encode(Query::UsoPorCurso()),
-			'turmaDemanda' => json_encode(Query::TurmaDemanda()),
-			'horarioDemanda' => json_encode(Query::HorarioDemanda()),
-			'disciplinaTentativaMedia' => json_encode(Query::DisciplinaTentativaMedia()),
+			'turmaDemanda' => Query::TurmaDemanda(),
+			'horarioDemanda' => $horario,
+			'disciplinaTentativaMedia' => Query::DisciplinaTentativaMedia(),
 		);
 
 		return ViewLoader::load('Statistics', 'statistics.phtml', $data);

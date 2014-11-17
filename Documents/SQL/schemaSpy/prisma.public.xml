@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="prisma" schema="public" type="PostgreSQL - 9.3.5">
+   <tables>
+      <table name="Aluno" numRows="12453" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="FK_Matricula" nullable="false" remarks="" size="20" type="varchar">
+            <child column="FK_Aluno" foreignKey="FK_AlunoDisciplina_Aluno" implied="false" onDeleteCascade="true" table="AlunoDisciplina"/>
+            <child column="FK_Aluno" foreignKey="FK_AlunoTurmaSelecionada_Aluno" implied="false" onDeleteCascade="true" table="AlunoTurmaSelecionada"/>
+            <child column="FK_Aluno" foreignKey="FK_AvisoDesabilitado_Aluno" implied="false" onDeleteCascade="true" table="AvisoDesabilitado"/>
+            <child column="FK_Aluno" foreignKey="FK_OptativaAluno_Aluno" implied="false" onDeleteCascade="true" table="OptativaAluno"/>
+            <parent column="PK_Login" foreignKey="FK_Aluno_Usuario" implied="false" onDeleteCascade="true" table="Usuario"/>
+         </column>
+         <column autoUpdated="false" digits="8" id="1" name="CoeficienteRendimento" nullable="true" remarks="" size="8" type="float4"/>
+         <column autoUpdated="false" digits="0" id="2" name="FK_Curso" nullable="false" remarks="" size="3" type="varchar">
+            <parent column="PK_Curso" foreignKey="FK_Aluno_Curso" implied="false" onDeleteCascade="true" table="Curso"/>
+         </column>
+         <column autoUpdated="false" digits="8" id="3" name="Rank" nullable="true" remarks="" size="8" type="float4"/>
+         <primaryKey column="FK_Matricula" sequenceNumberInPK="1"/>
+         <index name="PK_Aluno" unique="true"/>
+      </table>
+      <table name="AlunoDisciplina" numRows="561117" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="FK_Aluno" nullable="false" remarks="" size="20" type="varchar">
+            <parent column="FK_Matricula" foreignKey="FK_AlunoDisciplina_Aluno" implied="false" onDeleteCascade="true" table="Aluno"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="FK_Disciplina" nullable="false" remarks="" size="7" type="varchar">
+            <parent column="PK_Codigo" foreignKey="FK_AlunoDisciplina_Disciplina" implied="false" onDeleteCascade="true" table="Disciplina"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="FK_Status" nullable="true" remarks="" size="2" type="varchar">
+            <parent column="PK_Status" foreignKey="FK_AlunoDisciplina_AlunoDisciplinaStatus" implied="false" onDeleteCascade="true" table="AlunoDisciplinaStatus"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="3" name="Tentativas" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="4" name="Periodo" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="FK_TipoDisciplina" nullable="false" remarks="" size="2" type="varchar">
+            <parent column="PK_Codigo" foreignKey="FK_AlunoDisciplina_TipoDisciplina" implied="false" onDeleteCascade="true" table="TipoDisciplina"/>
+         </column>
+         <primaryKey column="FK_Aluno" sequenceNumberInPK="1"/>
+         <primaryKey column="FK_Disciplina" sequenceNumberInPK="2"/>
+         <index name="PK_AlunoDisciplina" unique="true"/>
+      </table>
+      <table name="AlunoDisciplinaStatus" numRows="3" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="PK_Status" nullable="false" remarks="" size="2" type="varchar">
+            <child column="FK_Status" foreignKey="FK_AlunoDisciplina_AlunoDisciplinaStatus" implied="false" onDeleteCascade="true" table="AlunoDisciplina"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="Nome" nullable="false" remarks="" size="20" type="varchar"/>
+         <primaryKey column="PK_Status" sequenceNumberInPK="1"/>
+         <index name="PK_AlunoDisciplinaStatus" unique="true"/>
+         <index name="Unique_AlunoDisciplinaStatus_Nome" unique="true"/>
+      </table>
+      <table name="AlunoDisciplinaTurmaSelecionada" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="CodigoDisciplina" nullable="true" remarks="" size="7" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="FK_Turma" nullable="true" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="2" name="MatriculaAluno" nullable="true" remarks="" size="20" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="Opcao" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="NoLinha" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="Vagas" nullable="true" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="6" name="QtdNaFrente" nullable="true" remarks="" size="19" type="int8"/>
+      </table>
+      <table name="AlunoTurmaSelecionada" numRows="8727" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="FK_Aluno" nullable="false" remarks="" size="20" type="varchar">
+            <parent column="FK_Matricula" foreignKey="FK_AlunoTurmaSelecionada_Aluno" implied="false" onDeleteCascade="true" table="Aluno"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="FK_Turma" nullable="false" remarks="" size="19" type="int8">
+            <parent column="PK_Turma" foreignKey="FK_AlunoTurmaSelecionada_Turma" implied="false" onDeleteCascade="true" table="Turma"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="Opcao" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="NoLinha" nullable="false" remarks="" size="10" type="int4"/>
+         <primaryKey column="FK_Aluno" sequenceNumberInPK="1"/>
+         <primaryKey column="FK_Turma" sequenceNumberInPK="2"/>
+         <index name="PK_AlunoTurmaSelecionada" unique="true"/>
+         <index name="Unique_AlunoTurmaSelecionada" unique="true"/>
+      </table>
+      <table name="AvisoDesabilitado" numRows="0" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="CodAviso" nullable="false" remarks="" size="50" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="FK_Aluno" nullable="false" remarks="" size="20" type="varchar">
+            <parent column="FK_Matricula" foreignKey="FK_AvisoDesabilitado_Aluno" implied="false" onDeleteCascade="true" table="Aluno"/>
+         </column>
+         <primaryKey column="CodAviso" sequenceNumberInPK="1"/>
+         <primaryKey column="FK_Aluno" sequenceNumberInPK="2"/>
+         <index name="PK_AvisoDesabilitado" unique="true"/>
+      </table>
+      <table name="Comentario" numRows="13" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('seq_sugestao'::regclass)" digits="0" id="0" name="PK_Sugestao" nullable="false" remarks="" size="19" type="bigserial"/>
+         <column autoUpdated="false" digits="0" id="1" name="FK_Usuario" nullable="false" remarks="" size="20" type="varchar">
+            <parent column="PK_Login" foreignKey="FK_Sugestao_Usuario" implied="false" onDeleteCascade="true" table="Usuario"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="Comentario" nullable="false" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="3" name="DataHora" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="PK_Sugestao" sequenceNumberInPK="1"/>
+         <index name="PK_Sugestao" unique="true"/>
+      </table>
+      <table name="Curso" numRows="33" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="PK_Curso" nullable="false" remarks="" size="3" type="varchar">
+            <child column="FK_Curso" foreignKey="FK_Aluno_Curso" implied="false" onDeleteCascade="true" table="Aluno"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="Nome" nullable="false" remarks="" size="50" type="varchar"/>
+         <primaryKey column="PK_Curso" sequenceNumberInPK="1"/>
+         <index name="PK_Curso" unique="true"/>
+      </table>
+      <table name="Disciplina" numRows="8326" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="PK_Codigo" nullable="false" remarks="" size="7" type="varchar">
+            <child column="FK_Disciplina" foreignKey="FK_AlunoDisciplina_Disciplina" implied="false" onDeleteCascade="true" table="AlunoDisciplina"/>
+            <child column="FK_Disciplina" foreignKey="FK_OptativaDisciplina_Disciplina" implied="false" onDeleteCascade="true" table="OptativaDisciplina"/>
+            <child column="FK_Disciplina" foreignKey="FK_PreRequisitoGrupo_Disciplina" implied="false" onDeleteCascade="true" table="PreRequisitoGrupo"/>
+            <child column="FK_Disciplina" foreignKey="FK_PreRequisitoGrupoDisciplina_Disciplina" implied="false" onDeleteCascade="true" table="PreRequisitoGrupoDisciplina"/>
+            <child column="FK_Disciplina" foreignKey="PK_Turma_Disciplina" implied="false" onDeleteCascade="true" table="Turma"/>
+            <parent column="PK_Codigo" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="Optativa"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="Nome" nullable="false" remarks="" size="100" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="Creditos" nullable="false" remarks="" size="10" type="int4"/>
+         <primaryKey column="PK_Codigo" sequenceNumberInPK="1"/>
+         <index name="PK_Disciplina" unique="true"/>
+      </table>
+      <table name="EstatisticaDemandaHorario" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="Opcao" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="1" name="Unidade" nullable="true" remarks="" size="50" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="DiaSemana" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="HoraInicial" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="HoraFinal" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="Demanda" nullable="true" remarks="" size="19" type="int8"/>
+      </table>
+      <table name="EstatisticaDemandaTurma" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="FK_Disciplina" nullable="true" remarks="" size="7" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="Codigo" nullable="true" remarks="" size="10" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="Vagas" nullable="true" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="3" name="Demanda" nullable="true" remarks="" size="19" type="int8"/>
+      </table>
+      <table name="FaltaCursarOptativa" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="Aluno" nullable="true" remarks="" size="20" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="CodigoOptativa" nullable="true" remarks="" size="7" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="NomeOptativa" nullable="true" remarks="" size="100" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="PeriodoSugerido" nullable="true" remarks="" size="10" type="int4"/>
+      </table>
+      <table name="FaltaCursarOptativaDisciplina" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="Aluno" nullable="true" remarks="" size="20" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="CodigoOptativa" nullable="true" remarks="" size="7" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="CodigoDisciplina" nullable="true" remarks="" size="7" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="Situacao" nullable="true" remarks="" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="Apto" nullable="true" remarks="" size="10" type="int4"/>
+      </table>
+      <table name="Log" numRows="112805" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('seq_log'::regclass)" digits="0" id="0" name="PK_Log" nullable="false" remarks="" size="19" type="bigserial"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="1" name="DataHora" nullable="false" remarks="" size="35" type="timestamptz"/>
+         <column autoUpdated="false" digits="0" id="2" name="IP" nullable="true" remarks="" size="40" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="URI" nullable="true" remarks="" size="500" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="HashSessao" nullable="true" remarks="" size="40" type="varchar"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="5" name="Erro" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="6" name="Notas" nullable="true" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="7" name="FK_Usuario" nullable="false" remarks="" size="20" type="varchar">
+            <parent column="PK_Login" foreignKey="FK_Log_Usuario" implied="false" onDeleteCascade="true" table="Usuario"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="8" name="Browser" nullable="true" remarks="" size="300" type="varchar"/>
+         <primaryKey column="PK_Log" sequenceNumberInPK="1"/>
+         <index name="PK_Log" unique="true"/>
+      </table>
+      <table name="LogAcessoSegundo" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="17" id="0" name="Ano" nullable="true" remarks="" size="17" type="float8"/>
+         <column autoUpdated="false" digits="17" id="1" name="Mes" nullable="true" remarks="" size="17" type="float8"/>
+         <column autoUpdated="false" digits="17" id="2" name="Dia" nullable="true" remarks="" size="17" type="float8"/>
+         <column autoUpdated="false" digits="17" id="3" name="Hora" nullable="true" remarks="" size="17" type="float8"/>
+         <column autoUpdated="false" digits="17" id="4" name="Minuto" nullable="true" remarks="" size="17" type="float8"/>
+         <column autoUpdated="false" digits="0" id="5" name="Segundo" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="Quantidade" nullable="true" remarks="" size="19" type="int8"/>
+      </table>
+      <table name="LogAlertasDesabilitados" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="AlertasDesabilitados" nullable="true" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="1" name="QuantidadeAlunos" nullable="true" remarks="" size="19" type="int8"/>
+      </table>
+      <table name="LogAlunoAno" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="AnoEntrada" nullable="true" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="1" name="count" nullable="true" remarks="" size="19" type="int8"/>
+      </table>
+      <table name="LogAlunoCurso" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="CodigoCurso" nullable="true" remarks="" size="3" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="NomeCurso" nullable="true" remarks="" size="50" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="Atual" nullable="true" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="3" name="Total" nullable="true" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="4" name="Porcentagem" nullable="true" remarks="" size="131089" type="numeric"/>
+      </table>
+      <table name="LogAlunoSelecionada" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="QuantidadeAluno" nullable="true" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="1" name="MediaSelecionada" nullable="true" remarks="" size="131089" type="numeric"/>
+      </table>
+      <table name="LogErro" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="PK_Log" nullable="true" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="6" id="1" name="DataHora" nullable="true" remarks="" size="35" type="timestamptz"/>
+         <column autoUpdated="false" digits="0" id="2" name="IP" nullable="true" remarks="" size="40" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="URI" nullable="true" remarks="" size="500" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="4" name="HashSessao" nullable="true" remarks="" size="40" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="Erro" nullable="true" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="6" name="Notas" nullable="true" remarks="" size="2147483647" type="text"/>
+         <column autoUpdated="false" digits="0" id="7" name="FK_Usuario" nullable="true" remarks="" size="20" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="Browser" nullable="true" remarks="" size="300" type="varchar"/>
+      </table>
+      <table name="LogHistogramaBrowserUsuario" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="Browser" nullable="true" remarks="" size="300" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="count" nullable="true" remarks="" size="19" type="int8"/>
+      </table>
+      <table name="LogOcupacaoTurma" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="CodigoDisciplina" nullable="true" remarks="" size="7" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="CodigoTurma" nullable="true" remarks="" size="10" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="PeriodoAno" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="Opcao" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="QuantidadeAluno" nullable="true" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="5" name="Destino" nullable="true" remarks="" size="3" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="6" name="Vagas" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="7" name="Porcentagem" nullable="true" remarks="" size="131089" type="numeric"/>
+      </table>
+      <table name="LogQuantidadeUsuario" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="count" nullable="true" remarks="" size="19" type="int8"/>
+      </table>
+      <table name="LogUsuarioAcesso" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="Acessos" nullable="true" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="1" name="QuantidadeUsuario" nullable="true" remarks="" size="19" type="int8"/>
+      </table>
+      <table name="LogUsuarioDia" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="Data" nullable="true" remarks="" size="13" type="date"/>
+         <column autoUpdated="false" digits="0" id="1" name="count" nullable="true" remarks="" size="19" type="int8"/>
+      </table>
+      <table name="MicroHorario" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="CodigoDisciplina" nullable="true" remarks="" size="7" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="NomeDisciplina" nullable="true" remarks="" size="100" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="Creditos" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="PK_Turma" nullable="true" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="4" name="CodigoTurma" nullable="true" remarks="" size="10" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="PeriodoAno" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="Vagas" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="7" name="Destino" nullable="true" remarks="" size="3" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="8" name="HorasDistancia" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="9" name="SHF" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="10" name="NomeProfessor" nullable="true" remarks="" size="100" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="11" name="DiaSemana" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="12" name="HoraInicial" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="13" name="HoraFinal" nullable="true" remarks="" size="10" type="int4"/>
+      </table>
+      <table name="MicroHorarioDisciplina" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="Aluno" nullable="true" remarks="" size="20" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="CodigoDisciplina" nullable="true" remarks="" size="7" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="NomeDisciplina" nullable="true" remarks="" size="100" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="Creditos" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="Situacao" nullable="true" remarks="" size="2147483647" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="5" name="Apto" nullable="true" remarks="" size="10" type="int4"/>
+      </table>
+      <table name="Optativa" numRows="852" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="PK_Codigo" nullable="false" remarks="" size="7" type="varchar">
+            <child column="PK_Codigo" foreignKey="Implied Constraint" implied="true" onDeleteCascade="false" table="Disciplina"/>
+            <child column="FK_Optativa" foreignKey="FK_OptativaAluno_Optativa" implied="false" onDeleteCascade="true" table="OptativaAluno"/>
+            <child column="FK_Optativa" foreignKey="FK_OptativaDisciplina_Optativa" implied="false" onDeleteCascade="true" table="OptativaDisciplina"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="Nome" nullable="false" remarks="" size="100" type="varchar"/>
+         <primaryKey column="PK_Codigo" sequenceNumberInPK="1"/>
+         <index name="PK_Optativa" unique="true"/>
+      </table>
+      <table name="OptativaAluno" numRows="28737" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="FK_Optativa" nullable="false" remarks="" size="7" type="varchar">
+            <parent column="PK_Codigo" foreignKey="FK_OptativaAluno_Optativa" implied="false" onDeleteCascade="true" table="Optativa"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="FK_Aluno" nullable="false" remarks="" size="20" type="varchar">
+            <parent column="FK_Matricula" foreignKey="FK_OptativaAluno_Aluno" implied="false" onDeleteCascade="true" table="Aluno"/>
+         </column>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="2" name="PeriodoSugerido" nullable="false" remarks="" size="10" type="int4"/>
+         <primaryKey column="FK_Optativa" sequenceNumberInPK="1"/>
+         <primaryKey column="FK_Aluno" sequenceNumberInPK="2"/>
+         <index name="PK_OptativaAluno" unique="true"/>
+      </table>
+      <table name="OptativaDisciplina" numRows="11365" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="FK_Optativa" nullable="false" remarks="" size="7" type="varchar">
+            <parent column="PK_Codigo" foreignKey="FK_OptativaDisciplina_Optativa" implied="false" onDeleteCascade="true" table="Optativa"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="FK_Disciplina" nullable="false" remarks="" size="7" type="varchar">
+            <parent column="PK_Codigo" foreignKey="FK_OptativaDisciplina_Disciplina" implied="false" onDeleteCascade="true" table="Disciplina"/>
+         </column>
+         <primaryKey column="FK_Optativa" sequenceNumberInPK="1"/>
+         <primaryKey column="FK_Disciplina" sequenceNumberInPK="2"/>
+         <index name="PK_OptativaDisciplina" unique="true"/>
+      </table>
+      <table name="PreRequisitoGrupo" numRows="5749" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('seq_prerequisito'::regclass)" digits="0" id="0" name="PK_PreRequisitoGrupo" nullable="false" remarks="" size="19" type="bigserial">
+            <child column="FK_PreRequisitoGrupo" foreignKey="FK_PreRequisitoGrupoDisciplina_PreRequisitoGrupo" implied="false" onDeleteCascade="true" table="PreRequisitoGrupoDisciplina"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="1" name="CreditosMinimos" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="FK_Disciplina" nullable="false" remarks="" size="7" type="varchar">
+            <parent column="PK_Codigo" foreignKey="FK_PreRequisitoGrupo_Disciplina" implied="false" onDeleteCascade="true" table="Disciplina"/>
+         </column>
+         <primaryKey column="PK_PreRequisitoGrupo" sequenceNumberInPK="1"/>
+         <index name="PK_PreRequisitoGrupo" unique="true"/>
+      </table>
+      <table name="PreRequisitoGrupoDisciplina" numRows="7810" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="FK_PreRequisitoGrupo" nullable="false" remarks="" size="19" type="int8">
+            <parent column="PK_PreRequisitoGrupo" foreignKey="FK_PreRequisitoGrupoDisciplina_PreRequisitoGrupo" implied="false" onDeleteCascade="true" table="PreRequisitoGrupo"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="FK_Disciplina" nullable="false" remarks="" size="7" type="varchar">
+            <parent column="PK_Codigo" foreignKey="FK_PreRequisitoGrupoDisciplina_Disciplina" implied="false" onDeleteCascade="true" table="Disciplina"/>
+         </column>
+         <primaryKey column="FK_PreRequisitoGrupo" sequenceNumberInPK="1"/>
+         <primaryKey column="FK_Disciplina" sequenceNumberInPK="2"/>
+         <index name="PK_PreRequisitoGrupoDisciplina" unique="true"/>
+      </table>
+      <table name="Professor" numRows="1130" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('seq_professor'::regclass)" digits="0" id="0" name="PK_Professor" nullable="false" remarks="" size="19" type="bigserial">
+            <child column="FK_Professor" foreignKey="FK_Turma_Professor" implied="false" onDeleteCascade="true" table="Turma"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="Nome" nullable="false" remarks="" size="100" type="varchar"/>
+         <primaryKey column="PK_Professor" sequenceNumberInPK="1"/>
+         <index name="PK_Professor" unique="true"/>
+         <index name="Professor_Nome_Index" unique="false"/>
+      </table>
+      <table name="TipoDisciplina" numRows="19" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="PK_Codigo" nullable="false" remarks="" size="2" type="varchar">
+            <child column="FK_TipoDisciplina" foreignKey="FK_AlunoDisciplina_TipoDisciplina" implied="false" onDeleteCascade="true" table="AlunoDisciplina"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="Nome" nullable="true" remarks="" size="50" type="varchar"/>
+         <primaryKey column="PK_Codigo" sequenceNumberInPK="1"/>
+         <index name="PK_TipoDisciplina" unique="true"/>
+      </table>
+      <table name="TipoUsuario" numRows="3" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="PK_TipoUsuario" nullable="false" remarks="" size="10" type="int4">
+            <child column="FK_TipoUsuario" foreignKey="FK_Usuario_TipoUsuario" implied="false" onDeleteCascade="true" table="Usuario"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="Nome" nullable="false" remarks="" size="20" type="varchar"/>
+         <primaryKey column="PK_TipoUsuario" sequenceNumberInPK="1"/>
+         <index name="PK_TipoUsuario" unique="true"/>
+         <index name="Unique_TipoUsuario_Nome" unique="true"/>
+      </table>
+      <table name="Turma" numRows="3221" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('seq_turma'::regclass)" digits="0" id="0" name="PK_Turma" nullable="false" remarks="" size="19" type="bigserial">
+            <child column="FK_Turma" foreignKey="FK_AlunoTurmaSelecionada_Turma" implied="false" onDeleteCascade="true" table="AlunoTurmaSelecionada"/>
+            <child column="FK_Turma" foreignKey="FK_TurmaDestino_Turma" implied="false" onDeleteCascade="true" table="TurmaDestino"/>
+            <child column="FK_Turma" foreignKey="FK_TurmaHorario_Turma" implied="false" onDeleteCascade="true" table="TurmaHorario"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="FK_Disciplina" nullable="false" remarks="" size="7" type="varchar">
+            <parent column="PK_Codigo" foreignKey="PK_Turma_Disciplina" implied="false" onDeleteCascade="true" table="Disciplina"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="2" name="Codigo" nullable="false" remarks="" size="10" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="PeriodoAno" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="4" name="HorasDistancia" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="SHF" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="FK_Professor" nullable="false" remarks="" size="19" type="int8">
+            <parent column="PK_Professor" foreignKey="FK_Turma_Professor" implied="false" onDeleteCascade="true" table="Professor"/>
+         </column>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="7" name="Deletada" nullable="false" remarks="" size="1" type="bool"/>
+         <primaryKey column="PK_Turma" sequenceNumberInPK="1"/>
+         <index name="PK_Turma" unique="true"/>
+         <index name="Turma_Disciplina_Codigo_Periodo_Index" unique="false"/>
+      </table>
+      <table name="TurmaDestino" numRows="4961" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="FK_Turma" nullable="false" remarks="" size="19" type="int8">
+            <parent column="PK_Turma" foreignKey="FK_TurmaDestino_Turma" implied="false" onDeleteCascade="true" table="Turma"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="Destino" nullable="false" remarks="" size="3" type="varchar"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="2" name="Vagas" nullable="false" remarks="" size="10" type="int4"/>
+         <primaryKey column="FK_Turma" sequenceNumberInPK="1"/>
+         <primaryKey column="Destino" sequenceNumberInPK="2"/>
+         <primaryKey column="Vagas" sequenceNumberInPK="3"/>
+         <index name="PK_TurmaDestino" unique="true"/>
+      </table>
+      <table name="TurmaHorario" numRows="5158" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="FK_Turma" nullable="false" remarks="" size="19" type="int8">
+            <parent column="PK_Turma" foreignKey="FK_TurmaHorario_Turma" implied="false" onDeleteCascade="true" table="Turma"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="DiaSemana" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="HoraInicial" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="HoraFinal" nullable="false" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" defaultValue="1" digits="0" id="4" name="FK_Unidade" nullable="false" remarks="" size="19" type="int8">
+            <parent column="PK_Unidade" foreignKey="FK_TurmaHorario_Unidade" implied="false" onDeleteCascade="true" table="Unidade"/>
+         </column>
+         <primaryKey column="FK_Turma" sequenceNumberInPK="1"/>
+         <primaryKey column="DiaSemana" sequenceNumberInPK="2"/>
+         <primaryKey column="HoraInicial" sequenceNumberInPK="3"/>
+         <primaryKey column="HoraFinal" sequenceNumberInPK="4"/>
+         <index name="PK_TurmaHorario" unique="true"/>
+      </table>
+      <table name="TurmaHorarioUnidade" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="FK_Turma" nullable="true" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="1" name="DiaSemana" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="2" name="HoraInicial" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="3" name="HoraFinal" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="Unidade" nullable="true" remarks="" size="50" type="varchar"/>
+      </table>
+      <table name="TurmaProfessor" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="PK_Turma" nullable="true" remarks="" size="19" type="int8"/>
+         <column autoUpdated="false" digits="0" id="1" name="CodigoTurma" nullable="true" remarks="" size="10" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="CodigoDisciplina" nullable="true" remarks="" size="7" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="PeriodoAno" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="4" name="HorasDistancia" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="5" name="SHF" nullable="true" remarks="" size="10" type="int4"/>
+         <column autoUpdated="false" digits="0" id="6" name="NomeProfessor" nullable="true" remarks="" size="100" type="varchar"/>
+      </table>
+      <table name="Unidade" numRows="2" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('seq_unidade'::regclass)" digits="0" id="0" name="PK_Unidade" nullable="false" remarks="" size="19" type="bigserial">
+            <child column="FK_Unidade" foreignKey="FK_TurmaHorario_Unidade" implied="false" onDeleteCascade="true" table="TurmaHorario"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="Nome" nullable="false" remarks="" size="50" type="varchar"/>
+         <primaryKey column="PK_Unidade" sequenceNumberInPK="1"/>
+         <index name="PK_Unidade" unique="true"/>
+         <index name="Unique_Unidade_Nome" unique="true"/>
+      </table>
+      <table name="Usuario" numRows="12454" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="false" digits="0" id="0" name="PK_Login" nullable="false" remarks="" size="20" type="varchar">
+            <child column="FK_Matricula" foreignKey="FK_Aluno_Usuario" implied="false" onDeleteCascade="true" table="Aluno"/>
+            <child column="FK_Usuario" foreignKey="FK_Sugestao_Usuario" implied="false" onDeleteCascade="true" table="Comentario"/>
+            <child column="FK_Usuario" foreignKey="FK_Log_Usuario" implied="false" onDeleteCascade="true" table="Log"/>
+         </column>
+         <column autoUpdated="false" digits="0" id="1" name="Senha" nullable="true" remarks="" size="40" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="Nome" nullable="true" remarks="" size="100" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="3" name="HashSessao" nullable="true" remarks="" size="40" type="varchar"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="4" name="TermoAceito" nullable="false" remarks="" size="1" type="bool"/>
+         <column autoUpdated="false" digits="0" id="5" name="FK_TipoUsuario" nullable="false" remarks="" size="10" type="int4">
+            <parent column="PK_TipoUsuario" foreignKey="FK_Usuario_TipoUsuario" implied="false" onDeleteCascade="true" table="TipoUsuario"/>
+         </column>
+         <column autoUpdated="false" digits="6" id="6" name="UltimoAcesso" nullable="true" remarks="" size="35" type="timestamptz"/>
+         <primaryKey column="PK_Login" sequenceNumberInPK="1"/>
+         <index name="PK_Usuario" unique="true"/>
+         <index name="Usuario_HashSession_Index" unique="false"/>
+      </table>
+      <table name="UsuarioAluno" numRows="0" remarks="" schema="public" type="VIEW">
+         <column autoUpdated="false" digits="0" id="0" name="Matricula" nullable="true" remarks="" size="20" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="1" name="NomeAluno" nullable="true" remarks="" size="100" type="varchar"/>
+         <column autoUpdated="false" digits="0" id="2" name="Curso" nullable="true" remarks="" size="50" type="varchar"/>
+         <column autoUpdated="false" digits="6" id="3" name="UltimoAcesso" nullable="true" remarks="" size="35" type="timestamptz"/>
+         <column autoUpdated="false" digits="8" id="4" name="CR" nullable="true" remarks="" size="8" type="float4"/>
+      </table>
+   </tables>
+</database>

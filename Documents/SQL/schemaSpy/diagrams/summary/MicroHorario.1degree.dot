@@ -1,0 +1,43 @@
+// dot 2.36.0 on Linux 3.13.0-24-generic
+// SchemaSpy rev 590
+digraph "MicroHorario" {
+  graph [
+    rankdir="RL"
+    bgcolor="#f7f7f7"
+    nodesep="0.18"
+    ranksep="0.46"
+    fontname="Helvetica"
+    fontsize="11"
+  ];
+  node [
+    fontname="Helvetica"
+    fontsize="11"
+    shape="plaintext"
+  ];
+  edge [
+    arrowsize="0.8"
+  ];
+  "MicroHorario" [
+    label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0" BGCOLOR="#ffffff">
+      <TR><TD COLSPAN="3" BGCOLOR="#9bab96" ALIGN="CENTER">MicroHorario</TD></TR>
+      <TR><TD PORT="CodigoDisciplina" COLSPAN="3" ALIGN="LEFT">CodigoDisciplina</TD></TR>
+      <TR><TD PORT="NomeDisciplina" COLSPAN="3" ALIGN="LEFT">NomeDisciplina</TD></TR>
+      <TR><TD PORT="Creditos" COLSPAN="3" ALIGN="LEFT">Creditos</TD></TR>
+      <TR><TD PORT="PK_Turma" COLSPAN="3" ALIGN="LEFT">PK_Turma</TD></TR>
+      <TR><TD PORT="CodigoTurma" COLSPAN="3" ALIGN="LEFT">CodigoTurma</TD></TR>
+      <TR><TD PORT="PeriodoAno" COLSPAN="3" ALIGN="LEFT">PeriodoAno</TD></TR>
+      <TR><TD PORT="Vagas" COLSPAN="3" ALIGN="LEFT">Vagas</TD></TR>
+      <TR><TD PORT="Destino" COLSPAN="3" ALIGN="LEFT">Destino</TD></TR>
+      <TR><TD PORT="HorasDistancia" COLSPAN="3" ALIGN="LEFT">HorasDistancia</TD></TR>
+      <TR><TD PORT="SHF" COLSPAN="3" ALIGN="LEFT">SHF</TD></TR>
+      <TR><TD PORT="NomeProfessor" COLSPAN="3" ALIGN="LEFT">NomeProfessor</TD></TR>
+      <TR><TD PORT="DiaSemana" COLSPAN="3" ALIGN="LEFT">DiaSemana</TD></TR>
+      <TR><TD PORT="HoraInicial" COLSPAN="3" ALIGN="LEFT">HoraInicial</TD></TR>
+      <TR><TD PORT="HoraFinal" COLSPAN="3" ALIGN="LEFT">HoraFinal</TD></TR>
+      <TR><TD ALIGN="LEFT" BGCOLOR="#f7f7f7">  </TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">view</TD><TD ALIGN="RIGHT" BGCOLOR="#f7f7f7">  </TD></TR>
+    </TABLE>>
+    URL="tables/MicroHorario.html"
+    tooltip="MicroHorario"
+  ];
+}
