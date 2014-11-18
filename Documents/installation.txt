@@ -2,6 +2,8 @@
 
 sudo apt-get install php5 apache2 postgres php5-pgsql pgadmin3 npm
 
+# if( dev )
+# {
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo npm install less -g
 sudo npm install jade@0.35.0 -g
@@ -9,6 +11,7 @@ sudo npm install jade@0.35.0 -g
 wget http://dl.google.com/closure-compiler/compiler-latest.zip
 unzip compiler-latest.zip
 sudo cp compiler.jar /usr/bin/closure-compiler.jar
+# }
 
 ssh-keygen
 git clone git@github.com:PrismaDev/prisma.git

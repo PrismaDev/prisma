@@ -1,0 +1,94 @@
+
+PrISMA - Programa de Instrução à Solicitação da	 Matrícula Acadêmica
+
+== Client-side == (contribuição da Luiza)
+
+* Jade - http://jade-lang.com/
+Linguagem com cara de python que compila pra html minificado (ou não, se você colocar pretty, acho; tem um phony no makefile pra isso, só olhando qual é)
+
+* Less - http://lesscss.org/
+Linguagem parecida com CSS que compila pra CSS, mas minificado, permite funcoes, separar em varios arquivos, etc.
+
+* Bootstrap - http://twitter.bootstrap.com/
+lib de css/javascript pra fazer o design ficar mais fácil – baseado em grids, tem tabs, tabelas, botões, tudo estilizado bonitinho.
+
+* BackBone - http://backbonejs.org/
+Framework mvc que eu uso no prisma, de javascript/jquery
+
+* Underscore - http://underscorejs.org/
+linguagem de templates usada pelo backbone
+
+
+== Server-side ==
+
+* Apache + PHP + Postgres
+
+
+== Diretorios ==
+
+<Root>
+|- Application - aplicação do lado servidor
+	|- Config - arquivos de configuração do sistema
+		|- auth.php - variáveis de autenticação no sistema da puc - usado pelo arquivo "<root>/Application/Prisma/Library/Auth.php"
+		|- db.php - variáveis de conexão com o banco de dados - usado pelo arquivo "<root>/Application/Framework/Database.php"
+		|- router.php - responsável por mapear URLs aos seus respectivos controllers (objetos que irão responder a requisição) - usado pelo arquivo "<root>/Application/Framework/Router.php"
+	|- Framework - framework minimalista responsável por redirecionar as requisições
+		|- Main.php - porta de entrada do framework - chamado pelo arquivo "<root>/Public/index.php" - também abre e fecha conexão com o banco
+		|- Router.php - redireciona a requisição para o controller correto, baseado no arquivo de configuração
+		|- Database.php - controla conexão com o banco de dados
+		|- ControllerInvoke.php - realiza a instanciação do controller que ira responder a requisição
+		|- ViewLoader.php - responsável por carregar uma view para o controller que a chamou (realiza processamento dos arquivos com extenção .phtml)
+	|- Prisma - MVC da aplicação servidor do prisma
+		|- Controller - classes que responderão as requisições, conforme especificado no arquivo de configuração
+		|- Library - funções auxiliares ao sistema
+		|- Model - camada que se comunica com o banco de dados e cuida da consistencia dos dados
+		|- View - contém arquivos utilizados no desenvolvimento do client-side (exige pré-processamento, conforme especificado pelo makefile)
+	|- Test - testes realizados no servidor
+		|- TestAutoload.php - exemplo de test que testa a "inclusão" de dependências
+	|- autoload.php - define o root do namespace como sendo a pasta "<root>/Application" e permite que os packages sejam definidos pela propria hierarquia de diretorios
+|- Documents - documentos do sistema
+	|- SQL - contém os scripts do banco de dados
+	|- json.doc - especificação do formato dos dados passados para a aplicação (variável DATA_VIEW, ao olhar o source da página interna do sistema)
+	|- prisma.* - modelo do banco de dados (talvez precise de revisão)
+	|- vhost.sample - arquivos base para configuração do apache
+|- Public - pasta "visível" pelo apache
+	|- css - contém os CSS utilizados em produção
+	|- js - contém os scripts utilizados em produção
+	|- img - contém as imagens utilizadas em produção
+	|- channel.php - plugin do facebook
+	|- index.php - é chamado quando o path da URL requisitado não é encontrado neste diretório
+
+
+== Instalação == 
+
+* Apache + mod_rewrite + mod_php
+* PHP + PDO
+* Postgres + pgadmin3 (ou qualquer outro client)
+
+* Deve-se criar um novo VirtualHost do apache utilizando o arquivo "<root>/Documents/vhost.sample" como referencia. Não esquecendo de modificar o diretório referenciado.
+Observação: é necessários ter o modulo mod_rewrite do apache instalado.
+
+* Deve-se definir um sub dominio do localhost, para correto funcionamento. Isso acontece porque o prisma funciona a partir da raiz do dominio utilizado, não podendo ser compartilhado com outros sistemas. Após criado o sub dominio, deve-se atualizar o ServerName do virtualhost.
+
+
+== Conhecimentos desejáveis ==
+
+* Bash script + Make
+* PHP (orientado a objeto utilizando namespace)
+* Javascript
+* Conceito MVC
+* Conceito REST, para tirar melhor proveito do protocolo HTTP
+* Modelagem de banco de dados + SQL
+* AJAX + Json
+
+
+== Sugestão ==
+
+* Descubra como o site funciona utilizando-o
+* Sempre olhe o console de comandos do browser, nele que aparecem os erros na pagina.
+* Utilize também as ferramentas de desenvolvedor dos browsers pra descobrir quais estilos de CSS estão sendo utilizados.
+* Daí então tente verificar de onde, no servidor, as coisas estão vindo (não esquecer de olhar o arquivo de configuração "router.php")
+* Não esqueça de olhar os logs do apache para identificar eventuais erros do servidor.
+
+
+Divirtam-se ;)
